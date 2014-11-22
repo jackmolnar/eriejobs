@@ -1,0 +1,23 @@
+.jobs{
+
+  h1, h2{
+    margin-bottom: 20px;
+  }
+
+  ul{
+    list-style: none;
+    padding-left: 0px;
+
+  }
+
+  form{
+
+    .half_element{
+      display: inline-block;
+      max-width: 40%;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
+}

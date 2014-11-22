@@ -1,0 +1,31 @@
+.browse{
+
+  h4{
+    margin-top: 0px;
+  }
+
+  ul{
+    columns: 2;
+
+    li{
+      line-height: 25px;
+    }
+  }
+
+  .job_listing{
+
+    .company_name{
+      display:block;
+      font-family: $nav_fonts;
+    }
+    .posted_date{
+      display: block;
+      font-family: $nav_fonts;
+    }
+    .company_city{
+      display: block;
+      font-family: $nav_fonts;
+    }
+
+  }
+}

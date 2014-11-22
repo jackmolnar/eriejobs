@@ -1,0 +1,6 @@
+Users:
+  email: Hello World $string
+  body: $text
+  published_at: $date
+  author_id:
+    type: Author

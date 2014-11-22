@@ -1,0 +1,53 @@
+$nav_fonts: 'Roboto Condensed', sans-serif;
+$bold_fonts: 'Titillium Web', sans-serif;
+
+$dark_blue: rgb(25, 53, 65);
+$transparent_dark_blue: rgba(25, 53, 65, 0.75);
+$light_green: #d7dfd2;
+$light_yellow: #FFFEF9;
+$blue_green: #37636f;
+
+@import "reset";
+@import "buttons";
+@import "signup";
+@import "login";
+@import "browse";
+@import "jobs";
+@import "../font-awesome/scss/font-awesome";
+
+body {
+  padding-top: 120px;
+}
+
+.main_back{
+  background: url("/images/main_background.jpg") no-repeat top center;
+  height: 750px;
+  margin-top: -30px;
+}
+
+label{
+  font-family: $nav_fonts;
+  font-weight: normal;
+}
+
+.form-control{
+  margin-bottom: 10px;
+}
+
+h1, h2{
+  font-family: $bold_fonts;
+  font-weight: 700;
+  color: $blue_green;
+  margin: 0px;
+}
+
+.well {
+  border: thin solid #d7dfd2;
+  background-color: $light_yellow;
+}
+
+
+
+@import "nav_styles";
+
+@import "homepage";

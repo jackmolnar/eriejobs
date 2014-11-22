@@ -1,0 +1,35 @@
+
+.navbar-inverse {
+  background: url("/images/top_bar.jpg") repeat-x;
+  height: 93px;
+  border: none;
+
+  .nav, .navbar-nav{
+
+    margin-top: 34px;
+    background-color: $dark_blue;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    float: right;
+
+    li{
+      a{
+        font-family: $nav_fonts;
+        font-size: 18px;
+        color: $light_green;
+      }
+    }
+  }
+}
+
+.navbar-header{
+  background: url("/images/eriepajobs.png") no-repeat;
+  margin-top: 25px;
+}
+
+.navbar-brand{
+  width: 290px;
+}
+

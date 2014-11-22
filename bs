@@ -1,0 +1,13 @@
+{
+  "status" : 200,
+  "name" : "Kkallakku",
+  "cluster_name" : "elasticsearch",
+  "version" : {
+    "number" : "1.4.0",
+    "build_hash" : "bc94bd81298f81c656893ab1ddddd30a99356066",
+    "build_timestamp" : "2014-11-05T14:26:12Z",
+    "build_snapshot" : false,
+    "lucene_version" : "4.10.2"
+  },
+  "tagline" : "You Know, for Search"
+}

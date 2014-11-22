@@ -1,0 +1,10 @@
+.btn{
+  font-family: $nav_fonts;
+}
+.btn-primary{
+  background: url("/images/buttons/primary_back.jpg") center;
+}
+.btn-primary:hover{
+  border: #ffffff thin solid;
+}
+
