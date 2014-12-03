@@ -1,0 +1,35 @@
+.profile{
+
+  .activate_button{
+    min-width: 50px;
+    background-color: #008000;
+  }
+
+  .btn-warning, .btn-danger{
+    min-width: 40px;
+  }
+
+  h1{
+    margin-bottom: 20px;
+  }
+
+  h3{
+    font-family: $nav_fonts;
+    font-weight: bold;
+    color: $dark_grey;
+    margin-top: 5px;
+    margin-bottom: 30px;
+  }
+
+  .info_header{
+    display: inline-block;
+  }
+
+  .edit_button{
+    float: right;
+  }
+
+  .edit_info{
+    margin-left: -15px;
+  }
+}

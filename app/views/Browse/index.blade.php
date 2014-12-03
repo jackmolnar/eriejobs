@@ -15,7 +15,7 @@
             <li>
                 {{ link_to_action('BrowseController@show', $category['category'], [$category['slug']] ) }}
                 @if($category['job_count'] > 0)
-                    ({{ $category['job_count'] }})
+                    <span class="badge">{{ $category['job_count'] }}</span>
                 @endif
             </li>
         @endforeach

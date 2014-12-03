@@ -54,10 +54,25 @@ Route::filter('auth.basic', function()
 	return Auth::basic();
 });
 
+/**
+ * Check if user logged in, if so redirect to profile page
+ */
 Route::filter('loggedin', function()
 {
     if (Auth::check())
     {
+        return Redirect::action('ProfilesController@index');
+    }
+});
+
+/**
+ * Check to see if authed user is the author of referenced job
+ */
+Route::filter('jobAuthor', function()
+{
+    $user = Auth::user();
+    $job = Job::find(Route::input('jobs'));
+    if($user->id != $job->user_id){
         return Redirect::action('ProfilesController@index');
     }
 });

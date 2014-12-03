@@ -4,23 +4,34 @@
 
 <div class="search">
 
-<div class="well">
+    <div class="col-md-9">
 
-    <h1>Search For Jobs</h1>
+        @include('includes.search.search_form')
+
+        @if($term != '')
+            <h1>Results for "{{ $term }}"</h1>
+        @else
+            <h1>All Jobs</h1>
+        @endif
 
     <hr/>
 
-    {{ Form::open(['action' => 'SearchController@result']) }}
+    @if(isset($noResults))
+        <div class="row job_listing"><h2>{{ $noResults }}</h2></div>
+    @endif
 
-    {{ Form::label('search', 'Enter Job Titles, Company Names, or Keyterms') }}
+    @if(isset($results))
+        @foreach($results as $result)
+            @include('includes.jobs.listing')
+        @endforeach
+        </div>
+        <div class="pagination_links">
+            {{ $results->links() }}
+        </div>
+    @endif
 
-    {{ Form::text('search_term', null, ['class' => 'form-control', 'placeholder' => 'Search Term']) }}
-
-    {{ Form::close() }}
 
 </div>
-
-
 </div>
 
 @stop

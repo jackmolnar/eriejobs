@@ -1,8 +1,11 @@
 <?php
 
+use EriePaJobs\Jobs\DeleteJobCommand;
 use EriePaJobs\Jobs\JobsRepository;
 use EriePaJobs\Jobs\PostNewJobValidator;
 use EriePaJobs\Jobs\PostNewJobCommand;
+use EriePaJobs\Jobs\UpdateJobValidator;
+use EriePaJobs\Jobs\UpdateJobCommand;
 
 class JobsController extends \BaseController {
 
@@ -13,7 +16,10 @@ class JobsController extends \BaseController {
 
     function __construct(JobsRepository $jobRepo)
     {
+        View::share('user', Auth::user());
         $this->beforeFilter('auth', ['except' => ['index', 'show']]);
+        $this->beforeFilter('jobAuthor', ['only' => ['edit', 'update']]);
+
         $this->jobRepo = $jobRepo;
     }
 
@@ -93,7 +99,18 @@ class JobsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+        $categories = Category::dropdownarray();
+        $career_levels = CareerLevel::dropdownarray();
+        $types = Type::dropdownarray();
+        $states = State::dropdownarray();
+        $job = $this->jobRepo->getJobById($id);
+        return View::make('jobs.edit', [
+            'job' => $job,
+            'career_levels' => $career_levels,
+            'types' => $types,
+            'states' => $states,
+            'categories' => $categories
+        ]);
 	}
 
 	/**
@@ -105,8 +122,19 @@ class JobsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
-	}
+        $updateJobValidator = new UpdateJobValidator(Input::all());
+        $valid = $updateJobValidator->execute();
+
+        if($valid['status'])
+        {
+            $updateJobCommand = new UpdateJobCommand(Input::all(), $id);
+            $updateJobCommand->execute();
+            return Redirect::action('JobsController@show', ['id' => $id])->with('success', 'Job has been updated!');
+        }
+
+        return Redirect::back()->withInput()->withErrors($valid['errors']);
+
+    }
 
 	/**
 	 * Remove the specified resource from storage.
@@ -117,8 +145,31 @@ class JobsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$deleteJobCommand = new DeleteJobCommand($id);
+        $result = $deleteJobCommand->execute();
+        if($result['status'])
+        {
+            return Redirect::action('ProfilesController@index')->with('success', $result['message']);
+        }
+        return Redirect::back()->withErrors($result['message']);
 	}
+
+    /**
+     * method to activate and deactivate jobs
+     * @return string
+     */
+    public function active()
+    {
+        $active = Input::get('active');
+        $id = Input::get('jobid');
+
+        if($active == 0)
+        {
+            $this->jobRepo->deactivateJob($id);
+        }
+
+        $this->jobRepo->activateJob($id);
+    }
 
 
 }

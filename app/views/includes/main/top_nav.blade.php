@@ -13,13 +13,12 @@
     <ul class="nav navbar-nav">
       @if(Auth::user())
           @if(Auth::user()->role->title == 'Seeker')
-            <li>{{ link_to_action('SearchController@index', 'Search Jobs') }}</li>
-            <li>{{ link_to_action('BrowseController@index', 'Browse Jobs') }}</li>
-            <li>{{ link_to_action('ProfilesController@edit', 'Edit Profile') }}</li>
+              <li>{{ link_to_action('ProfilesController@index', 'Dashboard') }}</li>
+              <li>{{ link_to_action('SearchController@index', 'Search Jobs') }}</li>
+              <li>{{ link_to_action('BrowseController@index', 'Browse Jobs') }}</li>
           @elseif(Auth::user()->role->title == 'Recruiter')
-            <li>{{ link_to_action('ProfilesController@index', 'Dashboard') }}</li>
-            <li>{{ link_to_action('JobsController@create', 'Post a Job') }}</li>
-            <li>{{ link_to_action('ProfilesController@edit', 'Edit Profile') }}</li>
+              <li>{{ link_to_action('ProfilesController@index', 'Dashboard') }}</li>
+              <li>{{ link_to_action('JobsController@create', 'Post a Job') }}</li>
           @endif
           <li>{{ link_to_action('AuthController@logout', 'Logout') }}</li>
       @else

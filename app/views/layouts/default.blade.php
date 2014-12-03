@@ -21,8 +21,16 @@
     @yield('content')
 </div>
 
+@include('../includes.main.footer')
+
 
 </body>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="http://eriepa.jobs:8000/js/main_scripts.js"></script>
+<script src="http://eriepa.jobs:8000/js/modal.min.js"></script>
+<script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+<script>tinymce.init({selector:'textarea'});</script>
+
 </html>

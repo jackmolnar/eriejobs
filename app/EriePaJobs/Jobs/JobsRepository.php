@@ -31,7 +31,7 @@ class JobsRepository {
     public function jobsByCategorySlug($category_slug)
     {
         $data['category'] = \Category::where('slug', '=', $category_slug)->first();
-        $data['jobs'] = $data['category']->jobs;
+        $data['jobs'] = $data['category']->jobs->paginate(15);
         return $data;
     }
 
@@ -42,6 +42,12 @@ class JobsRepository {
      */
     public function getJobById($job_id)
     {
+        if(Cache::has('job.all'))
+        {
+            $allJobs = Cache::get('job.all');
+            $job = $allJobs->find($job_id);
+            return $job;
+        }
         $job = Job::find($job_id);
         return $job;
     }
@@ -59,7 +65,8 @@ class JobsRepository {
 
     /**
      * Get all Jobs
-     * @return \Illuminate\Database\Eloquent\Collection|mixed|static[]
+     * If stored in cache, return all jobs from there. Else fetch them
+     * @return \ElastiquentCollection
      */
     public function allJobs()
     {
@@ -69,17 +76,69 @@ class JobsRepository {
             return $all_jobs;
         }
         $all_jobs = Job::all();
+        Cache::put('job.all', $all_jobs, 60);
         return $all_jobs;
     }
 
     /**
-     * Search for a job
+     * Update all jobs cache
+     */
+    public function updateAllJobsCache()
+    {
+        Cache::forget('job.all');
+        $all_jobs = Job::all();
+        Cache::put('job.all', $all_jobs, 60);
+    }
+
+    /**
+     * Search for a job, if no search term, pull all jobs, else return search results
      * @param string $term
      * @return \Elasticquent\ElasticquentResultCollection
      */
     public function searchForJob($term)
     {
+        if($term == ''){
+            $result = $this->allJobs()->sortByDesc('created_at');
+            return $result;
+        }
         $result = Job::search($term);
         return $result;
     }
-} 
+
+    /**
+     * Deactivate Job
+     * @param $id
+     */
+    public function deactivateJob($id)
+    {
+        $job = $this->getJobById($id);
+        $job->active = 0;
+        $job->save();
+        $job->removeFromIndex();
+    }
+
+    /**
+     * Activate Job
+     * @param $id
+     */
+    public function activateJob($id)
+    {
+        $job = $this->getJobById($id);
+        $job->active = 1;
+        $job->save();
+        $job->addToIndex();
+    }
+
+    /**
+     * Delete the job by id
+     * @param $id
+     * @return string
+     * @throws \Exception
+     */
+    public function deleteJob($id)
+    {
+        $job = $this->getJobById($id);
+        $job->delete();
+        return true;
+    }
+}

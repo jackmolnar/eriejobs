@@ -7,5 +7,6 @@
  */
 
 Event::listen('auth.seeker.subscribe', 'EriePaJobs\Events\Auth\NewSeekerSubscribedHandler');
+Event::listen('auth.login', 'EriePaJobs\Events\Auth\UserLoggedInHandler');
 Event::listen('job.create', 'EriePaJobs\Events\Jobs\NewJobPostedHandler');
 Event::listen('application.send', 'EriePaJobs\Events\Applications\NewApplicationSentHandler');

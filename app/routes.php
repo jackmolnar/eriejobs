@@ -24,17 +24,25 @@ Route::get('/logout', 'AuthController@logout');
  * Jobs Routes
  */
 Route::resource('jobs', 'JobsController');
+Route::get('jobs/destroy_confirm/{jobid}', 'JobsController@destroy_confirm');
+    //browse
 Route::resource('browse', 'BrowseController');
-Route::resource('search', 'SearchController');
-Route::post('search/result', 'SearchController@result');
+    //search
+Route::post('search', 'SearchController@index');
+Route::get('search', 'SearchController@index');
+    //applications
 Route::resource('jobs.application', 'ApplicationsController');
 Route::get('jobs/{jobid}/application/sent', array('uses' => 'ApplicationsController@sent', 'as' => 'jobs.applications.sent'));
+    //active
+Route::post('jobs/active', ['uses' => 'JobsController@active', 'as' => 'jobs.active']);
 
 
 /*
  * Profile Routes
  */
 Route::resource('profile', 'ProfilesController');
+Route::get('edit-info', 'ProfilesController@edit_info');
+Route::put('edit-info/{id}', 'ProfilesController@update_info');
 
 /*
  * Pages Routes

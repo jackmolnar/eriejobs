@@ -1,10 +1,18 @@
 <?php
 
 use Elasticquent\ElasticquentTrait;
+use EriePaJobs\Jobs\JobsRepository;
 
 class Job extends \Eloquent {
+
+    /*
+     * fillable fields
+     */
 	protected $fillable = ['title', 'description', 'company_name', 'company_address', 'company_city', 'state_id', 'salary', 'career_level', 'type_id', 'user_id', 'email', 'link', 'active', 'expire'];
 
+    /**
+     * trait to enable elastic search methods
+     */
     use ElasticquentTrait;
 
     /**
@@ -52,6 +60,12 @@ class Job extends \Eloquent {
         return $this->belongsTo('State');
     }
 
+
+    public function getDates()
+    {
+        return array('created_at', 'updated_at', 'expire');
+    }
+
     /**
      * Model Events
      */
@@ -61,29 +75,49 @@ class Job extends \Eloquent {
 
         static::saved(function($job){
             $job->addToIndex();
+            $jobRepo = new JobsRepository;
+            $jobRepo->updateAllJobsCache();
         });
 
         static::deleted(function($job){
             $job->removeFromIndex();
+            $jobRepo = new JobsRepository;
+            $jobRepo->updateAllJobsCache();
+        });
+
+        static::updated(function($job){
+            if($job->active == 0){
+                $job->removeFromIndex();
+            } elseif ($job->active == 1){
+                $job->reindex();
+            }
+            $jobRepo = new JobsRepository;
+            $jobRepo->updateAllJobsCache();
         });
     }
 
-    protected $mappingProperties = array(
+    /**
+     * Mapping properties for elasticsearch
+     * @var array
+     */
+    protected $mappingProperties = [
         'title' => [
             'type' => 'string',
             'store' => true,
-            'analyzer' => 'standard'
+            'analyzer' => 'standard',
+            'boost' => 3.0
         ],
         'description' => [
             'type' => 'string',
             'store' => true,
-            'analyzer' => 'standard'
+            'analyzer' => 'standard',
+            'boost' => 2.0
         ],
         'company_name' => [
             'type' => 'string',
             'store' => true,
             'analyzer' => 'standard',
-            'boost' => '.7'
+            'boost' => 2.0
         ],
         'company_address' => [
             'type' => 'string',
@@ -94,7 +128,6 @@ class Job extends \Eloquent {
             'type' => 'string',
             'store' => true,
             'analyzer' => 'standard',
-            'boost' => '.2'
         ],
         'state_id' => [
             'type' => 'integer',
@@ -105,14 +138,19 @@ class Job extends \Eloquent {
             'type' => 'integer',
             'store' => true,
             'analyzer' => 'standard',
-            'boost' => '.2'
         ],
         'active' => [
             'type' => 'boolean',
             'store' => true,
             'analyzer' => 'standard',
         ],
-    );
+        'expire' => [
+            'type' => 'boolean',
+            'store' => false,
+            'index' => 'no',
+            'analyzer' => 'standard',
+        ],
+    ];
 
 
 }

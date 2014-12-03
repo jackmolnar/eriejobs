@@ -1,0 +1,31 @@
+.modal-backdrop{
+  z-index:0;
+}
+.modal-dialog{
+  z-index:1000;
+
+  .modal-title{
+    font-family: $nav_fonts;
+    color: $dark_grey;
+    font-weight: bold;
+  }
+
+  .modal-listing{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 0px;
+  }
+
+  .modal-footer button{
+    float: left;
+  }
+
+  h3{
+    font-family: $nav_fonts;
+    font-weight: bold;
+    color: $dark_grey;
+    margin-top: 5px;
+    margin-bottom: 30px;
+  }
+
+}

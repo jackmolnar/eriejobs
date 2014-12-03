@@ -1,4 +1,6 @@
-.browse{
+.search{
+
+  @extend .browse;
 
   h4{
     margin-top: 0px;
@@ -10,6 +12,11 @@
     li{
       line-height: 25px;
     }
+  }
+
+  .search_box{
+    display:inline;
+    max-width: 400px;
   }
 
   .job_listing{
@@ -27,9 +34,7 @@
       font-family: $nav_fonts;
     }
 
+
   }
 
-  .badge{
-    background-color: #D5D5D5;
-  }
 }
