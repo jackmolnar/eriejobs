@@ -55,6 +55,7 @@ class PostNewJobCommand extends BaseCommand{
         $job->email = $this->input['email'];
         $job->link = $this->input['link'];
         $job->expire = $this->jobsRepo->createExpireDate($this->input['length']);
+        $job->confiential = $this->input['confidential'];
 
         $job->save();
 

@@ -1,7 +1,11 @@
 <div class="row job_listing">
     <div class="col-md-8">
         <h4>{{ link_to_action('JobsController@show', $result->title, ['job_id' => $result->id] ) }}</h4>
-        <span class="company_name">{{ $result->company_name }}</span>
+        @if( $result->confidential == 1)
+            <span class="company_name">Confidential</span>
+        @else
+            <span class="company_name">{{ $result->company_name }}</span>
+        @endif
     </div>
     <div class="col-md-3">
         <span class="company_city">{{ $result->company_city }}</span>

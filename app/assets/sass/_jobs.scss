@@ -41,3 +41,24 @@
   }
 
 }
+
+.job_create {
+  @extend .jobs;
+
+  .col-md-6{
+    .half_element{
+      max-width: 95%;
+    }
+  }
+  .required{
+    color: #a50003;
+  }
+
+  h4{
+    font-family: $bold_fonts;
+    font-weight: bold;
+    color: $blue_green;
+    margin-top: 0px;
+    margin-bottom: 15px;
+  }
+}

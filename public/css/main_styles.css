@@ -53,29 +53,40 @@
 .browse .badge, .browse .search {
   background-color: #D5D5D5; }
 
-.jobs .row {
+.jobs .row, .jobs .job_create {
   padding-left: 15px;
   padding-right: 15px; }
-.jobs h1, .jobs h2 {
+.jobs h1, .jobs .job_create, .jobs h2, .jobs .job_create {
   margin-bottom: 20px;
   display: inline; }
-.jobs h3 {
+.jobs h3, .jobs .job_create {
   margin-top: 0px;
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: bold;
   color: #595959; }
-.jobs .job_data ul {
+.jobs .job_data ul, .jobs .job_data .job_create {
   list-style: none;
   padding-left: 0px; }
-.jobs .btn-primary {
+.jobs .btn-primary, .jobs .job_create {
   float: right; }
-.jobs form .half_element {
+.jobs form .half_element, .jobs form .job_create {
   display: inline-block;
   max-width: 40%;
   margin-left: 10px;
   margin-right: 10px; }
-.jobs .edit_buttons {
+.jobs .edit_buttons, .jobs .job_create {
   float: right; }
+
+.job_create .col-md-6 .half_element {
+  max-width: 95%; }
+.job_create .required {
+  color: #a50003; }
+.job_create h4 {
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: bold;
+  color: #37636f;
+  margin-top: 0px;
+  margin-bottom: 15px; }
 
 .search h4 {
   margin-top: 0px; }
@@ -1803,7 +1814,8 @@ body {
 
 label {
   font-family: 'Roboto Condensed', sans-serif;
-  font-weight: normal; }
+  font-weight: normal;
+  color: #595959; }
 
 .form-control {
   margin-bottom: 10px; }

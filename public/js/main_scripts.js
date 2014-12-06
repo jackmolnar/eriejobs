@@ -2,7 +2,9 @@
  * Created by jackmolnar1982 on 11/23/14.
  */
 
-
+/*
+    Activate button
+ */
 var activate_button = $(".activate_button");
 
 activate_button.on('click', function(event) {
@@ -14,11 +16,7 @@ activate_button.on('click', function(event) {
         active = thisButton.attr('data-active'),
         text = ['Inactive', 'Active'];
 
-    if (active === '0') {
-        active = 1;
-    } else {
-        active = 0;
-    }
+    active = active === '0' ? active = 1 : active = 0;
 
     $.post('jobs/active', { active: active, jobid: jobId })
         .done(function( data ){
@@ -26,6 +24,10 @@ activate_button.on('click', function(event) {
             thisButton.attr('data-active', active);
         });
 });
+
+/*
+    Delete button
+ */
 
 var delete_button = $(".delete_button");
 
@@ -42,6 +44,32 @@ delete_button.on('click', function(){
 
     deleteForm.attr('action', newAction);
 
-    console.log(newAction);
-
 });
+
+/*
+    Email / Link Radio Buttons
+ */
+
+var emailButton = $('#email_contact'),
+    linkButton = $('#link_contact'),
+    applyBox = $('.apply');
+
+emailButton.change(function(){
+    applyBox.html('<label for="email">Email Address</label><input class="form-control half_element" placeholder="Email" name="email" type="text" id="email">');
+});
+
+linkButton.change(function(){
+    applyBox.html('<label for="link">Link</label><input class="form-control half_element" placeholder="Link" name="link" type="text" id="link">');
+});
+
+/*
+ Tool Tips
+ */
+$(function () {
+    var confidentialOptions = {
+        title: 'We still need your company name, city, and state. Checking this will post the listing confidentially when viewed by applicants.',
+        placement: 'bottom'
+    }
+    $('#confidential').tooltip(confidentialOptions);
+})
+

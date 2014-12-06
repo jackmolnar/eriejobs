@@ -5,7 +5,7 @@
 <div class="jobs">
 
     <div class="well col-md-9 ">
-        @if($user->role->title == 'Recruiter' && $user->id == $job->user_id)
+        @if(isset($user) && $user->role->title == 'Recruiter' && $user->id == $job->user_id)
             <div class="btn btn-group edit_buttons">
                 {{ link_to_action('JobsController@edit', 'Edit', [$job->id], ['class' => 'btn btn-warning btn-sm']) }}
                 <button class="btn btn-danger btn-sm delete_button" data-toggle="modal" data-target="#deleteModal" data-jobid="{{ $job->id }}">Delete</button>
@@ -30,7 +30,7 @@
             <h3>Job Description</h3>
             {{ $job->description }}
         </div>
-        @if($user->role->title == 'Seeker')
+        @if(isset($user) && $user->role->title == 'Seeker')
             <hr/>
             <div class="row">
                 @if($job->email != '')
@@ -48,7 +48,7 @@
 
 </div>
 
-@if($user->role->title == 'Recruiter' && $user->id == $job->user_id)
+@if(isset($user) && $user->role->title == 'Recruiter' && $user->id == $job->user_id)
     @include('includes/modals/delete_modal')
 @endif
 
