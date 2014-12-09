@@ -69,7 +69,11 @@ $(function () {
     var confidentialOptions = {
         title: 'We still need your company name, city, and state. Checking this will post the listing confidentially when viewed by applicants.',
         placement: 'bottom'
-    }
+    };
     $('#confidential').tooltip(confidentialOptions);
-})
+});
+
+
+
+
 

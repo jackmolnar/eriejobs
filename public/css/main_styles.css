@@ -63,10 +63,16 @@
   margin-top: 0px;
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: bold;
-  color: #595959; }
-.jobs .job_data ul, .jobs .job_data .job_create {
+  color: #37636f; }
+.jobs .job_data ul, .jobs .job_data .job_create, .jobs .contact_data ul, .jobs .contact_data .job_create, .jobs .location_data ul, .jobs .location_data .job_create {
   list-style: none;
   padding-left: 0px; }
+  .jobs .job_data ul li, .jobs .job_data ul .job_create, .jobs .contact_data ul li, .jobs .contact_data ul .job_create, .jobs .location_data ul li, .jobs .location_data ul .job_create {
+    margin-bottom: 20px; }
+  .jobs .job_data ul li:last-of-type, .jobs .job_data ul .job_create, .jobs .contact_data ul li:last-of-type, .jobs .contact_data ul .job_create, .jobs .location_data ul li:last-of-type, .jobs .location_data ul .job_create {
+    margin-bottom: 0px; }
+  .jobs .job_data ul label, .jobs .job_data ul .job_create, .jobs .contact_data ul label, .jobs .contact_data ul .job_create, .jobs .location_data ul label, .jobs .location_data ul .job_create {
+    font-weight: bold; }
 .jobs .btn-primary, .jobs .job_create {
   float: right; }
 .jobs form .half_element, .jobs form .job_create {

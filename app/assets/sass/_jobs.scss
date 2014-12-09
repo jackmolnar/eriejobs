@@ -14,12 +14,26 @@
     margin-top: 0px;
     font-family: $nav_fonts;
     font-weight: bold;
-    color: $dark_grey;
+    color: $blue_green;
   }
 
-  .job_data ul{
-    list-style: none;
-    padding-left: 0px;
+  .job_data, .contact_data, .location_data{
+    ul{
+      list-style: none;
+      padding-left: 0px;
+
+      li{
+        margin-bottom: 20px;
+      }
+
+      li:last-of-type{
+        margin-bottom: 0px;
+      }
+
+      label{
+        font-weight: bold;
+      }
+    }
   }
 
   .btn-primary{

@@ -10,6 +10,7 @@ namespace EriePaJobs\Jobs;
 use Cache;
 use Job;
 use Carbon\Carbon;
+use Config;
 
 class JobsRepository {
 
@@ -61,6 +62,16 @@ class JobsRepository {
     {
         $expire_date = Carbon::now()->addDays($length);
         return $expire_date;
+    }
+
+    public function getCostFromExpireDate($date)
+    {
+        $listings = Config::get('billing')['listings'];
+
+        $today = Carbon::today();
+        $length = $today->diffInDays($date);
+
+        return $listings[$length];
     }
 
     /**

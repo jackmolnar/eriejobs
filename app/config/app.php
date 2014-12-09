@@ -124,6 +124,7 @@ return array(
         'Way\Generators\GeneratorsServiceProvider',
         'EriePaJobs\ViewComposers\ComposerServiceProvider',
         'Mmanos\Social\SocialServiceProvider',
+        'Laravel\Cashier\CashierServiceProvider',
 	),
 
 	/*

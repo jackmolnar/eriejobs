@@ -2,6 +2,7 @@
 
 use EriePaJobs\Jobs\DeleteJobCommand;
 use EriePaJobs\Jobs\JobsRepository;
+use EriePaJobs\Payments\PaymentRepository;
 use EriePaJobs\Jobs\PostNewJobValidator;
 use EriePaJobs\Jobs\PostNewJobCommand;
 use EriePaJobs\Jobs\UpdateJobValidator;
@@ -14,9 +15,18 @@ class JobsController extends \BaseController {
      */
     private $jobRepo;
 
-    function __construct(JobsRepository $jobRepo)
+    function __construct(JobsRepository $jobRepo, PaymentRepository $paymentRepo)
     {
-        View::share('user', Auth::user());
+        $share_array = [
+            'states'        => State::dropdownarray(),
+            'types'         => Type::dropdownarray(),
+            'career_levels' => CareerLevel::dropdownarray(),
+            'categories'    => Category::dropdownarray(),
+            'user'          => Auth::user(),
+            'payment'       => Job::paymentDropDownArray()
+        ];
+        View::share($share_array);
+
         $this->beforeFilter('auth', ['except' => ['index', 'show']]);
         $this->beforeFilter('jobAuthor', ['only' => ['edit', 'update']]);
 
@@ -42,16 +52,12 @@ class JobsController extends \BaseController {
 	 */
 	public function create()
 	{
-        $categories = Category::dropdownarray();
-        $career_levels = CareerLevel::dropdownarray();
-        $types = Type::dropdownarray();
-        $states = State::dropdownarray();
-		return View::make('jobs.create', [
-            'states' => $states,
-            'types' => $types,
-            'career_levels' => $career_levels,
-            'categories' => $categories
-        ]);
+        if(Session::has('pending_job'))
+        {
+            return View::make('jobs.create', ['job' => Session::get('pending_job')]);
+        }
+
+		return View::make('jobs.create');
 
 	}
 
@@ -64,18 +70,58 @@ class JobsController extends \BaseController {
 	public function store()
 	{
 		$newJobValidator = new PostNewJobValidator(Input::all());
-        $valid = $newJobValidator->execute();
+        $valid = $newJobValidator->execute('create');
 
         if($valid['status'])
         {
             $newJobCommand = new PostNewJobCommand(Input::all());
-            $newJobCommand->execute();
-            return Redirect::action('ProfilesController@index')->with('success', 'Job has been posted!');
+            $newJobCommand->execute('create');
+            return Redirect::action('JobsController@review');
+        }
+        return Redirect::back()->withInput()->withErrors($valid['errors']);
+	}
+
+    /**
+     * Review job listing
+     *
+     * @return \Illuminate\View\View
+     */
+    public function review()
+    {
+        $pending_job = Session::get('pending_job');
+        $cost = $this->jobRepo->getCostFromExpireDate($pending_job->expire);
+
+        return View::make('jobs.confirm', ['pending_job' => $pending_job, 'cost' => $cost]);
+    }
+
+    public function payment()
+    {
+
+
+
+        // Set your secret key: remember to change this to your live secret key in production
+// See your keys here https://dashboard.stripe.com/account
+        Stripe::setApiKey("sk_test_sHX7ljvlFj1nozB8TIiisE7h");
+
+// Get the credit card details submitted by the form
+        $token = Input::get('stripeToken');
+
+// Create the charge on Stripe's servers - this will charge the user's card
+        try {
+            $charge = Stripe_Charge::create(array(
+                    "amount" => 1000, // amount in cents, again
+                    "currency" => "usd",
+                    "card" => $token,
+                    "description" => "payinguser@example.com")
+            );
+            return $charge;
+        } catch(Stripe_CardError $e) {
+            // The card has been declined
+            return $e;
         }
 
-        return Redirect::back()->withInput()->withErrors($valid['errors']);
-
-	}
+//        return View::make('jobs.payment');
+    }
 
 	/**
 	 * Display the specified resource.
@@ -99,18 +145,8 @@ class JobsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-        $categories = Category::dropdownarray();
-        $career_levels = CareerLevel::dropdownarray();
-        $types = Type::dropdownarray();
-        $states = State::dropdownarray();
         $job = $this->jobRepo->getJobById($id);
-        return View::make('jobs.edit', [
-            'job' => $job,
-            'career_levels' => $career_levels,
-            'types' => $types,
-            'states' => $states,
-            'categories' => $categories
-        ]);
+        return View::make('jobs.edit', ['job' => $job]);
 	}
 
 	/**

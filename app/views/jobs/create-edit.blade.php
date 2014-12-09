@@ -8,7 +8,7 @@
     <h1>Edit Your Job Listing</h1>
     <hr/>
 
-{{ Form::model($job, ['action' => ['JobsController@update', $job->id], 'method' => 'put']) }}
+{{ Form::model($job, ['action' => 'JobsController@store']) }}
 
     @include('includes.jobs.edit_form')
 
@@ -21,12 +21,4 @@
     </div>
 
 </div>
-@stop
-
-@section('scripts')
-<script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
-
-<script>
-    tinymce.init({selector:'textarea'});
-</script>
 @stop

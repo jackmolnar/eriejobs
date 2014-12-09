@@ -60,10 +60,33 @@ class Job extends \Eloquent {
         return $this->belongsTo('State');
     }
 
-
+    /**
+     * Declare dates to be returned as Carbon instance
+     * @return array
+     */
     public function getDates()
     {
         return array('created_at', 'updated_at', 'expire');
+    }
+
+    public static function paymentDropDownArray()
+    {
+        if(Config::get('billing')['free'])
+        {
+            return 'free';
+        }
+
+        $listing_array = Config::get('billing')['listings'];
+
+        $dropDownArray = array();
+
+        foreach($listing_array as $length => $cost)
+        {
+            $formatted_cost = number_format(($cost/100), 2);
+            $dropDownArray[$length] = $length.' Days ($'.$formatted_cost.')';
+        }
+
+        return $dropDownArray;
     }
 
     /**

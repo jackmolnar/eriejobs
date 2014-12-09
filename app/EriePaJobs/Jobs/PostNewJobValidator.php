@@ -23,6 +23,10 @@ class PostNewJobValidator extends BaseValidator {
         'link' => 'required_without:email|url'
     ];
 
+    public static $confirm_validation_rules = [
+        'confirm' => 'required'
+    ];
+
     protected $input;
 
     /**
@@ -40,7 +44,21 @@ class PostNewJobValidator extends BaseValidator {
      *
      * @return array
      */
-    public function execute()
+    public function execute($flag = '')
+    {
+        if($flag != '')
+        {
+            return $result = $this->$flag();
+        }
+    }
+
+    public function create()
+    {
+        $result = parent::validate($this->input, static::$post_validation_rules);
+        return $result;
+    }
+
+    public function confirm()
     {
         $result = parent::validate($this->input, static::$post_validation_rules);
         return $result;

@@ -24,6 +24,10 @@ Route::get('/logout', 'AuthController@logout');
  * Jobs Routes
  */
 Route::resource('jobs', 'JobsController');
+    //create
+Route::get('jobs/create/review', 'JobsController@review');
+Route::post('jobs/create/payment', 'JobsController@payment');
+    //destroy
 Route::get('jobs/destroy_confirm/{jobid}', 'JobsController@destroy_confirm');
     //browse
 Route::resource('browse', 'BrowseController');
