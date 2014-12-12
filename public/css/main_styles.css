@@ -6,16 +6,16 @@
   font-family: 'Roboto Condensed', sans-serif; }
 
 .btn-primary {
-  background: url("/images/buttons/primary_back.jpg") center; }
+  background: url("../images/buttons/primary_back.jpg") center; }
 
 .btn-primary:hover {
   border: #ffffff thin solid; }
 
 .btn-warning {
-  background: url("/images/buttons/warning_back.jpg") center; }
+  background: url("../images/buttons/warning_back.jpg") center; }
 
 .btn-danger {
-  background: url("/images/buttons/danger_back.jpg") center; }
+  background: url("../images/buttons/danger_back.jpg") center; }
 
 .btn-primary:hover {
   border: #ffffff thin solid; }
@@ -1729,7 +1729,7 @@
   content: "\f20c"; }
 
 .navbar-inverse {
-  background: url("/images/top_bar.jpg") repeat-x;
+  background: url("../images/top_bar.jpg") repeat-x;
   height: 93px;
   border: none; }
   .navbar-inverse .nav, .navbar-inverse .navbar-nav {
@@ -1746,7 +1746,7 @@
       color: #d7dfd2; }
 
 .navbar-header {
-  background: url("/images/eriepajobs.png") no-repeat;
+  background: url("../images/eriepajobs.png") no-repeat;
   margin-top: 25px; }
 
 .navbar-brand {
@@ -1814,7 +1814,7 @@ body {
   padding-top: 120px; }
 
 .main_back {
-  background: url("/images/main_background.jpg") no-repeat top center;
+  background: url("../images/main_background.jpg") no-repeat top center;
   height: 750px;
   margin-top: -30px; }
 
@@ -1850,4 +1850,4 @@ h1, h2 {
   color: #ffffff;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  background: url("/images/buttons/default_back.jpg") center; }
+  background: url("../images/buttons/default_back.jpg") center; }

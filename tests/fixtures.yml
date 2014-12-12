@@ -4,3 +4,68 @@ Users:
   published_at: $date
   author_id:
     type: Author
+
+Category:
+  category: $string
+  active: $boolean
+  created_at: $date
+  created_at: $date
+  slug: $string
+
+Job:
+  title: $string
+  description: $text
+  company_name: $string $string
+  company_address: $string
+  company_city: $string
+  state_id:
+    type: State
+  salary: $integer$integer$integer$integer$integer
+  career_level:
+    type: CareerLevel
+  type_id:
+    type: Type
+  user_id:
+    type: User
+  email: $string@$string.com
+  link: http://$string.com
+  active: $boolean
+  created_at: $date
+  updated_at: $date
+  expire: $date
+  confidential: $boolean
+
+User:
+  email: $string@$string.com
+  first_name: $string
+  last_name: $string
+  password: $string
+  role_id:
+    type: Role
+  remember_token: $string
+  created_at: $date
+  updated_at: $date
+  notifications: $boolean
+  last_login: $date
+
+State:
+  title: $string
+  abbreviation: $string
+  created_at: $date
+  updated_at: $date
+
+CareerLevel:
+  level: $string
+  created_at: $date
+  updated_at: $date
+
+Type:
+  type: $string
+  created_at: $date
+  updated_at: $date
+
+Role:
+  title: $string
+  value: $string
+  created_at: $date
+  updated_at: $date
