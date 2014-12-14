@@ -14,6 +14,10 @@ class JobsController extends \BaseController {
      * @var JobsRepository
      */
     private $jobRepo;
+    /**
+     * @var PaymentRepository
+     */
+    private $paymentRepo;
 
     function __construct(JobsRepository $jobRepo, PaymentRepository $paymentRepo)
     {
@@ -31,6 +35,7 @@ class JobsController extends \BaseController {
         $this->beforeFilter('jobAuthor', ['only' => ['edit', 'update']]);
 
         $this->jobRepo = $jobRepo;
+        $this->paymentRepo = $paymentRepo;
     }
 
     /**
@@ -62,7 +67,7 @@ class JobsController extends \BaseController {
 	}
 
 	/**
-	 * Store a newly created resource in storage.
+	 * Validate the job listing, begin the job listing process
 	 * POST /jobs
 	 *
 	 * @return Response
@@ -90,40 +95,39 @@ class JobsController extends \BaseController {
     {
         $pending_job = Session::get('pending_job');
         $cost = $this->jobRepo->getCostFromExpireDate($pending_job->expire);
+        $length = $this->jobRepo->getLengthFromExpireDate($pending_job->expire)." Day Job Listing";
 
-        return View::make('jobs.confirm', ['pending_job' => $pending_job, 'cost' => $cost]);
+        return View::make('jobs.review', ['pending_job' => $pending_job, 'cost' => $cost, 'length' => $length]);
     }
 
+    /**
+     * Process the payment
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function payment()
     {
+        $newJobCommand = new PostNewJobCommand(Input::all());
+        $result = $newJobCommand->execute('bill');
 
-
-
-        // Set your secret key: remember to change this to your live secret key in production
-// See your keys here https://dashboard.stripe.com/account
-        Stripe::setApiKey("sk_test_sHX7ljvlFj1nozB8TIiisE7h");
-
-// Get the credit card details submitted by the form
-        $token = Input::get('stripeToken');
-
-// Create the charge on Stripe's servers - this will charge the user's card
-        try {
-            $charge = Stripe_Charge::create(array(
-                    "amount" => 1000, // amount in cents, again
-                    "currency" => "usd",
-                    "card" => $token,
-                    "description" => "payinguser@example.com")
-            );
-            return $charge;
-        } catch(Stripe_CardError $e) {
-            // The card has been declined
-            return $e;
+        if(!$result['status'])
+        {
+            return Redirect::back()->with('error', $error);
         }
-
-//        return View::make('jobs.payment');
+        return Redirect::action('JobsController@thankyou')->with('charge', $charge);
     }
 
-	/**
+    /**
+     * Display thank you page
+     * @return \Illuminate\View\View
+     */
+    public function thankyou()
+    {
+        $charge = Session::get('charge');
+        return View::make('jobs.thankyou', ['charge' => $charge]);
+    }
+
+
+    /**
 	 * Display the specified resource.
 	 * GET /jobs/{id}
 	 *

@@ -27,6 +27,7 @@ Route::resource('jobs', 'JobsController');
     //create
 Route::get('jobs/create/review', 'JobsController@review');
 Route::post('jobs/create/payment', 'JobsController@payment');
+Route::get('jobs/create/thankyou', 'JobsController@thankyou');
     //destroy
 Route::get('jobs/destroy_confirm/{jobid}', 'JobsController@destroy_confirm');
     //browse

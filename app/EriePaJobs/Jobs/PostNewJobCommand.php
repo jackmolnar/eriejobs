@@ -10,6 +10,7 @@ namespace EriePaJobs\Jobs;
 
 use EriePaJobs\BaseCommand;
 use Auth;
+use EriePaJobs\Payments\PaymentRepository;
 use Event;
 use Session;
 use Job;
@@ -17,7 +18,7 @@ use Job;
 class PostNewJobCommand extends BaseCommand{
 
     /**
-     * @var
+     * @var 
      */
     protected $input;
     /**
@@ -36,6 +37,7 @@ class PostNewJobCommand extends BaseCommand{
         $this->input = $input;
         $this->user = Auth::user();
         $this->jobsRepo = new JobsRepository;
+        $this->paymentRepo = new PaymentRepository;
     }
 
     /**
@@ -57,7 +59,7 @@ class PostNewJobCommand extends BaseCommand{
     }
 
     /**
-     * Create the job
+     * Create the job in the Session
      * @return Job
      */
     public function create()
@@ -84,8 +86,21 @@ class PostNewJobCommand extends BaseCommand{
         return $job;
     }
 
+    /**
+     * Attempt to bill the user and save / post the job
+     */
     public function bill()
     {
-//        Event::fire('job.create', array($job, $this->user));
+        $result = $this->paymentRepo->bill($this->input);
+
+        if($result['status'])
+        {
+            //save the job
+            //fire the job create event
+            //        Event::fire('job.create', array($job, $this->user));
+
+        }
+
+        //else reutrn back with error
     }
 }

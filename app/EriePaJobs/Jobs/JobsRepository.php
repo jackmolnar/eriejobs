@@ -64,12 +64,27 @@ class JobsRepository {
         return $expire_date;
     }
 
+    /**
+     * Get the length of the listing in days from the expire date
+     * @param $date
+     * @return int
+     */
+    public function getLengthFromExpireDate($date)
+    {
+        $length = Carbon::today()->diffInDays($date);
+        return $length;
+    }
+
+    /**
+     * Get cost of job from Billing config file using the length of the posting
+     * @param $date
+     * @return mixed
+     */
     public function getCostFromExpireDate($date)
     {
         $listings = Config::get('billing')['listings'];
 
-        $today = Carbon::today();
-        $length = $today->diffInDays($date);
+        $length = Carbon::today()->diffInDays($date);
 
         return $listings[$length];
     }

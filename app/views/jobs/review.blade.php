@@ -72,14 +72,15 @@
         <hr/>
         <div class="row">
             {{ Form::open(['action' => 'JobsController@payment', 'method' => 'post']) }}
-              <script
-                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="pk_test_G59xaf43g03xVDXtwrZQ2ByW"
-                data-image=""
-                data-name="EriePa Jobs"
-                data-description="2 widgets ($20.00)"
-                data-amount="2000">
-              </script>
+                <script
+                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="pk_test_G59xaf43g03xVDXtwrZQ2ByW"
+                    data-image=""
+                    data-name="EriePa Jobs"
+                    data-description="{{ $length }}"
+                    data-amount="{{ $cost }}">
+                </script>
+                {{ Form::hidden('cost', $cost) }}
             {{ Form::close() }}
             {{--<a id="payment_button" class="btn btn-primary">Confirm and Pay</a>--}}
             {{--{{ link_to_action('JobsController@payment', 'Continue', null, ['class' => 'btn btn-primary']) }}--}}
