@@ -18,7 +18,7 @@ use Job;
 class PostNewJobCommand extends BaseCommand{
 
     /**
-     * @var 
+     * @var
      */
     protected $input;
     /**
@@ -49,13 +49,6 @@ class PostNewJobCommand extends BaseCommand{
         {
             return $result = $this->$flag();
         }
-
-//        $job->save();
-
-//        $job->categories()->sync(array($this->input['category']));
-
-//        Event::fire('job.create', array($job, $this->user));
-
     }
 
     /**
@@ -95,12 +88,16 @@ class PostNewJobCommand extends BaseCommand{
 
         if($result['status'])
         {
-            //save the job
-            //fire the job create event
-            //        Event::fire('job.create', array($job, $this->user));
+            $job = Session::pull('pending_job');
+
+            $job->save();
+
+            $job->categories()->sync([$job->category_id]);
+
+            Event::fire('job.create', array($job, $this->user));
 
         }
 
-        //else reutrn back with error
+        return $result;
     }
 }

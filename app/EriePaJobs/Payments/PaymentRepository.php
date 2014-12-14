@@ -24,7 +24,7 @@ class PaymentRepository {
 
         // Set your secret key: remember to change this to your live secret key in production
         // See your keys here https://dashboard.stripe.com/account
-        Stripe::setApiKey("sk_test_sHX7ljvlFj1nozB8TIiisE7h");
+        Stripe::setApiKey(getenv("STRIPE_SECRET_KEY"));
 
         // Get the credit card details submitted by the form
         $token = $input['stripeToken'];
@@ -32,7 +32,6 @@ class PaymentRepository {
         // Create the charge on Stripe's servers - this will charge the user's card
         try
         {
-
             $charge = Stripe_Charge::create(array(
                     "amount" => $input['cost'], // amount in cents, again
                     "currency" => "usd",

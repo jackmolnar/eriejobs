@@ -111,9 +111,9 @@ class JobsController extends \BaseController {
 
         if(!$result['status'])
         {
-            return Redirect::back()->with('error', $error);
+            return Redirect::back()->with('error', $result['message']);
         }
-        return Redirect::action('JobsController@thankyou')->with('charge', $charge);
+        return Redirect::action('JobsController@thankyou')->with('charge', $result['message']);
     }
 
     /**

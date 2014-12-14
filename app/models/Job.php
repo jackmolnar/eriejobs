@@ -69,6 +69,10 @@ class Job extends \Eloquent {
         return array('created_at', 'updated_at', 'expire');
     }
 
+    /**
+     * Build the payment dropdown array
+     * @return array
+     */
     public static function paymentDropDownArray()
     {
         if(Config::get('billing')['free'])

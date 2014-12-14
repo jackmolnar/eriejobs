@@ -74,7 +74,7 @@
             {{ Form::open(['action' => 'JobsController@payment', 'method' => 'post']) }}
                 <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="pk_test_G59xaf43g03xVDXtwrZQ2ByW"
+                    data-key="{{ getenv('STRIPE_PUBLISHABLE_KEY') }}"
                     data-image=""
                     data-name="EriePa Jobs"
                     data-description="{{ $length }}"
