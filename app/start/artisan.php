@@ -13,3 +13,5 @@
 
 Artisan::add(new DeleteExpiredJobs);
 Artisan::add(new RefreshJobsCache);
+Artisan::add(new ReindexJobSearch);
+Artisan::add(new RemapJobIndex);

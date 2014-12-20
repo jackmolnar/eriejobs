@@ -12,8 +12,10 @@
         <span class="posted_date">Posted {{ $result->created_at->diffForHumans() }}</span>
     </div>
     <div class="col-md-1">
-        @if($result->created_at < $user->last_login)
-            <span class="new_tag">NEW</span>
+        @if(isset($user))
+            @if($result->created_at < $user->last_login)
+                <span class="new_tag">NEW</span>
+            @endif
         @endif
     </div>
 </div>

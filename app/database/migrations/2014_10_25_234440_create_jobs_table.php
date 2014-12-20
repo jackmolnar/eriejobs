@@ -22,7 +22,7 @@ class CreateJobsTable extends Migration {
 			$table->string('company_city');
 			$table->integer('state_id');
 			$table->string('salary');
-			$table->integer('career_level');
+			$table->integer('career_level_id');
 			$table->integer('type_id');
 			$table->integer('user_id')->unsigned();
             $table->index('user_id');

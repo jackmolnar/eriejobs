@@ -94,9 +94,9 @@ class JobsRepository {
      * If stored in cache, return all jobs from there. Else fetch them
      * @return \ElastiquentCollection
      */
-    public function allJobs()
+    public function allJobs($cache = true)
     {
-        if (Cache::has('job.all'))
+        if (Cache::has('job.all') && $cache == true)
         {
             $all_jobs = Cache::get('job.all');
             return $all_jobs;

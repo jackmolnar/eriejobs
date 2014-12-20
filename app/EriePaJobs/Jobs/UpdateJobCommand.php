@@ -56,7 +56,7 @@ class UpdateJobCommand extends BaseCommand{
         $job->company_city = $this->input['company_city'];
         $job->state_id = $this->input['state_id'];
         $job->salary = $this->input['salary'];
-        $job->career_level = $this->input['career_level'];
+        $job->career_level_id = $this->input['career_level'];
         $job->type_id = $this->input['type_id'];
         $job->user_id = $this->user->id;
         $job->email = $this->input['email'];
@@ -67,6 +67,8 @@ class UpdateJobCommand extends BaseCommand{
         $job->categories()->sync(array($this->input['category']));
 
         Event::fire('job.update', array($job, $this->user));
+
+        return $job;
 
     }
 } 

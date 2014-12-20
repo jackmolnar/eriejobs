@@ -12,7 +12,6 @@ use User;
 
 class UserRepository {
 
-
     /**
      * Get user by their id
      * @param $id Integer

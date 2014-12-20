@@ -39,7 +39,7 @@ class Job extends \Eloquent {
      */
     public function careerlevel()
     {
-        return $this->belongsTo('CareerLevel', 'career_level');
+        return $this->belongsTo('CareerLevel', 'career_level_id');
     }
 
     /**
