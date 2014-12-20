@@ -20,6 +20,8 @@ class BrowseController extends \BaseController {
      */
     function __construct(JobsRepository $jobRepo, CategoryRepository $catRepo)
     {
+        View::share('user', Auth::user());
+
         $this->jobRepo = $jobRepo;
         $this->catRepo = $catRepo;
     }

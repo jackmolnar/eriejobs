@@ -29,7 +29,7 @@ class SubscribeNewRecruiterCommand extends BaseCommand {
         $user->first_name = $this->input['first_name'];
         $user->last_name = $this->input['last_name'];
         $user->notifications = $this->input['notifications'];
-        $user->role_id = 3;
+        $user->role_id = \Role::where('title', '=', 'Seeker')->first(['id']);
         $user->password = \Hash::make($this->input['password']);
         $user->save();
 

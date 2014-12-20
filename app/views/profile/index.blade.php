@@ -2,13 +2,17 @@
 
 @section('content')
 
-<h1>Profile Page</h1>
+<div class="profile">
+
+<h1>My Profile</h1>
 
 @if($user->role->title == "Recruiter")
-    <h3>My Active Listings</h3>
-    @foreach($user->jobs as $job)
-        {{ link_to_action('JobsController@show', $job->title, $job->id) }}
-    @endforeach
+    @include('includes.profiles.recruiter')
+@elseif($user->role->title == "Seeker")
+    @include('includes.profiles.seeker')
 @endif
+
+</div>
+
 
 @stop

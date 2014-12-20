@@ -6,6 +6,7 @@ $transparent_dark_blue: rgba(25, 53, 65, 0.75);
 $light_green: #d7dfd2;
 $light_yellow: #FFFEF9;
 $blue_green: #37636f;
+$dark_grey: #595959;
 
 @import "reset";
 @import "buttons";
@@ -13,7 +14,13 @@ $blue_green: #37636f;
 @import "login";
 @import "browse";
 @import "jobs";
+@import "search";
+@import "profile";
 @import "../font-awesome/scss/font-awesome";
+@import "nav_styles";
+@import "homepage";
+@import "modal";
+@import "footer";
 
 body {
   padding-top: 120px;
@@ -28,6 +35,7 @@ body {
 label{
   font-family: $nav_fonts;
   font-weight: normal;
+  color: $dark_grey;
 }
 
 .form-control{
@@ -46,8 +54,27 @@ h1, h2{
   background-color: $light_yellow;
 }
 
+.pagination_links{
+  .pagination{
+    min-height: 40px;
+  }
+}
+
+.new_tag{
+  margin-top: -20px;
+  margin-left: -30px;
+  position: absolute;
+  padding: 10px;
+  font-size: 10px;
+  font-family: $nav_fonts;
+  font-weight: bold;
+  color: #ffffff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: url("/images/buttons/default_back.jpg") center;
+}
 
 
-@import "nav_styles";
 
-@import "homepage";
+
+

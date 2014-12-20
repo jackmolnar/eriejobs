@@ -1,0 +1,40 @@
+.search{
+
+  @extend .browse;
+
+  h4{
+    margin-top: 0px;
+  }
+
+  ul{
+    columns: 2;
+
+    li{
+      line-height: 25px;
+    }
+  }
+
+  .search_box{
+    display:inline;
+    max-width: 400px;
+  }
+
+  .job_listing{
+
+    .company_name{
+      display:block;
+      font-family: $nav_fonts;
+    }
+    .posted_date{
+      display: block;
+      font-family: $nav_fonts;
+    }
+    .company_city{
+      display: block;
+      font-family: $nav_fonts;
+    }
+
+
+  }
+
+}

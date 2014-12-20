@@ -124,7 +124,7 @@ return array(
         'Way\Generators\GeneratorsServiceProvider',
         'EriePaJobs\ViewComposers\ComposerServiceProvider',
         'Mmanos\Social\SocialServiceProvider',
-        'Mmanos\Search\SearchServiceProvider'
+        'Laravel\Cashier\CashierServiceProvider',
 	),
 
 	/*
@@ -192,8 +192,7 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
 
-        'Social' => 'Mmanos\Social\Facades\Social',
-        'Search' => 'Mmanos\Search\Facade',
+        'Social'            => 'Mmanos\Social\Facades\Social',
 
 	),
 

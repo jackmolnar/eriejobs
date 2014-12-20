@@ -1,5 +1,8 @@
 <?php
 
+use EriePaJobs\JobSeekers\UpdateSeekerInfoCommand;
+use EriePaJobs\JobSeekers\UpdateSeekerInfoValidator;
+
 class ProfilesController extends \BaseController {
 
     function __construct()
@@ -67,6 +70,17 @@ class ProfilesController extends \BaseController {
 	}
 
 	/**
+	 * Show the form for editing the specified resource.
+	 * GET /profiles/{id}/edit
+	 *
+	 * @return Response
+	 */
+	public function edit_info()
+	{
+        return View::make('profile.edit_info');
+	}
+
+	/**
 	 * Update the specified resource in storage.
 	 * PUT /profiles/{id}
 	 *
@@ -76,6 +90,28 @@ class ProfilesController extends \BaseController {
 	public function update($id)
 	{
 		//
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 * PUT /update_info/{id}
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update_info($id)
+	{
+		$updateInfoValidator = new UpdateSeekerInfoValidator(Input::all());
+        $valid = $updateInfoValidator->execute();
+
+        if($valid['status'])
+        {
+            $updateSeekerInfoCommand = new UpdateSeekerInfoCommand(Input::all(), $id);
+            $updateSeekerInfoCommand->execute();
+            return Redirect::action('ProfilesController@index')->with('success', 'Your info has been updated.');
+        }
+
+        return Redirect::back()->withInput()->withErrors($valid['errors']);
 	}
 
 	/**

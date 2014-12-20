@@ -1,13 +1,43 @@
 .jobs{
 
-  h1, h2{
-    margin-bottom: 20px;
+  .row{
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
-  ul{
-    list-style: none;
-    padding-left: 0px;
+  h1, h2{
+    margin-bottom: 20px;
+    display: inline;
+  }
 
+  h3{
+    margin-top: 0px;
+    font-family: $nav_fonts;
+    font-weight: bold;
+    color: $blue_green;
+  }
+
+  .job_data, .contact_data, .location_data{
+    ul{
+      list-style: none;
+      padding-left: 0px;
+
+      li{
+        margin-bottom: 20px;
+      }
+
+      li:last-of-type{
+        margin-bottom: 0px;
+      }
+
+      label{
+        font-weight: bold;
+      }
+    }
+  }
+
+  .btn-primary{
+    float: right;
   }
 
   form{
@@ -20,4 +50,29 @@
     }
   }
 
+  .edit_buttons{
+    float: right;
+  }
+
+}
+
+.job_create {
+  @extend .jobs;
+
+  .col-md-6{
+    .half_element{
+      max-width: 95%;
+    }
+  }
+  .required{
+    color: #a50003;
+  }
+
+  h4{
+    font-family: $bold_fonts;
+    font-weight: bold;
+    color: $blue_green;
+    margin-top: 0px;
+    margin-bottom: 15px;
+  }
 }

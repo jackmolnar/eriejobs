@@ -27,9 +27,9 @@ class CategoryRepository {
      * Get all categories, include active job count
      * @return \Illuminate\Database\Eloquent\Collection|mixed|static[]
      */
-    public function getAllCategoriesWithJobCount()
+    public function getAllCategoriesWithJobCount($cache = true)
     {
-        if (Cache::has('categories.jobs'))
+        if (Cache::has('categories.jobs') && $cache == true)
         {
             $allCategories = Cache::get('categories.jobs');
             return $allCategories;

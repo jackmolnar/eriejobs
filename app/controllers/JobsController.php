@@ -1,8 +1,12 @@
 <?php
 
+use EriePaJobs\Jobs\DeleteJobCommand;
 use EriePaJobs\Jobs\JobsRepository;
+use EriePaJobs\Payments\PaymentRepository;
 use EriePaJobs\Jobs\PostNewJobValidator;
 use EriePaJobs\Jobs\PostNewJobCommand;
+use EriePaJobs\Jobs\UpdateJobValidator;
+use EriePaJobs\Jobs\UpdateJobCommand;
 
 class JobsController extends \BaseController {
 
@@ -10,11 +14,28 @@ class JobsController extends \BaseController {
      * @var JobsRepository
      */
     private $jobRepo;
+    /**
+     * @var PaymentRepository
+     */
+    private $paymentRepo;
 
-    function __construct(JobsRepository $jobRepo)
+    function __construct(JobsRepository $jobRepo, PaymentRepository $paymentRepo)
     {
+        $share_array = [
+            'states'        => State::dropdownarray(),
+            'types'         => Type::dropdownarray(),
+            'career_levels' => CareerLevel::dropdownarray(),
+            'categories'    => Category::dropdownarray(),
+            'user'          => Auth::user(),
+            'payment'       => Job::paymentDropDownArray()
+        ];
+        View::share($share_array);
+
         $this->beforeFilter('auth', ['except' => ['index', 'show']]);
+        $this->beforeFilter('jobAuthor', ['only' => ['edit', 'update']]);
+
         $this->jobRepo = $jobRepo;
+        $this->paymentRepo = $paymentRepo;
     }
 
     /**
@@ -36,21 +57,17 @@ class JobsController extends \BaseController {
 	 */
 	public function create()
 	{
-        $categories = Category::dropdownarray();
-        $career_levels = CareerLevel::dropdownarray();
-        $types = Type::dropdownarray();
-        $states = State::dropdownarray();
-		return View::make('jobs.create', [
-            'states' => $states,
-            'types' => $types,
-            'career_levels' => $career_levels,
-            'categories' => $categories
-        ]);
+        if(Session::has('pending_job'))
+        {
+            return View::make('jobs.create', ['job' => Session::get('pending_job')]);
+        }
+
+		return View::make('jobs.create');
 
 	}
 
 	/**
-	 * Store a newly created resource in storage.
+	 * Validate the job listing, begin the job listing process
 	 * POST /jobs
 	 *
 	 * @return Response
@@ -58,20 +75,59 @@ class JobsController extends \BaseController {
 	public function store()
 	{
 		$newJobValidator = new PostNewJobValidator(Input::all());
-        $valid = $newJobValidator->execute();
+        $valid = $newJobValidator->execute('create');
 
         if($valid['status'])
         {
             $newJobCommand = new PostNewJobCommand(Input::all());
-            $newJobCommand->execute();
-            return Redirect::action('ProfilesController@index')->with('success', 'Job has been posted!');
+            $newJobCommand->execute('create');
+            return Redirect::action('JobsController@review');
         }
-
         return Redirect::back()->withInput()->withErrors($valid['errors']);
-
 	}
 
-	/**
+    /**
+     * Review job listing
+     *
+     * @return \Illuminate\View\View
+     */
+    public function review()
+    {
+        $pending_job = Session::get('pending_job');
+        $cost = $this->jobRepo->getCostFromExpireDate($pending_job->expire);
+        $length = $this->jobRepo->getLengthFromExpireDate($pending_job->expire)." Day Job Listing";
+
+        return View::make('jobs.review', ['pending_job' => $pending_job, 'cost' => $cost, 'length' => $length]);
+    }
+
+    /**
+     * Process the payment
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function payment()
+    {
+        $newJobCommand = new PostNewJobCommand(Input::all());
+        $result = $newJobCommand->execute('bill');
+
+        if(!$result['status'])
+        {
+            return Redirect::back()->with('error', $result['message']);
+        }
+        return Redirect::action('JobsController@thankyou')->with('charge', $result['message']);
+    }
+
+    /**
+     * Display thank you page
+     * @return \Illuminate\View\View
+     */
+    public function thankyou()
+    {
+        $charge = Session::get('charge');
+        return View::make('jobs.thankyou', ['charge' => $charge]);
+    }
+
+
+    /**
 	 * Display the specified resource.
 	 * GET /jobs/{id}
 	 *
@@ -93,7 +149,8 @@ class JobsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+        $job = $this->jobRepo->getJobById($id);
+        return View::make('jobs.edit', ['job' => $job]);
 	}
 
 	/**
@@ -105,8 +162,19 @@ class JobsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
-	}
+        $updateJobValidator = new UpdateJobValidator(Input::all());
+        $valid = $updateJobValidator->execute();
+
+        if($valid['status'])
+        {
+            $updateJobCommand = new UpdateJobCommand(Input::all(), $id);
+            $updateJobCommand->execute();
+            return Redirect::action('JobsController@show', ['id' => $id])->with('success', 'Job has been updated!');
+        }
+
+        return Redirect::back()->withInput()->withErrors($valid['errors']);
+
+    }
 
 	/**
 	 * Remove the specified resource from storage.
@@ -117,8 +185,31 @@ class JobsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$deleteJobCommand = new DeleteJobCommand($id);
+        $result = $deleteJobCommand->execute();
+        if($result['status'])
+        {
+            return Redirect::action('ProfilesController@index')->with('success', $result['message']);
+        }
+        return Redirect::back()->withErrors($result['message']);
 	}
+
+    /**
+     * method to activate and deactivate jobs
+     * @return string
+     */
+    public function active()
+    {
+        $active = Input::get('active');
+        $id = Input::get('jobid');
+
+        if($active == 0)
+        {
+            $this->jobRepo->deactivateJob($id);
+        }
+
+        $this->jobRepo->activateJob($id);
+    }
 
 
 }

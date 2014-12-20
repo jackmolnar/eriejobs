@@ -10,19 +10,8 @@
 
     <hr/>
 
-
-        @foreach($category['jobs'] as $job)
-            <div class="row job_listing">
-                <div class="col-md-8">
-                    <h4>{{ link_to_action('JobsController@show', $job->title, ['job_id' => $job->id] ) }}</h4>
-                    <span class="company_name">{{ $job->company_name }}</span>
-                </div>
-                <div class="col-md-3">
-                    <span class="company_city">{{ $job->company_city }}</span>
-                    <span class="posted_date">Posted {{ $job->created_at->diffForHumans() }}</span>
-                </div>
-            </div>
-            <hr/>
+        @foreach($category['jobs'] as $result)
+            @include('includes.jobs.listing')
         @endforeach
 
     </div>

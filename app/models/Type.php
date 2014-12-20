@@ -21,7 +21,7 @@ class Type extends \Eloquent {
         if (Cache::has('job.type'))
         {
             $type_array = Cache::get('job.type');
-            return $type_array;
+//            return $type_array;
         }
 
         $all = Type::get();
