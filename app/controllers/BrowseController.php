@@ -36,29 +36,7 @@ class BrowseController extends \BaseController {
 	{
         $categories = $this->catRepo->getAllCategoriesWithJobCount();
 
-        return View::make('browse.index', ['categories' => $categories]);
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /browse/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /browse
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
+        return View::make('browse/index', ['categories' => $categories]);
 	}
 
 	/**
@@ -71,43 +49,7 @@ class BrowseController extends \BaseController {
 	public function show($category)
 	{
         $result = $this->jobRepo->jobsByCategorySlug($category);
-		return View::make('Browse.show', ['category' => $result]);
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /browse/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /browse/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /browse/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		return View::make('Browse/show', ['category' => $result]);
 	}
 
 }
