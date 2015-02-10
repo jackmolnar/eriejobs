@@ -89,7 +89,7 @@ return array(
 	|
 	*/
 
-	'username' => null,
+	'username' => getenv('MANDRILL_USERNAME'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -102,7 +102,7 @@ return array(
 	|
 	*/
 
-	'password' => null,
+	'password' => getenv('MANDRILL_KEY'),
 
 	/*
 	|--------------------------------------------------------------------------
