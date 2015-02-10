@@ -12,6 +12,8 @@
 
     @include('includes.jobs.edit_form')
 
+
+
 {{ Form::close() }}
 
     </div>

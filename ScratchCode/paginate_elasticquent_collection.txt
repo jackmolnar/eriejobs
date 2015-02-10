@@ -1,0 +1,11 @@
+
+/**
+* Paginate search results
+* @param int $numberOfItems
+* @return \Illuminate\Pagination\Paginator
+*/
+public function paginate($numberOfItems = 15)
+{
+$paginator = \Paginator::make($this->all(), count($this->all()), $numberOfItems);
+return $paginator;
+}

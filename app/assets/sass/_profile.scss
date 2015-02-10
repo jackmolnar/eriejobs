@@ -1,5 +1,7 @@
 .profile{
 
+  min-height: 500px;
+
   .activate_button{
     min-width: 50px;
     background-color: #008000;
@@ -21,7 +23,7 @@
     margin-bottom: 30px;
   }
 
-  .info_header{
+  .info_header, .notification_header{
     display: inline-block;
   }
 
@@ -29,7 +31,16 @@
     float: right;
   }
 
+  .cancel_button{
+    float: right;
+  }
+
   .edit_info{
     margin-left: -15px;
+  }
+
+  .delete_account_button{
+    float: right;
+    margin-right: 15px;
   }
 }

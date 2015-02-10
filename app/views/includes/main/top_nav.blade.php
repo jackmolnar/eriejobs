@@ -2,31 +2,38 @@
   <div class="container">
   <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+          <span >NAV</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
         {{ link_to_action('PagesController@home', '', null, ['class' => 'navbar-brand']) }}
+        </div>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav">
+              @if(Auth::user())
+                  @if(Auth::user()->role->title == 'Seeker')
+                      {{--<li>{{ link_to_action('ProfilesController@index', 'Dashboard') }}</li>--}}
+                      {{--<li>{{ link_to_action('SearchController@index', 'Search Jobs') }}</li>--}}
+                      {{--<li>{{ link_to_action('BrowseController@index', 'Browse Jobs') }}</li>--}}
+                      <li><a href="{{ URL::action('ProfilesController@index') }}"><i class="fa fa-list"></i> Dashboard</a></li>
+                      <li><a href="{{ URL::action('SearchController@index') }}"><i class="fa fa-search"></i> Search</a></li>
+                      <li><a href="{{ URL::action('BrowseController@index') }}"><i class="fa fa-eye"></i> Browse</a></li>
+                  @elseif(Auth::user()->role->title == 'Recruiter')
+                        <li><a href="{{ URL::action('ProfilesController@index') }}"><i class="fa fa-list"></i> Dashboard</a></li>
+                        {{--<li>{{ link_to_action('JobsController@create', 'Post a Job') }}</li>--}}
+                        <li><a href="{{ URL::action('JobsController@create') }}"><i class="fa fa-pencil"></i> Post Job</a></li>
+                  @endif
+                  {{--<li>{{ link_to_action('AuthController@logout', 'Logout') }}</li>--}}
+                  <li><a href="{{ URL::action('AuthController@logout') }}"><i class="fa fa-remove"></i> Logout</a></li>
+              @else
+                <li>{{ link_to_action('AuthController@getSeekerSignup', 'Signup') }}</li>
+                <li>{{ link_to_action('AuthController@getSeekerLogin', 'Login') }}</li>
+                <li>{{ link_to_action('PagesController@hiring', 'Hiring?', null, ['class' => 'hiring_button']) }}</li>
+              @endif
+            </ul>
+        </div>
       </div>
-    <ul class="nav navbar-nav">
-      @if(Auth::user())
-          @if(Auth::user()->role->title == 'Seeker')
-              <li>{{ link_to_action('ProfilesController@index', 'Dashboard') }}</li>
-              <li>{{ link_to_action('SearchController@index', 'Search Jobs') }}</li>
-              <li>{{ link_to_action('BrowseController@index', 'Browse Jobs') }}</li>
-          @elseif(Auth::user()->role->title == 'Recruiter')
-              <li>{{ link_to_action('ProfilesController@index', 'Dashboard') }}</li>
-              <li>{{ link_to_action('JobsController@create', 'Post a Job') }}</li>
-          @endif
-          <li>{{ link_to_action('AuthController@logout', 'Logout') }}</li>
-      @else
-        <li>{{ link_to_action('AuthController@getSeekerSignup', 'Signup') }}</li>
-        <li>{{ link_to_action('AuthController@getSeekerLogin', 'Login') }}</li>
-        <li>{{ link_to_action('PagesController@hiring', 'Hiring?') }}</li>
-      @endif
-    </ul>
   </div>
 </nav>
 

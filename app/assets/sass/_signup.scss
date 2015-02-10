@@ -15,4 +15,91 @@
     }
   }
 
+  .well{
+    margin-top: 40px;
+
+    @media screen and (min-width: $middle) {
+      margin-top: 0px;
+    }
+  }
+
 }
+
+.seeker_signup_main_row{
+  background-image: url('../images/seeker_signup_header.jpg');
+  height: auto;
+  background-size:100% auto;
+  margin-bottom: 25px;
+
+  @media screen and (min-width: $middle) {
+    min-height: 300px;
+  }
+
+
+  .container{
+
+    bottom: 10%;
+
+    h1{
+      color: $orange;
+      font-size: 40px;
+      background-color: $dark_green;
+      padding-bottom: 25px;
+      padding-left: 25px;
+      padding-right: 25px;
+      padding-top: 15px;
+      display: inline-block;
+      width: 100%;
+      
+      @media screen and (min-width: $middle) {
+        font-size: 60px;
+        width: auto;
+      }
+
+    }
+
+    h2{
+      color: #ffffff;
+      font-size: 31px;
+      margin-top: 26%;
+      background-color: $dark_green;
+      padding-top: 25px;
+      padding-left: 25px;
+      padding-right: 25px;
+      display: inline-block;
+      width: 100%;
+
+      @media screen and (min-width: $middle) {
+        margin-top: 13%;
+        font-size: 47px;
+        width: auto;
+      }
+    }
+  }
+}
+
+.signup_headline{
+  color: $middle_green;
+  font-size: 28px;
+
+  .accent{
+    color: $orange;
+  }
+}
+
+p{
+  font-family: $nav_fonts;
+  font-size: 18px;
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+
+ul{
+  font-family: $nav_fonts;
+  font-size: 16px;
+
+  li{
+    margin-bottom: 10px;
+  }
+}
+

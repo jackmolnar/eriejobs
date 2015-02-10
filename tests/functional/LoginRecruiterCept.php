@@ -4,13 +4,11 @@ $I = new FunctionalTester($scenario);
 $I->am('a guest');
 $I->wantTo('log in');
 
-$I->amOnPage('/');
-$I->click('Login');
+$I->amOnPage('/login');
+$I->haveAnAccount('example@example.com', 'fake1234', 'Recruiter');
 
-$I->see('Email');
-
-$I->fillField('email', 'jonm@glit.edu');
-$I->fillField('password', 'front');
+$I->fillField('email', 'example@example.com');
+$I->fillField('password', 'fake1234');
 
 $I->click(['id' => 'login']);
 

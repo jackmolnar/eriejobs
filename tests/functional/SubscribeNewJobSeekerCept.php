@@ -4,8 +4,6 @@ $I = new FunctionalTester($scenario);
 $I->am('a guest');
 $I->wantTo('subscribe as a job seeker');
 
-$I->amOnPage('/');
-$I->click('Signup');
 $I->amOnPage('seeker-signup');
 
 $I->fillField('email', 'testseeker@gmail.com');
@@ -18,7 +16,11 @@ $I->click('Subscribe');
 $I->seeRecord('users', [
     'email'         => 'testseeker@gmail.com',
     'first_name'    => 'Test',
-    'last_name'     => 'Seeker'
+    'last_name'     => 'Seeker',
+    'role_id'       => 2
 ]);
+
+$I->seeInLastEmail('Test');
+$I->seeInLastEmail('Welcome to EriePa.Jobs!');
 
 

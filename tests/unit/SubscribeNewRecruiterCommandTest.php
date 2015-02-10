@@ -24,21 +24,23 @@ class SubscribeNewRecruiterCommandTest extends \Codeception\TestCase\Test
             'email' => 'example@example.com',
             'first_name' => 'Brittany',
             'last_name' => 'Gannoe',
-            'notifications' => true,
             'password' => 'bg6686'
         ];
 
-        $subscribeNewSeekerCommand = new SubscribeNewRecruiterCommand($mockInput);
+        $subscribeNewRecruiterCommand = new SubscribeNewRecruiterCommand($mockInput);
 
-        $subscribeNewSeekerCommand->execute();
+        $subscribeNewRecruiterCommand->execute();
+
+        $recruiterRoleId = \Role::where('title', '=', 'Recruiter')->first();
 
         $this->tester->canSeeRecord('users', [
             'email' => $mockInput['email'],
             'first_name' => $mockInput['first_name'],
             'last_name' => $mockInput['last_name'],
-            'notifications' => $mockInput['notifications'],
-            'role_id' => \Role::where('title', '=', 'Seeker')->first(['id'])
+            'role_id' => $recruiterRoleId['id']
         ]);
+
+        $this->tester->assertEmailSubjectEquals('Welcome to EriePA Jobs');
     }
 
 }

@@ -30,7 +30,7 @@
         <div class="radio">
             @if($job->email > '')
                 <label>
-                    {{ Form::radio('contact', 'email', false, ['id' => 'email_contact']) }}
+                    {{ Form::radio('contact', 'email', true, ['id' => 'email_contact']) }}
                     Send applications to an email address.
                 </label>
             @else
@@ -90,14 +90,11 @@
     <hr/>
     {{ Form::label('category', 'Select a Category', ['class' => 'required']) }}
 
-    @if(isset($job->categories))
-        {{ Form::select('category', $categories, $job->categories->first()->id, ['class' => 'form-control']) }}
-    @else
-        {{ Form::select('category', $categories, $job->category_id, ['class' => 'form-control']) }}
+    {{ Form::select('category', $categories, $job->categories->first()->id, ['class' => 'form-control']) }}
+
+    @if(!isset($job->id))
+        {{ Form::label('length', 'Length of Posting') }}
+        {{ Form::select('length', $payment, $job->length, ['class' => 'form-control']) }}
     @endif
 
 
-    {{ Form::label('length', 'Length of Posting') }}
-    {{ Form::select('length', $payment, $job->length, ['class' => 'form-control']) }}
-
-    {{ Form::submit('Continue', ['class' => 'btn btn-primary', 'id' => 'continue_button']) }}

@@ -2,6 +2,8 @@
 
 use EriePaJobs\JobSeekers\UpdateSeekerInfoCommand;
 use EriePaJobs\JobSeekers\UpdateSeekerInfoValidator;
+use EriePaJobs\JobSeekers\UpdateSeekerNotificationsCommand;
+use EriePaJobs\Users\DeleteAccountCommand;
 
 class ProfilesController extends \BaseController {
 
@@ -23,51 +25,17 @@ class ProfilesController extends \BaseController {
 		return View::make('profile.index');
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /profiles/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /profiles
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 * GET /profiles/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /profiles/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+    /**
+     * Show the form for editing the specified resource.
+     * GET /profiles/{id}/edit
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        //
+    }
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -78,6 +46,17 @@ class ProfilesController extends \BaseController {
 	public function edit_info()
 	{
         return View::make('profile.edit_info');
+	}
+
+	/**
+	 * Show the form for editing the specified resource.
+	 * GET /profiles/{id}/edit
+	 *
+	 * @return Response
+	 */
+	public function edit_notifications()
+	{
+        return View::make('profile.edit_notifications');
 	}
 
 	/**
@@ -114,16 +93,35 @@ class ProfilesController extends \BaseController {
         return Redirect::back()->withInput()->withErrors($valid['errors']);
 	}
 
+    public function update_notifications($id)
+    {
+        $updateSeekerNotificationsCommand = new UpdateSeekerNotificationsCommand(Input::all());
+        $updateSeekerNotificationsCommand->execute();
+        return Redirect::action('ProfilesController@index')->with('success', 'Your email notifications have been updated.');
+    }
+
 	/**
 	 * Remove the specified resource from storage.
 	 * DELETE /profiles/{id}
 	 *
-	 * @param  int  $id
+	 * @param  int  $user_id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($user_id)
 	{
-		//
+        $authedUser = Auth::user();
+
+        if($authedUser->id == $user_id)
+        {
+            $deleteAccountCommand = new DeleteAccountCommand($user_id);
+            $result = $deleteAccountCommand->execute();
+        }
+
+        if(isset($result)) {
+            return Redirect::action('PagesController@home');
+        } else {
+            return Redirect::action('ProfilesController@index')->with('error', 'You are unable to delete that account.');
+        }
 	}
 
 }

@@ -56,64 +56,20 @@ class ApplicationsController extends \BaseController {
             $job = $this->jobRepo->getJobById($job_id);
             $newApplicationCommand = new SendNewApplicationCommand(Input::all(), Input::file('resume'), $job);
             $newApplicationCommand->execute();
-            return Redirect::action('ApplicationsController@sent', [$job_id])->with('success', 'Your Application Has Been Sent!');
+            return Redirect::action('ApplicationsController@applicationSent', [$job_id]);
         }
 
         return Redirect::back()->withInput()->withErrors($valid['errors']);
     }
 
 	/**
-	 * Display the specified resource.
-	 * GET /applications/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /applications/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /applications/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /applications/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
-    public function sent($job_id)
+	 * Application sent
+	 * @param $job_id
+	 * @return \Illuminate\View\View
+     */
+	public function applicationSent($job_id)
     {
-        $job = $this->jobRepo->getJobById($job_id);
-        dd($job);
+		$job = $this->jobRepo->getJobById($job_id);
         return View::make('applications.sent', ['job' => $job]);
     }
 

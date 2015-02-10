@@ -9,6 +9,7 @@
 namespace EriePaJobs\Applications;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Queue;
 
 class ApplicationsRepository {
 
@@ -17,11 +18,17 @@ class ApplicationsRepository {
      * @param UploadedFile $resume
      * @return string
      */
-    public function uploadResume(UploadedFile $resume)
+    public function uploadResume( $resume)
     {
         $name = strtotime("now").'_'.$resume->getClientOriginalName();
         $path = app_path().'/EriePaJobs/Applications/Resumes/';
         $resume->move($path, $name);
+
+//        Queue::push(function($job) use ($name, $path, $resume)
+//        {
+//            $resume->move($path, $name);
+//            $job->delete();
+//        });
 
         return $path.$name;
     }

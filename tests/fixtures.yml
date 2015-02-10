@@ -63,3 +63,10 @@ Role:
   value: $string
   created_at: $date
   updated_at: $date
+
+Notification:
+  user_id:
+    type: User
+  term: $string
+  created_at: $date
+  updated_at: $date

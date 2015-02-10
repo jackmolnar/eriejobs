@@ -4,11 +4,7 @@ $I = new FunctionalTester($scenario);
 $I->am('a guest');
 $I->wantTo('subscribe as a recruiter');
 
-$I->amOnPage('/');
-$I->click('Hiring?');
 $I->amOnPage('/hiring');
-$I->click(['id' => 'recruiter_signup']);
-$I->amOnPage('recruiter-signup');
 
 $I->fillField('email', 'testrecruiter@gmail.com');
 $I->fillField('first_name', 'Test');
@@ -20,7 +16,11 @@ $I->click('Subscribe');
 $I->seeRecord('users', [
     'email'         => 'testrecruiter@gmail.com',
     'first_name'    => 'Test',
-    'last_name'     => 'Recruiter'
+    'last_name'     => 'Recruiter',
+    'role_id'       => 3
 ]);
+
+$I->seeInLastEmail('Test');
+$I->seeInLastEmail('EriePa.Jobs is committed to helping you tap into the talent pool in Northwestern Pennsylvania.');
 
 

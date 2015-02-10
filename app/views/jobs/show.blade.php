@@ -13,17 +13,46 @@
         @endif
 
         <div class="row">
-            <h1 class="title-{{ $job->id }}">{{ $job->title }}</h1>
-            <hr/>
-            <h3>{{ $job->company_name }}</h3>
+            <div class="col-md-12">
+                <h1 class="title-{{ $job->id }}">{{ $job->title }}</h1>
+                @if(isset($user) && $user->role->title == 'Seeker')
+                    @include('includes.jobs.apply_button')
+                @elseif(!isset($user))
+                    @include('includes.jobs.apply_sign_up_button')
+                @endif
+                <hr/>
+                <h3>{{ $job->company_name }}</h3>
+            </div>
         </div>
         <hr/>
         <div class="row job_data">
-            <ul>
-                <li>Type: {{ $job->type->type }}</li>
-                <li>Salary: {{ $job->salary }}</li>
-                <li>Career Level: {{ $job->careerlevel->level }}</li>
-            </ul>
+            <div class="col-md-6">
+                <ul>
+                    <li>{{ Form::label('type', 'Type:') }} {{ $job->type->type }}</li>
+                    <li>{{ Form::label('salary', 'Salary:') }} {{ $job->salary }}</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul>
+                    <li>{{ Form::label('level', 'Career Level:') }} {{ $job->careerlevel->level }}</li>
+                    <li>{{ Form::label('category', 'Category:') }}
+                        @foreach($job->categories as $category)
+                            {{ $category['category'] }}
+                        @endforeach
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr/>
+        <div class="row job_data">
+            <div class="col-md-12">
+                <h3 style="margin-bottom: 25px">Location</h3>
+                <ul>
+                    <li>{{ Form::label('company_address', 'Address:') }} {{ $job->company_address }}</li>
+                    <li>{{ Form::label('company_city', 'City:') }} {{ $job->company_city }}</li>
+                    <li>{{ Form::label('company_state', 'State:') }} {{ $job->state->title }}</li>
+                </ul>
+            </div>
         </div>
         <hr/>
         <div class="row">
@@ -33,11 +62,7 @@
         @if(isset($user) && $user->role->title == 'Seeker')
             <hr/>
             <div class="row">
-                @if($job->email != '')
-                    {{ link_to_action('ApplicationsController@create', 'Apply', [$job->id], ['class' => 'btn btn-primary']) }}
-                @elseif($job->link != '')
-                    {{ link_to($job->link, 'Apply', ['class' => 'btn btn-primary']) }}
-                @endif
+                @include('includes.jobs.apply_button')
             </div>
         @endif
 
@@ -52,4 +77,14 @@
     @include('includes/modals/delete_modal')
 @endif
 
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54a05ff370e9a58d" async="async"></script>
+
+@stop
+
+@section('_title')
+{{ $job->title }} - EriePa.Jobs
+@stop
+@section('_description')
+{{ str_limit(strip_tags($job->title.' - '.$job->description), $limit = 200, $end = '...') }}
 @stop

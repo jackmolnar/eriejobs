@@ -1,5 +1,7 @@
 .jobs{
 
+  min-height: 400px;
+
   .row{
     padding-left: 15px;
     padding-right: 15px;
@@ -7,7 +9,15 @@
 
   h1, h2{
     margin-bottom: 20px;
-    display: inline;
+    display: inline-block;
+    max-width: 315px;
+    @media screen and (min-width: $small) {
+      max-width: 450px;
+    }
+    @media screen and (min-width: $middle) {
+      max-width: 600px;
+    }
+
   }
 
   h3{

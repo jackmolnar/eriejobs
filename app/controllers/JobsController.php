@@ -1,5 +1,6 @@
 <?php
 
+use EriePaJobs\Categories\CategoryRepository;
 use EriePaJobs\Jobs\DeleteJobCommand;
 use EriePaJobs\Jobs\JobsRepository;
 use EriePaJobs\Payments\PaymentRepository;
@@ -18,8 +19,12 @@ class JobsController extends \BaseController {
      * @var PaymentRepository
      */
     private $paymentRepo;
+    /**
+     * @var CategoryRepository
+     */
+    private $categoryRepo;
 
-    function __construct(JobsRepository $jobRepo, PaymentRepository $paymentRepo)
+    function __construct(JobsRepository $jobRepo, PaymentRepository $paymentRepo, CategoryRepository $categoryRepo)
     {
         $share_array = [
             'states'        => State::dropdownarray(),
@@ -36,18 +41,8 @@ class JobsController extends \BaseController {
 
         $this->jobRepo = $jobRepo;
         $this->paymentRepo = $paymentRepo;
+        $this->categoryRepo = $categoryRepo;
     }
-
-    /**
-	 * Display a listing of the resource.
-	 * GET /jobs
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
 
 	/**
 	 * Show the form for creating a new resource.
@@ -59,11 +54,10 @@ class JobsController extends \BaseController {
 	{
         if(Session::has('pending_job'))
         {
-            return View::make('jobs.create', ['job' => Session::get('pending_job')]);
+            return View::make('jobs.create', ['job' => Session::get('pending_job'), 'billing' => \Config::get('billing')]);
         }
 
-		return View::make('jobs.create');
-
+		return View::make('jobs.create', ['billing' => \Config::get('billing')]);
 	}
 
 	/**
@@ -113,7 +107,7 @@ class JobsController extends \BaseController {
         {
             return Redirect::back()->with('error', $result['message']);
         }
-        return Redirect::action('JobsController@thankyou')->with('charge', $result['message']);
+        return Redirect::action('JobsController@thankyou');
     }
 
     /**
@@ -122,10 +116,12 @@ class JobsController extends \BaseController {
      */
     public function thankyou()
     {
+        // remove pending job from session
+        Session::remove('pending_job');
+
         $charge = Session::get('charge');
         return View::make('jobs.thankyou', ['charge' => $charge]);
     }
-
 
     /**
 	 * Display the specified resource.
@@ -137,7 +133,8 @@ class JobsController extends \BaseController {
 	public function show($id)
 	{
 		$job = $this->jobRepo->getJobById($id);
-        return View::make('jobs.show', ['job' => $job]);
+        $categories = $this->categoryRepo->getAllCategories();
+        return View::make('jobs.show', ['job' => $job, 'categories' => $categories]);
 	}
 
 	/**
@@ -173,7 +170,6 @@ class JobsController extends \BaseController {
         }
 
         return Redirect::back()->withInput()->withErrors($valid['errors']);
-
     }
 
 	/**
@@ -206,9 +202,11 @@ class JobsController extends \BaseController {
         if($active == 0)
         {
             $this->jobRepo->deactivateJob($id);
+            return "Deactivated";
         }
 
         $this->jobRepo->activateJob($id);
+        return "Activated";
     }
 
 

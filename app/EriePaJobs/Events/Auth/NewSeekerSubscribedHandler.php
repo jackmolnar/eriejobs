@@ -8,7 +8,6 @@
 
 namespace EriePaJobs\Events\Auth;
 
-
 use EriePaJobs\Mailers\NewSeekerSubscribedWelcomeMailer;
 
 class NewSeekerSubscribedHandler {
@@ -28,7 +27,7 @@ class NewSeekerSubscribedHandler {
      */
     public function handle(\User $user)
     {
-        $this->mailer->sendTo($user, 'Welcome to EriePA Jobs', 'emails.auth.welcome', ['user' => $user]);
+        $this->mailer->sendTo($user, 'Welcome to EriePA Jobs', 'emails.auth.welcome_seeker', ['user' => $user]);
     }
 
 } 

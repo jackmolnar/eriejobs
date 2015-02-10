@@ -1,4 +1,6 @@
-    {{ Form::label('title', 'Title', ['class' => 'required']) }}
+
+
+{{ Form::label('title', 'Title', ['class' => 'required']) }}
     {{ Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Job Title']) }}
     {{ Form::label('description', 'Description', ['class' => 'required']) }}
     {{ Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Job Description']) }}
@@ -66,8 +68,4 @@
     {{ Form::label('category', 'Select a Category', ['class' => 'required']) }}
     {{ Form::select('category', $categories, null, ['class' => 'form-control']) }}
 
-
-    {{ Form::label('length', 'Length of Posting') }}
-    {{ Form::select('length', ['30' => '30 Days', '60' => '60 Days'], null, ['class' => 'form-control']) }}
-
-    {{ Form::submit('Continue', ['class' => 'btn btn-primary', 'id' => 'continue_button']) }}
+    <hr/>

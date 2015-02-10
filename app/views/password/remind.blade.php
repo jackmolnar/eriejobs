@@ -2,11 +2,10 @@
 
 @section('content')
 
-@if(Session::has('status'))
-    {{ Session::get('status') }}
-@endif
 @if(Session::has('error'))
-    {{ Session::get('error') }}
+    <div class="alert alert-danger">
+        {{ Session::get('error') }}
+    </div>
 @endif
 
 <div class="col-lg-6 well">
@@ -23,4 +22,8 @@
     {{ Form::close() }}
 </div>
 
+@stop
+
+@section('_title')
+    Password Remind - EriePa.Jobs
 @stop

@@ -48,6 +48,26 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $this->hasMany('Job');
     }
 
+    /**
+     * Notification Relationship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function jobNotifications()
+    {
+        return $this->hasMany('Notification');
+    }
+
+    /**
+     * Declare dates to be returned as Carbon instance
+     * @return array
+     */
+    public function getDates()
+    {
+        return array('created_at', 'updated_at', 'last_login');
+    }
+
+
 
 
 }

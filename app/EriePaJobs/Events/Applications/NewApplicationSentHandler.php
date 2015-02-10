@@ -30,6 +30,6 @@ class NewApplicationSentHandler
      */
     public function handle(\User $user, Model $job)
     {
-        $this->mailer->sendTo($user, 'Your Application Has Been Sent!', ['job' => $job]);
+        $this->mailer->sendTo($user, 'Your Application Has Been Sent!', 'emails.applications.ApplicationSentConfirmation', ['job' => $job, 'user' => $user]);
     }
 } 

@@ -72,6 +72,9 @@
         <hr/>
         <div class="row">
             {{ Form::open(['action' => 'JobsController@payment', 'method' => 'post']) }}
+            {{ link_to_action('JobsController@create', 'Edit', null, ['class' => 'btn btn-warning']) }}
+
+            @if(!Config::get('billing.free'))
                 <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="{{ getenv('STRIPE_PUBLISHABLE_KEY') }}"
@@ -81,20 +84,23 @@
                     data-amount="{{ $cost }}">
                 </script>
                 {{ Form::hidden('cost', $cost) }}
+            @else
+                {{ Form::submit('Post Listing', ['class' => 'btn btn-primary']) }}
+            @endif
             {{ Form::close() }}
+
             {{--<a id="payment_button" class="btn btn-primary">Confirm and Pay</a>--}}
             {{--{{ link_to_action('JobsController@payment', 'Continue', null, ['class' => 'btn btn-primary']) }}--}}
-            {{ link_to_action('JobsController@create', 'Edit', null, ['class' => 'btn btn-warning']) }}
         </div>
     </div>
-    <div class="col-md-3">
-
+    <div class="col-md-3 well well-primary">
+        <ul>
+            <li>Remember, jobs listing are currently free to post and will be for the first 90 days of our launch</li>
+            <li>If you have questions or problems, feel free to {{ link_to_action('PagesController@getContact', 'contact us') }}</li>
+        </ul>
     </div>
 
 </div>
-
-
-
 
 @stop
 

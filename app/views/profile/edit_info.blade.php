@@ -20,10 +20,16 @@
 
                 {{ Form::submit('Update', ['class' => 'btn btn-primary btn-sm']) }}
 
+                {{ link_to_action('ProfilesController@index', 'Cancel', null, ['class' => 'btn btn-default btn-sm']) }}
+
             {{ Form::close() }}
         </div>
 
     </div>
 
 </div>
+@stop
+
+@section('_title')
+    Edit {{ $user->first_name }} {{ $user->last_name }}'s Profile Information - EriePa.Jobs
 @stop

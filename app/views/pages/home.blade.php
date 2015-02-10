@@ -11,7 +11,44 @@
                  <span>OR</span>
                  {{ link_to_action('AuthController@getSeekerLogin', 'Login', null, ['class' => 'btn btn-default btn-lg']) }}
              </div>
+             <div class="hiring_buttons">
+                Hiring? {{ link_to_action('PagesController@hiring', 'Signup for a Recruiter account') }} and post Free for the first 90 days.
+             </div>
         </div>
     </div>
 </div>
+
+<div class="container section2">
+    <div class="col-md-4">
+        <h2>Find Jobs Posted By Area Employers</h2>
+        <img src="../images/home_image_1.jpg" class="img-responsive">
+        <p>All listings on EriePa.Jobs are posted by Northwestern Pennsylvania employers. You'll never have to sift through listings or ads posted by national companies that don't apply to you.
+           <br/><br/>
+           {{ link_to_action('SearchController@index', 'Search For Jobs', null, ['class' => 'btn btn-primary']) }}
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>Locally Owned and Operated</h2>
+        <img src="../images/home_image_2.jpg" class="img-responsive">
+        <p>EriePa.Jobs is locally owned an operated. We have our ear to the employment situation in Erie and have a stake in matching top talent with the areas best employers.
+           <br/><br/>
+           {{ link_to_action('AuthController@getSeekerSignup', 'Sign Up and Apply For Jobs', null, ['class' => 'btn btn-primary']) }}
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>Hiring? Post job listings free for 3 months.</h2>
+        <img src="../images/home_image_3.jpg" class="img-responsive">
+        <p>To kick off EriePa.Jobs, we're letting Erie area employers post job listings FREE for the first 90 days after our launch. Let us prove our value to you.
+            <br/><br/>
+           {{ link_to_action('PagesController@hiring', 'Sign Up and Find Your Next Employee', null, ['class' => 'btn btn-primary']) }}
+            </p>
+    </div>
+</div>
+@stop
+
+@section('_title')
+EriePa.Jobs - Northwestern Pennsylvania's Exclusive Employment Website
+@stop
+@section('_description')
+EriePa.Jobs is an exclusive help-wanted and employment website for Erie and Northwestern PA. Job seekers can find career opportunities and recruiters can post job listings for available positions.
 @stop

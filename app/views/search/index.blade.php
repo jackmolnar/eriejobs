@@ -6,7 +6,9 @@
 
     <div class="col-md-9">
 
-        @include('includes.search.search_form')
+        <div class="well">
+            @include('includes.search.search_form')
+        </div>
 
         @if($term != '')
             <h1>Results for "{{ $term }}"</h1>
@@ -34,4 +36,12 @@
 </div>
 </div>
 
+@stop
+
+@section('_title')
+    @if(isset($term) and $term != '')
+        Search Results for "{{$term}}" - EriePa.Jobs
+    @else
+        Search Results for All Jobs
+    @endif
 @stop

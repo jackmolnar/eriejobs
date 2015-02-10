@@ -6,5 +6,8 @@
 
 class_name: FunctionalTester
 modules:
-    enabled: [Filesystem, FunctionalHelper, Laravel4]
-
+    enabled: [Filesystem, FunctionalHelper, Laravel4, MailCatcher]
+    config:
+        MailCatcher:
+            url: 'http://192.168.10.10/'
+            port: '1080'

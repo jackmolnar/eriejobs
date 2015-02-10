@@ -39,8 +39,11 @@ class AuthController extends \BaseController {
         if($valid['status'])
         {
             $subscribeNewJobSeeker = new SubscribeNewJobSeekerCommand(Input::all());
-            $subscribeNewJobSeeker->execute();
-            return Redirect::to('/');
+            $user = $subscribeNewJobSeeker->execute();
+
+            Auth::login($user);
+
+            return Redirect::to('/profile');
         }
         return Redirect::back()->withInput()->withErrors($valid['errors']);
     }
@@ -72,7 +75,7 @@ class AuthController extends \BaseController {
             $login = $loginUser->execute();
 
             if($login){
-                return Redirect::intended('/profile');
+                return Redirect::intended('/profile')->with('user_login', true);
             } else {
                 return Redirect::back()->withInput()->withErrors([null, 'Password does not match email address.']);
             }
@@ -106,8 +109,11 @@ class AuthController extends \BaseController {
         if($valid['status']){
             //need to edit command
             $subscribeNewRecruiter = new SubscribeNewRecruiterCommand(Input::all());
-            $subscribeNewRecruiter->execute();
-            return Redirect::to('/');
+            $user = $subscribeNewRecruiter->execute();
+
+            Auth::login($user);
+
+            return Redirect::to('/profile');
         }
 
         return Redirect::back()->withInput()->withErrors($valid['errors']);

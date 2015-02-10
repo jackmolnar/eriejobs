@@ -1,5 +1,108 @@
 .footer{
-  height: 300px;
-  margin-top: 20px;
+  height: auto;
+  margin-top: 60px;
   background-color: $dark_blue;
+  border-top: solid thick $orange;
+  padding-bottom: 35px;
+
+  .container{
+    margin-top: 30px;
+
+    .col-md-4{
+      min-height: 210px;
+      border-right: none;
+      border-top: dashed thin $pale_yellow;
+      padding-top: 15px;
+      @media screen and (min-width: $middle) {
+        border-right: dashed thin $pale_yellow;
+        border-top: none;
+        padding-top: 0px;
+      }
+    }
+
+    .col-md-4:last-of-type{
+      border-right: none;
+    }
+
+
+
+    .logo{
+      img{
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+      .copyright{
+        color: #ffffff;
+        border-top: dashed thin $pale_yellow;
+        margin-top: 25px;
+        padding-top: 25px;
+        text-align: center;
+      }
+    }
+
+    .links{
+      text-align: center;
+
+      ul{
+        list-style: none;
+        padding: 0px;
+
+        li{
+          margin-bottom: 10px;
+
+          a{
+            color: $orange;
+
+            :hover{
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+    .social{
+
+      padding: 30px;
+
+      .social_container{
+
+        margin-left: auto;
+        margin-right: auto;
+        width: 210px;
+
+        a {
+          width: 40px;
+          height: 40px;
+          display: block;
+          float: left;
+          margin-right: 30px;
+        }
+
+        .facebook {
+          background: url('/images/social_icons.png') 0px 0px;
+        }
+        .facebook:hover{
+          background-position: 0px -40px;
+        }
+        .twitter {
+          background: url('/images/social_icons.png') -40px 0px;
+        }
+        .twitter:hover{
+          background-position: -40px -40px;
+        }
+        .linkedin {
+          background: url('/images/social_icons.png') -80px 0px;
+        }
+        .linkedin:hover{
+          background-position: -80px -40px;
+        }
+      }
+
+
+
+    }
+
+  }
 }

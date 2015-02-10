@@ -5,6 +5,10 @@
 <div class="col-lg-6 well">
     <h1>Reset Password</h1>
     <hr/>
+    <p>
+        Complete the form below to reset your password
+    </p>
+    <hr/>
     {{ Form::open(['action' => 'RemindersController@postReset']) }}
         {{ Form::hidden('token', $token) }}
         {{ Form::label('email', 'Email') }}
@@ -17,4 +21,8 @@
     {{ Form::close() }}
 </div>
 
+@stop
+
+@section('_title')
+    Password Reset - EriePa.Jobs
 @stop

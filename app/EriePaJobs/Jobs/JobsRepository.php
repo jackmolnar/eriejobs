@@ -25,35 +25,6 @@ class JobsRepository {
 
 
     /**
-     * Get jobs by the category slug
-     * @param string $category_slug
-     * @return array $data
-     */
-    public function jobsByCategorySlug($category_slug)
-    {
-        $data['category'] = \Category::where('slug', '=', $category_slug)->first();
-        $data['jobs'] = $data['category']->jobs->paginate(15);
-        return $data;
-    }
-
-    /**
-     * Get job record by id
-     * @param $job_id
-     * @return \Illuminate\Database\Eloquent\Model|null|static
-     */
-    public function getJobById($job_id)
-    {
-        if(Cache::has('job.all'))
-        {
-            $allJobs = Cache::get('job.all');
-            $job = $allJobs->find($job_id);
-            return $job;
-        }
-        $job = Job::find($job_id);
-        return $job;
-    }
-
-    /**
      * Create a Jobs Expire Date
      * @param $length
      * @return static
@@ -107,13 +78,34 @@ class JobsRepository {
     }
 
     /**
-     * Update all jobs cache
+     * Get all active jobs
+     * @return \ElastiquentCollection
      */
-    public function updateAllJobsCache()
+    public function allActiveJobs()
     {
-        Cache::forget('job.all');
-        $all_jobs = Job::all();
-        Cache::put('job.all', $all_jobs, 60);
+        $result = $this->allJobs();
+        $result = $result->filter(function($result)
+        {
+            if($result->active == 1)
+            {
+                return $result;
+            }
+        });
+        return $result;
+    }
+
+    /**
+     * Get job record by id
+     * @param $job_id
+     * @return \Illuminate\Database\Eloquent\Model|null|static
+     */
+    public function getJobById($job_id)
+    {
+        $allJobs = $this->allJobs();
+
+        $job = $allJobs->find($job_id);
+
+        return $job;
     }
 
     /**
@@ -121,14 +113,39 @@ class JobsRepository {
      * @param string $term
      * @return \Elasticquent\ElasticquentResultCollection
      */
-    public function searchForJob($term)
+    public function searchForJob($term = '', $limit = null, $offset = null)
     {
         if($term == ''){
-            $result = $this->allJobs()->sortByDesc('created_at');
-            return $result;
+            $result = $this->allActiveJobs();
+            return $result->sortByDesc('created_at')->take($limit);
         }
-        $result = Job::search($term);
+
+        //only returns active results - nonactive listings removed from index
+        $result = Job::searchByQuery(['match' => ['_all' => $term]], null, null, $limit, $offset);
+
         return $result;
+    }
+
+    /**
+     * Get jobs by the category slug
+     * @param string $category_slug
+     * @return array $data
+     */
+    public function jobsByCategorySlug($category_slug)
+    {
+        $data['category'] = \Category::where('slug', '=', $category_slug)->first();
+        $data['jobs'] = $data['category']->jobs->paginate(15);
+        return $data;
+    }
+
+    /**
+     * Update all jobs cache
+     */
+    public function updateAllJobsCache()
+    {
+        Cache::forget('job.all');
+        $all_jobs = Job::all();
+        Cache::put('job.all', $all_jobs, 60);
     }
 
     /**
@@ -140,7 +157,6 @@ class JobsRepository {
         $job = $this->getJobById($id);
         $job->active = 0;
         $job->save();
-        $job->removeFromIndex();
     }
 
     /**
@@ -152,7 +168,6 @@ class JobsRepository {
         $job = $this->getJobById($id);
         $job->active = 1;
         $job->save();
-        $job->addToIndex();
     }
 
     /**

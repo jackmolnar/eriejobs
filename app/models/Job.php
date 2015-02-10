@@ -8,7 +8,23 @@ class Job extends \Eloquent {
     /*
      * fillable fields
      */
-	protected $fillable = ['title', 'description', 'company_name', 'company_address', 'company_city', 'state_id', 'salary', 'career_level', 'type_id', 'user_id', 'email', 'link', 'active', 'expire'];
+	protected $fillable = [
+        'title',
+        'description',
+        'company_name',
+        'company_address',
+        'company_city',
+        'state_id',
+        'salary',
+        'career_level_id',
+        'type_id',
+        'user_id',
+        'email',
+        'link',
+        'active',
+        'expire',
+        'confidential'
+    ];
 
     /**
      * trait to enable elastic search methods
@@ -75,53 +91,27 @@ class Job extends \Eloquent {
      */
     public static function paymentDropDownArray()
     {
-        if(Config::get('billing')['free'])
-        {
-            return 'free';
-        }
-
-        $listing_array = Config::get('billing')['listings'];
-
         $dropDownArray = array();
+
+        $listing_array = Config::get('billing.listings');
+
+        if(Config::get('billing.free'))
+        {
+            foreach($listing_array as $length => $cost)
+            {
+                $dropDownArray[$length] = $length.' Days';
+            }
+            return $dropDownArray;
+        }
 
         foreach($listing_array as $length => $cost)
         {
             $formatted_cost = number_format(($cost/100), 2);
             $dropDownArray[$length] = $length.' Days ($'.$formatted_cost.')';
         }
-
         return $dropDownArray;
     }
 
-    /**
-     * Model Events
-     */
-    public static function boot()
-    {
-        parent::boot();
-
-        static::saved(function($job){
-            $job->addToIndex();
-            $jobRepo = new JobsRepository;
-            $jobRepo->updateAllJobsCache();
-        });
-
-        static::deleted(function($job){
-            $job->removeFromIndex();
-            $jobRepo = new JobsRepository;
-            $jobRepo->updateAllJobsCache();
-        });
-
-        static::updated(function($job){
-            if($job->active == 0){
-                $job->removeFromIndex();
-            } elseif ($job->active == 1){
-                $job->reindex();
-            }
-            $jobRepo = new JobsRepository;
-            $jobRepo->updateAllJobsCache();
-        });
-    }
 
     /**
      * Mapping properties for elasticsearch
@@ -171,7 +161,28 @@ class Job extends \Eloquent {
             'store' => true,
             'analyzer' => 'standard',
         ],
+        'created_at' => [
+            'type' => 'date',
+            'format' => 'YYYY-MM-dd HH:mm:ss',
+            'store' => false,
+            'index' => 'no',
+            'analyzer' => 'standard',
+        ],
+        'updated_at' => [
+            'type' => 'date',
+            'format' => 'YYYY-MM-dd HH:mm:ss',
+            'store' => false,
+            'index' => 'no',
+            'analyzer' => 'standard',
+        ],
         'expire' => [
+            'type' => 'date',
+            'format' => 'YYYY-MM-dd HH:mm:ss',
+            'store' => false,
+            'index' => 'no',
+            'analyzer' => 'standard',
+        ],
+        'confidential' => [
             'type' => 'boolean',
             'store' => false,
             'index' => 'no',

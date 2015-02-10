@@ -114,6 +114,21 @@ class JobsRepositoryTest extends \Codeception\TestCase\Test
         //should test cache
     }
 
+    public function testAllActiveJobs()
+    {
+        $activeJobTotal = Job::where('active', '=', 1);
+
+        $jobs = TestDummy::times(30)->create('Job', [
+            'active' => 0
+        ]);
+
+        $allJobs = Job::all();
+
+        $this->tester->assertNotEquals($allJobs, $activeJobTotal);
+
+        //should test cache
+    }
+
     public function testUpdateAllJobsCache()
     {
         $currentAllJobs = Cache::get('jobs.all');
@@ -130,7 +145,8 @@ class JobsRepositoryTest extends \Codeception\TestCase\Test
     public function testSearchForJob()
     {
         $newJob = TestDummy::create('Job', [
-            'title' => 'Electrical Engineer'
+            'title' => 'Electrical Engineer',
+            'active' => 1
         ]);
 
         // add to search index
@@ -140,7 +156,7 @@ class JobsRepositoryTest extends \Codeception\TestCase\Test
 
         $result = $this->jobRepo->searchForJob('Electrical Engineer');
 
-        $this->tester->assertGreaterThan(0, count($result), "Need job record with human resources title to pass");
+        $this->tester->assertGreaterThan(0, count($result), "Need job record with Electrical Engineer title to pass");
 
         // remove from search index
         $newJob->removeFromIndex();
@@ -185,15 +201,20 @@ class JobsRepositoryTest extends \Codeception\TestCase\Test
             'title' => 'Electrician'
         ]);
 
+        // add to search index
+        $job->addToIndex();
+
         $this->tester->seeRecord('jobs', [
             'title' => $job->title
         ]);
 
+        // delete job and removes from index
         $this->jobRepo->deleteJob($job->id);
 
         $this->tester->dontSeeRecord('jobs', [
             'title' => $job->title
         ]);
+
     }
 
 

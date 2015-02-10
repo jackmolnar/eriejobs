@@ -4,11 +4,10 @@ $I = new FunctionalTester($scenario);
 $I->am('Logged in recruiter');
 $I->wantTo('Post a new job');
 
-$I->amLoggedAs(['email' => 'jackmolnar1982@gmail.com', 'password' => 'front']);
+$I->haveAnAccount('example@recruiter.com', 'eriejobs', 'Recruiter');
+$I->logIn('example@recruiter.com', 'eriejobs');
 $I->seeAuthentication();
 
-$I->amOnPage('/profile');
-$I->click('Post a Job');
 $I->amOnPage('/jobs/create');
 
 $I->fillField('title', 'Web Designer');
@@ -16,6 +15,7 @@ $I->fillField('description', 'Must know PHP and MySQL.');
 $I->fillField('salary', '40000');
 $I->selectOption('career_level', 'Experienced');
 $I->selectOption('type', 'Full Time');
+$I->click(['id' => 'email_contact']);
 $I->fillField('email', 'jackmolnar1982@gmail.com');
 $I->fillField('link', 'http://www.facebook.com');
 $I->selectOption('category', 'Marketing');

@@ -50,7 +50,14 @@ class SendNewApplicationCommand extends BaseCommand{
     {
         $path = $this->appRepo->uploadResume($this->resume);
 
-        $this->newAppMailer->sendApplication($this->job->email, $this->job, $path);
+        $adminUser = \User::find($this->job->user_id);
+
+        $this->newAppMailer->sendTo($adminUser,
+            'New Application From EriePa.Jobs',
+            'emails.applications.SendNewApplication',
+            [ 'cover_letter' => $this->input['cover_letter'], 'job' => $this->job],
+            $path
+        );
 
         \Event::fire('application.send', ['user' => \Auth::user(), 'job' => $this->job, 'resume_path' => $path]);
     }

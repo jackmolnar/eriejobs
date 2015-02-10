@@ -28,11 +28,16 @@ class SubscribeNewRecruiterCommand extends BaseCommand {
         $user->email = $this->input['email'];
         $user->first_name = $this->input['first_name'];
         $user->last_name = $this->input['last_name'];
-        $user->notifications = $this->input['notifications'];
-        $user->role_id = \Role::where('title', '=', 'Seeker')->first(['id']);
+
+        $recruiterRole = \Role::where('title', '=', 'Recruiter')->get(['id'])->first();
+        $user->role_id = $recruiterRole->id;
+
         $user->password = \Hash::make($this->input['password']);
         $user->save();
 
+        \Event::fire('auth.recruiter.subscribe', array($user));
+
+        return $user;
     }
 }
 

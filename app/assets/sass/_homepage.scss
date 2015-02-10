@@ -1,23 +1,60 @@
+.main_back{
+  background: url("/images/main_background_2.jpg") no-repeat top center;
+  background-color: $darkest_green;
+  height: auto;
+  margin-top: -30px;
+  background-size:100% auto;
+
+  @media screen and (min-width: $middle) {
+    height: 400px;
+  }
+  @media screen and (min-width: $big) {
+    height: 500px;
+  }
+  @media screen and (min-width: $biggest) {
+    height: 594px;
+  }
+
+}
 
 .main_home{
-  background-color: $transparent_dark_blue;
-  width: 925px;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 15%;
+  background-color: $dark_green;
   padding: 15px;
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+  margin-top: 43%;
+
+
+  @media screen and (min-width: $small) {
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 46%;
+    padding: 15px;
+  }
+  @media screen and (min-width: $middle) {
+    margin-top: 9%;
+    width: 600px;
+    margin-right: auto;
+    margin-left: 40%;
+    padding: 15px;
+  }
+  @media screen and (min-width: $big) {
+    margin-top: 15%;
+  }
 
   h1{
     font-family: $bold_fonts;
     font-weight: bold;
     color: #ffffff;
-    font-size: 56px;
+    font-size: 34px;
     text-align: center;
-    width: 800px;
+    width: auto;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 30px;
-    border-bottom: white thin solid;
+    padding-bottom: 20px;
+    border-bottom: $pale_yellow thin dashed;
   }
 
   .home_buttons{
@@ -28,13 +65,54 @@
     font-family: $nav_fonts;
     color: #ffffff;
 
-    span{
-      margin-left: 15px;
-      margin-right: 15px;
-    }
+      span{
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+
+      a{
+        min-width: 100px;
+      }
+  }
+
+  .hiring_buttons{
+    border-top: dashed thin $pale_yellow;
+    padding-top: 15px;
+    color: $pale_yellow;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 
     a{
-      min-width: 100px;
+      color: $orange;
+    }
+  }
+}
+
+.section2{
+  margin-top: 60px;
+  margin-bottom: 80px;
+
+  h2{
+    margin-bottom: 20px;
+  }
+
+  img{
+    border-bottom: solid thick $orange;
+  }
+
+  p{
+    font-family: $nav_fonts;
+    font-size: 16px;
+    color: $middle_green;
+    background-color: $light_green;
+    padding: 20px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    line-height: 30px;
+
+    .btn{
+      display: block;
     }
   }
 }

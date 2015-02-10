@@ -1,0 +1,91 @@
+.hiring_main_row{
+  background-image: url('../images/hiring_header.jpg');
+  min-height: 300px;
+  background-size:100% auto;
+  margin-bottom: 25px;
+
+  .container{
+
+    bottom: 10%;
+
+    h1{
+      color: $orange;
+      font-size: 36px;
+      background-color: $dark_green;
+      padding-bottom: 25px;
+      padding-left: 25px;
+      padding-right: 25px;
+      padding-top: 15px;
+      display: inline-block;
+      width: 100%;
+
+      @media screen and (min-width: $middle) {
+        font-size: 60px;
+        width: auto;
+      }
+
+    }
+
+    h2{
+      color: #ffffff;
+      font-size: 34px;
+      margin-top: 26%;
+      background-color: $dark_green;
+      padding-top: 25px;
+      padding-left: 25px;
+      padding-right: 25px;
+      display: inline-block;
+      width: 100%;
+
+      @media screen and (min-width: $middle) {
+        font-size: 47px;
+        width: auto;
+        margin-top: 13%;
+      }
+    }
+  }
+}
+
+.hiring{
+  margin-top: 25px;
+
+  .left_column{
+    padding-left: 0px;
+    padding-right: 25px;
+  }
+
+  .hiring_headline{
+    color: $middle_green;
+
+    .accent{
+      font-size: 34px;
+    }
+
+    .free{
+      color: $orange;
+    }
+  }
+
+  p{
+    font-family: $nav_fonts;
+    font-size: 18px;
+    line-height: 30px;
+    margin-bottom: 30px;
+  }
+
+  ul{
+    font-family: $nav_fonts;
+    font-size: 16px;
+
+    li{
+      margin-bottom: 10px;
+    }
+  }
+
+  .well{
+    margin-top: 30px;
+    @media screen and (min-width: $middle) {
+      margin-top: 0px;
+    }
+  }
+}

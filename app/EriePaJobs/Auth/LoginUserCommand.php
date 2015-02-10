@@ -35,7 +35,9 @@ class LoginUserCommand extends BaseCommand {
      */
     public function execute()
     {
-        if (Auth::attempt(array('email' => $this->input['email'], 'password' => $this->input['password'])))
+        $remember = isset($this->input['remember']) ? true : false;
+
+        if (Auth::attempt(array('email' => $this->input['email'], 'password' => $this->input['password']), $remember))
         {
             return true;
         } else {

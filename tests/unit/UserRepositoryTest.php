@@ -33,7 +33,6 @@ class UserRepositoryTest extends \Codeception\TestCase\Test
 
         $this->tester->assertEquals($user->first_name, $testUser->first_name);
         $this->tester->assertEquals($user->last_name, $testUser->last_name);
-
     }
 
 }

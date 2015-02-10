@@ -17,8 +17,8 @@ class UpdateJobValidator extends BaseValidator {
         'description' => 'required',
         'company_name' => 'required',
         'company_city' => 'required',
-        'state_id' => 'required',
-        'type_id' => 'required',
+        'company_state' => 'required',
+        'type' => 'required',
         'email' => 'required_without:link|email',
         'link' => 'required_without:email|url'
     ];

@@ -27,9 +27,8 @@ class SearchController extends \BaseController {
 	{
         $term = Input::get('search_term');
         $result = $this->jobsRepo->searchForJob($term);
-        $method_exists = method_exists($result, 'totalHits');
 
-        if($method_exists && $result->totalHits() == 0)
+        if(count($result) == 0)
         {
             $result = "Sorry, no results were returned for '".$term."' Please try another search.";
             return View::make('search.index', ['noResults' => $result, 'term' => $term]);

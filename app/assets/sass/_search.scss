@@ -1,10 +1,19 @@
 .search{
 
-  @extend .browse;
+  .col-md-9{
 
-  h4{
-    margin-top: 0px;
+    h1{
+      font-size: 30px;
+      padding-bottom: 15px;
+      padding-top: 15px;
+    }
+
+    .well{
+      margin-left: -20px;
+    }
   }
+
+  @extend .browse;
 
   ul{
     columns: 2;
@@ -33,8 +42,11 @@
       display: block;
       font-family: $nav_fonts;
     }
+  }
 
-
+  .bold_search_term{
+    font-weight: bold;
+    color: $middle_green;
   }
 
 }

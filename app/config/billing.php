@@ -3,7 +3,7 @@
 
 return array(
 
-    'free' => false,
+    'free' => true,
 
     'listings' => [
         '30' => 12500,

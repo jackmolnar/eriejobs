@@ -1,0 +1,1 @@
+{{ link_to_action('AuthController@getSeekerSignup', 'Signup To Apply', null, ['class' => 'btn btn-primary btn-lg']) }}

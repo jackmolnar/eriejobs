@@ -1,35 +1,68 @@
 .browse{
 
+  min-height: 600px;
+
+  h1{
+    font-size: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
   h4{
     margin-top: 0px;
   }
 
   ul{
-    columns: 2;
-
+    columns: 0;
+    @media screen and (min-width: $middle) {
+      columns: 2;
+    }
     li{
       line-height: 25px;
     }
   }
 
-  .job_listing{
-
-    .company_name{
-      display:block;
-      font-family: $nav_fonts;
-    }
-    .posted_date{
-      display: block;
-      font-family: $nav_fonts;
-    }
-    .company_city{
-      display: block;
-      font-family: $nav_fonts;
-    }
-
-  }
-
   .badge{
     background-color: #D5D5D5;
   }
+}
+
+.job_listing{
+
+  i{
+    margin-right: 10px;
+  }
+
+  .company_name{
+    display:block;
+    font-family: $nav_fonts;
+    padding-bottom: 15px;
+    
+    @media screen and (min-width: $middle) {
+      padding-bottom: 0px;
+    }
+  }
+  .posted_date{
+    display: block;
+    font-family: $nav_fonts;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  .company_city{
+    display: block;
+    font-family: $nav_fonts;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+
+  h4{
+    margin-top: 0px;
+    font-family: $nav_fonts;
+
+    a:hover{
+      color: $orange;
+    }
+  }
+
+
 }

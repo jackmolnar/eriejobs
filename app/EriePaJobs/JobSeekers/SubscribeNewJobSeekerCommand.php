@@ -37,11 +37,16 @@ class SubscribeNewJobSeekerCommand extends BaseCommand {
         $user->first_name = $this->input['first_name'];
         $user->last_name = $this->input['last_name'];
         $user->notifications = $this->input['notifications'];
-        $user->role_id = \Role::where('title', '=', 'Recruiter')->first(['id']);
+
+        $seekerRole = \Role::where('title', '=', 'Seeker')->get(['id'])->first();
+        $user->role_id = $seekerRole->id;
+
         $user->password = \Hash::make($this->input['password']);
         $user->save();
 
         \Event::fire('auth.seeker.subscribe', array($user));
+
+        return $user;
     }
 }
 

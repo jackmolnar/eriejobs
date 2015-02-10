@@ -27,3 +27,11 @@
 </div>
 
 @stop
+
+@section('_title')
+Browse Jobs in Erie and Northwestern Pennsylvania
+@stop
+
+@section('_description')
+Browse available jobs in Erie Pennsylvania and Northwestern Pennsylvania.
+@stop

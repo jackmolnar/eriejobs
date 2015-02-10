@@ -1,19 +1,20 @@
-<div class="well">
+{{ Form::open(['action' => 'SearchController@index']) }}
 
-    <h1>Search For Jobs</h1>
+{{ Form::label('search', 'Enter Job Titles, Company Names, or Keyterms') }}
 
-    <hr/>
+<br/>
 
-    {{ Form::open(['action' => 'SearchController@index']) }}
+{{ Form::text('search_term', $term, ['class' => 'form-control search_box', 'placeholder' => 'Search Term']) }}
 
-    {{ Form::label('search', 'Enter Job Titles, Company Names, or Keyterms') }}
+{{--{{ Form::submit('Search', ['class' => 'btn btn-primary search_button']) }}--}}
 
-    <br/>
+<button class="btn btn-primary search_button" type="submit" ><i class="fa fa-search"></i> Search</button>
 
-    {{ Form::text('search_term', null, ['class' => 'form-control search_box', 'placeholder' => 'Search Term']) }}
+{{ Form::close() }}
 
-    {{ Form::submit('Search', ['class' => 'btn btn-primary search_button']) }}
-
-    {{ Form::close() }}
-
-</div>
+@if($term != '')
+    @if(Auth::check())
+        <hr/>
+        @include('includes.notifications.add_search_term')
+    @endif
+@endif

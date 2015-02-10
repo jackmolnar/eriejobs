@@ -14,6 +14,7 @@ use EriePaJobs\Payments\PaymentRepository;
 use Event;
 use Session;
 use Job;
+use Config;
 
 class PostNewJobCommand extends BaseCommand{
 
@@ -64,8 +65,8 @@ class PostNewJobCommand extends BaseCommand{
         $job->company_address   = $this->input['company_address'];
         $job->company_city      = $this->input['company_city'];
         $job->state_id          = $this->input['company_state'];
-        $job->salary            = isset($this->input['salary']) ? $this->input['salary'] : 'Not Set';
-        $job->career_level      = $this->input['career_level'];
+        $job->salary            = $this->input['salary'] != '' ? $this->input['salary'] : 'Not Set';
+        $job->career_level_id   = $this->input['career_level'];
         $job->type_id           = $this->input['type'];
         $job->user_id           = $this->user->id;
         $job->email             = isset($this->input['email']) ? $this->input['email'] : '';
@@ -84,16 +85,29 @@ class PostNewJobCommand extends BaseCommand{
      */
     public function bill()
     {
-        $result = $this->paymentRepo->bill($this->input);
+        if(!Config::get('billing.free')) {
+            $result = $this->paymentRepo->bill($this->input);
+        } else {
+            $result['status'] = true;
+        }
 
         if($result['status'])
         {
-            $job = Session::pull('pending_job');
+            // get the job from session
+            $job = Session::get('pending_job');
 
+            // set the category id and remove the attribute from the job object
+            // so that the job object can be saved (category id is not a field)
+            $category_id = $job->category_id;
+            unset($job->category_id);
+
+            //save the job
             $job->save();
 
-            $job->categories()->sync([$job->category_id]);
+            //sync the categories
+            $job->categories()->sync([$category_id]);
 
+            //fire the create event
             Event::fire('job.create', array($job, $this->user));
 
         }
