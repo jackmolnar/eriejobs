@@ -36,7 +36,7 @@ class BrowseController extends \BaseController {
 	{
         $categories = $this->catRepo->getAllCategoriesWithJobCount();
 
-        return View::make('browse.index', ['categories' => $categories]);
+        return View::make('Browse.index', ['categories' => $categories]);
 	}
 
 	/**
@@ -49,7 +49,7 @@ class BrowseController extends \BaseController {
 	public function show($category)
 	{
         $result = $this->jobRepo->jobsByCategorySlug($category);
-		return View::make('Browse/show', ['category' => $result]);
+		return View::make('Browse.show', ['category' => $result]);
 	}
 
 }
