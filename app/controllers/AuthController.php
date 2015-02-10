@@ -22,7 +22,7 @@ class AuthController extends \BaseController {
      */
     public function getSeekerSignup()
     {
-        return View::make('auth.signup');
+        return View::make('Auth/signup');
     }
 
 
@@ -56,7 +56,7 @@ class AuthController extends \BaseController {
      */
     public function getSeekerLogin()
     {
-        return View::make('auth.login');
+        return View::make('Auth/login');
     }
 
     /**
