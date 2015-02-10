@@ -57,7 +57,7 @@ class JobsController extends \BaseController {
             return View::make('jobs.create', ['job' => Session::get('pending_job'), 'billing' => \Config::get('billing')]);
         }
 
-		return View::make('jobs/create', ['billing' => \Config::get('billing')]);
+		return View::make('jobs.create', ['billing' => \Config::get('billing')]);
 	}
 
 	/**
@@ -91,7 +91,7 @@ class JobsController extends \BaseController {
         $cost = $this->jobRepo->getCostFromExpireDate($pending_job->expire);
         $length = $this->jobRepo->getLengthFromExpireDate($pending_job->expire)." Day Job Listing";
 
-        return View::make('jobs/review', ['pending_job' => $pending_job, 'cost' => $cost, 'length' => $length]);
+        return View::make('jobs.review', ['pending_job' => $pending_job, 'cost' => $cost, 'length' => $length]);
     }
 
     /**
@@ -120,7 +120,7 @@ class JobsController extends \BaseController {
         Session::remove('pending_job');
 
         $charge = Session::get('charge');
-        return View::make('jobs/thankyou', ['charge' => $charge]);
+        return View::make('jobs.thankyou', ['charge' => $charge]);
     }
 
     /**
@@ -134,7 +134,7 @@ class JobsController extends \BaseController {
 	{
 		$job = $this->jobRepo->getJobById($id);
         $categories = $this->categoryRepo->getAllCategories();
-        return View::make('jobs/show', ['job' => $job, 'categories' => $categories]);
+        return View::make('jobs.show', ['job' => $job, 'categories' => $categories]);
 	}
 
 	/**
@@ -147,7 +147,7 @@ class JobsController extends \BaseController {
 	public function edit($id)
 	{
         $job = $this->jobRepo->getJobById($id);
-        return View::make('jobs/edit', ['job' => $job]);
+        return View::make('jobs.edit', ['job' => $job]);
 	}
 
 	/**
