@@ -88,13 +88,20 @@
         </div>
     </div>
     <hr/>
-    {{ Form::label('category', 'Select a Category', ['class' => 'required']) }}
-
-    {{ Form::select('category', $categories, $job->categories->first()->id, ['class' => 'form-control']) }}
 
     @if(!isset($job->id))
+        {{--If pending job that is being created--}}
+
+        {{ Form::label('category', 'Select a Category', ['class' => 'required']) }}
+        {{ Form::select('category', $categories, $job->category, ['class' => 'form-control']) }}
+
         {{ Form::label('length', 'Length of Posting') }}
         {{ Form::select('length', $payment, $job->length, ['class' => 'form-control']) }}
+    @else
+        {{--If pending job that is being created--}}
+
+        {{ Form::label('category', 'Select a Category', ['class' => 'required']) }}
+        {{ Form::select('category', $categories, $job->categories->first()->id, ['class' => 'form-control']) }}
     @endif
 
 

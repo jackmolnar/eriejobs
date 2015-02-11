@@ -11,7 +11,9 @@
 {{ Form::open(['action' => 'JobsController@store']) }}
 
     @if(isset($job))
+
         @include('includes.jobs.edit_form')
+
         {{ Form::label('length', 'Length of Posting') }}
         {{ Form::select('length', $payment, null, ['class' => 'form-control']) }}
         <hr/>
@@ -20,7 +22,9 @@
         {{ link_to_action('ProfilesController@index', 'Cancel', null, ['class' => 'btn btn-default']) }}
 
     @else
+
         @include('includes.jobs.create_form')
+
         {{ Form::label('length', 'Length of Posting') }}
         {{ Form::select('length', $payment, null, ['class' => 'form-control']) }}
         <hr/>
