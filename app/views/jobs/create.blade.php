@@ -37,12 +37,15 @@
 
     </div>
 
-    <div class="col-md-3 well well-primary">
-        <ul>
-            <li>Remember, jobs listing are currently free to post and will be for the first 90 days of our launch</li>
-            <li>Be sure that the email address or web link that you wish to direct applicants to are valid, or you may not receive applications!</li>
-            <li>If you have questions or problems, feel free to {{ link_to_action('PagesController@getContact', 'contact us') }}</li>
-        </ul>
+    <div class="col-md-3">
+
+        <div class="well well-primary">
+            <ul>
+                <li>Remember, jobs listing are currently free to post and will be for the first 90 days of our launch</li>
+                <li>Be sure that the email address or web link that you wish to direct applicants to are valid, or you may not receive applications!</li>
+                <li>If you have questions or problems, feel free to {{ link_to_action('PagesController@getContact', 'contact us') }}</li>
+            </ul>
+        </div>
 
     </div>
 
