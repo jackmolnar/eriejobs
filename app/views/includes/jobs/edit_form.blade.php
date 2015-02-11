@@ -93,7 +93,7 @@
         {{--If pending job that is being created--}}
 
         {{ Form::label('category', 'Select a Category', ['class' => 'required']) }}
-        {{ Form::select('category', $categories, $job->category, ['class' => 'form-control']) }}
+        {{ Form::select('category', $categories, $job->category_id, ['class' => 'form-control']) }}
 
     @else
         {{--If pending job that is being created--}}
