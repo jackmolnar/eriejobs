@@ -15,7 +15,7 @@ Event::listen('application.send', 'EriePaJobs\Events\Applications\NewApplication
 Job::observe(new \EriePaJobs\Jobs\JobsObserver);
 User::observe(new \EriePaJobs\Users\UserObserver);
 
-Queue::failing(function($connection, $job, $data)
-{
-//    Queue::push('EriePaJobs\QueueHandlers\SendQueueJobFailureNotification', array('data' => $data, 'job' => $job));
-});
+//Queue::failing(function($connection, $job, $data)
+//{
+////    Queue::push('EriePaJobs\QueueHandlers\SendQueueJobFailureNotification', array('data' => $data, 'job' => $job));
+//});

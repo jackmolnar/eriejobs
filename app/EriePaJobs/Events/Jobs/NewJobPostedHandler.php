@@ -31,6 +31,6 @@ class NewJobPostedHandler {
      */
     public function handle(Model $job, \User $user)
     {
-        $this->mailer->sendTo($user, 'Job Listing Confirmation', 'emails.Jobs.NewJobPosted', ['job' => $job]);
+        $this->mailer->sendTo($user, 'Job Listing Confirmation', 'emails.jobs.NewJobPosted', ['job' => $job]);
     }
 }

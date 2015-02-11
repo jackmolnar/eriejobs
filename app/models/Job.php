@@ -152,7 +152,7 @@ class Job extends \Eloquent {
             'analyzer' => 'standard',
         ],
         'salary' => [
-            'type' => 'integer',
+            'type' => 'string',
             'store' => true,
             'analyzer' => 'standard',
         ],

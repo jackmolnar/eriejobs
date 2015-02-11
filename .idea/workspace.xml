@@ -30,7 +30,80 @@
     <favorites_list name="eriejobs" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="edit_form.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/includes/jobs/edit_form.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="25.215687" vertical-offset="1580" max-vertical-offset="2331">
+              <caret line="14" column="32" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JobsController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/JobsController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-14.0" vertical-offset="651" max-vertical-offset="4431">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PostNewJobCommand.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/EriePaJobs/Jobs/PostNewJobCommand.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="15.708333" vertical-offset="1679" max-vertical-offset="2457">
+              <caret line="67" column="84" selection-start-line="67" selection-start-column="84" selection-end-line="67" selection-end-column="96" />
+              <folding>
+                <element signature="e#126#153#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="events.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/events.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="462">
+              <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NewJobPostedHandler.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/EriePaJobs/Events/Jobs/NewJobPostedHandler.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.5" vertical-offset="0" max-vertical-offset="735">
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="change.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/emails/jobs/change.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="778">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseMailer.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/EriePaJobs/BaseMailer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.0" vertical-offset="0" max-vertical-offset="546">
+              <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -40,7 +113,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/config/testing/queue.php" />
         <option value="$PROJECT_DIR$/app/config/testing/session.php" />
         <option value="$PROJECT_DIR$/app/EriePaJobs/JobSeekers/SubscribeNewJobSeekerCommand.php" />
         <option value="$PROJECT_DIR$/app/EriePaJobs/Recruiters/SubscribeNewRecruiterCommand.php" />
@@ -71,7 +143,6 @@
         <option value="$PROJECT_DIR$/app/views/profile/index.blade.php" />
         <option value="$PROJECT_DIR$/app/views/includes/ga_tracking/login_event.blade.php" />
         <option value="$PROJECT_DIR$/app/routes.php" />
-        <option value="$PROJECT_DIR$/app/events.php" />
         <option value="$PROJECT_DIR$/app/EriePaJobs/Users/UserObserver.php" />
         <option value="$PROJECT_DIR$/app/EriePaJobs/Users/DeleteAccountCommand.php" />
         <option value="$PROJECT_DIR$/app/views/includes/main/top_nav.blade.php" />
@@ -84,12 +155,14 @@
         <option value="$PROJECT_DIR$/app/config/mail.php" />
         <option value="$PROJECT_DIR$/app/controllers/PagesController.php" />
         <option value="$PROJECT_DIR$/app/controllers/BrowseController.php" />
-        <option value="$PROJECT_DIR$/app/controllers/JobsController.php" />
         <option value="$PROJECT_DIR$/app/models/Type.php" />
         <option value="$PROJECT_DIR$/app/views/includes/jobs/edit_form.blade.php" />
         <option value="$PROJECT_DIR$/app/views/includes/profiles/recruiter.blade.php" />
         <option value="$PROJECT_DIR$/app/views/jobs/create.blade.php" />
         <option value="$PROJECT_DIR$/app/views/jobs/review.blade.php" />
+        <option value="$PROJECT_DIR$/app/models/Job.php" />
+        <option value="$PROJECT_DIR$/app/events.php" />
+        <option value="$PROJECT_DIR$/app/controllers/JobsController.php" />
         <option value="$PROJECT_DIR$/app/EriePaJobs/Events/Jobs/NewJobPostedHandler.php" />
       </list>
     </option>
@@ -162,7 +235,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ScratchCode" />
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eriejobs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eriejobs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="unit" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -234,6 +325,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="emails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jobs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eriejobs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eriejobs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="EriePaJobs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -307,6 +424,10 @@
               <option name="myItemId" value="Events" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Auth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -322,7 +443,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="EriePaJobs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Events" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -332,7 +457,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="hand&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Events/Jobs/NewJobPostedHandler.php&#10;events&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/events.php&#10;type&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/models/Type.php&#10;browse&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/controllers/BrowseController.php&#10;elasti&#9;null&#9;null&#10;routes&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/routes.php&#10;add&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/notifications/add_search_term.blade.php&#10;sear&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/search/search_form.blade.php&#10;seeker&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/profiles/seeker.blade.php&#10;rec&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/profiles/recruiter.blade.php&#10;footer&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/main/footer.blade.php&#10;del&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/tests/unit/DeleteAccountCommandTest.php&#10;notification&#9;null&#9;null&#10;notif&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Notifications/NotificationRepository.php&#10;user&#9;null&#9;null&#10;route&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/routes.php&#10;mainsc&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/public/js/main_scripts.js&#10;applicationv&#9;null&#9;null&#10;crea&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/jobs/create.blade.php&#10;pages&#9;null&#9;null&#10;rout&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/routes.php&#10;que&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/config/queue.php&#10;composer.j&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/composer.json&#10;composer&#9;null&#9;null&#10;base&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/BaseMailer.php&#10;appli&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/controllers/ApplicationsController.php&#10;sendnewapp&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Applications/SendNewApplicationCommand.php&#10;job&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/models/Job.php&#10;jobcon&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/controllers/JobsController.php&#10;review&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/jobs/review.blade.php&#10;show&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/jobs/show.blade.php&#10;update&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/tests/unit/UpdateJobCommandTest.php&#10;post&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/tests/unit/PostNewJobCommandTest.php&#10;delete&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/tests/unit/DeleteJobCommandTest.php&#10;subscrib&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/tests/unit/SubscribeNewRecruiterCommandTest.php&#10;subscribenewrec&#9;null&#9;null&#10;subscribenewjobseekercom&#9;null&#9;null&#10;subscribenewjob&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/tests/functional/SubscribeNewJobSeekerCept.php&#10;updatejob&#9;null&#9;null&#10;deleteexpired&#9;null&#9;null&#10;jobsre&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Jobs/JobsRepository.php&#10;jobrepos&#9;null&#9;null&#10;jobob&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Jobs/JobsObserver.php&#10;edit&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/jobs/edit.blade.php&#10;jobs&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/controllers/JobsController.php&#10;default&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/layouts/default.blade.php&#10;Job&#9;null&#9;null&#10;subscribe&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Recruiters/SubscribeNewRecruiterCommand.php&#10;subscribenewjobseeker&#9;null&#9;null&#10;func&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/tests/_support/FunctionalHelper.php" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Events/Jobs/NewJobPostedHandler.php&#10;newjobpost&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Events/Jobs/NewJobPostedHandler.php&#10;newjob&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/tests/unit/NewJobPostedHandlerTest.php&#10;events&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/events.php&#10;job&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/models/Job.php&#10;edit&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/jobs/edit_form.blade.php&#10;hand&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Events/Jobs/NewJobPostedHandler.php&#10;type&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/models/Type.php&#10;browse&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/controllers/BrowseController.php&#10;elasti&#9;null&#9;null&#10;routes&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/routes.php&#10;add&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/notifications/add_search_term.blade.php&#10;sear&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/search/search_form.blade.php&#10;seeker&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/profiles/seeker.blade.php&#10;rec&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/profiles/recruiter.blade.php&#10;footer&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/main/footer.blade.php&#10;del&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/tests/unit/DeleteAccountCommandTest.php&#10;notification&#9;null&#9;null&#10;notif&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Notifications/NotificationRepository.php&#10;user&#9;null&#9;null&#10;route&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/routes.php&#10;mainsc&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/public/js/main_scripts.js&#10;applicationv&#9;null&#9;null&#10;crea&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/jobs/create.blade.php&#10;pages&#9;null&#9;null&#10;rout&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/routes.php&#10;que&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/config/queue.php&#10;composer.j&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/composer.json&#10;composer&#9;null&#9;null&#10;base&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/BaseMailer.php&#10;appli&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/controllers/ApplicationsController.php&#10;sendnewapp&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Applications/SendNewApplicationCommand.php&#10;jobcon&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/controllers/JobsController.php&#10;review&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/jobs/review.blade.php&#10;show&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/jobs/show.blade.php&#10;update&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/tests/unit/UpdateJobCommandTest.php&#10;post&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/tests/unit/PostNewJobCommandTest.php&#10;delete&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/tests/unit/DeleteJobCommandTest.php&#10;subscrib&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/tests/unit/SubscribeNewRecruiterCommandTest.php&#10;subscribenewrec&#9;null&#9;null&#10;subscribenewjobseekercom&#9;null&#9;null&#10;subscribenewjob&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/tests/functional/SubscribeNewJobSeekerCept.php&#10;updatejob&#9;null&#9;null&#10;deleteexpired&#9;null&#9;null&#10;jobsre&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Jobs/JobsRepository.php&#10;jobrepos&#9;null&#9;null&#10;jobob&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Jobs/JobsObserver.php&#10;jobs&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/controllers/JobsController.php&#10;default&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/layouts/default.blade.php&#10;Job&#9;null&#9;null" />
     <property name="options.lastSelected" value="Laravel.SettingsForm" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -348,11 +473,11 @@
       <recent name="$PROJECT_DIR$/ScratchCode" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/views/emails/jobs" />
       <recent name="$PROJECT_DIR$/app/views/includes/ga_tracking" />
       <recent name="$PROJECT_DIR$/app/EriePaJobs/JobSeekers" />
       <recent name="$PROJECT_DIR$/app/views/profile" />
       <recent name="$PROJECT_DIR$/app/views/Browse" />
-      <recent name="$PROJECT_DIR$/app/views/jobs" />
     </key>
   </component>
   <component name="RunManager">
@@ -407,7 +532,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2167382" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2167382" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -473,38 +598,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/pages/hiring.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6313726" vertical-offset="0" max-vertical-offset="1617">
-          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/includes/main/top_nav.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4392157" vertical-offset="63" max-vertical-offset="966">
-          <caret line="19" column="71" selection-start-line="19" selection-start-column="71" selection-end-line="19" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Auth/recruiter_signup.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27120823" vertical-offset="83" max-vertical-offset="924">
-          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_10_25_234440_create_jobs_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1113">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/EriePaJobs/Applications/Resumes/example_resume.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="802">
@@ -737,14 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Job.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4588689" vertical-offset="3297" max-vertical-offset="4158">
-          <caret line="175" column="37" selection-start-line="175" selection-start-column="37" selection-end-line="175" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/fairholm/elasticquent/src/ElasticquentCollection.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4048843" vertical-offset="0" max-vertical-offset="778">
@@ -801,26 +886,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/includes/jobs/edit_form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5989717" vertical-offset="1529" max-vertical-offset="2331">
-          <caret line="95" column="66" selection-start-line="95" selection-start-column="66" selection-end-line="95" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/codeception/codeception/src/Codeception/Events.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24293059" vertical-offset="0" max-vertical-offset="2646">
           <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/events.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="802">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -841,14 +910,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/EriePaJobs/Events/Jobs/NewJobPostedHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51285344" vertical-offset="0" max-vertical-offset="778">
-          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/jobs/review.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.59383035" vertical-offset="1869" max-vertical-offset="3150">
@@ -865,21 +926,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/JobsController.php">
+    <entry file="file://$PROJECT_DIR$/app/views/includes/jobs/edit_form.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53984576" vertical-offset="1659" max-vertical-offset="4431">
-          <caret line="106" column="9" selection-start-line="106" selection-start-column="9" selection-end-line="106" selection-end-column="9" />
+        <state vertical-scroll-proportion="25.215687" vertical-offset="1580" max-vertical-offset="2331">
+          <caret line="14" column="32" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/EriePaJobs/Jobs/PostNewJobCommand.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51285344" vertical-offset="1638" max-vertical-offset="2457">
-          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+        <state vertical-scroll-proportion="15.708333" vertical-offset="1679" max-vertical-offset="2457">
+          <caret line="67" column="84" selection-start-line="67" selection-start-column="84" selection-end-line="67" selection-end-column="96" />
           <folding>
             <element signature="e#126#153#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Job.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4318766" vertical-offset="2646" max-vertical-offset="4158">
+          <caret line="143" column="27" selection-start-line="143" selection-start-column="27" selection-end-line="143" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/unit/NewJobPostedHandlerTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.625964" vertical-offset="122" max-vertical-offset="924">
+          <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/EriePaJobs/BaseMailer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.0" vertical-offset="0" max-vertical-offset="546">
+          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/JobsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.0" vertical-offset="651" max-vertical-offset="4431">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/EriePaJobs/Events/Auth/NewSeekerSubscribedHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="802">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/events.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="462">
+          <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/EriePaJobs/Events/Jobs/NewJobPostedHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.5" vertical-offset="0" max-vertical-offset="735">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/emails/jobs/change.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="802">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
