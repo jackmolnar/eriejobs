@@ -13,8 +13,8 @@ Your new job listing for
 </p>
 <p>
     <h4>
-        @if(isset($job))
-            {{ $job['title'] }}
+        @if(isset($job_title))
+            {{ $job_title }}
         @else
             TEST JOB
         @endif
