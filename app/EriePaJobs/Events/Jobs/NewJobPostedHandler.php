@@ -19,8 +19,17 @@ class NewJobPostedHandler {
      */
     public function handle(Model $job, \User $user)
     {
-        $mailer = new NewJobPostedMailer;
+//        $mailer = new NewJobPostedMailer;
         $job_title = $job->title;
-        $mailer->sendTo($user, 'Job Listing Confirmation', 'emails.jobs.NewJobPosted', ['job_title' => $job_title]);
+//        $mailer->sendTo($user, 'Job Listing Confirmation', 'emails.jobs.NewJobPosted');
+
+        $subject = 'Job Listing Confirmation';
+
+        \Mail::queue('emails.jobs.NewJobPosted', ['job_title' => $job_title], function($message) use ($user, $subject)
+        {
+            $message->to($user->email, $user->first_name.' '.$user->last_name)->subject($subject);
+        });
+
+
     }
 }
