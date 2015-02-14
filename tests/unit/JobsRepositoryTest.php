@@ -27,13 +27,14 @@ class JobsRepositoryTest extends \Codeception\TestCase\Test
     {
         $categoryOverrides = [
             'category' => 'Administration',
-            'active' => 1,
-            'slug' => 'administration'
+            'slug' => 'administration',
         ];
 
         $category = TestDummy::create('Category', $categoryOverrides);
 
-        $jobs = TestDummy::times(8)->create('Job');
+        $jobs = TestDummy::times(8)->create('Job', [
+            'active' => 1
+        ]);
 
         foreach($jobs as $job)
         {
@@ -53,6 +54,7 @@ class JobsRepositoryTest extends \Codeception\TestCase\Test
     {
         $jobOverrides = [
             'title' => 'Human Resources Manager',
+            'active' => 1
         ];
 
         $job = TestDummy::create('Job', $jobOverrides);
@@ -105,7 +107,9 @@ class JobsRepositoryTest extends \Codeception\TestCase\Test
     {
         $currentJobTotal = $this->jobRepo->allJobs(false);
 
-        $jobs = TestDummy::times(30)->create('Job');
+        $jobs = TestDummy::times(30)->create('Job', [
+            'active' => 1
+        ]);
 
         $allJobs = $this->jobRepo->allJobs(false);
 
@@ -133,7 +137,9 @@ class JobsRepositoryTest extends \Codeception\TestCase\Test
     {
         $currentAllJobs = Cache::get('jobs.all');
 
-        $newJobs = TestDummy::times(10)->create('Job');
+        $newJobs = TestDummy::times(10)->create('Job', [
+            'active' => 1
+        ]);
 
         $this->jobRepo->updateAllJobsCache();
 
@@ -198,7 +204,8 @@ class JobsRepositoryTest extends \Codeception\TestCase\Test
     public function testDeleteJob()
     {
         $job = TestDummy::create('Job', [
-            'title' => 'Electrician'
+            'title' => 'Electrician',
+            'active' => 1
         ]);
 
         // add to search index

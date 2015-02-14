@@ -33,6 +33,7 @@ class CreateContactCommand extends BaseCommand {
         $adminUser = \User::create([
             'email' => \Config::get('mail.administrator.email')
         ]);
+
         $contactMailer->sendTo($adminUser, 'Contact from '.$this->input['name'], 'emails.notifications.CreateContact', [
             'name' => $this->input['name'],
             'body' => $this->input['message'],

@@ -13,21 +13,22 @@ class UpdateSeekerInfoCommandTest extends \Codeception\TestCase\Test
     // tests
     public function testExecute()
     {
-        $user = TestDummy::create('User', [
-            'role_id' => \Role::where('title', '=', 'Seeker')->first(['id'])
-        ]);
+        $seekerRole = \Role::where('title', '=', 'Seeker')->first(['id']);
 
+        $user = TestDummy::create('User', [
+            'role_id' => $seekerRole->id
+        ]);
         $mockInput = [
             'first_name' => 'Jackson',
             'last_name' => 'Milner',
             'email' => 'jonm@glit.edu'
         ];
-
         $this->tester->seeRecord('users', [
             'first_name' => $user->first_name,
             'last_name' => $user->last_name,
             'email' => $user->email
         ]);
+
 
         $updateSeekerInfoCommand = new UpdateSeekerInfoCommand($mockInput, $user->id);
 

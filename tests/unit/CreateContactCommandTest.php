@@ -34,7 +34,10 @@ class CreateContactCommandTest extends \Codeception\TestCase\Test
 
          $result = $createContactCommand->execute();
 
-         $this->tester->assertEquals(true, $result['status']);
+        dd($mockInput);
+
+
+        $this->tester->assertEquals(true, $result['status']);
 
          $this->tester->assertEmailSubjectEquals('Contact from Jesse Molgar');
 

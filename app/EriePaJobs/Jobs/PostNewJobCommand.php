@@ -74,6 +74,7 @@ class PostNewJobCommand extends BaseCommand{
         $job->expire            = $this->jobsRepo->createExpireDate($this->input['length']);
         $job->confidential      = isset($this->input['confidential']) ? $this->input['confidential'] : false;
         $job->category_id       = $this->input['category'];
+        $job->active            = 1;
 
         Session::put('pending_job', $job);
 
@@ -94,7 +95,7 @@ class PostNewJobCommand extends BaseCommand{
         if($result['status'])
         {
             // get the job from session
-            $job = Session::get('pending_job');
+            $job = Session::pull('pending_job');
 
             // set the category id and remove the attribute from the job object
             // so that the job object can be saved (category id is not a field)

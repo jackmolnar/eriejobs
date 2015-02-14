@@ -27,7 +27,8 @@ class DeleteJobCommandTest extends \Codeception\TestCase\Test
     {
         $job = TestDummy::create('Job', [
             'title' => 'test delete job',
-            'user_id' => $this->user->user->id
+            'user_id' => $this->user->user->id,
+            'active' => 1
         ]);
         $job->addToIndex();
 
@@ -51,7 +52,8 @@ class DeleteJobCommandTest extends \Codeception\TestCase\Test
 
         $job = TestDummy::create('Job', [
             'title' => 'test delete job',
-            'user_id' => $otherUser->id
+            'user_id' => $otherUser->id,
+            'active' => 1
         ]);
         $job->addToIndex();
 
