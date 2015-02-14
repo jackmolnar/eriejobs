@@ -1,3 +1,3 @@
 <div>
-<img src="http://eriepa.jobs:8000/images/eriepajobs_3.png" />
+<img src="http://eriepa.jobs/images/email_logo.png" />
 </div>
