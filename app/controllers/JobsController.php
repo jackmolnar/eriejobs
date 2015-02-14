@@ -44,6 +44,11 @@ class JobsController extends \BaseController {
         $this->categoryRepo = $categoryRepo;
     }
 
+    public function index()
+    {
+        return Redirect::action('SearchController@index');
+    }
+
 	/**
 	 * Show the form for creating a new resource.
 	 * GET /jobs/create

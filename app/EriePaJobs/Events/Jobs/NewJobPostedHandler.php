@@ -12,18 +12,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class NewJobPostedHandler {
 
-    /**
-     * @var NewJobPostedMailer
-     */
-    private $mailer;
-
-    /**
-     * @param NewJobPostedMailer $mailer
-     */
-    function __construct(NewJobPostedMailer $mailer)
-    {
-        $this->mailer = $mailer;
-    }
 
     /**
      * @param Model $job
@@ -31,7 +19,8 @@ class NewJobPostedHandler {
      */
     public function handle(Model $job, \User $user)
     {
+        $mailer = new NewJobPostedMailer;
         $job_title = $job->title;
-        $this->mailer->sendTo($user, 'Job Listing Confirmation', 'emails.jobs.NewJobPosted', ['job_title' => $job_title]);
+        $mailer->sendTo($user, 'Job Listing Confirmation', 'emails.jobs.NewJobPosted', ['job_title' => $job_title]);
     }
 }
