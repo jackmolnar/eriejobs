@@ -24,10 +24,12 @@ class NewJobPostedHandler {
 //        $mailer->sendTo($user, 'Job Listing Confirmation', 'emails.jobs.NewJobPosted');
 
         $subject = 'Job Listing Confirmation';
+        $user_email = $user->email;
+        $user_name = $user->first_name.' '.$user->last_name;
 
-        \Mail::queue('emails.jobs.NewJobPosted', ['job_title' => $job_title], function($message) use ($user, $subject)
+        \Mail::queue('emails.jobs.NewJobPosted', ['job_title' => $job_title], function($message) use ($user_email, $user_name, $subject)
         {
-            $message->to($user->email, $user->first_name.' '.$user->last_name)->subject($subject);
+            $message->to($user_email, $user_name)->subject($subject);
         });
 
 
