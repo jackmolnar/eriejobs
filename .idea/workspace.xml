@@ -34,8 +34,8 @@
       <file leaf-file-name="NewJobPostedHandler.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/EriePaJobs/Events/Jobs/NewJobPostedHandler.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4318766" vertical-offset="0" max-vertical-offset="778">
-              <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.4588689" vertical-offset="0" max-vertical-offset="778">
+              <caret line="23" column="52" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -1018,8 +1018,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/EriePaJobs/Events/Jobs/NewJobPostedHandler.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4318766" vertical-offset="0" max-vertical-offset="778">
-          <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.4588689" vertical-offset="0" max-vertical-offset="778">
+          <caret line="23" column="52" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
           <folding />
         </state>
       </provider>

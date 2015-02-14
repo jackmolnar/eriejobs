@@ -27,7 +27,7 @@ class NewJobPostedHandler {
         $user_email = $user->email;
         $user_name = $user->first_name.' '.$user->last_name;
 
-        \Mail::queue('emails.jobs.NewJobPosted', ['job_title' => $job_title], function($message) use ($user_email, $user_name, $subject)
+        \Mail::queue('emails.Jobs.NewJobPosted', ['job_title' => $job_title], function($message) use ($user_email, $user_name, $subject)
         {
             $message->to($user_email, $user_name)->subject($subject);
         });
