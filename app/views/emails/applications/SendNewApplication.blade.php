@@ -3,7 +3,7 @@
 @section('content')
 
 <h2>
-You Have Received a New Application For the {{ $job['title'] }} Position
+You Have Received a New Application For the {{ $job_title }} Position
 </h2>
 <hr/>
 <p>

@@ -3,8 +3,8 @@
 @section('content')
 
 <h2>
-@if(isset($user))
-    {{ $user['first_name'] }},
+@if(isset($first_name))
+    {{ $first_name }},
 @endif
 Your Application Has Been Sent!</h2>
 <hr/>
@@ -16,8 +16,8 @@ Your application for:
 </p>
 <p>
 <h4>
-@if(isset($job))
-    {{ $job['title'] }}
+@if(isset($job_title))
+    {{ $job_title }}
 @else
     TEST JOB
 @endif

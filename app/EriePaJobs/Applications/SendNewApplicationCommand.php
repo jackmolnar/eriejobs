@@ -9,7 +9,6 @@
 namespace EriePaJobs\Applications;
 
 use EriePaJobs\BaseCommand;
-use EriePaJobs\Mailers\SendNewApplicationMailer;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -19,10 +18,6 @@ class SendNewApplicationCommand extends BaseCommand{
     protected $resume;
     protected $job;
     protected $appRepo;
-    /**
-     * @var SendNewApplicationMailer
-     */
-    protected $newAppMailer;
 
     /**
      * @param array|\Input $input
@@ -38,8 +33,6 @@ class SendNewApplicationCommand extends BaseCommand{
         $this->resume = $resume;
         $this->job = $job;
 
-        //create the mailer and appRepo
-        $this->newAppMailer = new SendNewApplicationMailer;
         $this->appRepo = new ApplicationsRepository;
     }
 
@@ -48,16 +41,29 @@ class SendNewApplicationCommand extends BaseCommand{
      */
     public function execute()
     {
+        //upload resume
         $path = $this->appRepo->uploadResume($this->resume);
 
+        //get job admin user
         $adminUser = \User::find($this->job->user_id);
 
-        $this->newAppMailer->sendTo($adminUser,
-            'New Application From EriePa.Jobs',
-            'emails.applications.SendNewApplication',
-            [ 'cover_letter' => $this->input['cover_letter'], 'job' => $this->job],
-            $path
-        );
+        //set up email variables
+        $subject = 'New Application From EriePa.Jobs';
+        $user_email = $adminUser->email;
+        $user_first_name = $adminUser->first_name;
+        $user_last_name = $adminUser->last_name;
+        $user_name = $user_first_name.' '.$user_last_name;
+        $job_title = $this->job->title;
+
+        //send email
+        \Mail::queue('emails.applications.SendNewApplication', [ 'cover_letter' => $this->input['cover_letter'], 'job_title' => $job_title], function($message) use ($user_email, $user_name, $subject, $path)
+        {
+            $message->to($user_email, $user_name)->subject($subject);
+
+            if($path != ''){
+                $message->attach($path);
+            }
+        });
 
         \Event::fire('application.send', ['user' => \Auth::user(), 'job' => $this->job, 'resume_path' => $path]);
     }

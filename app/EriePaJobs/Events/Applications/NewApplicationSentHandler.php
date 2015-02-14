@@ -8,20 +8,13 @@
 
 namespace EriePaJobs\Events\Applications;
 
-use EriePaJobs\Mailers\SendNewApplicationConfirmationMailer;
 use Illuminate\Database\Eloquent\Model;
 
 class NewApplicationSentHandler
 {
 
-    /**
-     * @var SendNewApplicationConfirmationMailer
-     */
-    private $mailer;
-
-    function __construct(SendNewApplicationConfirmationMailer $mailer)
+    function __construct()
     {
-        $this->mailer = $mailer;
     }
 
     /**
@@ -30,6 +23,16 @@ class NewApplicationSentHandler
      */
     public function handle(\User $user, Model $job)
     {
-        $this->mailer->sendTo($user, 'Your Application Has Been Sent!', 'emails.applications.ApplicationSentConfirmation', ['job' => $job, 'user' => $user]);
+        $subject = 'Your Application Has Been Sent!';
+        $user_email = $user->email;
+        $user_first_name = $user->first_name;
+        $user_last_name = $user->last_name;
+        $user_name = $user_first_name.' '.$user_last_name;
+        $job_title = $job->title;
+
+        \Mail::queue('emails.applications.ApplicationSentConfirmation', ['first_name' => $user_first_name, 'job_title' => $job_title], function($message) use ($user_email, $user_name, $subject)
+        {
+            $message->to($user_email, $user_name)->subject($subject);
+        });
     }
 } 

@@ -3,8 +3,8 @@
 @section('content')
 
 <h2>
-@if(isset($user))
-    {{ $user['first_name'] }},
+@if(isset($first_name))
+    {{ $first_name }},
 @endif
 Welcome to EriePa.Jobs!</h2>
 <hr/>

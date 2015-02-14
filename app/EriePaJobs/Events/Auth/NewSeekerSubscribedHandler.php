@@ -8,18 +8,12 @@
 
 namespace EriePaJobs\Events\Auth;
 
-use EriePaJobs\Mailers\NewSeekerSubscribedWelcomeMailer;
-
 class NewSeekerSubscribedHandler {
 
     protected $mailer;
 
-    /**
-     * @param NewSeekerSubscribedWelcomeMailer $mailer
-     */
-    function __construct(NewSeekerSubscribedWelcomeMailer $mailer)
+    function __construct()
     {
-        $this->mailer = $mailer;
     }
 
     /**
@@ -27,7 +21,16 @@ class NewSeekerSubscribedHandler {
      */
     public function handle(\User $user)
     {
-        $this->mailer->sendTo($user, 'Welcome to EriePA Jobs', 'emails.auth.welcome_seeker', ['user' => $user]);
+        $subject = 'Welcome to EriePA Jobs';
+        $user_email = $user->email;
+        $user_first_name = $user->first_name;
+        $user_last_name = $user->last_name;
+        $user_name = $user_first_name.' '.$user_last_name;
+
+        \Mail::queue('emails.auth.welcome_seeker', ['first_name' => $user_first_name], function($message) use ($user_email, $user_name, $subject)
+        {
+            $message->to($user_email, $user_name)->subject($subject);
+        });
     }
 
 } 
