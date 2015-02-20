@@ -49,7 +49,10 @@ class DeleteExpiredJobs extends Command {
                 if($currentJob->expire < Carbon::today())
                 {
                     $jobsRepo->deleteJob($currentJob->id);
-                }
+					$this->info('Expired jobs deleted.');
+				} else {
+					$this->info('No jobs have expired.');
+				}
             }
 
 //            $job->delete();
