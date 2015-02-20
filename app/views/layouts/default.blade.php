@@ -33,8 +33,8 @@
 </body>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="http://eriepa.jobs:8000/js/bootstrap.min.js"></script>
-<script src="http://eriepa.jobs:8000/js/main_scripts.js"></script>
+<script src="{{ asset('/js/bootstrap.min.js') }}" ></script>
+<script src="{{ asset('/js/main_scripts.js') }}"></script>
 @yield('scripts')
 
 </html>
