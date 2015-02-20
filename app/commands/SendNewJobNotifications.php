@@ -77,7 +77,18 @@ class SendNewJobNotifications extends Command {
             //if results for any notification term, send mailer
             if(count($resultsArray))
             {
-                Queue::push('EriePaJobs\QueueHandlers\SendNewJobNotificationsHandler', array('user' => $user, 'results' => $resultsArray));
+                $subject = 'New Job Listings Posted';
+                $user_email = $user->email;
+                $user_first_name = $user->first_name;
+                $user_last_name = $user->last_name;
+                $user_name = $user_first_name.' '.$user_last_name;
+
+                \Mail::queue('emails.notifications.NewJobsPosted', ['first_name' => $user_first_name, 'jobData' => $resultsArray], function($message) use ($user_email, $user_name, $subject)
+                {
+                    $message->to($user_email, $user_name)->subject($subject);
+                });
+
+//                Queue::push('EriePaJobs\QueueHandlers\SendNewJobNotificationsHandler', array('user_id' => $user->id, 'results' => $resultsArray));
             }
         }
 	}
