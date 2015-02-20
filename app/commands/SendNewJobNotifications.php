@@ -88,7 +88,6 @@ class SendNewJobNotifications extends Command {
                     $message->to($user_email, $user_name)->subject($subject);
                 });
                 $this->info('New job notifications sent.');
-//                Queue::push('EriePaJobs\QueueHandlers\SendNewJobNotificationsHandler', array('user_id' => $user->id, 'results' => $resultsArray));
             } else {
                 $this->info('No job notifications sent.');
             }

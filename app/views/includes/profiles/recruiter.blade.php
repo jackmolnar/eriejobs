@@ -1,6 +1,3 @@
-
-
-
 @if(count($user->jobs) > 0)
 
     <div class="well col-md-10">
