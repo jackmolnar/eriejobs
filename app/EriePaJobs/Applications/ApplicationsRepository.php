@@ -9,7 +9,6 @@
 namespace EriePaJobs\Applications;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Queue;
 
 class ApplicationsRepository {
 
@@ -18,10 +17,24 @@ class ApplicationsRepository {
      * @param UploadedFile $resume
      * @return string
      */
-    public function uploadResume( $resume)
+    public function uploadResume($resume)
     {
         $name = strtotime("now");
         $path = \Config::get('resumes.temp_path');
+        $resume->move($path, $name);
+
+        return $path.$name;
+    }
+
+    /**
+     * Upload permanant resume and return the path
+     * @param $resume
+     * @return string
+     */
+    public function uploadPermanantResume($resume)
+    {
+        $name = strtotime("now");
+        $path = \Config::get('resumes.permanant_path');
         $resume->move($path, $name);
 
         return $path.$name;

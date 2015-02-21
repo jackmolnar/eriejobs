@@ -14,6 +14,9 @@
   @media screen and (min-width: $biggest) {
     height: 594px;
   }
+  @media screen and (min-width: $gigantic) {
+    height: 750px;
+  }
 
 }
 
