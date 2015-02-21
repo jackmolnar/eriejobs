@@ -20,15 +20,9 @@ class ApplicationsRepository {
      */
     public function uploadResume( $resume)
     {
-        $name = strtotime("now").'_'.$resume->getClientOriginalName();
-        $path = app_path().'/EriePaJobs/Applications/Resumes/';
+        $name = strtotime("now");
+        $path = \Config::get('resumes.temp_path');
         $resume->move($path, $name);
-
-//        Queue::push(function($job) use ($name, $path, $resume)
-//        {
-//            $resume->move($path, $name);
-//            $job->delete();
-//        });
 
         return $path.$name;
     }
