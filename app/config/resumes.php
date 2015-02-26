@@ -3,7 +3,7 @@
 
 return array(
 
-    'temp_path' => app_path().'/EriePaJobs/Applications/Resumes/TempResumes',
-    'permanant_path' => app_path().'/EriePaJobs/Applications/Resumes/PermanantResumes'
+    'temp_path' => app_path().'/EriePaJobs/Applications/Resumes/TempResumes/',
+    'permanent_path' => app_path().'/EriePaJobs/Applications/Resumes/PermanentResumes/'
 
 );

@@ -3,13 +3,21 @@
 use EriePaJobs\JobSeekers\UpdateSeekerInfoCommand;
 use EriePaJobs\JobSeekers\UpdateSeekerInfoValidator;
 use EriePaJobs\JobSeekers\UpdateSeekerNotificationsCommand;
+use EriePaJobs\Resumes\DeletePermanentResumeCommand;
 use EriePaJobs\Users\DeleteAccountCommand;
+use EriePaJobs\Users\UserRepository;
 
 class ProfilesController extends \BaseController {
 
-    function __construct()
+    /**
+     * @var UserRepository
+     */
+    protected $userRepo;
+
+    function __construct(UserRepository $userRepo)
     {
-        View::share('user', Auth::user());
+        $this->userRepo = $userRepo;
+        View::share('user', $this->userRepo->authedUser());
         $this->beforeFilter('auth');
     }
 
@@ -22,7 +30,12 @@ class ProfilesController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('profile.index');
+        $user = $this->userRepo->authedUser();
+        if(isset($user->resume->path) && $user->resume->path != '')
+        {
+            $user->filename = $this->userRepo->getResumeFileName();
+        }
+		return View::make('profile.index', ['user' => $user]);
 	}
 
     /**
@@ -93,6 +106,11 @@ class ProfilesController extends \BaseController {
         return Redirect::back()->withInput()->withErrors($valid['errors']);
 	}
 
+    /**
+     * Update the email notifications
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update_notifications($id)
     {
         $updateSeekerNotificationsCommand = new UpdateSeekerNotificationsCommand(Input::all());
@@ -109,7 +127,7 @@ class ProfilesController extends \BaseController {
 	 */
 	public function destroy($user_id)
 	{
-        $authedUser = Auth::user();
+        $authedUser = $this->userRepo->authedUser();
 
         if($authedUser->id == $user_id)
         {
@@ -123,5 +141,17 @@ class ProfilesController extends \BaseController {
             return Redirect::action('ProfilesController@index')->with('error', 'You are unable to delete that account.');
         }
 	}
+
+    /**
+     * Delete a users permanent resume
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy_resume()
+    {
+        $user = $this->userRepo->authedUser();
+        $deletePermanentResumeCommand = new DeletePermanentResumeCommand($user);
+        $deletePermanentResumeCommand->execute();
+        return Redirect::action('ProfilesController@index')->with('success', 'Resume Deleted');
+    }
 
 }

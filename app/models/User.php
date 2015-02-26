@@ -59,6 +59,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     }
 
     /**
+     * Resume Relationship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function resume()
+    {
+        return $this->hasOne('Resume');
+    }
+
+    /**
      * Declare dates to be returned as Carbon instance
      * @return array
      */

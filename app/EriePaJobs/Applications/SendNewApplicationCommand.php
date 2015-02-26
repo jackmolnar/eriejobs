@@ -9,6 +9,7 @@
 namespace EriePaJobs\Applications;
 
 use EriePaJobs\BaseCommand;
+use EriePaJobs\Users\UserRepository;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -26,14 +27,14 @@ class SendNewApplicationCommand extends BaseCommand{
      * @internal param ApplicationsRepository $appRepo
      * @internal param SendNewApplicationMailer $mailer
      */
-    function __construct(Array $input, UploadedFile $resume, Model $job)
+    function __construct(Array $input, Model $job)
     {
         // set up variables
         $this->input = $input;
-        $this->resume = $resume;
         $this->job = $job;
-
         $this->appRepo = new ApplicationsRepository;
+        $this->userRepo = new UserRepository;
+        $this->applyingUser = $this->userRepo->authedUser();
     }
 
     /**
@@ -41,8 +42,16 @@ class SendNewApplicationCommand extends BaseCommand{
      */
     public function execute()
     {
-        //upload resume
-        $path = $this->appRepo->uploadResume($this->resume);
+        // Need to get the path of either the new resume or default resume
+        // if new resume included, upload it, else get the path to users default resume
+        if(isset($this->input['resume']))
+        {
+            $path = $this->appRepo->uploadResume($this->input['resume']);
+        }
+        elseif($this->input['resume_radio_group'] == 'default_resume')
+        {
+            $path = $this->applyingUser->resume->path;
+        }
 
         //get job admin user
         $adminUser = \User::find($this->job->user_id);
@@ -56,7 +65,7 @@ class SendNewApplicationCommand extends BaseCommand{
         $job_title = $this->job->title;
 
         //send email
-        \Mail::queue('emails.applications.SendNewApplication', [ 'cover_letter' => $this->input['cover_letter'], 'job_title' => $job_title], function($message) use ($user_email, $user_name, $subject, $path)
+        \Mail::send('emails.applications.SendNewApplication', [ 'cover_letter' => $this->input['cover_letter'], 'job_title' => $job_title], function($message) use ($user_email, $user_name, $subject, $path)
         {
             $message->to($user_email, $user_name)->subject($subject);
 
@@ -65,6 +74,6 @@ class SendNewApplicationCommand extends BaseCommand{
             }
         });
 
-        \Event::fire('application.send', ['user' => \Auth::user(), 'job' => $this->job, 'resume_path' => $path]);
+        \Event::fire('application.send', ['user' => $this->applyingUser, 'job' => $this->job, 'resume_path' => $path]);
     }
 } 

@@ -13,8 +13,14 @@ use EriePaJobs\BaseValidator;
 class SendNewApplicationValidator extends BaseValidator {
 
     public static $send_application_rules = [
-        'resume' => 'required|mimes:pdf,doc,docx|max:6000',
+        'resume' => 'sometimes|required|mimes:pdf,doc,docx|max:6000',
+        'resume_radio_group' => 'sometimes|required'
     ];
+
+    public static $messages = array(
+        "resume_radio_group.required" => "You must either select to use the resume you have on file or upload a new resume.",
+        "resume.required" => "You must browse for a resume to upload."
+    );
 
     protected $input;
 
@@ -25,7 +31,7 @@ class SendNewApplicationValidator extends BaseValidator {
 
     public function execute()
     {
-        $result = parent::validate($this->input, static::$send_application_rules);
+        $result = parent::validate($this->input, static::$send_application_rules, static::$messages);
         return $result;
     }
 } 

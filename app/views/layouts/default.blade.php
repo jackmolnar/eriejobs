@@ -34,6 +34,7 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="{{ asset('/js/bootstrap.min.js') }}" ></script>
+<script src="{{ asset('/js/dropzone.js') }}"></script>
 <script src="{{ asset('/js/main_scripts.js') }}"></script>
 @yield('scripts')
 

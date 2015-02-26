@@ -27,6 +27,33 @@
     </div>
 
     <div class="well">
+        <h3 class="info_header"><i class="fa fa-cloud-upload"></i> Resume</h3>
+        <p>Upload a resume you can use to apply for jobs. This is mainly used for applying quickly and from mobile devices. You can upload
+            other resumes at the time of application if you choose.</p>
+
+        <div class="upload_button">
+            <button class="btn btn-success"><i class="fa fa-plus-circle"></i>
+                @if($user->filename)
+                    Replace resume ...
+                @else
+                    Choose a Resume ...
+                @endif
+            </button>
+            {{--<input type="file" />--}}
+        </div>
+
+        @include('includes/main/upload')
+
+        @if($user->filename)
+            <hr/>
+            <h3><i class="fa fa-paperclip"></i> Current Resume</h3>
+            {{ $user->filename }}
+            <button class="btn btn-default btn-xs delete_account_button" data-toggle="modal" data-target="#deleteResumeModal">Delete Resume</button>
+        @endif
+
+    </div>
+
+    <div class="well">
 
         <h3 class="notification_header"><i class="fa fa-envelope"></i> Email Notifications</h3>
 
@@ -51,3 +78,4 @@
 </div>
 
 @include('includes/modals/delete_account_modal')
+@include('includes/modals/delete_resume_modal')

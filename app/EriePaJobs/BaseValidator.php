@@ -23,9 +23,9 @@ abstract class BaseValidator implements JBValidatorInterface {
 
 
 
-    public function validate($input, $rules){
+    public function validate($input, $rules, $messages = []){
 
-        $validator = Validator::make($input, $rules);
+        $validator = Validator::make($input, $rules, $messages);
 
         $response = array();
 

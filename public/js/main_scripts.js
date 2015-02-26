@@ -67,6 +67,31 @@ linkButton.change(function(){
 });
 
 /*
+ Default / New resume radio buttons on application create form
+ */
+
+var defaultResume = $('#default_resume'),
+    newResume = $('#new_resume'),
+    newResumeUploadBox = $('#new_resume_upload');
+
+defaultResume.change(function(){
+    newResumeUploadBox.html('');
+});
+
+newResume.change(function(){
+    newResumeUploadBox.html('<p>Browse for your resume. Files must be PDF or Word files and smaller than 6mb in size.</p><input name="resume" type="file">');
+});
+
+/*
+    Replace apply buttons with loader on click
+ */
+
+$('.apply_buttons input').on('click', function(){
+    $('.apply_buttons').css("display", "none");
+    $('.loader').html('Sending ... <img src="'+getBaseURL()+'images/loader.gif" style="max-height: 30px;" />');
+});
+
+/*
     Save search term email notification button
  */
 
@@ -91,7 +116,6 @@ notifyButton.on('click', function(event) {
         });
 });
 
-
 /*
  Tool Tips
  */
@@ -102,8 +126,6 @@ $(function () {
     };
     $('#confidential').tooltip(confidentialOptions);
 });
-
-
 
 /*
  Get the root URL
@@ -127,5 +149,62 @@ function getBaseURL() {
         return baseURL + "/";
     }
 }
+
+
+
+
+// Get the template HTML and remove it from the document
+var previewNode = document.querySelector("#template");
+previewNode.id = "";
+var previewTemplate = previewNode.parentNode.innerHTML;
+previewNode.parentNode.removeChild(previewNode);
+
+var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
+    url: "/store-permanent-application", // Set the url
+    maxFilesize: 6,
+    paramName: 'resume',
+    acceptedFiles: '.pdf,.doc,.docx',
+    thumbnailWidth: 80,
+    thumbnailHeight: 80,
+    parallelUploads: 20,
+    previewTemplate: previewTemplate,
+    autoQueue: false, // Make sure the files aren't queued until manually added
+    previewsContainer: "#previews", // Define the container to display the previews
+    clickable: ".upload_button" // Define the element that should be used as click trigger to select files.
+});
+
+myDropzone.on("addedfile", function(file) {
+    // Hookup the start button
+    file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file); };
+});
+
+// Update the total progress bar
+myDropzone.on("totaluploadprogress", function(progress) {
+    document.querySelector(".progress-bar").style.width = progress + "%";
+});
+
+myDropzone.on("sending", function(file) {
+    // And disable the start button
+    file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
+});
+
+myDropzone.on("complete", function(file){
+    console.log(file.xhr.response);
+    var response = file.xhr.response;
+    $(".dz-complete").html(response);
+    location.reload();
+
+});
+
+
+// Setup the buttons for all transfers
+// The "add files" button doesn't need to be setup because the config
+// `clickable` has already been specified.
+document.querySelector("#actions .start").onclick = function() {
+    myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
+};
+document.querySelector("#actions .cancel").onclick = function() {
+    myDropzone.removeAllFiles(true);
+};
 
 

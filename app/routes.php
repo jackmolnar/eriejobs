@@ -26,6 +26,7 @@ Route::post('search', 'SearchController@index');
 Route::get('search', 'SearchController@index');
     //applications
 Route::resource('jobs.application', 'ApplicationsController');
+Route::post('store-permanent-application', 'ApplicationsController@storePermanent');
 Route::get('jobs/{jobs}/application-sent', array('uses' => 'ApplicationsController@applicationSent', 'as' => 'jobs.applications.sent'));
     //activate - deactivate job
 Route::post('jobs/active', ['uses' => 'JobsController@active', 'as' => 'jobs.active']);
@@ -43,6 +44,7 @@ Route::get('edit-info', 'ProfilesController@edit_info');
 Route::put('edit-info/{id}', 'ProfilesController@update_info');
 Route::get('edit-notifications', 'ProfilesController@edit_notifications');
 Route::put('edit-notifications/{id}', 'ProfilesController@update_notifications');
+Route::get('destroy-resume', 'ProfilesController@destroy_resume');
 
 /*
  * Pages Routes

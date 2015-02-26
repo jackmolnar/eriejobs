@@ -20,6 +20,8 @@ class ApplicationsRepository {
     public function uploadResume($resume)
     {
         $name = strtotime("now");
+        $extension = $resume->getClientOriginalExtension();
+        $name = $name.'.'.$extension;
         $path = \Config::get('resumes.temp_path');
         $resume->move($path, $name);
 
@@ -27,16 +29,29 @@ class ApplicationsRepository {
     }
 
     /**
-     * Upload permanant resume and return the path
+     * Upload permanent resume and return the path
      * @param $resume
      * @return string
      */
-    public function uploadPermanantResume($resume)
+    public function uploadPermanentResume($resume)
     {
-        $name = strtotime("now");
-        $path = \Config::get('resumes.permanant_path');
+        $name = $resume->getClientOriginalName();
+        $path = \Config::get('resumes.permanent_path');
         $resume->move($path, $name);
 
         return $path.$name;
+    }
+
+    /**
+     * Create resume record in resume table
+     * @param $user_id
+     * @param $path
+     */
+    public function createResumeRecord($user_id, $path)
+    {
+        $resume = new \Resume;
+        $resume->path = $path;
+        $resume->user_id = $user_id;
+        $resume->save();
     }
 } 
