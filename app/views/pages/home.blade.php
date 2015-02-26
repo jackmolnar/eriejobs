@@ -30,7 +30,7 @@
     <div class="col-md-4">
         <h2>Locally Owned and Operated</h2>
         <img src="../images/home_image_2.jpg" class="img-responsive">
-        <p>EriePa.Jobs is locally owned an operated. We have our ear to the employment situation in Erie and have a stake in matching top talent with the areas best employers.
+        <p>EriePa.Jobs is locally owned an operated. We have our ear to the ground when it comes to employment in Erie. We have a stake in matching top talent with the area's best employers.
            <br/><br/>
            {{ link_to_action('AuthController@getSeekerSignup', 'Sign Up and Apply For Jobs', null, ['class' => 'btn btn-primary']) }}
         </p>
