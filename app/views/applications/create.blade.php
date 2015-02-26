@@ -20,7 +20,7 @@
             @if($user->filename)
                 <div class="radio">
                     <label>
-                        <input type="radio" name="resume_radio_group" id="default_resume" value="default_resume" >
+                        <input type="radio" name="resume_radio_group" id="default_resume" value="default_resume" checked>
                         Would you like to use the resume you have on file? - {{ $user->filename }}
                     </label>
                 </div>
