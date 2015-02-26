@@ -33,7 +33,6 @@ class NotificationRepository {
 
         $affectedRows = Notification::where('user_id', '=', $user_id)->delete();
 
-//        dd(count(Notification::where('user_id', '=', $user_id)->get()));
     }
 
 }

@@ -9,6 +9,7 @@
 namespace EriePaJobs\Notifications;
 use EriePaJobs\BaseCommand;
 use Auth;
+use EriePaJobs\Users\UserRepository;
 use Notification;
 use Category;
 
@@ -23,7 +24,8 @@ class CreateNotificationCommand extends BaseCommand{
     public function __construct($input)
     {
         $this->input = $input;
-        $this->user = Auth::user();
+        $this->userRepo = new UserRepository;
+        $this->user = $this->userRepo->authedUser();
     }
 
     /**
@@ -33,7 +35,9 @@ class CreateNotificationCommand extends BaseCommand{
     public function execute()
     {
         // check if search term exists
-        if(Notification::where('term', '=', $this->input)->first())
+        if(Notification::where('term', '=', $this->input)
+            ->where('user_id', '=', $this->user->id)
+            ->first())
         {
             return false;
         }
