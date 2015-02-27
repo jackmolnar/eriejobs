@@ -19,7 +19,7 @@
     <hr/>
 
     @if(isset($noResults))
-        <div class="row job_listing"><h2>{{ $noResults }}</h2></div>
+        <div class="job_listing"><h2>{{ $noResults }}</h2></div>
     @endif
 
     @if(isset($results))

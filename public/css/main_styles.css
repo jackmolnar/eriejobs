@@ -221,6 +221,8 @@ ul {
   font-size: 30px;
   padding-bottom: 15px;
   padding-top: 15px; }
+.search .col-md-9 h2 {
+  font-size: 24px; }
 .search .col-md-9 .well {
   margin-left: -20px; }
 .search ul {
