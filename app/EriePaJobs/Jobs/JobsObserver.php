@@ -25,7 +25,7 @@ class JobsObserver {
      */
     public function created($job)
     {
-        $job->addToIndex();
+        $job->index();
         $this->jobsRepo->updateAllJobsCache();
     }
 
@@ -36,9 +36,9 @@ class JobsObserver {
     public function saved($job)
     {
         if($job->active == 0){
-            $job->removeFromIndex();
+            $job->removeIndex();
         } elseif ($job->active == 1){
-            $job->addToIndex();
+            $job->index();
         }
         $this->jobsRepo->updateAllJobsCache();
     }
@@ -49,7 +49,7 @@ class JobsObserver {
      */
     public function deleted($job)
     {
-        $job->removeFromIndex();
+        $job->removeIndex();
         $this->jobsRepo->updateAllJobsCache();
     }
 

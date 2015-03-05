@@ -18,7 +18,7 @@ class SearchController extends \BaseController {
 
 
     /**
-	 * Display a listing of the resource.
+	 * Display a listing of the resource
 	 * GET /search
 	 *
 	 * @return Response
@@ -30,11 +30,11 @@ class SearchController extends \BaseController {
 
         if(count($result) == 0)
         {
-            $result = "Sorry, no results were returned for '".$term."' Please try another search.";
+            $result = "Sorry, no results were returned for '".$term."'. Please try another search.";
             return View::make('search.index', ['noResults' => $result, 'term' => $term]);
         }
 
-        $result = $result->paginate(15);
+        $result = $result->paginate(20);
 
         return View::make('search.index', ['results' => $result, 'term' => $term]);
 	}

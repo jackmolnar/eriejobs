@@ -19,7 +19,7 @@
     <hr/>
 
     @if(isset($noResults))
-        <div class="row job_listing"><h2>{{ $noResults }}</h2></div>
+        <div class="job_listing"><p>{{ $noResults }}</p></div>
     @endif
 
     @if(isset($results))
@@ -28,12 +28,14 @@
         @endforeach
         </div>
         <div class="pagination_links">
-            {{ $results->links() }}
+            @if($term != '')
+                {{ $results->appends(array('search_term' => $term))->links() }}
+            @else
+                {{ $results->links() }}
+            @endif
         </div>
     @endif
 
-
-</div>
 </div>
 
 @stop
