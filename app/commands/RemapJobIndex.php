@@ -39,7 +39,7 @@ class RemapJobIndex extends Command {
 	{
         Job::rebuildMapping();
 
-        Job::reindex();
+		Job::where('active', '=', 1)->get()->index();
 
         $this->info('Mapping rebuilt.');
 	}

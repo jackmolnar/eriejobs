@@ -8,9 +8,9 @@
 		"laravel/framework": "4.2.*",
         "mmanos/laravel-social": "dev-master",
         "elasticsearch/elasticsearch": "1.3.1",
-        "fairholm/elasticquent": "1.0.0",
         "laravel/cashier": "~2.0",
-        "pda/pheanstalk": "~2.0"
+        "pda/pheanstalk": "~2.0",
+		"fadion/bouncy": "dev-master"
     },
     "require-dev": {
         "way/generators": "~2.0",

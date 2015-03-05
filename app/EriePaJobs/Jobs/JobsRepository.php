@@ -120,8 +120,15 @@ class JobsRepository {
             return $result->sortByDesc('created_at')->take($limit);
         }
 
-        //only returns active results - nonactive listings removed from index
-        $result = Job::searchByQuery(['match' => ['_all' => $term]], null, null, $limit, $offset);
+        $params = [
+            'query' => [
+                'match' => [
+                    '_all' => $term
+                ]
+            ]
+        ];
+
+        $result = Job::search($params);
 
         return $result;
     }

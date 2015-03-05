@@ -2,6 +2,7 @@
 
 use Elasticquent\ElasticquentTrait;
 use EriePaJobs\Jobs\JobsRepository;
+use Fadion\Bouncy\BouncyTrait;
 
 class Job extends \Eloquent {
 
@@ -29,7 +30,7 @@ class Job extends \Eloquent {
     /**
      * trait to enable elastic search methods
      */
-    use ElasticquentTrait;
+    use BouncyTrait;
 
     /**
      * Category relationship

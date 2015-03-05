@@ -1,7 +1,6 @@
 <?php
 
 use EriePaJobs\Jobs\JobsRepository;
-use EriePaJobs\Mailers\NewJobsNotificationMailer;
 use Illuminate\Console\Command;
 use Carbon\Carbon;
 use Symfony\Component\Console\Input\InputOption;
@@ -23,7 +22,6 @@ class SendNewJobNotifications extends Command {
 	 */
 	protected $description = 'Sends new job listings to notification subscribers.';
     protected $jobsRepo;
-    protected $mailer;
 
     /**
      * Create a new command instance.
@@ -36,8 +34,6 @@ class SendNewJobNotifications extends Command {
 		parent::__construct();
 
         $this->jobsRepo = new JobsRepository;
-
-        $this->mailer = new NewJobsNotificationMailer;
     }
 
 	/**

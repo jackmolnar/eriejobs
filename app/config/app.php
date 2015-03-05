@@ -125,6 +125,7 @@ return array(
         'EriePaJobs\ViewComposers\ComposerServiceProvider',
         'Mmanos\Social\SocialServiceProvider',
         'Laravel\Cashier\CashierServiceProvider',
+		'Fadion\Bouncy\BouncyServiceProvider'
 	),
 
 	/*

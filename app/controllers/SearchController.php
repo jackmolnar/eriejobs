@@ -18,7 +18,7 @@ class SearchController extends \BaseController {
 
 
     /**
-	 * Display a listing of the resource.
+	 * Display a listing of the resource
 	 * GET /search
 	 *
 	 * @return Response
@@ -26,21 +26,15 @@ class SearchController extends \BaseController {
 	public function index()
 	{
         $term = Input::get('search_term');
-
         $result = $this->jobsRepo->searchForJob($term);
 
         if(count($result) == 0)
         {
-            $result = "Sorry, no results were returned for '".$term."' <br/>Please try another search.";
+            $result = "Sorry, no results were returned for '".$term."'. Please try another search.";
             return View::make('search.index', ['noResults' => $result, 'term' => $term]);
         }
 
-//        dd($result->title);
-//        $result = Paginator::make($result->toArray(), count($result->toArray()), 3);
-        $result = $result->paginate(1);
-//        $result = Job::paginate(3);
-
-
+        $result = $result->paginate(20);
 
         return View::make('search.index', ['results' => $result, 'term' => $term]);
 	}
