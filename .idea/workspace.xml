@@ -31,11 +31,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/app.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4318766" vertical-offset="168" max-vertical-offset="4326">
-              <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+            <state vertical-scroll-proportion="-14.875" vertical-offset="168" max-vertical-offset="4326">
+              <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="787" max-vertical-offset="15666">
+              <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.13513513" vertical-offset="0" max-vertical-offset="777">
+              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -51,7 +71,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/js/dropzone.js" />
         <option value="$PROJECT_DIR$/app/assets/sass/_buttons.scss" />
         <option value="$PROJECT_DIR$/app/views/profile/index.blade.php" />
         <option value="$PROJECT_DIR$/app/EriePaJobs/Resumes/PermanentResumeValidator.php" />
@@ -75,7 +94,6 @@
         <option value="$PROJECT_DIR$/app/EriePaJobs/Applications/SendNewApplicationCommand.php" />
         <option value="$PROJECT_DIR$/app/EriePaJobs/Applications/ApplicationsRepository.php" />
         <option value="$PROJECT_DIR$/public/js/main_scripts.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/controllers/ApplicationsController.php" />
         <option value="$PROJECT_DIR$/app/views/applications/create.blade.php" />
         <option value="$PROJECT_DIR$/app/EriePaJobs/Notifications/NotificationRepository.php" />
@@ -102,6 +120,8 @@
         <option value="$PROJECT_DIR$/app/commands/SendNewJobNotifications.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/app/config/app.php" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -162,222 +182,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fadion" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bouncy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fadion" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bouncy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Fadion" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bouncy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fadion" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bouncy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="search" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="includes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="search" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="includes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eriejobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -385,7 +189,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="composer&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/composer.json&#10;job&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/models/Job.php&#10;ind&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/search/index.blade.php&#10;searchform&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/search/search_form.blade.php&#10;routes&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/routes.php&#10;bouncy&#9;null&#9;null&#10;compo&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/composer.json&#10;composer.j&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/composer.json&#10;el&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/vendor/fairholm/elasticquent/src/ElasticquentResultCollection.php&#10;elastic&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/vendor/fairholm/elasticquent/src/ElasticquentCollection.php&#10;elasti&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/vendor/fairholm/elasticquent/src/ElasticquentResultCollection.php&#10;elast&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/vendor/fairholm/elasticquent/src/ElasticquentCollection.php&#10;elasticquentcol&#9;null&#9;null&#10;main&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/public/js/main_scripts.js&#10;notific&#9;null&#9;null&#10;send&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Applications/SendNewApplicationCommand.php&#10;application&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Applications/SendNewApplicationValidator.php&#10;gitig&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/.gitignore&#10;base&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/BaseValidator.php&#10;user&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/models/User.php&#10;prof&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/controllers/ProfilesController.php&#10;store&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Resumes/StorePermanentResumeCommand.php&#10;profilescon&#9;null&#9;null&#10;resumes&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/config/resumes.php&#10;create_resu&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/database/migrations/2015_02_21_224744_create_resumes_table.php&#10;sendnew&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Applications/SendNewApplicationValidator.php&#10;main_sc&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/public/js/main_scripts.js&#10;seeker&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/profiles/seeker.blade.php&#10;resum&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/config/resumes.php&#10;artisan&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/start/artisan.php&#10;artis&#9;null&#9;null&#10;deleteold&#9;null&#9;null&#10;newappli&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Events/Applications/NewApplicationSentHandler.php&#10;events&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/events.php&#10;search&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/controllers/SearchController.php&#10;jobscon&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/controllers/JobsController.php&#10;updateseeker&#9;null&#9;null&#10;createcon&#9;null&#9;null&#10;createcontact&#9;null&#9;null&#10;jobsrepos&#9;null&#9;null&#10;jobsrep&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Jobs/JobsRepository.php&#10;deletejobcom&#9;null&#9;null&#10;edit&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/jobs/edit_form.blade.php&#10;newjobpost&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Events/Jobs/NewJobPostedHandler.php&#10;newjob&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/tests/unit/NewJobPostedHandlerTest.php&#10;hand&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Events/Jobs/NewJobPostedHandler.php&#10;type&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/models/Type.php&#10;browse&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/controllers/BrowseController.php&#10;add&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/notifications/add_search_term.blade.php&#10;sear&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/search/search_form.blade.php" />
+    <property name="SearchEverywhereHistoryKey" value="git&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/.gitignore&#10;composer&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/composer.json&#10;job&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/models/Job.php&#10;ind&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/search/index.blade.php&#10;searchform&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/search/search_form.blade.php&#10;routes&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/routes.php&#10;bouncy&#9;null&#9;null&#10;compo&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/composer.json&#10;composer.j&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/composer.json&#10;el&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/vendor/fairholm/elasticquent/src/ElasticquentResultCollection.php&#10;elastic&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/vendor/fairholm/elasticquent/src/ElasticquentCollection.php&#10;elasti&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/vendor/fairholm/elasticquent/src/ElasticquentResultCollection.php&#10;elast&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/vendor/fairholm/elasticquent/src/ElasticquentCollection.php&#10;elasticquentcol&#9;null&#9;null&#10;main&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/public/js/main_scripts.js&#10;notific&#9;null&#9;null&#10;send&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Applications/SendNewApplicationCommand.php&#10;application&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Applications/SendNewApplicationValidator.php&#10;gitig&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/.gitignore&#10;base&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/BaseValidator.php&#10;user&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/models/User.php&#10;prof&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/controllers/ProfilesController.php&#10;store&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Resumes/StorePermanentResumeCommand.php&#10;profilescon&#9;null&#9;null&#10;resumes&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/config/resumes.php&#10;create_resu&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/database/migrations/2015_02_21_224744_create_resumes_table.php&#10;sendnew&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Applications/SendNewApplicationValidator.php&#10;main_sc&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/public/js/main_scripts.js&#10;seeker&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/profiles/seeker.blade.php&#10;resum&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/config/resumes.php&#10;artisan&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/start/artisan.php&#10;artis&#9;null&#9;null&#10;deleteold&#9;null&#9;null&#10;newappli&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Events/Applications/NewApplicationSentHandler.php&#10;events&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/events.php&#10;search&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/controllers/SearchController.php&#10;jobscon&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/controllers/JobsController.php&#10;updateseeker&#9;null&#9;null&#10;createcon&#9;null&#9;null&#10;createcontact&#9;null&#9;null&#10;jobsrepos&#9;null&#9;null&#10;jobsrep&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Jobs/JobsRepository.php&#10;deletejobcom&#9;null&#9;null&#10;edit&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/jobs/edit_form.blade.php&#10;newjobpost&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Events/Jobs/NewJobPostedHandler.php&#10;newjob&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/tests/unit/NewJobPostedHandlerTest.php&#10;hand&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/EriePaJobs/Events/Jobs/NewJobPostedHandler.php&#10;type&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/models/Type.php&#10;browse&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/controllers/BrowseController.php&#10;add&#9;FILE&#9;file:///Users/jackmolnar1982/internet_files/eriejobs/app/views/includes/notifications/add_search_term.blade.php" />
     <property name="options.lastSelected" value="Laravel.SettingsForm" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -531,13 +335,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/models/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4588689" vertical-offset="903" max-vertical-offset="1785">
-          <caret line="64" column="7" selection-start-line="64" selection-start-column="7" selection-end-line="64" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/mail.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2919">
@@ -570,13 +367,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4781491" vertical-offset="48" max-vertical-offset="1197">
           <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27027026" vertical-offset="0" max-vertical-offset="777">
-          <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -795,7 +585,7 @@
         <state vertical-scroll-proportion="0.51285344" vertical-offset="84" max-vertical-offset="4200">
           <caret line="23" column="15" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
           <folding>
-            <element signature="e#7#42#0#PHP" expanded="true" />
+            <element signature="e#7#42#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -813,7 +603,7 @@
         <state vertical-scroll-proportion="0.29691517" vertical-offset="0" max-vertical-offset="778">
           <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
           <folding>
-            <element signature="e#32#76#0#PHP" expanded="true" />
+            <element signature="e#32#76#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -839,7 +629,7 @@
         <state vertical-scroll-proportion="0.4593496" vertical-offset="1047" max-vertical-offset="2898">
           <caret line="66" column="41" selection-start-line="66" selection-start-column="41" selection-end-line="66" selection-end-column="41" />
           <folding>
-            <element signature="e#7#42#0#PHP" expanded="true" />
+            <element signature="e#7#42#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -910,8 +700,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/app.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4318766" vertical-offset="168" max-vertical-offset="4326">
-          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+        <state vertical-scroll-proportion="-14.875" vertical-offset="168" max-vertical-offset="4326">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="787" max-vertical-offset="15666">
+          <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13513513" vertical-offset="0" max-vertical-offset="777">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding />
         </state>
       </provider>

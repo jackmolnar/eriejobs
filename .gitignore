@@ -2,6 +2,8 @@
 /vendor
 /app/EriePaJobs/Applications/Resumes/PermanentResumes
 /app/EriePaJobs/Applications/Resumes/TempResumes
+/.idea/
+.idea/workspace.xml
 composer.phar
 .env.*.php
 .env.php
