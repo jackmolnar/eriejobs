@@ -2,6 +2,7 @@ $nav_fonts: 'Roboto Condensed', sans-serif;
 $bold_fonts: 'Titillium Web', sans-serif;
 
 $dark_blue: rgb(42, 44, 43);
+$epj_green: #26322C;
 
 $transparent_dark_blue: rgba(25, 53, 65, 0.75);
 $light_green: #d7dfd2;
@@ -12,7 +13,7 @@ $dark_grey: #595959;
 //new colors
 $darkest_green: rgb(30, 30, 32);
 $dark_green: rgb(42, 44, 43);
-$middle_green: rgb(55, 65, 64);
+$middle_green: #589B94;
 $pale_yellow: rgb(217, 203, 158);
 $orange: rgb(220, 53, 34);
 //end new colors
@@ -43,7 +44,7 @@ $gigantic: 1450px;
 @import "footer";
 
 body {
-  padding-top: 100px;
+  padding-top: 75px;
 }
 
 .main_row{
@@ -64,7 +65,7 @@ label{
 h1, h2{
   font-family: $bold_fonts;
   font-weight: 700;
-  color: $middle_green;
+  color: $dark_green;
   margin: 0px;
 }
 

@@ -35,6 +35,21 @@ class UserRepository {
     }
 
     /**
+     * Check if user signed up for notification
+     * @param $user
+     * @param $term
+     * @return bool
+     */
+    public function checkNotification($user, $term)
+    {
+        foreach($user->jobNotifications as $notification)
+        {
+            if($term == $notification->term) return $notification;
+        }
+        return false;
+    }
+
+    /**
      * Get resume record by user id
      * @param $user_id
      * @return \Illuminate\Database\Eloquent\Model|null|static

@@ -4,7 +4,9 @@
 
 <div class="profile">
 
-    <h1>My Profile</h1>
+    <div class="col-md-12">
+        <h1>My Profile</h1>
+    </div>
 
     @if($user->role->title == "Recruiter")
         @include('includes.profiles.recruiter')

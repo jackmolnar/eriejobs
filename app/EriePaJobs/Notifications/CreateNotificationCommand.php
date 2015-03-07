@@ -8,10 +8,8 @@
 
 namespace EriePaJobs\Notifications;
 use EriePaJobs\BaseCommand;
-use Auth;
 use EriePaJobs\Users\UserRepository;
 use Notification;
-use Category;
 
 class CreateNotificationCommand extends BaseCommand{
 
@@ -45,7 +43,7 @@ class CreateNotificationCommand extends BaseCommand{
         // set the notifications
         $notification = new Notification;
         $notification->user_id = $this->user->id;
-        $notification->term = $this->input;
+        $notification->term = strtolower($this->input);
         $notification->save();
 
         return true;

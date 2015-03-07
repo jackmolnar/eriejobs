@@ -20,7 +20,6 @@
                 @elseif(!isset($user))
                     @include('includes.jobs.apply_sign_up_button')
                 @endif
-                <hr/>
                 <h3>{{ $job->company_name }}</h3>
             </div>
         </div>
@@ -30,23 +29,16 @@
                 <ul>
                     <li>{{ Form::label('type', 'Type:') }} {{ $job->type->type }}</li>
                     <li>{{ Form::label('salary', 'Salary:') }} {{ $job->salary }}</li>
-                </ul>
-            </div>
-            <div class="col-md-6">
-                <ul>
                     <li>{{ Form::label('level', 'Career Level:') }} {{ $job->careerlevel->level }}</li>
                     <li>{{ Form::label('category', 'Category:') }}
                         @foreach($job->categories as $category)
                             {{ $category['category'] }}
                         @endforeach
                     </li>
+
                 </ul>
             </div>
-        </div>
-        <hr/>
-        <div class="row job_data">
-            <div class="col-md-12">
-                <h3 style="margin-bottom: 25px">Location</h3>
+            <div class="col-md-6">
                 <ul>
                     <li>{{ Form::label('company_address', 'Address:') }} {{ $job->company_address }}</li>
                     <li>{{ Form::label('company_city', 'City:') }} {{ $job->company_city }}</li>
@@ -56,13 +48,17 @@
         </div>
         <hr/>
         <div class="row">
-            <h3>Job Description</h3>
-            {{ $job->description }}
+            <div class="col-md-12">
+                <h3>Job Description</h3>
+                {{ $job->description }}
+            </div>
         </div>
         @if(isset($user) && $user->role->title == 'Seeker')
             <hr/>
             <div class="row">
-                @include('includes.jobs.apply_button')
+                <div class="col-md-12">
+                    @include('includes.jobs.apply_button')
+                </div>
             </div>
         @endif
 

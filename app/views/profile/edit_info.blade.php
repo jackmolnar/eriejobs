@@ -18,9 +18,11 @@
                 {{ Form::label('email', 'Email Address') }}
                 {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) }}
 
+                <hr/>
+
                 {{ Form::submit('Update', ['class' => 'btn btn-primary btn-sm']) }}
 
-                {{ link_to_action('ProfilesController@index', 'Cancel', null, ['class' => 'btn btn-default btn-sm']) }}
+                {{ link_to_action('ProfilesController@index', 'Cancel', null, ['class' => 'btn btn-default btn-sm', 'style' => 'float:right;']) }}
 
             {{ Form::close() }}
         </div>

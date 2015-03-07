@@ -48,4 +48,15 @@ class CategoryRepository {
         return $allCategories;
     }
 
+    /**
+     * Get category title from slug
+     * @param $slug
+     * @return mixed
+     */
+    public function getCategoryTitle($slug)
+    {
+        $category = Category::where('slug', '=', $slug)->first();
+        return $category->category;
+    }
+
 }

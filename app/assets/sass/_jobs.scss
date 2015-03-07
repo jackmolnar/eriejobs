@@ -11,11 +11,17 @@
     margin-bottom: 20px;
     display: inline-block;
     max-width: 315px;
+    font-size: 32px;
+
     @media screen and (min-width: $small) {
       max-width: 450px;
     }
     @media screen and (min-width: $middle) {
       max-width: 600px;
+    }
+
+    h3{
+      font-size: 22px;
     }
 
   }
@@ -24,7 +30,7 @@
     margin-top: 0px;
     font-family: $nav_fonts;
     font-weight: bold;
-    color: $blue_green;
+    color: $middle_green;
   }
 
   .job_data, .contact_data, .location_data{
@@ -33,7 +39,7 @@
       padding-left: 0px;
 
       li{
-        margin-bottom: 20px;
+        margin-bottom: 6px;
       }
 
       li:last-of-type{

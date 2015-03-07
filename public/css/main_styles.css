@@ -98,7 +98,7 @@
           width: auto; } }
 
 .signup_headline {
-  color: #374140;
+  color: #589B94;
   font-size: 28px; }
   .signup_headline .accent {
     color: #dc3522; }
@@ -175,23 +175,26 @@ ul {
   .jobs h1, .jobs .job_create, .jobs h2, .jobs .job_create {
     margin-bottom: 20px;
     display: inline-block;
-    max-width: 315px; }
+    max-width: 315px;
+    font-size: 32px; }
     @media screen and (min-width: 768px) {
       .jobs h1, .jobs h2 {
         max-width: 450px; } }
     @media screen and (min-width: 992px) {
       .jobs h1, .jobs h2 {
         max-width: 600px; } }
+    .jobs h1 h3, .jobs h1 .job_create, .jobs h2 h3, .jobs h2 .job_create {
+      font-size: 22px; }
   .jobs h3, .jobs .job_create {
     margin-top: 0px;
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: bold;
-    color: #37636f; }
+    color: #589B94; }
   .jobs .job_data ul, .jobs .job_data .job_create, .jobs .contact_data ul, .jobs .contact_data .job_create, .jobs .location_data ul, .jobs .location_data .job_create {
     list-style: none;
     padding-left: 0px; }
     .jobs .job_data ul li, .jobs .job_data ul .job_create, .jobs .contact_data ul li, .jobs .contact_data ul .job_create, .jobs .location_data ul li, .jobs .location_data ul .job_create {
-      margin-bottom: 20px; }
+      margin-bottom: 6px; }
     .jobs .job_data ul li:last-of-type, .jobs .job_data ul .job_create, .jobs .contact_data ul li:last-of-type, .jobs .contact_data ul .job_create, .jobs .location_data ul li:last-of-type, .jobs .location_data ul .job_create {
       margin-bottom: 0px; }
     .jobs .job_data ul label, .jobs .job_data ul .job_create, .jobs .contact_data ul label, .jobs .contact_data ul .job_create, .jobs .location_data ul label, .jobs .location_data ul .job_create {
@@ -234,6 +237,12 @@ ul {
 .search .search_box {
   display: inline;
   max-width: 400px; }
+.search .job_listing h4 a {
+  -webkit-transition: color 0.2s;
+          transition: color 0.2s; }
+.search .job_listing h4 a:hover {
+  color: #dc3522;
+  text-decoration: none; }
 .search .job_listing .company_name {
   display: block;
   font-family: 'Roboto Condensed', sans-serif; }
@@ -245,7 +254,7 @@ ul {
   font-family: 'Roboto Condensed', sans-serif; }
 .search .bold_search_term {
   font-weight: bold;
-  color: #374140; }
+  color: #589B94; }
 
 .profile {
   min-height: 500px; }
@@ -1875,8 +1884,8 @@ ul {
   content: "\f20c"; }
 
 .navbar-inverse {
-  background: url("/images/top_bar.jpg") repeat-x 0px -23px;
-  height: 100px;
+  background: url("/images/top_bar.jpg") repeat-x 0px -38px;
+  height: 85px;
   border: none; }
   @media screen and (max-width: 768px) {
     .navbar-inverse .navbar-collapse {
@@ -1886,7 +1895,7 @@ ul {
       padding-right: 0px;
       margin: 13px 0px 0px; } }
   .navbar-inverse .nav, .navbar-inverse .navbar-nav {
-    margin-top: 37px;
+    margin-top: 29px;
     background-color: #2a2c2b;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -1906,16 +1915,22 @@ ul {
       .navbar-inverse .nav, .navbar-inverse .navbar-nav {
         padding-left: 0px;
         padding-right: 0px; } }
-    @media screen and (max-width: 768px) {
-      .navbar-inverse .nav li, .navbar-inverse .navbar-nav li {
-        padding-left: 30px;
-        padding-top: 10px; } }
-    .navbar-inverse .nav li a, .navbar-inverse .navbar-nav li a {
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: 18px;
-      color: #d7dfd2; }
-    .navbar-inverse .nav li .hiring_button, .navbar-inverse .navbar-nav li .hiring_button {
-      color: #dc3522; }
+    .navbar-inverse .nav li, .navbar-inverse .navbar-nav li {
+      margin-bottom: 2px; }
+      @media screen and (max-width: 768px) {
+        .navbar-inverse .nav li, .navbar-inverse .navbar-nav li {
+          padding-left: 30px;
+          padding-top: 10px; } }
+      .navbar-inverse .nav li a, .navbar-inverse .navbar-nav li a {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 16px;
+        color: #d7dfd2;
+        -webkit-transition: color 0.2s;
+                transition: color 0.2s; }
+      .navbar-inverse .nav li a:hover, .navbar-inverse .navbar-nav li a:hover {
+        color: #dc3522; }
+      .navbar-inverse .nav li .hiring_button, .navbar-inverse .navbar-nav li .hiring_button {
+        color: #dc3522; }
   .navbar-inverse .navbar-header {
     background: url("/images/eriepajobs_3.png") no-repeat;
     margin-top: 12px;
@@ -1980,7 +1995,7 @@ ul {
     padding-left: 0px;
     padding-right: 25px; }
   .hiring .hiring_headline {
-    color: #374140; }
+    color: #589B94; }
     .hiring .hiring_headline .accent {
       font-size: 34px; }
     .hiring .hiring_headline .free {
@@ -2087,7 +2102,7 @@ ul {
   .section2 p {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 16px;
-    color: #374140;
+    color: #589B94;
     background-color: #d7dfd2;
     padding: 20px;
     border-bottom-left-radius: 5px;
@@ -2121,7 +2136,7 @@ ul {
 .footer {
   height: auto;
   margin-top: 60px;
-  background-color: #2a2c2b;
+  background-color: #26322C;
   border-top: solid thick #dc3522;
   padding-bottom: 35px; }
   .footer .container {
@@ -2185,7 +2200,7 @@ ul {
           background-position: -80px -40px; }
 
 body {
-  padding-top: 100px; }
+  padding-top: 75px; }
 
 .main_row {
   min-height: 50px; }
@@ -2201,7 +2216,7 @@ label {
 h1, h2 {
   font-family: 'Titillium Web', sans-serif;
   font-weight: 700;
-  color: #374140;
+  color: #2a2c2b;
   margin: 0px; }
 
 .well {

@@ -34,6 +34,16 @@
 
   .job_listing{
 
+    h4{
+      a{
+        transition: color .2s;
+      }
+      a:hover{
+        color: $orange;
+        text-decoration: none;
+      }
+    }
+
     .company_name{
       display:block;
       font-family: $nav_fonts;

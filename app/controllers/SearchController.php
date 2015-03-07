@@ -1,6 +1,7 @@
 <?php
 
 use EriePaJobs\Jobs\JobsRepository;
+use EriePaJobs\Users\UserRepository;
 
 class SearchController extends \BaseController {
 
@@ -9,11 +10,16 @@ class SearchController extends \BaseController {
      * @var JobsRepository
      */
     private $jobsRepo;
+    /**
+     * @var UserRepository
+     */
+    private $userRepo;
 
-    function __construct(JobsRepository $jobsRepo)
+    function __construct(JobsRepository $jobsRepo, UserRepository $userRepo)
     {
-        View::share('user', Auth::user());
         $this->jobsRepo = $jobsRepo;
+        $this->userRepo = $userRepo;
+        View::share('user', $this->userRepo->authedUser());
     }
 
 
@@ -25,8 +31,17 @@ class SearchController extends \BaseController {
 	 */
 	public function index()
 	{
+        // search for term
         $term = Input::get('search_term');
         $result = $this->jobsRepo->searchForJob($term);
+
+        // if logged in, check if user signed up for search term
+        if($this->userRepo->authedUser())
+        {
+            $notification = $this->userRepo->checkNotification($this->userRepo->authedUser(), $term);
+        } else {
+            $notification = false;
+        }
 
         if(count($result) == 0)
         {
@@ -36,7 +51,7 @@ class SearchController extends \BaseController {
 
         $result = $result->paginate(20);
 
-        return View::make('search.index', ['results' => $result, 'term' => $term]);
+        return View::make('search.index', ['results' => $result, 'term' => $term, 'notification' => $notification]);
 	}
 
 

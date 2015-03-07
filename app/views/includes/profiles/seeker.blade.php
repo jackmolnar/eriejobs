@@ -32,7 +32,7 @@
             other resumes at the time of application if you choose.</p>
 
         <div class="upload_button">
-            <button class="btn btn-success"><i class="fa fa-plus-circle"></i>
+            <button class="btn btn-primary"><i class="fa fa-plus-circle"></i>
                 @if($user->filename)
                     Replace resume ...
                 @else

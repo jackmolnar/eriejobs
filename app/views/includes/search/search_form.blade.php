@@ -6,8 +6,6 @@
 
 {{ Form::text('search_term', $term, ['class' => 'form-control search_box', 'placeholder' => 'Search Term']) }}
 
-{{--{{ Form::submit('Search', ['class' => 'btn btn-primary search_button']) }}--}}
-
 <button class="btn btn-primary search_button" type="submit" ><i class="fa fa-search"></i> Search</button>
 
 {{ Form::close() }}

@@ -26,7 +26,7 @@
 
                 {{ Form::submit('Delete', ['class' => 'btn btn-primary btn-sm']) }}
 
-                {{ link_to_action('ProfilesController@index', 'Cancel', null, ['class' => 'btn btn-sm btn-warning cancel_button']) }}
+                {{ link_to_action('ProfilesController@index', 'Cancel', null, ['class' => 'btn btn-sm btn-default cancel_button']) }}
 
             {{ Form::close() }}
         </div>
