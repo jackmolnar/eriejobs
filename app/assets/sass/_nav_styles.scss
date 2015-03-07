@@ -7,11 +7,10 @@
  .navbar-collapse{
 
    @media screen and (max-width: $small) {
-     width: 100%;
+     width: 115%;
      border: none;
      padding-left: 0px;
      padding-right: 0px;
-     margin: 13px 0px 0px;
    }
  }
 
@@ -66,7 +65,7 @@
 
   .navbar-header {
     background: url("/images/eriepajobs_3.png") no-repeat;
-    margin-top: 12px;
+    margin-top: 8px;
     height: 75px;
 
     @media screen and (max-width: $small) {

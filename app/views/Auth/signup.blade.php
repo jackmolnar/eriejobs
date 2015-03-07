@@ -58,6 +58,7 @@
                 </div>
             </div>
         </div>
+        <hr/>
         <div class="row">
             <div class="col-md-4">
                 {{ Form::submit('Subscribe', ['class' => 'btn btn-primary btn-md']) }}
