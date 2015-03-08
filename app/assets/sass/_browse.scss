@@ -19,6 +19,14 @@
     }
     li{
       line-height: 25px;
+
+      a{
+        transition: color .2s;
+      }
+
+      a:hover{
+        color: $orange;
+      }
     }
   }
 

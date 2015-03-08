@@ -139,6 +139,11 @@ ul {
                 columns: 2; } }
     .browse ul li, .browse ul .search {
       line-height: 25px; }
+      .browse ul li a, .browse ul li .search {
+        -webkit-transition: color 0.2s;
+                transition: color 0.2s; }
+      .browse ul li a:hover, .browse ul li .search {
+        color: #dc3522; }
   .browse .badge, .browse .search {
     background-color: #D5D5D5; }
 
