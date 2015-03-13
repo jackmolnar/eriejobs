@@ -23,6 +23,8 @@
         <hr/>
         <div class="row social_buttons">
             <a href="{{ route('social-login', array('facebook')) }}?onsuccess=/profile&onerror=/login" class="btn btn-primary"><i class="fa fa-facebook-square"></i> Facebook</a>
+            &nbsp;
+            <a href="{{ route('social-login', array('linkedin')) }}?onsuccess=/profile&onerror=/login" class="btn btn-primary"><i class="fa fa-linkedin-square"></i> LinkedIn</a>
         </div>
         <hr/>
         <div class="pass_reset">Forgot your password? {{ link_to_action('RemindersController@getRemind', 'Reset it here.') }}</div>

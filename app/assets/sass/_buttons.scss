@@ -3,18 +3,19 @@
 }
 .btn-primary{
   background: url("/images/buttons/primary_back.jpg") center;
-}
-.btn-primary:hover{
-  border: #ffffff thin solid;
+  background-color: $middle_green;
+  transition: background .2s;
+
+  &:hover{
+    background: darken($middle_green, 20);
+    border: solid thin darken($middle_green, 50);
+  }
 }
 .btn-warning{
   background: url("/images/buttons/warning_back.jpg") center;
 }
 .btn-danger{
   background: url("/images/buttons/danger_back.jpg") center;
-}
-.btn-primary:hover{
-  border: #ffffff thin solid;
 }
 
 

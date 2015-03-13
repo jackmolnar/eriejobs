@@ -4,19 +4,19 @@
   font-family: 'Roboto Condensed', sans-serif; }
 
 .btn-primary {
-  background: url("/images/buttons/primary_back.jpg") center; }
-
-.btn-primary:hover {
-  border: #ffffff thin solid; }
+  background: url("/images/buttons/primary_back.jpg") center;
+  background-color: #589B94;
+  -webkit-transition: background 0.2s;
+          transition: background 0.2s; }
+  .btn-primary:hover {
+    background: #335a55;
+    border: solid thin black; }
 
 .btn-warning {
   background: url("/images/buttons/warning_back.jpg") center; }
 
 .btn-danger {
   background: url("/images/buttons/danger_back.jpg") center; }
-
-.btn-primary:hover {
-  border: #ffffff thin solid; }
 
 .upload_button {
   position: relative;

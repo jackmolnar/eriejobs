@@ -52,6 +52,21 @@ return array(
 			},
 		),
 
+		'linkedin' => array(
+			'client_id'       => '78d61fub4ukl0a',
+			'client_secret'   => '1LrfuU51kmXOngX9',
+			'scope'           => array('r_emailaddress'),
+			'fetch_user_info' => function ($service) {
+				$result = json_decode($service->request('people/~?format=json'), true);
+				return array(
+					'id'         => array_get($result, 'id'),
+					'email'      => array_get($result, 'email'),
+					'first_name' => array_get($result, 'firstName'),
+					'last_name'  => array_get($result, 'lastName')
+				);
+			},
+		),
+
 		'twitter' => array(
 			'client_id'       => '',
 			'client_secret'   => '',

@@ -30,7 +30,9 @@
         <h2>Sign Up With</h2>
         <hr/>
         <div class="row social_buttons">
-            <a href="{{ route('social-login', array('facebook')) }}?onsuccess=/profile&onerror=/login" class="btn btn-primary btn-lg"><i class="fa fa-facebook-square"></i> Facebook</a>
+            <a href="{{ route('social-login', array('facebook')) }}?onsuccess=/profile&onerror=/login" class="btn btn-primary"><i class="fa fa-facebook-square"></i> Facebook</a>
+            &nbsp;
+            <a href="{{ route('social-login', array('linkedin')) }}?onsuccess=/profile&onerror=/login" class="btn btn-primary"><i class="fa fa-linkedin-square"></i> LinkedIn</a>
         </div>
         <hr/>
         <h2>Or Fill Out the Form</h2>
