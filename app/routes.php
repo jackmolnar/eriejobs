@@ -58,7 +58,7 @@ Route::post('contact', 'PagesController@postContact');
 
 //test email route
 Route::get('test-email', function(){
-    return View::make('emails.auth.reminder');
+    Twilio::message('+18148732073', 'Pink Elephants and Happy Rainbows');
 });
 
 

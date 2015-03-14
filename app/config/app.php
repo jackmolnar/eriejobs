@@ -125,7 +125,8 @@ return array(
         'EriePaJobs\ViewComposers\ComposerServiceProvider',
         'Mmanos\Social\SocialServiceProvider',
         'Laravel\Cashier\CashierServiceProvider',
-		'Fadion\Bouncy\BouncyServiceProvider'
+		'Fadion\Bouncy\BouncyServiceProvider',
+		'Aloha\Twilio\TwilioServiceProvider',
 	),
 
 	/*
@@ -194,7 +195,7 @@ return array(
 		'View'              => 'Illuminate\Support\Facades\View',
 
         'Social'            => 'Mmanos\Social\Facades\Social',
-
+		'Twilio' 			=> 'Aloha\Twilio\Facades\Twilio',
 	),
 
 );

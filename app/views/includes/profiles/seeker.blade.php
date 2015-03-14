@@ -70,7 +70,7 @@
             </div>
         @else
             <p>You haven't yet signed up to receive notification emails for search terms.</p>
-            <p>Visit the {{ link_to_action('SearchController@index', 'Search Page') }} page to sign up for them!</p>
+            <p>Visit the {{ link_to_action('SearchController@index', 'Search Page') }} to sign up for them!</p>
         @endif
 
     </div>

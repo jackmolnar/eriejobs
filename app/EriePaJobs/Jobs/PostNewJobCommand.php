@@ -11,6 +11,7 @@ namespace EriePaJobs\Jobs;
 use EriePaJobs\BaseCommand;
 use Auth;
 use EriePaJobs\Payments\PaymentRepository;
+use EriePaJobs\Users\UserRepository;
 use Event;
 use Session;
 use Job;
@@ -36,7 +37,8 @@ class PostNewJobCommand extends BaseCommand{
     public function __construct($input)
     {
         $this->input = $input;
-        $this->user = Auth::user();
+        $this->userRepo = new UserRepository;
+        $this->user = $this->userRepo->authedUser();
         $this->jobsRepo = new JobsRepository;
         $this->paymentRepo = new PaymentRepository;
     }
