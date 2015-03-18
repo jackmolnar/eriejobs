@@ -43,8 +43,18 @@ Route::resource('profile', 'ProfilesController');
 Route::get('edit-info', 'ProfilesController@edit_info');
 Route::put('edit-info/{id}', 'ProfilesController@update_info');
 Route::get('edit-notifications', 'ProfilesController@edit_notifications');
+Route::get('edit-notification-settings', 'ProfilesController@edit_notification_settings');
 Route::put('edit-notifications/{id}', 'ProfilesController@update_notifications');
+Route::put('edit-notification-settings/{id}', 'ProfilesController@update_notification_settings');
 Route::get('destroy-resume', 'ProfilesController@destroy_resume');
+
+/*
+ * SMS Verification Routes
+ */
+Route::post('send-verification-code', 'NotificationsController@send_sms_verification_code');
+Route::post('verify-phone-number', 'NotificationsController@verify_phone_number');
+Route::get('delete-phone-number/{id}', 'NotificationsController@delete_phone_number');
+
 
 /*
  * Pages Routes
@@ -58,7 +68,8 @@ Route::post('contact', 'PagesController@postContact');
 
 //test email route
 Route::get('test-email', function(){
-    Twilio::message('+18148732073', 'Pink Elephants and Happy Rainbows');
+    $result = Twilio::message('+1814873207', 'Pink Elephants and Happy Rainbows');
+
 });
 
 

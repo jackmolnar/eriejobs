@@ -44,7 +44,7 @@ class SendNewJobNotifications extends Command {
 	public function fire()
 	{
 
-		$allUsers = User::all();
+		$allUsers = User::emailNotifications();
 
         foreach($allUsers as $user)
         {

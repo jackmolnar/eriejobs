@@ -8,7 +8,6 @@
 
 namespace EriePaJobs\JobSeekers;
 
-
 use EriePaJobs\BaseCommand;
 use EriePaJobs\Notifications\NotificationRepository;
 

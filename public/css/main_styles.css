@@ -56,6 +56,10 @@
   @media screen and (min-width: 992px) {
     .signup .well {
       margin-top: 0px; } }
+.signup .email_notifications {
+  margin-bottom: 28px; }
+.signup .required {
+  color: #dc3522; }
 
 .seeker_signup_main_row {
   background-image: url('../images/seeker_signup_header.jpg');
@@ -289,6 +293,8 @@ ul {
     margin-right: 15px; }
   .profile .file-row p {
     margin-bottom: 0px; }
+  .profile #user_verified_phone_number {
+    color: #dc3522; }
 
 .application p {
   margin-bottom: 10px; }
@@ -2204,7 +2210,8 @@ ul {
           background-position: -80px -40px; }
 
 body {
-  padding-top: 75px; }
+  padding-top: 75px;
+  font-family: 'Roboto Condensed', sans-serif; }
 
 .main_row {
   min-height: 50px; }
@@ -2222,6 +2229,9 @@ h1, h2 {
   font-weight: 700;
   color: #2a2c2b;
   margin: 0px; }
+
+p {
+  font-size: 16px; }
 
 .well {
   border: thin solid #d7dfd2;

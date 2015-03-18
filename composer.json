@@ -11,10 +11,11 @@
         "laravel/cashier": "~2.0",
         "pda/pheanstalk": "~2.0",
 		"fadion/bouncy": "dev-master",
-		"aloha/twilio": "1.0.2"
+		"aloha/twilio": "1.0.2",
+		"doctrine/dbal": "2.5.1"
     },
     "require-dev": {
-        "way/generators": "~2.0",
+		"way/generators": "2.6.1",
         "codeception/codeception": "2.0.7",
         "phpunit/phpunit": "4.3.1",
         "laracasts/testdummy": "1.1.3",
