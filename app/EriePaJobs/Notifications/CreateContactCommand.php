@@ -8,7 +8,6 @@
 
 namespace EriePaJobs\Notifications;
 
-
 use EriePaJobs\BaseCommand;
 use EriePaJobs\Mailers\CreateContactMailer;
 

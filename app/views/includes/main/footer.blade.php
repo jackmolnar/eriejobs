@@ -5,7 +5,11 @@
         <div class="col-md-4 logo">
             <img src="{{ URL::asset('images/eriepajobs_3.png') }}" />
             <div class="copyright">
-                Copyright <?php echo date("Y"); ?> EriePa.Jobs
+                Copyright <?php echo date("Y"); ?> EriePaJobs
+                <br/>
+                <br/>
+                <img src="{{ URL::asset('images/RapidSSL_SEAL-90x50.gif') }}" />
+
             </div>
         </div>
 
@@ -23,8 +27,8 @@
         <div class="col-md-4 social">
             <div class="social_container">
                 <a class="facebook" href="https://www.facebook.com/eriepa.jobs" target="_blank"></a>
-                <a class="twitter"></a>
-                <a class="linkedin"></a>
+                <a class="twitter" href="https://twitter.com/EriePaJobsCom" target="_blank"></a>
+                <a class="linkedin" href="https://www.linkedin.com/company/eriepajobs-com" target="_blank"></a>
             </div>
         </div>
 

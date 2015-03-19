@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'jon@eriepa.jobs', 'name' => 'EriePaJobs'),
+	'from' => array('address' => 'admin@eriepajobs.com', 'name' => 'EriePaJobs.com'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -63,7 +63,7 @@ return array(
 	|
 	*/
 
-	'administrator' => array('email' => 'jackmolnar1982@gmail.com'),
+	'administrator' => array('email' => 'admin@eriepajobs.com'),
 
 	/*
 	|--------------------------------------------------------------------------
