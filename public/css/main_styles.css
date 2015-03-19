@@ -2025,6 +2025,8 @@ ul {
     @media screen and (min-width: 992px) {
       .hiring .well {
         margin-top: 0px; } }
+  .hiring .required {
+    color: #dc3522; }
 
 .main_back {
   background: url("/images/main_background_3.jpg") no-repeat top center;

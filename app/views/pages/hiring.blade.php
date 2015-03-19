@@ -12,7 +12,7 @@
             <ul>
                 <li>EriePaJobs advertises throughout the region to make sure your listings get the visibility you require</li>
                 <li>All listings posted on the site are shared on our Facebook, Twitter, and LinkedIn pages</li>
-                <li>Listings are emailed to users who have requested to be notified when new jobs are posted that fit their qualifications</li>
+                <li>Listings are emailed weekly and text messaged instantly to users who have requested to be notified when new jobs are posted that fit their interests</li>
             </ul>
 
             <hr/>
@@ -30,17 +30,17 @@
             {{ Form::open(['action' => 'AuthController@postRecruiterSignup']) }}
             <div class="row">
                 <div class="col-md-6">
-                    {{ Form::label('email', 'Email') }}
+                    {{ Form::label('email', 'Email', ['class' => 'required']) }}
                     {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) }}
-                    {{ Form::label('first_name', 'First Name') }}
+                    {{ Form::label('first_name', 'First Name', ['class' => 'required']) }}
                     {{ Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'First Name']) }}
-                    {{ Form::label('last_name', 'Last Name') }}
+                    {{ Form::label('last_name', 'Last Name', ['class' => 'required']) }}
                     {{ Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'Last Name']) }}
                 </div>
                 <div class="col-md-6">
-                    {{ Form::label('password', 'Password') }}
+                    {{ Form::label('password', 'Password', ['class' => 'required']) }}
                     {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) }}
-                    {{ Form::label('password', 'Re-Enter Password') }}
+                    {{ Form::label('password', 'Re-Enter Password', ['class' => 'required']) }}
                     {{ Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Confirm Password']) }}
                 </div>
             </div>

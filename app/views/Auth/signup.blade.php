@@ -13,13 +13,14 @@
     <hr/>
 
     <p>
-    EriePa.Jobs is the only employment website exclusive to the Northwestern Pennsylvania region. We are dedicated to helping match job seekers with area employers.
+    EriePaJobs is the only employment website exclusive to the Northwestern Pennsylvania region. We are dedicated to helping match job seekers with area employers.
     </p>
 
     <ul>
         <li>Search for job opportunities posted by Northwestern Pennsylvania employers</li>
         <li>Apply for job openings</li>
-        <li>Sign up to receive email notifications for jobs that interest you</li>
+        <li>Sign up to receive weekly email notifications for jobs that interest you</li>
+        <li>Sign up to receive instant SMS text message notifications for jobs that interest you</li>
         <li>Follow our social accounts and get updated about new job listings</li>
     </ul>
 </div>
