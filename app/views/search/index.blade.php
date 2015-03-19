@@ -43,7 +43,7 @@
 
 @section('_title')
     @if(isset($term) and $term != '')
-        Search Results for "{{$term}}" - EriePa.Jobs
+        Search Results for "{{$term}}" - EriePaJobs
     @else
         Search Results for All Jobs
     @endif

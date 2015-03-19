@@ -53,5 +53,5 @@
 @stop
 
 @section('_title')
-    Apply to the {{ $job->title }} Position - EriePa.Jobs
+    Apply to the {{ $job->title }} Position - EriePaJobs
 @stop

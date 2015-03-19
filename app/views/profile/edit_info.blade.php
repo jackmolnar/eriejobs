@@ -33,5 +33,5 @@
 @stop
 
 @section('_title')
-    Edit {{ $user->first_name }} {{ $user->last_name }}'s Profile Information - EriePa.Jobs
+    Edit {{ $user->first_name }} {{ $user->last_name }}'s Profile Information - EriePaJobs
 @stop

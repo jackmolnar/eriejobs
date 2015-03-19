@@ -25,3 +25,7 @@
 </div>
 
 @stop
+
+@section('_title')
+    Thank You For Listing Your Job on EriePaJobs
+@stop

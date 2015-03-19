@@ -15,5 +15,5 @@
 @stop
 
 @section('_title')
-    Application for {{ $job->title }} Sent - EriePa.Jobs
+    Application for {{ $job->title }} Sent - EriePaJobs
 @stop

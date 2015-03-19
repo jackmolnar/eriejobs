@@ -143,3 +143,7 @@ $(window).on('popstate', function() {
 
 </script>
 @stop
+
+@section('_title')
+    Review Your New Job Listing - EriePaJobs
+@stop

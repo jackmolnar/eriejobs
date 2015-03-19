@@ -24,5 +24,5 @@
 @stop
 
 @section('_title')
-    Password Reset - EriePa.Jobs
+    Password Reset - EriePaJobs
 @stop

@@ -40,5 +40,5 @@
 @stop
 
 @section('_title')
-    Edit Your Job Listing - EriePa.Jobs
+    Edit Your Job Listing - EriePaJobs
 @stop

@@ -49,5 +49,5 @@
 @stop
 
 @section('_title')
-    Edit {{ $user->first_name }} {{ $user->last_name }}'s Notification Settings - EriePa.Jobs
+    Edit {{ $user->first_name }} {{ $user->last_name }}'s Notification Settings - EriePaJobs
 @stop

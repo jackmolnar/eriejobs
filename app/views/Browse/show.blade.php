@@ -32,9 +32,9 @@
 @stop
 
 @section('_title')
-Browse {{ $category['category']->category }} Jobs in Erie Pa
+Browse {{ $category['category']->category }} Jobs in Erie Pa - EriePaJobs
 @stop
 
 @section('_description')
-Browse available {{ $category['category']->category }} jobs in Erie Pennsylvania and Northwestern Pennsylvania.
+Browse available {{ $category['category']->category }} jobs in Erie Pennsylvania and Northwestern Pennsylvania at EriePaJobs.
 @stop

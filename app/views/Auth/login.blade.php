@@ -33,8 +33,8 @@
 @stop
 
 @section('_title')
-EriePa.Jobs - Login
+EriePaJobs - Login
 @stop
 @section('_description')
-Login to EriePa.Jobs and search for jobs, apply for jobs, and post job listings.
+Login to EriePaJobs and search for jobs, apply for jobs, and post job listings.
 @stop

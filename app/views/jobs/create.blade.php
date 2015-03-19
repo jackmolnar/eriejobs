@@ -61,5 +61,5 @@
 @stop
 
 @section('_title')
-    Create New Job Listing - EriePa.Jobs
+    Create New Job Listing - EriePaJobs
 @stop

@@ -14,7 +14,7 @@ class AddPhoneNumberToSmsVerificationCodesTable extends Migration {
 	{
 		Schema::table('sms_verification_codes', function(Blueprint $table)
 		{
-			$table->integer('phone_number');
+			$table->string('phone_number', 11);
 		});
 	}
 

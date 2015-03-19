@@ -7,10 +7,10 @@
             <h1 class="hiring_headline"><span class="accent">Job Listings Are <span class="free">Free</span><br> For The First 90 Days Of Our Launch!</span></h1>
             <hr/>
             <p>
-                EriePa.Jobs is the only employment website exclusive to the Northwestern Pennsylvania region. We are dedicated to helping employers find the candidates they need to fill their open job opportunities.
+                EriePaJobs is the only employment website exclusive to the Northwestern Pennsylvania region. We are dedicated to helping employers find the candidates they need to fill their open job opportunities.
             </p>
             <ul>
-                <li>EriePa.Jobs advertises throughout the region to make sure your listings get the visibility you require</li>
+                <li>EriePaJobs advertises throughout the region to make sure your listings get the visibility you require</li>
                 <li>All listings posted on the site are shared on our Facebook, Twitter, and LinkedIn pages</li>
                 <li>Listings are emailed to users who have requested to be notified when new jobs are posted that fit their qualifications</li>
             </ul>
@@ -65,8 +65,8 @@
 @stop
 
 @section('_title')
-    Recruiter Signup - EriePa.Jobs
+    Recruiter Signup - EriePaJobs
 @stop
 @section('_description')
-    Signup for a free account on EriePa.Jobs and begin posting help wanted listings. Recruit talent from the Northwestern Pennsylvania region.
+    Signup for a free account on EriePaJobs and begin posting help wanted listings. Recruit talent from the Northwestern Pennsylvania region.
 @stop

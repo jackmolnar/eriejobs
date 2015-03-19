@@ -26,5 +26,5 @@
 @stop
 
 @section('_title')
-   {{ $user->first_name }} {{ $user->last_name }}'s Profile - EriePa.Jobs
+   {{ $user->first_name }} {{ $user->last_name }}'s Profile - EriePaJobs
 @stop

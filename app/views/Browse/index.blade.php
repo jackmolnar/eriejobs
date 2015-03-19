@@ -29,9 +29,9 @@
 @stop
 
 @section('_title')
-Browse Jobs in Erie and Northwestern Pennsylvania
+Browse Jobs in Erie and Northwestern Pennsylvania - EriePaJobs
 @stop
 
 @section('_description')
-Browse available jobs in Erie Pennsylvania and Northwestern Pennsylvania.
+Browse available jobs in Erie Pennsylvania and Northwestern Pennsylvania at EriePaJobs.com.
 @stop

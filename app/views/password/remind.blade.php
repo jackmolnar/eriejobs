@@ -25,5 +25,5 @@
 @stop
 
 @section('_title')
-    Password Remind - EriePa.Jobs
+    Password Remind - EriePaJobs
 @stop
