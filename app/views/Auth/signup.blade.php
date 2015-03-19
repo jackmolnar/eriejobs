@@ -42,21 +42,21 @@
         {{ Form::open(['action' => 'AuthController@postSeekerSignup']) }}
         <div class="row">
             <div class="col-md-6">
-                {{ Form::label('email', 'Email') }}
-                {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) }}
-                {{ Form::label('first_name', 'First Name') }}
+                {{ Form::label('first_name', 'First Name', ['class' => 'required']) }}
                 {{ Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'First Name']) }}
-                {{ Form::label('last_name', 'Last Name') }}
+                {{ Form::label('last_name', 'Last Name', ['class' => 'required']) }}
                 {{ Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'Last Name']) }}
+                {{ Form::label('email', 'Email', ['class' => 'required']) }}
+                {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) }}
             </div>
             <div class="col-md-6">
-                {{ Form::label('password', 'Password') }}
+                {{ Form::label('password', 'Password', ['class' => 'required']) }}
                 {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) }}
-                {{ Form::label('password', 'Re-Enter Password') }}
+                {{ Form::label('password', 'Re-Enter Password', ['class' => 'required']) }}
                 {{ Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Confirm Password']) }}
                 <div class="email_notifications">
                     {{ Form::checkbox('notifications', 1, 1) }}
-                    Receive Email Notifications about Career Opportunities
+                    Receive Email Notifications about Career Opportunities that Relate to Me
                 </div>
             </div>
         </div>

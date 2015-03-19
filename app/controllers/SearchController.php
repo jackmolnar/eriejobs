@@ -2,6 +2,7 @@
 
 use EriePaJobs\Jobs\JobsRepository;
 use EriePaJobs\Users\UserRepository;
+use Aloha\Twilio\Twilio;
 
 class SearchController extends \BaseController {
 

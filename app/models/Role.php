@@ -7,4 +7,6 @@ class Role extends \Eloquent {
     {
         return $this->hasMany('User', 'role', 'id');
     }
+
+
 }

@@ -70,3 +70,11 @@ Notification:
   term: $string
   created_at: $date
   updated_at: $date
+
+VerificationCodes:
+  user_id:
+    type: User
+  verification_code: 123456
+  created_at: $date
+  updated_at: $date
+  phone_number: 8148732073

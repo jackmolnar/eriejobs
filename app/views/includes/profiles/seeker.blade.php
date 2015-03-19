@@ -55,22 +55,45 @@
 
     <div class="well">
 
-        <h3 class="notification_header"><i class="fa fa-envelope"></i> Email Notifications</h3>
+        <h3 class="notification_header" style="margin-bottom: 14px"><i class="fa fa-envelope"></i> Notifications</h3>
+        <hr/>
 
         @if(count($user->jobNotifications))
 
-            {{ link_to_action('ProfilesController@edit_notifications', 'Edit Notifications', null, ['class' => 'btn btn-default btn-xs edit_button']) }}
+            {{ link_to_action('ProfilesController@edit_notifications', 'Edit Terms', null, ['class' => 'btn btn-default btn-xs edit_button']) }}
 
-            <div class="row">
+            <div>
+                <h3>Notification Terms</h3>
                 <ul>
                     @foreach($user->jobNotifications as $notification)
                         <li>{{ $notification->term }}</li>
                     @endforeach
                 </ul>
             </div>
+            <hr/>
+            {{ link_to_action('ProfilesController@edit_notification_settings', 'Edit Settings', null, ['class' => 'btn btn-default btn-xs edit_button']) }}
+            <div>
+                <h3>Notification Settings</h3>
+
+                Receive Weekly Email Notifications:
+                <b>
+                    @if($user->email_notifications) Yes @else No @endif
+                </b><br/>
+
+                Receive SMS Notifications As Soon as Jobs Are Posted:
+                <b>
+                    @if($user->sms_notifications) Yes @else No @endif
+                </b><br/>
+
+                Verified Mobile Phone Number:
+                <b>
+                    @if($user->phone_number != '') {{$user->phone_number}} @else No @endif
+                </b>
+
+            </div>
         @else
-            <p>You haven't yet signed up to receive notification emails for search terms.</p>
-            <p>Visit the {{ link_to_action('SearchController@index', 'Search Page') }} page to sign up for them!</p>
+            <p>You haven't yet signed up to receive notification for search terms.</p>
+            <p>Visit the {{ link_to_action('SearchController@index', 'Search Page') }} to sign up for them!</p>
         @endif
 
     </div>

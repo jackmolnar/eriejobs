@@ -51,6 +51,99 @@ delete_button.on('click', function(){
 
 
 /*
+    SMS / Phone Number Verification Stuff
+ */
+
+// set up variables
+var smsCheckbox = $('#sms_checkbox'),
+    smsVerifyModal = $('#verifyPhoneModal'),
+    enterPhoneNumberPrompt = $('#enter_phone_number'),
+    enterVerificationCodePrompt = $('#enter_verification_code'),
+    smsSendVerifyButton = $('#sendSmsVerification'),
+    verifyMobileNumberButton = $('#verifyMobileNumberButton'),
+    userId = smsSendVerifyButton.attr('data-userId'),
+    phoneNumberInput = $('#phoneNumber'),
+    verificationCodeInput = $('#verifyCode'),
+    validPhoneStatus = $('#validPhoneStatus'),
+    validPhoneResult = $('#validPhoneResult');
+
+// if edit phone button on page, add function
+if ($('#edit_phone_number_button').length ) {
+    var editPhoneNumberButton = $('#edit_phone_number_button');
+    editPhoneNumberButton.on('click', function(){
+        smsVerifyModal.modal('show')
+    });
+}
+
+// show modal if SMS checkbox is checked or if phone number should be edited
+smsCheckbox.change(function(){
+    if( $(this).is(':checked') && !$('#user_verified_phone_number').length ) smsVerifyModal.modal('show')
+});
+
+// start the verify process - send verify code button
+smsSendVerifyButton.on('click', function(){
+
+    var phoneNumber = phoneNumberInput.val();
+
+    // if valid phone number
+    if ( validatePhone(phoneNumber) ) {
+        validPhoneStatus.html('Valid phone number.').css('color', 'green');
+        phoneNumber = phoneNumber.replace(/-/g, "").replace("(", "").replace(")", "").replace(" ", "");
+        phoneNumber = '1' + phoneNumber;
+
+        $.post('send-verification-code', { userId: userId, phoneNumber: phoneNumber })
+            .done(function( data ){
+                console.log(data);
+
+                enterPhoneNumberPrompt.css('display', 'none');
+                enterVerificationCodePrompt.css('display', 'inherit');
+            });
+
+    } else {
+        validPhoneStatus.html('Invalid phone number.').css('color', 'red');
+    }
+});
+
+// check if the verify code matches - verify mobile button
+verifyMobileNumberButton.on('click', function(){
+
+    var verificationCode = verificationCodeInput.val();
+
+    if ( validateVerificationCode(verificationCode) ) {
+        $.post('verify-phone-number', { userId: userId, verificationCode: verificationCode })
+            .done(function(data){
+                validPhoneResult.html(data['message']);
+                if(data['status']) {
+                    validPhoneResult.css('color', 'green');
+                    enterVerificationCodePrompt.css('display', 'none');
+                    location.reload(true);
+                } else {
+                    validPhoneResult.css('color', 'red');
+                }
+        });
+    } else {
+        validPhoneResult.html('You must enter a six digit code.').css('color', 'red');
+    }
+});
+
+// sms verify hide modal event
+smsVerifyModal.on('hide.bs.modal', function(){
+    // if validation does not pass, or not attempted, uncheck box
+    if(validPhoneResult.css('color') == 'red' || !$('#user_verified_phone_number').length) smsCheckbox.attr('checked', false);
+});
+
+// validate phone
+function validatePhone(inputtxt) {
+    var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    return (inputtxt.match(phoneno))
+}
+// validate verification code
+function validateVerificationCode(verificationCode){
+    var filter = /^(\s*\d{6}\s*)(,\s*\d{6}\s*)*,?\s*$/;
+    return filter.test(verificationCode);
+}
+
+/*
     Email / Link Radio Buttons on create job form
  */
 
@@ -65,6 +158,10 @@ emailButton.change(function(){
 linkButton.change(function(){
     applyBox.html('<label for="link">Link</label><input class="form-control half_element" placeholder="Link" name="link" type="text" id="link">');
 });
+
+
+
+
 
 /*
  Default / New resume radio buttons on application create form

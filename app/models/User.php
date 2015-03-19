@@ -69,6 +69,27 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     }
 
     /**
+     * Users who approved Email Notifications
+     * @param $query
+     * @return mixed
+     */
+    public function scopeEmailNotifications($query)
+    {
+        return $query->where('email_notifications', '=', 1);
+    }
+
+    /**
+     * Users who approved SMS Notifications
+     * @param $query
+     * @return mixed
+     */
+    public function scopeSmsNotifications($query)
+    {
+        return $query->where('sms_notifications', '=', 1);
+    }
+
+
+    /**
      * Declare dates to be returned as Carbon instance
      * @return array
      */

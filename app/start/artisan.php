@@ -16,5 +16,5 @@ Artisan::add(new RefreshJobsCache);
 Artisan::add(new ReindexJobSearch);
 Artisan::add(new ReturnJobSearchIndex);
 Artisan::add(new RemapJobIndex);
-Artisan::add(new SendNewJobNotifications);
+Artisan::add(new SendNewEmailJobNotifications);
 Artisan::add(new DeleteOldTempResumes);

@@ -3,6 +3,7 @@
 use EriePaJobs\JobSeekers\UpdateSeekerInfoCommand;
 use EriePaJobs\JobSeekers\UpdateSeekerInfoValidator;
 use EriePaJobs\JobSeekers\UpdateSeekerNotificationsCommand;
+use EriePaJobs\JobSeekers\UpdateSeekerNotificationSettingsCommand;
 use EriePaJobs\Resumes\DeletePermanentResumeCommand;
 use EriePaJobs\Users\DeleteAccountCommand;
 use EriePaJobs\Users\UserRepository;
@@ -73,6 +74,17 @@ class ProfilesController extends \BaseController {
 	}
 
 	/**
+	 * Show the form for editing the specified resource.
+	 * GET /profiles/{id}/edit
+	 *
+	 * @return Response
+	 */
+	public function edit_notification_settings()
+	{
+        return View::make('profile.edit_notification_settings');
+	}
+
+	/**
 	 * Update the specified resource in storage.
 	 * PUT /profiles/{id}
 	 *
@@ -107,15 +119,29 @@ class ProfilesController extends \BaseController {
 	}
 
     /**
-     * Update the email notifications
+     * Update notification terms
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
+     * PUT /edit-notifications/{id}
      */
     public function update_notifications($id)
     {
         $updateSeekerNotificationsCommand = new UpdateSeekerNotificationsCommand(Input::all());
         $updateSeekerNotificationsCommand->execute();
         return Redirect::action('ProfilesController@index')->with('success', 'Your email notifications have been updated.');
+    }
+
+    /**
+     * Update the email and sms notifications
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * PUT /edit-notification-settings/{id}
+     */
+    public function update_notification_settings($user_id)
+    {
+        $updateSeekerNotificationSettingsCommand = new UpdateSeekerNotificationSettingsCommand($user_id, Input::all());
+        $updateSeekerNotificationSettingsCommand->execute();
+        return Redirect::action('ProfilesController@index')->with('success', 'Your notification settings have been updated.');
     }
 
 	/**

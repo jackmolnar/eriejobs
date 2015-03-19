@@ -53,4 +53,20 @@ class NotificationRepositoryTest extends \Codeception\TestCase\Test
         $this->tester->assertEquals(0, count(Notification::where('user_id', '=', $user->id)->get()), 'Did not delete notifications');
     }
 
+    public function testSmsVerificationCodeByUserId()
+    {
+        $user = TestDummy::create('User');
+        $verifyRecord = TestDummy::create('VerificationCodes', [
+            'user_id' => $user->id,
+        ]);
+
+        $result = $this->notificationRepo->smsVerificationCodeByUserId($user->id);
+
+        $this->tester->assertEquals($user->id, $result->user_id);
+
+        $falseResult = $this->notificationRepo->smsVerificationCodeByUserId(1);
+
+        $this->tester->assertEquals(false, $falseResult);
+    }
+
 }
