@@ -47,7 +47,6 @@ class SearchController extends \BaseController {
         if(count($result) == 0)
         {
             $result = "Sorry, no results were returned for '".$term."'. Please try another search.";
-            return View::make('search.index', ['noResults' => $result, 'term' => $term]);
         }
 
         $result = $result->paginate(20);
