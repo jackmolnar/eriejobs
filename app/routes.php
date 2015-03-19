@@ -37,6 +37,13 @@ Route::post('jobs/active', ['uses' => 'JobsController@active', 'as' => 'jobs.act
 Route::post('notifications/create', ['uses' => 'NotificationsController@create', 'as' => 'notifications.create']);
 
 /*
+ * SMS Verification Routes
+ */
+Route::post('send-verification-code', 'NotificationsController@send_sms_verification_code');
+Route::post('verify-phone-number', 'NotificationsController@verify_phone_number');
+Route::get('delete-phone-number/{id}', 'NotificationsController@delete_phone_number');
+
+/*
  * Profile Routes
  */
 Route::resource('profile', 'ProfilesController');
@@ -49,14 +56,6 @@ Route::put('edit-notification-settings/{id}', 'ProfilesController@update_notific
 Route::get('destroy-resume', 'ProfilesController@destroy_resume');
 
 /*
- * SMS Verification Routes
- */
-Route::post('send-verification-code', 'NotificationsController@send_sms_verification_code');
-Route::post('verify-phone-number', 'NotificationsController@verify_phone_number');
-Route::get('delete-phone-number/{id}', 'NotificationsController@delete_phone_number');
-
-
-/*
  * Pages Routes
  */
 
@@ -67,9 +66,26 @@ Route::post('contact', 'PagesController@postContact');
 
 
 //test email route
-Route::get('test-email', function(){
-    $result = Twilio::message('+1814873207', 'Pink Elephants and Happy Rainbows');
-
+Route::get('test-sms-notifications', function(){
+    Queue::push('\EriePaJobs\QueueHandlers\SendNewSMSJobNotifications', ['job_id' => 207]);
 });
+
+//Route::get('test-sms-notifications', function(){
+//    $job_id = 217;
+//    $this->jobRepo = new \EriePaJobs\Jobs\JobsRepository;
+//
+//    Queue::push(function($job) use ($job_id)
+//    {
+//        $job = $this->jobRepo->getJobById($job_id);
+//
+//        $smsUsers = \User::smsNotifications();
+//
+//        $smsUsers->load('jobNotifications');
+//
+//        dd($smsUsers);
+//
+//        $job->delete();
+//    });
+//});
 
 

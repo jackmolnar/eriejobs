@@ -11,7 +11,7 @@ return array(
     |
     */
 
-    'sid' => 'AC6d5393fe6d622aca70c385eb268da3e9',
+    'sid' => getenv('TWILIO_SID'),
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return array(
     |
     */
 
-    'token' => 'f57ddec7dfc6d3720d86132fc09006e8',
+    'token' => getenv('TWILIO_TOKEN'),
 
     /*
     |--------------------------------------------------------------------------
@@ -33,6 +33,6 @@ return array(
     |
     */
 
-    'from' => '+18144204724'
+    'from' => getenv('TWILIO_FROM_NUMBER')
 
 );

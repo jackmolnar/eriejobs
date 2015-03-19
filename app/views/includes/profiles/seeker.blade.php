@@ -14,7 +14,6 @@
             </div>
             <div class="col-md-6">
                 <b>Last Name:</b> {{ $user->last_name }}<br/>
-                <b>Phone Number:</b>
             </div>
 
         </div><!-- end row -->
@@ -78,13 +77,18 @@
 
                 Receive Weekly Email Notifications:
                 <b>
-                @if($user->email_notifications) Yes @else No @endif
+                    @if($user->email_notifications) Yes @else No @endif
                 </b><br/>
 
                 Receive SMS Notifications As Soon as Jobs Are Posted:
                 <b>
-                @if($user->sms_notifications) Yes @else No @endif
+                    @if($user->sms_notifications) Yes @else No @endif
                 </b><br/>
+
+                Verified Mobile Phone Number:
+                <b>
+                    @if($user->phone_number != '') {{$user->phone_number}} @else No @endif
+                </b>
 
             </div>
         @else

@@ -38,8 +38,8 @@ return array(
 	'providers' => array(
 
 		'facebook' => array(
-			'client_id'       => '281126498752497',
-			'client_secret'   => '530b7a49f6ccf9ee6f1dd15e3bdac9a1',
+			'client_id'       => getenv('FACEBOOK_ID'),
+			'client_secret'   => getenv('FACEBOOK_SECRET'),
 			'scope'           => array('email'),
 			'fetch_user_info' => function ($service) {
 				$result = json_decode($service->request('/me'), true);
@@ -53,8 +53,8 @@ return array(
 		),
 
 		'linkedin' => array(
-			'client_id'       => '78d61fub4ukl0a',
-			'client_secret'   => '1LrfuU51kmXOngX9',
+			'client_id'       => getenv('LINKEDIN_ID'),
+			'client_secret'   => getenv('LINKEDIN_SECRET'),
 			'scope'           => array('r_emailaddress'),
 			'fetch_user_info' => function ($service) {
 				$result = json_decode($service->request('people/~?format=json'), true);

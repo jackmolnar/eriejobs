@@ -6,28 +6,27 @@ use Carbon\Carbon;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class SendNewJobNotifications extends Command {
+class SendNewEmailJobNotifications extends Command {
 
 	/**
 	 * The console command name.
 	 *
 	 * @var string
 	 */
-	protected $name = 'notifications:sendNewJobs';
+	protected $name = 'notifications:sendEmailNotifications';
 
 	/**
 	 * The console command description.
 	 *
 	 * @var string
 	 */
-	protected $description = 'Sends new job listings to notification subscribers.';
+	protected $description = 'Sends new job listings (posted within last week) to email notification subscribers.';
     protected $jobsRepo;
 
     /**
      * Create a new command instance.
      *
      * @internal param JobsRepository $jobsRepo
-     * @return \SendNewJobNotifications
      */
 	public function __construct()
 	{
@@ -44,7 +43,7 @@ class SendNewJobNotifications extends Command {
 	public function fire()
 	{
 
-		$allUsers = User::emailNotifications();
+		$allUsers = User::emailNotifications()->get();
 
         foreach($allUsers as $user)
         {
