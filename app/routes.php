@@ -66,26 +66,9 @@ Route::post('contact', 'PagesController@postContact');
 
 
 //test email route
-Route::get('test-sms-notifications', function(){
-    Queue::push('\EriePaJobs\QueueHandlers\SendNewSMSJobNotifications', ['job_id' => 207]);
+Route::get('test-email', function(){
+    return View::make('emails/auth/welcome_seeker');
 });
 
-//Route::get('test-sms-notifications', function(){
-//    $job_id = 217;
-//    $this->jobRepo = new \EriePaJobs\Jobs\JobsRepository;
-//
-//    Queue::push(function($job) use ($job_id)
-//    {
-//        $job = $this->jobRepo->getJobById($job_id);
-//
-//        $smsUsers = \User::smsNotifications();
-//
-//        $smsUsers->load('jobNotifications');
-//
-//        dd($smsUsers);
-//
-//        $job->delete();
-//    });
-//});
 
 
