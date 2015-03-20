@@ -9,7 +9,7 @@
 New Jobs Have Been Posted!</h2>
 <hr/>
 <p>
-Hi @if(isset($first_name)) {{ $first_name }}, @else TEST USER, @endif new jobs have been posted to EriePa.Jobs that match your notification settings. Click the listings below to see more details and apply.
+Hi @if(isset($first_name)) {{ $first_name }}, @else TEST USER, @endif new jobs have been posted to EriePaJobs that match your notification settings. Click the listings below to see more details and apply.
 </p>
 <hr/>
 @foreach($jobData as $searchTerm => $results)

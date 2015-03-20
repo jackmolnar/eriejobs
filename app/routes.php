@@ -67,7 +67,7 @@ Route::get('terms-of-use', 'PagesController@getTermsOfUse');
 
 //test email route
 Route::get('test-email', function(){
-    return View::make('emails/auth/welcome_seeker');
+    return View::make('emails/jobs/NewJobPosted');
 });
 
 
