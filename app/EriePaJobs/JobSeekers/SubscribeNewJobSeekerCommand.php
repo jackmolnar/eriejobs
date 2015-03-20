@@ -36,7 +36,7 @@ class SubscribeNewJobSeekerCommand extends BaseCommand {
         $user->email = $this->input['email'];
         $user->first_name = $this->input['first_name'];
         $user->last_name = $this->input['last_name'];
-        $user->email_notifications = $this->input['notifications'];
+        $user->email_notifications = isset($this->input['notifications']) ? $this->input['notifications'] : 0;
 
         $seekerRole = \Role::where('title', '=', 'Seeker')->first();
         $user->role_id = $seekerRole->id;
