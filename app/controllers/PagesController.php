@@ -25,6 +25,10 @@ class PagesController extends \BaseController {
     {
         return View::make('pages.contact');
     }
+    public function getTermsOfUse()
+    {
+        return View::make('pages.terms_of_use');
+    }
 
     public function postContact()
     {

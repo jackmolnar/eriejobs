@@ -63,7 +63,7 @@ Route::get('/', 'PagesController@home');
 Route::get('hiring', 'PagesController@hiring');
 Route::get('contact', 'PagesController@getContact');
 Route::post('contact', 'PagesController@postContact');
-
+Route::get('terms-of-use', 'PagesController@getTermsOfUse');
 
 //test email route
 Route::get('test-email', function(){

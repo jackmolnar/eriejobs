@@ -44,6 +44,11 @@
                     {{ Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Confirm Password']) }}
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12" style="font-size: 12px;">
+                    By signing up you agree to our {{ link_to_action('PagesController@getTermsOfUse', 'terms of use.', null, ['target' => '_blank']) }}
+                </div>
+            </div>
             <hr/>
                 {{ Form::submit('Subscribe', ['class' => 'btn btn-primary btn-sm']) }}
             {{ Form::close() }}

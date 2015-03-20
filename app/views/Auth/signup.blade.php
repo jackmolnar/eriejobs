@@ -61,10 +61,15 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12" style="font-size: 12px;">
+                By signing up you agree to our {{ link_to_action('PagesController@getTermsOfUse', 'terms of use.', null, ['target' => '_blank']) }}
+            </div>
+        </div>
         <hr/>
         <div class="row">
             <div class="col-md-4">
-                {{ Form::submit('Subscribe', ['class' => 'btn btn-primary btn-md']) }}
+                {{ Form::submit('Subscribe', ['class' => 'btn btn-primary btn-md', 'id' => 'seeker_subscribe_button']) }}
             </div>
         </div>
         {{ Form::close() }}

@@ -21,6 +21,7 @@
                 <li>{{ link_to_action('SearchController@index', 'Search Jobs') }}</li>
                 <li>{{ link_to_action('BrowseController@index', 'Browse Jobs') }}</li>
                 <li>{{ link_to_action('PagesController@getContact', 'Contact') }}</li>
+                <li>{{ link_to_action('PagesController@getTermsOfUse', 'Terms Of Use') }}</li>
             </ul>
         </div>
 
