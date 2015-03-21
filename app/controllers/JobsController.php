@@ -137,7 +137,7 @@ class JobsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$job = $this->jobRepo->getJobById($id);
+        $job = $this->jobRepo->getJobById($id);
         $categories = $this->categoryRepo->getAllCategories();
         return View::make('jobs.show', ['job' => $job, 'categories' => $categories]);
 	}

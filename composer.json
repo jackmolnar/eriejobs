@@ -11,7 +11,8 @@
         "pda/pheanstalk": "~2.0",
 		"fadion/bouncy": "dev-master",
 		"aloha/twilio": "1.0.2",
-		"doctrine/dbal": "2.5.1"
+		"doctrine/dbal": "2.5.1",
+		"cviebrock/eloquent-sluggable": "2.0.5"
     },
     "require-dev": {
 		"way/generators": "2.6.1",

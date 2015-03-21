@@ -79,7 +79,7 @@
 @stop
 
 @section('_title')
-{{ $job->title }} - EriePaJobs
+{{ $job->title }} - {{ $job->company_name}} - EriePaJobs
 @stop
 @section('_description')
 {{ str_limit(strip_tags($job->title.' - '.$job->description), $limit = 200, $end = '...') }}

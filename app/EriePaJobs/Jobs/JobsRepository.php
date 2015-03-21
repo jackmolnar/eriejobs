@@ -108,6 +108,11 @@ class JobsRepository {
         return $job;
     }
 
+    public function getJobBySlug($slug)
+    {
+
+    }
+
     /**
      * Search for a job, if no search term, pull all jobs, else return search results
      * @param string $term

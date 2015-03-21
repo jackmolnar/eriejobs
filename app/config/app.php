@@ -127,6 +127,7 @@ return array(
         'Laravel\Cashier\CashierServiceProvider',
 		'Fadion\Bouncy\BouncyServiceProvider',
 		'Aloha\Twilio\TwilioServiceProvider',
+		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 	),
 
 	/*
