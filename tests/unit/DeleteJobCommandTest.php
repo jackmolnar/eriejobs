@@ -30,7 +30,7 @@ class DeleteJobCommandTest extends \Codeception\TestCase\Test
             'user_id' => $this->user->user->id,
             'active' => 1
         ]);
-        $job->addToIndex();
+        $job->index();
 
         $this->tester->seeRecord('jobs', ['title' => 'test delete job']);
 
@@ -40,6 +40,8 @@ class DeleteJobCommandTest extends \Codeception\TestCase\Test
 
         $this->tester->dontSeeRecord('jobs', ['title' => 'test delete job']);
         $this->tester->assertTrue($result['status']);
+
+        $job->removeIndex();
     }
 
     /**
@@ -55,7 +57,7 @@ class DeleteJobCommandTest extends \Codeception\TestCase\Test
             'user_id' => $otherUser->id,
             'active' => 1
         ]);
-        $job->addToIndex();
+        $job->index();
 
         $this->tester->seeRecord('jobs', ['title' => 'test delete job']);
 
@@ -65,7 +67,7 @@ class DeleteJobCommandTest extends \Codeception\TestCase\Test
 
         $this->tester->seeRecord('jobs', ['title' => 'test delete job']);
         $this->tester->assertFalse($result['status']);
-        $job->removeFromIndex();
+        $job->removeIndex();
 
     }
 

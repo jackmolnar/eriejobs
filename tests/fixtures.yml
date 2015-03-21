@@ -28,6 +28,7 @@ Job:
   updated_at: $date
   expire: $date
   confidential: $boolean
+  slug: $string-$string
 
 User:
   email: $string@$string.com
@@ -39,8 +40,10 @@ User:
   remember_token: $string
   created_at: $date
   updated_at: $date
-  notifications: $boolean
+  email_notifications: $boolean
   last_login: $date
+  sms_notifications: $boolean
+  phone_number: 18148732073
 
 State:
   title: $string

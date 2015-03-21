@@ -27,7 +27,7 @@ class UpdateJobCommandTest extends \Codeception\TestCase\Test
         ]);
 
         // add mock job from index
-        $job->addToIndex();
+        $job->index();
 
         $job->categories()->sync([$category->id]);
 
@@ -68,7 +68,7 @@ class UpdateJobCommandTest extends \Codeception\TestCase\Test
         ]);
 
         // remove mock job from index
-        $job->removeFromIndex();
+        $job->removeIndex();
     }
 
 }

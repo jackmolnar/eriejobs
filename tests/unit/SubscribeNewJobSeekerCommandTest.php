@@ -40,11 +40,11 @@ class SubscribeNewJobSeekerCommandTest extends \Codeception\TestCase\Test
             'email' => $mockInput['email'],
             'first_name' => $mockInput['first_name'],
             'last_name' => $mockInput['last_name'],
-            'notifications' => $mockInput['notifications'],
+            'email_notifications' => $mockInput['notifications'],
             'role_id' => $seekerRoleId['id']
         ]);
 
-        $this->tester->assertEmailSubjectEquals("Welcome to EriePA Jobs");
+        $this->tester->assertEmailSubjectEquals("Welcome to EriePAJobs");
     }
 
 }

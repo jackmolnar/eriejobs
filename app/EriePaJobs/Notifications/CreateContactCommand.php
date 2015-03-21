@@ -22,23 +22,24 @@ class CreateContactCommand extends BaseCommand {
 
     public function execute()
     {
-        $contactMailer = new CreateContactMailer;
-
         if(!isset($this->input['phone']))
         {
             $this->input['phone'] = 'None given';
         }
 
-        $adminUser = \User::create([
-            'email' => \Config::get('mail.administrator.email')
-        ]);
+        $adminEmailAddress = \Config::get('mail.administrator.email');
+        $subject = 'EriePaJobs Website Contact From '. $this->input['name'];
+        $user_name = 'EriePaJobs';
 
-        $contactMailer->sendTo($adminUser, 'Contact from '.$this->input['name'], 'emails.notifications.CreateContact', [
+        \Mail::queue('emails.notifications.CreateContact', [
             'name' => $this->input['name'],
             'body' => $this->input['message'],
             'email' => $this->input['email'],
             'phone' => $this->input['phone']
-        ]);
+        ], function($message) use ($adminEmailAddress, $user_name, $subject)
+        {
+            $message->to($adminEmailAddress, $user_name)->subject($subject);
+        });
 
         $result['status'] = true;
         $result['message'] = 'Thank you for contacting us! Someone will be back to you shortly.';

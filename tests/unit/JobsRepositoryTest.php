@@ -156,7 +156,7 @@ class JobsRepositoryTest extends \Codeception\TestCase\Test
         ]);
 
         // add to search index
-        $newJob->addToIndex();
+        $newJob->index();
 
         $this->tester->seeRecord('jobs', ['title' => $newJob->title]);
 
@@ -165,7 +165,7 @@ class JobsRepositoryTest extends \Codeception\TestCase\Test
         $this->tester->assertGreaterThan(0, count($result), "Need job record with Electrical Engineer title to pass");
 
         // remove from search index
-        $newJob->removeFromIndex();
+        $newJob->removeIndex();
     }
 
     public function testDeactivateJob()
@@ -175,7 +175,7 @@ class JobsRepositoryTest extends \Codeception\TestCase\Test
         ]);
 
         // add to search index
-        $job->addToIndex();
+        $job->index();
 
         $this->jobRepo->deactivateJob($job->id);
 
@@ -209,7 +209,7 @@ class JobsRepositoryTest extends \Codeception\TestCase\Test
         ]);
 
         // add to search index
-        $job->addToIndex();
+        $job->index();
 
         $this->tester->seeRecord('jobs', [
             'title' => $job->title

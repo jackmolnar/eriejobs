@@ -24,13 +24,13 @@ class DeleteExpiredJobsTest extends \Codeception\TestCase\Test
             'expire' => \Carbon\Carbon::today()->subDays(10),
             'active' => 1
         ]);
-        $expiredJob->addToIndex();
+        $expiredJob->index();
 
         $activeJob = TestDummy::create('Job', [
             'expire' => \Carbon\Carbon::today()->addDays(10),
             'active' => 1
         ]);
-        $activeJob->addToIndex();
+        $activeJob->index();
 
         $deleteExpiredJobsCommand = new DeleteExpiredJobs;
 
@@ -41,7 +41,7 @@ class DeleteExpiredJobsTest extends \Codeception\TestCase\Test
         $this->tester->seeRecord('jobs', ['id' => $activeJob->id]);
 
         // remove the active and undeleted job from index
-        $activeJob->removeFromIndex();
+        $activeJob->removeIndex();
 
     }
 
