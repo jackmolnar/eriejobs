@@ -28,7 +28,7 @@ class NewRecruiterSubscribedHandlerTest extends \Codeception\TestCase\Test
         $newRecruiterSubscribedHandler = new NewRecruiterSubscribedHandler(new NewRecruiterSubscribedWelcomeMailer);
         $newRecruiterSubscribedHandler->handle($user);
 
-        $this->tester->assertEmailSubjectEquals('Welcome to EriePA Jobs');
+        $this->tester->assertEmailSubjectEquals('Welcome to EriePAJobs');
 
         $this->tester->assertEmailRecipientContains($user->email);
     }

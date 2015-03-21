@@ -103,9 +103,20 @@ class JobsRepository {
     {
         $allJobs = $this->allJobs();
 
-        $job = $allJobs->find($job_id);
+        if(is_numeric($job_id))
+        {
+            $job = $allJobs->find($job_id);
+        } else {
+            $job = Job::findBySlug($job_id);
+        }
+
 
         return $job;
+    }
+
+    public function getJobBySlug($slug)
+    {
+
     }
 
     /**

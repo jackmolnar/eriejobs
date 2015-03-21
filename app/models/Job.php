@@ -1,12 +1,27 @@
 <?php
 
-use Elasticquent\ElasticquentTrait;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 use EriePaJobs\Jobs\JobsRepository;
 use Fadion\Bouncy\BouncyTrait;
 
-class Job extends \Eloquent {
+class Job extends \Eloquent implements SluggableInterface {
 
-    /*
+    /**
+     * trait to enable sluggable methods
+     */
+    use SluggableTrait;
+    /**
+     * trait to enable elastic search methods
+     */
+    use BouncyTrait;
+
+    protected $sluggable = array(
+        'build_from' => 'title',
+        'save_to'    => 'slug',
+    );
+
+    /**
      * fillable fields
      */
 	protected $fillable = [
@@ -24,13 +39,9 @@ class Job extends \Eloquent {
         'link',
         'active',
         'expire',
-        'confidential'
+        'confidential',
+        'slug'
     ];
-
-    /**
-     * trait to enable elastic search methods
-     */
-    use BouncyTrait;
 
     /**
      * Category relationship

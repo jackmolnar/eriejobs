@@ -40,7 +40,7 @@ class SubscribeNewRecruiterCommandTest extends \Codeception\TestCase\Test
             'role_id' => $recruiterRoleId['id']
         ]);
 
-        $this->tester->assertEmailSubjectEquals('Welcome to EriePA Jobs');
+        $this->tester->assertEmailSubjectEquals('Welcome to EriePAJobs');
     }
 
 }

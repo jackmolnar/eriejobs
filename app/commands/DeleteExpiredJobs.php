@@ -40,23 +40,19 @@ class DeleteExpiredJobs extends Command {
 	 */
 	public function fire()
 	{
-//        Queue::push(function($job)
-//        {
-            $jobsRepo = new JobsRepository;
-            $allJobs = $jobsRepo->allJobs();
-            foreach($allJobs as $currentJob)
-            {
-                if($currentJob->expire < Carbon::today())
-                {
-                    $jobsRepo->deleteJob($currentJob->id);
-					$this->info('Expired jobs deleted.');
-				} else {
-					$this->info('No jobs have expired.');
-				}
-            }
+		$jobsRepo = new JobsRepository;
+		$allJobs = $jobsRepo->allJobs();
+		foreach($allJobs as $currentJob)
+		{
+			if($currentJob->expire < Carbon::today())
+			{
+				$jobsRepo->deleteJob($currentJob->id);
 
-//            $job->delete();
-//        });
+				App::environment('testing') ?: $this->info('Expired jobs deleted.');
+			} else {
+				App::environment('testing') ?: $this->info('No jobs have expired.');
+			}
+		}
 	}
 
 	/**
