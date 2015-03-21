@@ -6,7 +6,7 @@
 @if(isset($first_name))
     {{ $first_name }},
 @endif
-Welcome to EriePa.Jobs!</h2>
+Welcome to EriePaJobs!</h2>
 <hr/>
 <p>
 EriePa.Jobs is committed to helping you find your next employment opportunity. It is our mission to match great talent like you with Northwestern Pennsylvania's best employers.

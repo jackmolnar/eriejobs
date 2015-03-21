@@ -21,7 +21,7 @@ class RemindersController extends Controller {
 	{
 		switch ($response = Password::remind(Input::only('email'), function($message)
 		{
-			$message->subject('EriePa.Jobs Password Reminder');
+			$message->subject('EriePaJobs Password Reminder');
 		}))
 		{
 			case Password::INVALID_USER:

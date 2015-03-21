@@ -21,7 +21,7 @@ class NewSeekerSubscribedHandler {
      */
     public function handle(\User $user)
     {
-        $subject = 'Welcome to EriePA Jobs';
+        $subject = 'Welcome to EriePAJobs';
         $user_email = $user->email;
         $user_first_name = $user->first_name;
         $user_last_name = $user->last_name;

@@ -34,13 +34,12 @@ class SendNewSMSJobNotifications {
                 // search jobs based on term
                 $searchResults = $this->jobRepo->searchForJob($term->term);
 
-
                 // loop through search results
                 foreach($searchResults as $result)
                 {
                     if($result->id == $newJob->id)
                     {
-                        $url = action('JobsController@show', $newJob->id);
+                        $url = url('jobs').$newJob->id;
                         \Twilio::message('+'.$user->phone_number, 'EriePaJobs - A new job was just posted that matches your settings. View it and apply here - '.$url);
                     }
                 }
