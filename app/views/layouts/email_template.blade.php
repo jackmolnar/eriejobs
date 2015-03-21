@@ -16,7 +16,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td bgcolor="white" style="padding: 15px">
+                    <td bgcolor="white" style="padding: 15px; border-top: orangered thick solid; border-bottom: orangered thick solid;">
                         @yield('content')
                     </td>
                 </tr>

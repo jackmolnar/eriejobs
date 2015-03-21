@@ -25,6 +25,6 @@ has been posted.
 </p>
 <hr/>
 <p>
-You can visit your <a href="{{ URL::to('profile') }}">profile dashboard</a> to update the listing, deactivate the listing, and delete the listing.
+You can visit your <a href="{{ secure_url('profile') }}">profile dashboard</a> to update the listing, deactivate the listing, and delete the listing.
 </p>
 @stop
