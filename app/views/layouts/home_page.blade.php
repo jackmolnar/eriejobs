@@ -7,6 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0">
 <link rel="shortcut icon" href="https://eriepajobs.com/favicon.png">
+<meta name="robots" content="index, follow">
 
 <meta property="og:url"         content="{{ Request::url() }}" />
 <meta property="fb:app_id"      content="281126498752497" />
