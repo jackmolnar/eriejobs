@@ -6,6 +6,23 @@
             'title': 'New Seeker Account'
         });
     </script>
+
+    <!-- Facebook Conversion Code for EPJ Seeker Registrations -->
+    <script>(function() {
+            var _fbq = window._fbq || (window._fbq = []);
+            if (!_fbq.loaded) {
+                var fbds = document.createElement('script');
+                fbds.async = true;
+                fbds.src = '//connect.facebook.net/en_US/fbds.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(fbds, s);
+                _fbq.loaded = true;
+            }
+        })();
+        window._fbq = window._fbq || [];
+        window._fbq.push(['track', '6022559436105', {'value':'0.00','currency':'USD'}]);
+    </script>
+    <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6022559436105&amp;cd[value]=0.00&amp;cd[currency]=USD&amp;noscript=1" /></noscript>
 @endif
 
 @if(Session::has('new_recruiter_account'))
@@ -16,4 +33,21 @@
             'title': 'New Recruiter Account'
         });
     </script>
+
+    <!-- Facebook Conversion Code for EPJ Recruiter Registrations -->
+    <script>(function() {
+            var _fbq = window._fbq || (window._fbq = []);
+            if (!_fbq.loaded) {
+                var fbds = document.createElement('script');
+                fbds.async = true;
+                fbds.src = '//connect.facebook.net/en_US/fbds.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(fbds, s);
+                _fbq.loaded = true;
+            }
+        })();
+        window._fbq = window._fbq || [];
+        window._fbq.push(['track', '6022634491705', {'value':'0.00','currency':'USD'}]);
+    </script>
+    <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6022634491705&amp;cd[value]=0.00&amp;cd[currency]=USD&amp;noscript=1" /></noscript>
 @endif
