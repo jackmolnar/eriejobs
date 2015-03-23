@@ -22,9 +22,7 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/main_styles.css" />
 
-    /**
-    * fb remarketing pixel
-    */
+    {{-- FB Remarketing Pixel --}}
     <script>(function() {
             var _fbq = window._fbq || (window._fbq = []);
             if (!_fbq.loaded) {
@@ -41,7 +39,6 @@
         window._fbq.push(['track', 'PixelInitialized', {}]);
     </script>
     <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=803393913072061&amp;ev=PixelInitialized" /></noscript>
-
 
 </head>
 <body>
