@@ -51,6 +51,22 @@
 
 @include('../includes.main.footer')
 
+{{-- Google Remarketing --}}
+<script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 1033082546;
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+    <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1033082546/?value=0&amp;guid=ON&amp;script=0"/>
+    </div>
+</noscript>
+
 </body>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
