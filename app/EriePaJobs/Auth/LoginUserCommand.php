@@ -12,7 +12,6 @@ use EriePaJobs\BaseCommand;
 use Auth;
 use Redirect;
 
-
 class LoginUserCommand extends BaseCommand {
 
     /**

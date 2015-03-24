@@ -17,7 +17,6 @@
 </div>
 
 @include('includes.ga_tracking.new_account_vp')
-
 @include('includes.ga_tracking.login_event')
 
 @stop

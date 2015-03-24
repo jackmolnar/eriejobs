@@ -4,6 +4,8 @@
  * Auth Routes
  */
 //
+Route::get('login', 'AuthController@getLogin');
+Route::post('login', 'AuthController@postLogin');
 include('routes/SeekerAuthRoutes.php');
 include('routes/RecruiterAuthRoutes.php');
 Route::controller('password', 'RemindersController');

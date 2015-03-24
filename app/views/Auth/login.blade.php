@@ -6,7 +6,7 @@
     <div class="col-lg-6 well">
         <h1>Please Login</h1>
         <hr/>
-        {{ Form::open(['action' => 'AuthController@postSeekerLogin']) }}
+        {{ Form::open(['action' => 'AuthController@postLogin']) }}
         {{ Form::label('email', 'Email') }}
         {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) }}
         {{ Form::label('password', 'Password') }}

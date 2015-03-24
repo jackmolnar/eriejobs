@@ -16,6 +16,42 @@ class AuthController extends \BaseController {
     }
 
     /**
+     * Get login view
+     *
+     * @return \Illuminate\View\View
+     */
+    public function getLogin()
+    {
+        return View::make('Auth/login');
+    }
+
+    /**
+     * Login Seeker
+     *
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
+    public function postLogin()
+    {
+        $loginValidator = new LoginValidator(Input::all());
+        $valid = $loginValidator->execute();
+
+        if($valid['status'])
+        {
+            $loginUser = new LoginUserCommand(Input::all());
+            $login = $loginUser->execute();
+
+            if($login){
+                return Redirect::intended('/profile')->with('user_login', true);
+            } else {
+                return Redirect::back()->withInput()->withErrors([null, 'Password does not match email address.']);
+            }
+
+        } else {
+            return Redirect::back()->withInput()->withErrors($valid['errors']);
+        }
+    }
+
+    /**
      * Get seeker signup view
      *
      * @return \Illuminate\View\View
@@ -46,43 +82,6 @@ class AuthController extends \BaseController {
             return Redirect::to('/profile');
         }
         return Redirect::back()->withInput()->withErrors($valid['errors']);
-    }
-
-
-    /**
-     * Get seeker login view
-     *
-     * @return \Illuminate\View\View
-     */
-    public function getSeekerLogin()
-    {
-        return View::make('Auth/login');
-    }
-
-    /**
-     * Login Seeker
-     *
-     * @return $this|\Illuminate\Http\RedirectResponse
-     */
-    public function postSeekerLogin()
-    {
-        $loginValidator = new LoginValidator(Input::all());
-        $valid = $loginValidator->execute();
-
-        if($valid['status'])
-        {
-            $loginUser = new LoginUserCommand(Input::all());
-            $login = $loginUser->execute();
-
-            if($login){
-                return Redirect::intended('/profile')->with('user_login', true);
-            } else {
-                return Redirect::back()->withInput()->withErrors([null, 'Password does not match email address.']);
-            }
-
-        } else {
-            return Redirect::back()->withInput()->withErrors($valid['errors']);
-        }
     }
 
     /**

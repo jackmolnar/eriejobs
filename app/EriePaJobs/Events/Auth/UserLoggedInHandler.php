@@ -19,5 +19,7 @@ class UserLoggedInHandler {
         $now = Carbon::now();
         $user->last_login = $now;
         $user->save();
+
+        \Session::flash('logged_in', true);
     }
 } 

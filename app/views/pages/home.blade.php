@@ -9,7 +9,7 @@
              <div class="home_buttons">
                  {{ link_to_action('AuthController@getSeekerSignup', 'Signup', null, ['class' => 'btn btn-primary btn-lg']) }}
                  <span>OR</span>
-                 {{ link_to_action('AuthController@getSeekerLogin', 'Login', null, ['class' => 'btn btn-default btn-lg']) }}
+                 {{ link_to_action('AuthController@getLogin', 'Login', null, ['class' => 'btn btn-default btn-lg']) }}
              </div>
              <div class="hiring_buttons">
                 Hiring? {{ link_to_action('PagesController@hiring', 'Signup for a Recruiter account') }} and post Free for the first 90 days.
