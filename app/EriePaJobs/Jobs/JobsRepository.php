@@ -152,7 +152,7 @@ class JobsRepository {
     public function jobsByCategorySlug($category_slug)
     {
         $data['category'] = \Category::where('slug', '=', $category_slug)->first();
-        $data['jobs'] = $data['category']->jobs->paginate(15);
+        $data['jobs'] = $data['category']->jobs->sortByDesc('created_at')->paginate(20);
         return $data;
     }
 
