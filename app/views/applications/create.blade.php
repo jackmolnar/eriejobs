@@ -6,7 +6,14 @@
     <div class="col-md-9 application">
 
         <h1>Apply to the {{ $job->title }} Position</h1>
-        <h3>posted by {{ $job->company_name }}</h3>
+
+        <h3>posted by
+            @if($job->confidential)
+                Confidential
+            @else
+                {{ $job->company_name }}
+            @endif
+        </h3>
 
         <hr/>
 

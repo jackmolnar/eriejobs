@@ -7,9 +7,15 @@
 
         <hr/>
 
-        <p>
-            You should hear back from {{ $job->company_name }} soon! In the meantime {{ link_to_action('SearchController@index', 'check out') }} other career opportunities and apply for other positions.
-        </p>
+        @if($job->confidential)
+            <p>
+                You should hear back from {{ $job->company_name }} soon! In the meantime {{ link_to_action('SearchController@index', 'check out') }} other career opportunities and apply for other positions.
+            </p>
+        @else
+            <p>
+                You should hear back soon! In the meantime {{ link_to_action('SearchController@index', 'check out') }} other career opportunities and apply for other positions.
+            </p>
+        @endif
     </div>
 
 @stop
