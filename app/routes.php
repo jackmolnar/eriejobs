@@ -66,6 +66,7 @@ Route::get('hiring', 'PagesController@hiring');
 Route::get('contact', 'PagesController@getContact');
 Route::post('contact', 'PagesController@postContact');
 Route::get('terms-of-use', 'PagesController@getTermsOfUse');
+Route::resource('blog', 'BlogController');
 
 //test email route
 Route::get('test-email', function(){

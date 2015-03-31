@@ -20,7 +20,11 @@
                 @elseif(!isset($user))
                     @include('includes.jobs.apply_sign_up_button')
                 @endif
-                <h3>{{ $job->company_name }}</h3>
+                @if($job->confidential)
+                    <h3>Confidential</h3>
+                @else
+                    <h3>{{ $job->company_name }}</h3>
+                @endif
             </div>
         </div>
         <hr/>

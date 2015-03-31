@@ -88,6 +88,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $query->where('sms_notifications', '=', 1);
     }
 
+    /**
+     * Administrator
+     * @param $query
+     * @return mixed
+     */
+    public function scopeAdministrator($query)
+    {
+        return $query->where('role_id', '=', 1)->first();
+    }
+
 
     /**
      * Declare dates to be returned as Carbon instance

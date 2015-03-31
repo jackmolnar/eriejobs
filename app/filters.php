@@ -77,6 +77,18 @@ Route::filter('jobAuthor', function()
     }
 });
 
+/**
+ * Check to see if authed user is the author of referenced job
+ */
+Route::filter('administrator', function()
+{
+    $user = Auth::user();
+	if($user->role->title != 'Administrator')
+	{
+		return Redirect::action('ProfilesController@index');
+	}
+});
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

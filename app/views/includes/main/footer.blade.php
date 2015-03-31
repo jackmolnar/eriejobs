@@ -20,6 +20,7 @@
                 <li>{{ link_to_action('PagesController@hiring', 'Recruiter Signup') }}</li>
                 <li>{{ link_to_action('SearchController@index', 'Search Jobs') }}</li>
                 <li>{{ link_to_action('BrowseController@index', 'Browse Jobs') }}</li>
+                {{--<li>{{ link_to_action('BlogController@index', 'Blog') }}</li>--}}
                 <li>{{ link_to_action('PagesController@getContact', 'Contact') }}</li>
                 <li>{{ link_to_action('PagesController@getTermsOfUse', 'Terms Of Use') }}</li>
             </ul>
