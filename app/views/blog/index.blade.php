@@ -9,16 +9,23 @@
         <hr/>
 
         @if(isset($user) && $user->role->title == 'Administrator')
-            {{ link_to_action('BlogController@create', 'Create Post', null, ['class' => 'btn btn-primary btn-sm']) }}
+            <div class="admin_buttons">
+                {{ link_to_action('BlogController@create', 'Create Post', null, ['class' => 'btn btn-primary btn-xs']) }}
+            </div>
         @endif
 
         @foreach($posts as $post)
-            <div>
-                <div class="image col-md-4"></div>
+            <div class="col-md-12 blog_post_listing">
+                <div class="image col-md-4">
+                    <img src="{{ asset('images/blog_images/thumb_'.$post->image) }}" />
+                </div>
                 <div class="text col-md-8">
-                    <h2>{{ $post->title }}</h2>
-                    <p>{{ $post->description }}</p>
-                    <p>{{ link_to_action('BlogController@show', 'Read More', $post->slug, ['class' => 'btn btn-default btn-sm']) }}</p>
+                    <h2 class="title">{{ link_to_action('BlogController@show', $post->title, $post->slug ) }}</h2>
+                    <p class="date"><i class="fa fa-calendar"></i> {{ $post->created_at->format('F jS Y') }}</p>
+                    <p class="description">
+                        {{ str_limit( strip_tags($post->body), 150, '...') }}
+                    </p>
+                    {{ link_to_action('BlogController@show', 'Read More', $post->slug, ['class' => 'btn btn-default btn-xs']) }}
                 </div>
             </div>
         @endforeach

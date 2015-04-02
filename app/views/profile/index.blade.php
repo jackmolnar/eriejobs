@@ -12,6 +12,8 @@
         @include('includes.profiles.recruiter')
     @elseif($user->role->title == "Seeker")
         @include('includes.profiles.seeker')
+    @elseif($user->role->title == "Administrator")
+        @include('includes.profiles.administrator')
     @endif
 
 </div>

@@ -301,6 +301,49 @@ ul {
 .application .checkbox {
   margin-bottom: 35px; }
 
+.blog .admin_buttons {
+  margin-bottom: 20px; }
+.blog .blog_post_listing {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: thin dotted #D5D5D5;
+  border-bottom: thin dotted #D5D5D5; }
+  .blog .blog_post_listing .image {
+    overflow: hidden;
+    padding: 0px; }
+    @media screen and (max-width: 992px) {
+      .blog .blog_post_listing .image {
+        margin-bottom: 20px; } }
+  .blog .blog_post_listing .title {
+    margin-bottom: 16px; }
+    .blog .blog_post_listing .title a {
+      -webkit-transition: color 0.2s;
+              transition: color 0.2s; }
+    .blog .blog_post_listing .title a:hover {
+      color: #dc3522;
+      text-decoration: none; }
+  .blog .blog_post_listing .date {
+    color: #dc3522;
+    font-size: 14px;
+    margin-bottom: 20px; }
+  .blog .blog_post_listing .description {
+    font-size: 14px; }
+
+.blog_post .admin_buttons {
+  margin-bottom: 20px; }
+.blog_post .date {
+  color: #dc3522;
+  font-size: 14px;
+  margin-bottom: 20px; }
+.blog_post img {
+  max-width: 400px;
+  float: left;
+  padding-right: 30px;
+  padding-bottom: 30px; }
+.blog_post p, .blog_post span {
+  font-family: 'Roboto Condensed', sans-serif !important;
+  line-height: 28px !important; }
+
 /*!
  *  Font Awesome 4.2.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)

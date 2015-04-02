@@ -1,6 +1,8 @@
 <?php
 
 use EriePaJobs\Blog\BlogRepository;
+use EriePaJobs\Blog\StoreNewBlogPostCommand;
+use EriePaJobs\Blog\StoreNewBlogPostValidator;
 use EriePaJobs\Users\UserRepository;
 
 class BlogController extends \BaseController {
@@ -55,7 +57,18 @@ class BlogController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$blogPostValidator = new StoreNewBlogPostValidator(Input::all());
+		$valid = $blogPostValidator->execute();
+
+		if($valid['status'])
+		{
+			$newBlogPostCommand = new StoreNewBlogPostCommand(Input::all());
+			$newBlogPostCommand->execute();
+
+			return Redirect::action('ProfilesController@index')->with('success', 'New blog post created.');
+		}
+		return Redirect::back()->withInput()->withErrors($valid['errors']);
+
 	}
 
 	/**
@@ -67,7 +80,8 @@ class BlogController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$blogPost = $this->blogRepo->getPost($id);
+		return View::make('blog.show', ['post' => $blogPost]);
 	}
 
 	/**
@@ -79,7 +93,8 @@ class BlogController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$blogPost = $this->blogRepo->getPost($id);
+		return View::make('blog.edit', ['post' => $blogPost] );
 	}
 
 	/**

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="jobs">
+<div class="jobs" itemscope itemtype="http://schema.org/JobPosting">
 
     <div class="well col-md-9 ">
         @if(isset($user) && $user->role->title == 'Recruiter' && $user->id == $job->user_id)
@@ -14,7 +14,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <h1 class="title-{{ $job->id }}">{{ $job->title }}</h1>
+                <h1 class="title-{{ $job->id }}" itemprop="title">{{ $job->title }}</h1>
                 @if(isset($user) && $user->role->title == 'Seeker')
                     @include('includes.jobs.apply_button')
                 @elseif(!isset($user))
@@ -23,7 +23,7 @@
                 @if($job->confidential)
                     <h3>Confidential</h3>
                 @else
-                    <h3>{{ $job->company_name }}</h3>
+                    <h3 itemprop="hiringOrganization">{{ $job->company_name }}</h3>
                 @endif
             </div>
         </div>
@@ -31,19 +31,19 @@
         <div class="row job_data">
             <div class="col-md-6">
                 <ul>
-                    <li>{{ Form::label('type', 'Type:') }} {{ $job->type->type }}</li>
-                    <li>{{ Form::label('salary', 'Salary:') }} {{ $job->salary }}</li>
+                    <li >{{ Form::label('type', 'Type:') }} <span itemprop="employmentType">{{ $job->type->type }}</span></li>
+                    <li>{{ Form::label('salary', 'Salary:') }} <span itemprop="baseSalary">{{ $job->salary }}</span></li>
                     <li>{{ Form::label('level', 'Career Level:') }} {{ $job->careerlevel->level }}</li>
                     <li>{{ Form::label('category', 'Category:') }}
                         @foreach($job->categories as $category)
-                            {{ $category['category'] }}
+                            <span itemprop="industry">{{ $category['category'] }}</span>
                         @endforeach
                     </li>
 
                 </ul>
             </div>
             <div class="col-md-6">
-                <ul>
+                <ul itemprop="jobLocation">
                     <li>{{ Form::label('company_address', 'Address:') }} {{ $job->company_address }}</li>
                     <li>{{ Form::label('company_city', 'City:') }} {{ $job->company_city }}</li>
                     <li>{{ Form::label('company_state', 'State:') }} {{ $job->state->title }}</li>
@@ -54,7 +54,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h3>Job Description</h3>
-                {{ $job->description }}
+                <span itemprop="responsibilities">{{ $job->description }}</span>
             </div>
         </div>
         @if(isset($user) && $user->role->title == 'Seeker')

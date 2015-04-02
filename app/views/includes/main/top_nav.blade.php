@@ -19,6 +19,11 @@
                   @elseif(Auth::user()->role->title == 'Recruiter')
                         <li><a href="{{ URL::action('ProfilesController@index') }}"><i class="fa fa-list"></i> Dashboard</a></li>
                         <li><a href="{{ URL::action('JobsController@create') }}"><i class="fa fa-pencil"></i> Post Job</a></li>
+                  @elseif(Auth::user()->role->title == 'Administrator')
+                        <li><a href="{{ URL::action('ProfilesController@index') }}"><i class="fa fa-list"></i> Dashboard</a></li>
+                        <li><a href="{{ URL::action('SearchController@index') }}"><i class="fa fa-search"></i> Search</a></li>
+                        <li><a href="{{ URL::action('BrowseController@index') }}"><i class="fa fa-eye"></i> Browse</a></li>
+                        <li><a href="{{ URL::action('JobsController@create') }}"><i class="fa fa-pencil"></i> Post Job</a></li>
                   @endif
                   {{--<li>{{ link_to_action('AuthController@logout', 'Logout') }}</li>--}}
                   <li><a href="{{ URL::action('AuthController@logout') }}"><i class="fa fa-remove"></i> Logout</a></li>
