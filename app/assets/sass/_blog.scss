@@ -67,10 +67,22 @@
     padding-bottom: 30px;
   }
 
-  p, span{
-    font-family: $nav_fonts !important;
-    line-height: 28px !important;
+  .body{
+
+    border-top: lightgrey thin solid;
+    padding-top: 20px;
+
+    p, span{
+      font-family: $nav_fonts !important;
+      line-height: 28px !important;
+    }
   }
 
+}
 
+.edit_blog{
+  img{
+    max-width: 250px;
+    max-height: 250px;
+  }
 }

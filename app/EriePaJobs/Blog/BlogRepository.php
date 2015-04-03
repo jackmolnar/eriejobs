@@ -108,4 +108,25 @@ class BlogRepository {
         return 'thumb_'.$image->filename.'.jpg';
     }
 
+    /**
+     * Delete main image
+     * @param $image
+     */
+    public function deleteImage($image)
+    {
+        $imagePath = \Config::get('images.path');
+        \File::delete($imagePath.'/'.$image);
+    }
+
+    /**
+     * Delete thumbnail image
+     * @param $image
+     */
+    public function deleteThumbImage($image)
+    {
+        $imagePath = \Config::get('images.path');
+        $thumbImage = 'thumb_'.$image;
+        \File::delete($imagePath.'/'.$thumbImage);
+    }
+
 }

@@ -15,9 +15,14 @@
 <meta property="og:type"        content="website" />
 <meta property="og:title"       content="@yield('_title')" />
 <meta property="og:description" content="@yield('_description')" />
-<meta property="og:image"       content="{{ url('images/og_image.png') }}" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
+
+    @if(isset($post) && $post->image != '')
+        <meta property="og:image"       content="{{ asset('images/blog_images/'.$post->image) }}" />
+    @else
+        <meta property="og:image"       content="{{ url('images/og_image.png') }}" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+    @endif
 
 <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Titillium+Web:400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
@@ -53,7 +58,6 @@
     @yield('main_row')
 </div>
 
-
 <div class="container">
     @include('../includes.main.errors')
     @include('../includes.main.success')
@@ -77,8 +81,6 @@
         <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1033082546/?value=0&amp;guid=ON&amp;script=0"/>
     </div>
 </noscript>
-
-
 
 </body>
 

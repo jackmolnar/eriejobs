@@ -2,6 +2,7 @@
 /vendor
 /app/EriePaJobs/Applications/Resumes/PermanentResumes
 /app/EriePaJobs/Applications/Resumes/TempResumes
+/public/images/blog_images
 /.idea/
 .idea/workspace.xml
 composer.phar
