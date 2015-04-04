@@ -54,18 +54,16 @@ class SendNewApplicationCommand extends BaseCommand{
         }
 
         //get job admin user
-        $adminUser = \User::find($this->job->user_id);
+        $adminUser = $this->userRepo->userById($this->job->user_id);
 
         //set up email variables
         $subject = 'New Application From EriePa.Jobs';
         $user_email = $adminUser->email;
-        $user_first_name = $adminUser->first_name;
-        $user_last_name = $adminUser->last_name;
-        $user_name = $user_first_name.' '.$user_last_name;
+        $user_name = $adminUser->first_name.' '.$adminUser->last_name;
         $job_title = $this->job->title;
 
         //send email
-        \Mail::send('emails.applications.SendNewApplication', [ 'cover_letter' => $this->input['cover_letter'], 'job_title' => $job_title], function($message) use ($user_email, $user_name, $subject, $path)
+        \Mail::queue('emails.applications.SendNewApplication', [ 'cover_letter' => $this->input['cover_letter'], 'job_title' => $job_title], function($message) use ($user_email, $user_name, $subject, $path)
         {
             $message->to($user_email, $user_name)->subject($subject);
 
