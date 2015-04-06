@@ -47,8 +47,8 @@
 @stop
 
 @section('_title')
-EriePaJobs - Northwestern Pennsylvania's Exclusive Employment Website
+EriePaJobs - Find Jobs in Erie Pa and Northwestern Pa
 @stop
 @section('_description')
-EriePaJobs is an exclusive help-wanted and employment website for Erie and Northwestern PA. Job seekers can find career opportunities and recruiters can post job listings for available positions.
+Erie Pa Jobs is an exclusive help-wanted and employment website for Erie and Northwestern PA.
 @stop
