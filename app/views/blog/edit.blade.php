@@ -18,7 +18,7 @@
         {{ Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'Slug']) }}
 
         {{ Form::label('body', 'Body') }}
-        {{ Form::textarea('body', null, ['class' => 'form-control', 'placeholder' => 'Body']) }}
+        {{ Form::textarea('body', null, ['class' => 'form-control', 'id' => 'body_content', 'placeholder' => 'Body']) }}
 
         <hr/>
 
