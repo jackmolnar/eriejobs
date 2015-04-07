@@ -26,7 +26,6 @@
         @foreach($results as $result)
             @include('includes.jobs.listing')
         @endforeach
-        </div>
         <div class="pagination_links">
             @if($term != '')
                 {{ $results->appends(array('search_term' => $term))->links() }}
