@@ -10,6 +10,14 @@
             @include('includes.search.search_form')
         </div>
 
+        <div class="pagination_links">
+            @if($term != '')
+                {{ $results->appends(array('search_term' => $term))->links() }}
+            @else
+                {{ $results->links() }}
+            @endif
+        </div>
+
         @if($term != '')
             <h1>Results for "{{ $term }}"</h1>
         @else
