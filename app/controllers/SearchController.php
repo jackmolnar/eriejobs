@@ -35,7 +35,7 @@ class SearchController extends \BaseController {
         // search for term
         $term = Input::get('search_term');
         $result = $this->jobsRepo->searchForJob($term);
-
+        
         // if logged in, check if user signed up for search term
         if($this->userRepo->authedUser())
         {

@@ -133,7 +133,7 @@ class JobsRepository {
 
         $params = [
             'query' => [
-                'fuzzy' => [
+                'match' => [
                     '_all' => $term
                 ]
             ]
