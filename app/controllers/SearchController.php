@@ -35,7 +35,7 @@ class SearchController extends \BaseController {
         // search for term
         $term = Input::get('search_term');
         $result = $this->jobsRepo->searchForJob($term);
-        
+
         // if logged in, check if user signed up for search term
         if($this->userRepo->authedUser())
         {
@@ -44,8 +44,10 @@ class SearchController extends \BaseController {
             $notification = false;
         }
 
+
         if(count($result) == 0)
         {
+
             $result = "Sorry, no results were returned for '".$term."'. Please try another search.";
             return View::make('search.index', ['noResults' => $result, 'term' => $term, 'notification' => $notification]);
         }
