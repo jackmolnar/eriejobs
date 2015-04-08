@@ -3,6 +3,7 @@
 @section('content')
 
     <div class="blog_post col-md-9">
+
         <div class="col-md-10">
             <h1>{{ $post->title }}</h1>
             <p class="date"><i class="fa fa-calendar"></i> {{ $post->created_at->format('F jS Y') }}</p>
@@ -21,7 +22,13 @@
             {{ $post->body }}
         </div>
 
+        @if(!isset($user))
+            @include('includes.blog.signup_prompt')
+        @endif
+
+
     </div>
+
 
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54a05ff370e9a58d" async="async"></script>
