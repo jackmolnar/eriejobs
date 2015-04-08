@@ -1,5 +1,5 @@
 @if(isset($results))
-    <div class="pagination_links">
+    <div class="row">
         @if($term != '' )
             {{ $results->appends(array('search_term' => $term))->links() }}
         @else
