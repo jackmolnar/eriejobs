@@ -2016,8 +2016,11 @@ ul {
     .navbar-inverse .navbar-header .navbar-toggle:hover {
       background-color: #dc3522; }
   .navbar-inverse .navbar-brand {
-    width: 290px;
+    width: 225px;
     height: 77px; }
+    @media screen and (min-width: 768px) {
+      .navbar-inverse .navbar-brand {
+        width: 290px; } }
 
 .hiring_main_row {
   background-image: url('../images/hiring_header.jpg');
