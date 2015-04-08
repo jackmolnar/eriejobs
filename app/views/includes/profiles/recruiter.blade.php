@@ -33,6 +33,13 @@
             @endforeach
         </table>
     </div>
+@else
+    <div class="well col-md-10">
+        <h3><i class="fa fa-pencil"></i> My Active Job Listings</h3>
+        <hr/>
+        <p>You don't currently have any active job listings.</p>
+        <p>{{ link_to_action('JobsController@create', 'Post One Now!', null, ['class' => 'btn btn-primary']) }}</p>
+    </div>
 @endif
 
 <div class="well col-md-10">
