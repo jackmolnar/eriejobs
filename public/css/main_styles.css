@@ -2306,11 +2306,6 @@ p {
   border: thin solid #d7dfd2;
   background-color: #FFFEF9; }
 
-.pagination_links {
-  height: 150px; }
-  .pagination_links .pagination {
-    min-height: 50px; }
-
 .new_tag {
   margin-top: -133px;
   float: right;
