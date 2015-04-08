@@ -19,14 +19,6 @@
 
   @extend .browse;
 
-  ul{
-    columns: 2;
-
-    li{
-      line-height: 25px;
-    }
-  }
-
   .search_box{
     display:inline;
     max-width: 400px;

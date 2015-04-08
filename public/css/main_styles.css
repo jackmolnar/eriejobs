@@ -237,12 +237,6 @@ ul {
   font-size: 24px; }
 .search .col-md-9 .well {
   margin-left: -20px; }
-.search ul {
-  -webkit-columns: 2;
-     -moz-columns: 2;
-          columns: 2; }
-  .search ul li {
-    line-height: 25px; }
 .search .search_box {
   display: inline;
   max-width: 400px; }
