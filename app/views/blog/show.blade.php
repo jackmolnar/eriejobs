@@ -17,7 +17,7 @@
         </div>
 
         <div class="col-md-12 body">
-            <img src="{{ asset('images/blog_images/'.$post->image) }}" alt="{{$post->title}}" />
+            <img src="{{ asset('images/blog_images/'.$post->image) }}" alt="{{$post->title}}" class="img-responsive" />
             {{ $post->body }}
         </div>
 
