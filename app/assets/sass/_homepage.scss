@@ -61,20 +61,29 @@
   }
 
   .home_buttons{
-    width: 295px;
+    width: 260px;
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
     font-family: $nav_fonts;
     color: #ffffff;
 
-      span{
+    @media screen and (min-width: $small) {
+      width: 295px;
+    }
+
+
+    span{
         margin-left: 15px;
         margin-right: 15px;
       }
 
       a{
-        min-width: 100px;
+        min-width: 77px;
+
+        @media screen and (min-width: $small) {
+          min-width: 100px;
+        }
       }
   }
 

@@ -14,16 +14,6 @@ use Config;
 
 class JobsRepository {
 
-    protected $all_jobs;
-
-    function __construct()
-    {
-        //playing with collections and caching
-//        $this->all_jobs = $this->allJobs();
-//        dd($this->all_jobs->first()->id);
-    }
-
-
     /**
      * Create a Jobs Expire Date
      * @param $length

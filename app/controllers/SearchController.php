@@ -6,7 +6,6 @@ use Aloha\Twilio\Twilio;
 
 class SearchController extends \BaseController {
 
-
     /**
      * @var JobsRepository
      */
@@ -22,7 +21,6 @@ class SearchController extends \BaseController {
         $this->userRepo = $userRepo;
         View::share('user', $this->userRepo->authedUser());
     }
-
 
     /**
 	 * Display a listing of the resource
@@ -44,10 +42,8 @@ class SearchController extends \BaseController {
             $notification = false;
         }
 
-
         if(count($result) == 0)
         {
-
             $result = "Sorry, no results were returned for '".$term."'. Please try another search.";
             return View::make('search.index', ['noResults' => $result, 'term' => $term, 'notification' => $notification]);
         }

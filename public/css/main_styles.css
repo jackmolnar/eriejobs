@@ -336,10 +336,21 @@ ul {
   font-size: 14px;
   margin-bottom: 20px; }
 .blog_post img {
-  max-width: 400px;
+  max-width: 275px;
   float: left;
   padding-right: 30px;
   padding-bottom: 30px; }
+  @media screen and (min-width: 400px) {
+    .blog_post img {
+      max-width: 350px; } }
+  @media screen and (min-width: 992px) {
+    .blog_post img {
+      max-width: 400px; } }
+.blog_post .posts_back_button {
+  margin-bottom: 15px; }
+  @media screen and (min-width: 992px) {
+    .blog_post .posts_back_button {
+      margin-bottom: 0px; } }
 .blog_post .body {
   border-top: lightgrey thin solid;
   padding-top: 20px; }
@@ -2133,17 +2144,23 @@ ul {
     padding-bottom: 20px;
     border-bottom: #d9cb9e thin dashed; }
   .main_home .home_buttons {
-    width: 295px;
+    width: 260px;
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
     font-family: 'Roboto Condensed', sans-serif;
     color: #ffffff; }
+    @media screen and (min-width: 768px) {
+      .main_home .home_buttons {
+        width: 295px; } }
     .main_home .home_buttons span {
       margin-left: 15px;
       margin-right: 15px; }
     .main_home .home_buttons a {
-      min-width: 100px; }
+      min-width: 77px; }
+      @media screen and (min-width: 768px) {
+        .main_home .home_buttons a {
+          min-width: 100px; } }
   .main_home .hiring_buttons {
     border-top: dashed thin #d9cb9e;
     padding-top: 15px;
@@ -2290,7 +2307,7 @@ p {
   background-color: #FFFEF9; }
 
 .pagination_links .pagination {
-  min-height: 40px; }
+  min-height: 50px; }
 
 .new_tag {
   margin-top: -133px;

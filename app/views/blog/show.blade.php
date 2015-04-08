@@ -8,7 +8,7 @@
             <p class="date"><i class="fa fa-calendar"></i> {{ $post->created_at->format('F jS Y') }}</p>
         </div>
         <div class="col-md-2">
-            {{ link_to_action('BlogController@index', 'Back To Posts', null, ['class' => 'btn btn-default btn-xs']) }}
+            {{ link_to_action('BlogController@index', 'Back To Posts', null, ['class' => 'btn btn-default btn-xs posts_back_button']) }}
             @if(isset($user) && $user->role->title == 'Administrator')
                 <div class="admin_buttons">
                     {{ link_to_action('BlogController@edit', 'Edit Post', $post->slug, ['class' => 'btn btn-primary btn-xs']) }}

@@ -10,15 +10,7 @@
             @include('includes.search.search_form')
         </div>
 
-        <div class="pagination_links">
-            @if(isset($results))
-                @if($term != '' )
-                    {{ $results->appends(array('search_term' => $term))->links() }}
-                @else
-                    {{ $results->links() }}
-                @endif
-            @endif
-        </div>
+        @include('includes.jobs.pagination')
 
         @if($term != '')
             <h1>Results for "{{ $term }}"</h1>
@@ -36,16 +28,11 @@
         @foreach($results as $result)
             @include('includes.jobs.listing')
         @endforeach
-        <div class="pagination_links">
-            @if($term != '' )
-                {{ $results->appends(array('search_term' => $term))->links() }}
-            @else
-                {{ $results->links() }}
-            @endif
-        </div>
     @endif
 
-</div>
+    @include('includes.jobs.pagination')
+
+    </div>
 </div>
 
 @stop
