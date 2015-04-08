@@ -264,6 +264,8 @@ ul {
 .search .bold_search_term {
   font-weight: bold;
   color: #589B94; }
+.search .pagination_links ul {
+  min-height: 40px; }
 
 .profile {
   min-height: 500px; }
