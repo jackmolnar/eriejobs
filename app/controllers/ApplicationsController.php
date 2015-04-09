@@ -30,17 +30,6 @@ class ApplicationsController extends \BaseController {
         $this->userRepo = $userRepo;
     }
 
-    /**
-	 * Display a listing of the resource.
-	 * GET /applications
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
-
 	/**
 	 * Show the form for creating a new resource.
 	 * GET /applications/create

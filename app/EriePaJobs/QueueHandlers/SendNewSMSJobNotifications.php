@@ -39,7 +39,7 @@ class SendNewSMSJobNotifications {
                 {
                     if($result->id == $newJob->id)
                     {
-                        $url = url('jobs').$newJob->id;
+                        $url = url('jobs').'/'.$newJob->id;
                         \Twilio::message('+'.$user->phone_number, 'EriePaJobs - A new job was just posted that matches your settings. View it and apply here - '.$url);
                     }
                 }

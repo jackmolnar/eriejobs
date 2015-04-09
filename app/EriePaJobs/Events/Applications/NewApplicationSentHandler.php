@@ -13,10 +13,6 @@ use Illuminate\Database\Eloquent\Model;
 class NewApplicationSentHandler
 {
 
-    function __construct()
-    {
-    }
-
     /**
      * @param \User $user
      * @param Model $job
