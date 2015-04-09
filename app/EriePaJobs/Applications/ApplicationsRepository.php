@@ -54,4 +54,19 @@ class ApplicationsRepository {
         $resume->user_id = $user_id;
         $resume->save();
     }
+
+    /**
+     * Create application record in application table
+     * @param $user_id
+     * @param $job_id
+     * @return static
+     */
+    public function createApplicationRecord($user_id, $job_id)
+    {
+        $application = new \Application;
+        return $application->create([
+            'user_id' => $user_id,
+            'job_id' => $job_id
+        ]);
+    }
 } 

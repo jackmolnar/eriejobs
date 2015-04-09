@@ -2332,3 +2332,17 @@ p {
 
 .img-responsive {
   width: 100%; }
+
+.success_box {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  position: absolute;
+  z-index: 1000;
+  padding: 30px;
+  width: 100%;
+  left: 0%;
+  text-align: center;
+  top: 80px;
+  border-radius: 0px;
+  font-size: 18px; }

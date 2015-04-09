@@ -49,6 +49,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     }
 
     /**
+     * Applicant Relationship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function applications()
+    {
+        return $this->hasMany('Application');
+    }
+
+    /**
      * Notification Relationship
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

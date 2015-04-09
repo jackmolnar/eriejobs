@@ -1,5 +1,6 @@
 <?php
 
+use EriePaJobs\Applications\CreateApplicationCommand;
 use EriePaJobs\Applications\SendNewApplicationCommand;
 use EriePaJobs\Applications\SendNewApplicationValidator;
 use EriePaJobs\Jobs\JobsRepository;
@@ -13,11 +14,20 @@ class ApplicationsController extends \BaseController {
      * @var JobsRepository
      */
     private $jobRepo;
+    /**
+     * @var UserRepository
+     */
+    private $userRepo;
 
-    function __construct(JobsRepository $jobRepo)
+    /**
+     * @param JobsRepository $jobRepo
+     * @param UserRepository $userRepo
+     */
+    function __construct(JobsRepository $jobRepo, UserRepository $userRepo)
     {
         $this->beforeFilter('auth');
         $this->jobRepo = $jobRepo;
+        $this->userRepo = $userRepo;
     }
 
     /**
@@ -39,13 +49,12 @@ class ApplicationsController extends \BaseController {
 	 */
 	public function create($job_id)
 	{
-        $userRepo = new UserRepository;
-        $user = $userRepo->authedUser();
+        $user = $this->userRepo->authedUser();
 
         //get users default resume file name
         if(isset($user->resume->path) && $user->resume->path != '')
         {
-            $user->filename = $userRepo->getResumeFileName();
+            $user->filename = $this->userRepo->getResumeFileName();
         }
 
         $job = $this->jobRepo->getJobById($job_id);
@@ -68,8 +77,14 @@ class ApplicationsController extends \BaseController {
         {
             $job = $this->jobRepo->getJobById($job_id);
 
-            $newApplicationCommand = new SendNewApplicationCommand(Input::all(), $job);
+            // send the application to the jobs author
+            $sendNewApplicationCommand = new SendNewApplicationCommand(Input::all(), $job);
+            $sendNewApplicationCommand->execute();
+
+            // save the application
+            $newApplicationCommand = new CreateApplicationCommand($this->userRepo->authedUser(), $job);
             $newApplicationCommand->execute();
+
             return Redirect::action('ApplicationsController@applicationSent', [$job_id]);
         }
 

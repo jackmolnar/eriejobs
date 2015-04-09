@@ -13,7 +13,7 @@
             Congratulations on posting your new job listing! Soon applicants will be contacting you.
         </p>
         <p>
-            Remember, you can access your listing from your {{ link_to_action('ProfilesController@index', 'profile dashboard') }} in case you need to edit your listing, activate or reactivate your listing, or completely delete your listing.
+            Remember, you can access your listing from your {{ link_to_action('ProfilesController@index', 'profile dashboard') }} in case you need to edit, deactivate, or reactivate your listing, or completely delete your listing.
         </p>
 
         <hr/>

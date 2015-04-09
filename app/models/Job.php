@@ -62,6 +62,15 @@ class Job extends \Eloquent implements SluggableInterface {
     }
 
     /**
+     * Application Relationship
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function applications()
+    {
+        return $this->hasMany('Application');
+    }
+
+    /**
      * Career Level Relationship
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */

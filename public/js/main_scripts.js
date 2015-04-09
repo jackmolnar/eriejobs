@@ -1,6 +1,10 @@
 /**
  * Created by jackmolnar1982 on 11/23/14.
  */
+$( document ).ready(function() {
+    $(".success_box").delay( 1000).slideUp( 400 )
+});
+
 
 /*
     Activate button on recruiter dashboard page
@@ -223,6 +227,7 @@ $(function () {
     };
     $('#confidential').tooltip(confidentialOptions);
 });
+
 
 
 
