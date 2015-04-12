@@ -106,6 +106,12 @@ class Job extends \Eloquent implements SluggableInterface {
         return array('created_at', 'updated_at', 'expire');
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where('active', '=', 1);
+    }
+
+
     /**
      * Build the payment dropdown array
      * @return array

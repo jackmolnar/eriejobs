@@ -99,8 +99,6 @@ class JobsRepository {
         } else {
             $job = Job::findBySlug($job_id);
         }
-
-
         return $job;
     }
 
@@ -142,7 +140,7 @@ class JobsRepository {
     public function jobsByCategorySlug($category_slug)
     {
         $data['category'] = \Category::where('slug', '=', $category_slug)->first();
-        $data['jobs'] = $data['category']->jobs->sortByDesc('created_at')->paginate(20);
+        $data['jobs'] = $data['category']->jobs()->active()->orderBy('created_at', 'desc')->paginate(20);
         return $data;
     }
 

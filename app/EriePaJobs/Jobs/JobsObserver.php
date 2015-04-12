@@ -8,15 +8,18 @@
 
 namespace EriePaJobs\Jobs;
 
+use EriePaJobs\Categories\CategoryRepository;
 
 class JobsObserver {
 
 
     protected $jobsRepo;
+    protected $categoryRepo;
 
     function __construct()
     {
         $this->jobsRepo = new JobsRepository;
+        $this->categoryRepo = new CategoryRepository;
     }
 
     /**
@@ -27,6 +30,7 @@ class JobsObserver {
     {
         $job->index();
         $this->jobsRepo->updateAllJobsCache();
+        $this->categoryRepo->updateCategoryJobCountCache();
     }
 
     /**
@@ -41,6 +45,7 @@ class JobsObserver {
             $job->index();
         }
         $this->jobsRepo->updateAllJobsCache();
+        $this->categoryRepo->updateCategoryJobCountCache();
     }
 
     /**
@@ -51,6 +56,7 @@ class JobsObserver {
     {
         $job->removeIndex();
         $this->jobsRepo->updateAllJobsCache();
+        $this->categoryRepo->updateCategoryJobCountCache();
     }
 
 

@@ -35,17 +35,8 @@ class CategoryRepository {
             return $allCategories;
         }
 
-        $allCategories = $this->getAllCategories();
-
-        foreach($allCategories as $key => $category)
-        {
-            $jobCount = $category->jobs()->where('active', '=', 1)->count();
-            $allCategories[$key]['job_count'] = $jobCount;
-        }
-
-        Cache::add('categories.jobs', $allCategories, 15);
-
-        return $allCategories;
+        // update cache and return categories with count
+        return $this->updateCategoryJobCountCache();
     }
 
     /**
@@ -59,4 +50,24 @@ class CategoryRepository {
         return $category->category;
     }
 
+    /**
+     * Update Category Job Count Cache
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function updateCategoryJobCountCache()
+    {
+        Cache::forget('categories.jobs');
+
+        $allCategories = $this->getAllCategories();
+
+        foreach($allCategories as $key => $category)
+        {
+            $jobCount = $category->jobs()->active()->count();
+            $allCategories[$key]['job_count'] = $jobCount;
+        }
+
+        Cache::add('categories.jobs', $allCategories, 15);
+
+        return $allCategories;
+    }
 }
