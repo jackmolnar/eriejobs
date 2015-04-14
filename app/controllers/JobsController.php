@@ -139,10 +139,10 @@ class JobsController extends \BaseController {
 	{
         $job = $this->jobRepo->getJobById($id);
 
-        if(!isset($job) || !$job->confidential)
-        {
-            return View::make('jobs.not_found');
-        }
+//        if(!isset($job) || !$job->confidential)
+//        {
+//            return View::make('jobs.not_found');
+//        }
 
         $categories = $this->categoryRepo->getAllCategories();
         return View::make('jobs.show', ['job' => $job, 'categories' => $categories]);
