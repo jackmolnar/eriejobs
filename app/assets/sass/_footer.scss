@@ -47,6 +47,7 @@
       ul{
         list-style: none;
         padding: 0px;
+        font-size: 14px;
 
         li{
           margin-bottom: 10px;
@@ -70,14 +71,15 @@
 
         margin-left: auto;
         margin-right: auto;
-        width: 210px;
+        width: 240px;
 
         a {
           width: 40px;
           height: 40px;
           display: block;
           float: left;
-          margin-right: 30px;
+          margin-right: 20px;
+          border-radius: 20px;
         }
 
         .facebook {
@@ -97,6 +99,12 @@
         }
         .linkedin:hover{
           background-position: -80px -40px;
+        }
+        .googlePlus {
+          background: url('/images/social_icons.png') -120px 0px;
+        }
+        .googlePlus:hover{
+          background-position: -120px -40px;
         }
       }
 

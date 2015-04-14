@@ -5,7 +5,7 @@
 <div class="main_back">
     <div class="container home_page">
         <div class="main_home">
-             <h1>Northwestern Pennsylvania's Exclusive Employment Website</h1>
+             <h1>Erie and Northwestern Pennsylvania's Exclusive Employment Website</h1>
              <div class="home_buttons">
                  {{ link_to_action('AuthController@getSeekerSignup', 'Signup', null, ['class' => 'btn btn-primary btn-lg']) }}
                  <span>OR</span>
@@ -21,7 +21,7 @@
 <div class="container section2">
     <div class="col-md-4">
         <h2>Find Jobs Posted By Area Employers</h2>
-        <img src="../images/home_image_1.jpg" class="img-responsive">
+        <img src="../images/home_image_1.jpg" class="img-responsive" alt="Find jobs in Erie.">
         <p>All listings on EriePaJobs are posted by Northwestern Pennsylvania employers. You'll never have to sift through listings or ads posted by national companies that don't apply to you.
            <br/><br/>
            {{ link_to_action('SearchController@index', 'Search For Jobs', null, ['class' => 'btn btn-primary']) }}
@@ -29,7 +29,7 @@
     </div>
     <div class="col-md-4">
         <h2>Locally Owned and Operated</h2>
-        <img src="../images/home_image_2.jpg" class="img-responsive">
+        <img src="../images/home_image_2.jpg" class="img-responsive" alt="Locally owned and operated in Erie.">
         <p>EriePaJobs is locally owned and operated. We have our ear to the ground when it comes to employment in Erie. We have a stake in matching top talent with the area's best employers.
            <br/><br/>
            {{ link_to_action('AuthController@getSeekerSignup', 'Sign Up and Apply For Jobs', null, ['class' => 'btn btn-primary']) }}
@@ -37,7 +37,7 @@
     </div>
     <div class="col-md-4">
         <h2>Hiring? Post job listings free for 3 months.</h2>
-        <img src="../images/home_image_3.jpg" class="img-responsive">
+        <img src="../images/home_image_3.jpg" class="img-responsive" alt="Post job listings in Erie Pa.">
         <p>To kick off EriePaJobs, we're letting Erie area employers post job listings FREE for the first 90 days after our launch. Let us prove our value to you.
             <br/><br/>
            {{ link_to_action('PagesController@hiring', 'Sign Up and Find Your Next Employee', null, ['class' => 'btn btn-primary']) }}

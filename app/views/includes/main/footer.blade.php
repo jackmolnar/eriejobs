@@ -3,7 +3,7 @@
     <div class="container">
 
         <div class="col-md-4 logo">
-            <img src="{{ URL::asset('images/eriepajobs_3.png') }}" />
+            <img src="{{ URL::asset('images/eriepajobs_3.png') }}" alt="Jobs in Erie, Pa - EriePaJobs" />
             <div class="copyright">
                 Copyright <?php echo date("Y"); ?> EriePaJobs
                 <br/>
@@ -31,6 +31,7 @@
                 <a class="facebook" href="https://www.facebook.com/eriepa.jobs" target="_blank"></a>
                 <a class="twitter" href="https://twitter.com/EriePaJobsCom" target="_blank"></a>
                 <a class="linkedin" href="https://www.linkedin.com/company/eriepajobs-com" target="_blank"></a>
+                <a class="googlePlus" href="https://plus.google.com/+Eriepajobscom" target="_blank"></a>
             </div>
         </div>
 

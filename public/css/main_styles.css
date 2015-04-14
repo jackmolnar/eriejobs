@@ -2251,7 +2251,8 @@ ul {
       text-align: center; }
       .footer .container .links ul {
         list-style: none;
-        padding: 0px; }
+        padding: 0px;
+        font-size: 14px; }
         .footer .container .links ul li {
           margin-bottom: 10px; }
           .footer .container .links ul li a {
@@ -2263,13 +2264,14 @@ ul {
       .footer .container .social .social_container {
         margin-left: auto;
         margin-right: auto;
-        width: 210px; }
+        width: 240px; }
         .footer .container .social .social_container a {
           width: 40px;
           height: 40px;
           display: block;
           float: left;
-          margin-right: 30px; }
+          margin-right: 20px;
+          border-radius: 20px; }
         .footer .container .social .social_container .facebook {
           background: url('/images/social_icons.png') 0px 0px; }
         .footer .container .social .social_container .facebook:hover {
@@ -2282,6 +2284,10 @@ ul {
           background: url('/images/social_icons.png') -80px 0px; }
         .footer .container .social .social_container .linkedin:hover {
           background-position: -80px -40px; }
+        .footer .container .social .social_container .googlePlus {
+          background: url('/images/social_icons.png') -120px 0px; }
+        .footer .container .social .social_container .googlePlus:hover {
+          background-position: -120px -40px; }
 
 body {
   padding-top: 75px;
