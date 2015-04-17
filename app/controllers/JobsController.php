@@ -139,7 +139,7 @@ class JobsController extends \BaseController {
 	{
         $job = $this->jobRepo->getJobById($id);
         $categories = $this->categoryRepo->getAllCategories();
-        
+
         if(empty($job) || !$job->active)
         {
             return View::make('jobs.not_found');

@@ -18,7 +18,7 @@ Hi @if(isset($first_name)) {{ $first_name }}, @else TEST USER, @endif new jobs h
 
     <ul>
     @foreach($results as $job)
-        <li><a href="{{ secure_url('jobs') }}{{ '/'.$job['id'] }}">{{ $job['title'] }}</a> </li>
+        <li><a href="{{ secure_url('jobs') }}{{ '/'.$job['slug'] }}">{{ $job['title'] }}</a> </li>
     @endforeach
     </ul>
     <hr/>
