@@ -112,7 +112,7 @@ class JobsRepository {
      * @param string $term
      * @return \Elasticquent\ElasticquentResultCollection
      */
-    public function searchForJob($term = '', $limit = null, $offset = null)
+    public function searchForJob($term = '', $limit = 10, $offset = 0)
     {
         if($term == ''){
             $result = $this->allActiveJobs();
@@ -120,6 +120,8 @@ class JobsRepository {
         }
 
         $params = [
+            'from' => $offset,
+            'size' => $limit,
             'query' => [
                 'match' => [
                     '_all' => $term

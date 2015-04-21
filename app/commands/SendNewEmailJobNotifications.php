@@ -50,7 +50,7 @@ class SendNewEmailJobNotifications extends Command {
             //get users notifications
             $notifications = $user->jobNotifications->all();
 
-            //build array
+            //create array
             $resultsArray = [];
 
             foreach($notifications as $notification)
@@ -72,6 +72,9 @@ class SendNewEmailJobNotifications extends Command {
             //if results for any notification term, send mailer
             if(count($resultsArray))
             {
+//                print_r($resultsArray);
+
+
                 $subject = 'New Job Listings Posted';
                 $user_email = $user->email;
                 $user_first_name = $user->first_name;
@@ -82,9 +85,9 @@ class SendNewEmailJobNotifications extends Command {
                 {
                     $message->to($user_email, $user_name)->subject($subject);
                 });
-                $this->info('New job notifications sent.');
+                $this->info('New job notifications sent. User id '. $user->id);
             } else {
-                $this->info('No job notifications sent.');
+                $this->info('No job notifications sent. User id '. $user->id);
             }
         }
 	}
