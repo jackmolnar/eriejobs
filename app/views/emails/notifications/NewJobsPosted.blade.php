@@ -12,14 +12,10 @@ New Jobs Have Been Posted!</h2>
 Hi @if(isset($first_name)) {{ $first_name }}, @else TEST USER, @endif new jobs have been posted to EriePaJobs that match your notification settings. Click the listings below to see more details and apply.
 </p>
 <hr/>
-@foreach($jobData as $searchTerm => $results)
-
-    <h4>New Jobs for "{{ $searchTerm }}"</h4>
+@foreach($jobData as $result)
 
     <ul>
-    @foreach($results as $job)
-        <li><a href="{{ secure_url('jobs') }}{{ '/'.$job['slug'] }}">{{ $job['title'] }}</a> </li>
-    @endforeach
+        <li><a href="{{ secure_url('jobs') }}{{ '/'.$result['slug'] }}">{{ $result['title'] }}</a> </li>
     </ul>
     <hr/>
 

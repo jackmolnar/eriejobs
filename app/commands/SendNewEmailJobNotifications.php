@@ -65,26 +65,32 @@ class SendNewEmailJobNotifications extends Command {
                 //if results, add to the resultsArray
                 if(count($searchResults))
                 {
-                    $resultsArray[$notification->term] = $searchResults;
+                    foreach($searchResults as $result)
+                    {
+                        $resultsArray[] = $result['id'];
+                    }
+
+//                    $resultsArray[$notification->term] = $searchResults;
                 }
             }
 
             //if results for any notification term, send mailer
             if(count($resultsArray))
             {
-//                print_r($resultsArray);
+                $emailInfo = [
+                    'subject' => 'New Job Listings Posted',
+                    'user_email' => $user->email,
+                    'user_name' => $user->first_name.' '.$user->last_name
+                ];
 
+//                $subject = 'New Job Listings Posted';
+//                $user_email = $user->email;
+//                $user_first_name = $user->first_name;
+//                $user_last_name = $user->last_name;
+//                $user_name = $user_first_name.' '.$user_last_name;
 
-                $subject = 'New Job Listings Posted';
-                $user_email = $user->email;
-                $user_first_name = $user->first_name;
-                $user_last_name = $user->last_name;
-                $user_name = $user_first_name.' '.$user_last_name;
+                Queue::push('EriePaJobs\QueueHandlers\SendJobNotificationEmail', array('jobIds' => $resultsArray, 'emailInfo' => $emailInfo));
 
-                \Mail::queue('emails.notifications.NewJobsPosted', ['first_name' => $user_first_name, 'jobData' => $resultsArray], function($message) use ($user_email, $user_name, $subject)
-                {
-                    $message->to($user_email, $user_name)->subject($subject);
-                });
                 $this->info('New job notifications sent. User id '. $user->id);
             } else {
                 $this->info('No job notifications sent. User id '. $user->id);
