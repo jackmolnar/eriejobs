@@ -70,6 +70,7 @@ class SendNewEmailJobNotifications extends Command {
                         $resultsArray[] = $result['id'];
                     }
 
+                    //  \/ this can go
 //                    $resultsArray[$notification->term] = $searchResults;
                 }
             }
@@ -82,7 +83,7 @@ class SendNewEmailJobNotifications extends Command {
                     'user_email' => $user->email,
                     'user_name' => $user->first_name.' '.$user->last_name
                 ];
-
+                //  \/ this can go
 //                $subject = 'New Job Listings Posted';
 //                $user_email = $user->email;
 //                $user_first_name = $user->first_name;

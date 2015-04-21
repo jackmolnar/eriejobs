@@ -23,7 +23,6 @@ class SendJobNotificationEmail {
 
     public function fire($job, $data)
     {
-//        dd(print_r($data));
         foreach($data['jobIds'] as $id)
         {
             $resultsArray[] = $this->jobRepo->getJobById($id);
