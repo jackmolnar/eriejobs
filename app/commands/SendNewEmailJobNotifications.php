@@ -59,7 +59,7 @@ class SendNewEmailJobNotifications extends Command {
 
                 $searchResults = $searchResults->toArray();
 
-                //remove listings more than 7 days old from array
+                //remove listings more than 1 days old from array
                 $searchResults = $this->getNewListings($searchResults);
 
                 //if results, add to the resultsArray
@@ -106,9 +106,9 @@ class SendNewEmailJobNotifications extends Command {
      */
     public function getNewListings($searchResults)
     {
-        //remove listings more than 7 days old from array
+        //remove listings more than 1 days old from array
         $searchResults = array_filter($searchResults, function($result){
-            if($result['created_at'] > Carbon::today()->subDays(7))
+            if($result['created_at'] > Carbon::today()->subDays(1))
             {
                 return $result;
             }
