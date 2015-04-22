@@ -42,7 +42,6 @@ class SendNewEmailJobNotifications extends Command {
 	 */
 	public function fire()
 	{
-
 		$allUsers = User::emailNotifications()->get();
 
         foreach($allUsers as $user)
@@ -50,13 +49,13 @@ class SendNewEmailJobNotifications extends Command {
             //get users notifications
             $notifications = $user->jobNotifications->all();
 
-            //create array
+            //create results array
             $resultsArray = [];
 
             foreach($notifications as $notification)
             {
+                // search for jobs related to notification term
                 $searchResults = $this->jobsRepo->searchForJob($notification->term, 5);
-
                 $searchResults = $searchResults->toArray();
 
                 //remove listings more than 1 days old from array
@@ -69,10 +68,6 @@ class SendNewEmailJobNotifications extends Command {
                     {
                         $resultsArray[] = $result['id'];
                     }
-
-                    //return only unique ids
-                    $resultsArray = array_unique($resultsArray);
-
                     //  \/ this can go
 //                    $resultsArray[$notification->term] = $searchResults;
                 }
@@ -81,18 +76,14 @@ class SendNewEmailJobNotifications extends Command {
             //if results for any notification term, send mailer
             if(count($resultsArray))
             {
+                //return only unique ids
+                $resultsArray = array_unique($resultsArray);
 
                 $emailInfo = [
                     'subject' => 'New Job Listings Posted',
                     'user_email' => $user->email,
                     'user_name' => $user->first_name.' '.$user->last_name
                 ];
-                //  \/ this can go
-//                $subject = 'New Job Listings Posted';
-//                $user_email = $user->email;
-//                $user_first_name = $user->first_name;
-//                $user_last_name = $user->last_name;
-//                $user_name = $user_first_name.' '.$user_last_name;
 
                 Queue::push('EriePaJobs\QueueHandlers\SendJobNotificationEmail', array('jobIds' => $resultsArray, 'emailInfo' => $emailInfo));
 
