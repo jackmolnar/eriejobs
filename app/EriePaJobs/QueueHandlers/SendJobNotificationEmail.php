@@ -31,13 +31,9 @@ class SendJobNotificationEmail {
             $resultsArray[] = $this->jobRepo->getJobById($id);
         }
 
-        dd(print_r($resultsArray));
-
         $subject = $data['emailInfo']['subject'];
         $user_email = $data['emailInfo']['user_email'];
         $user_name = $data['emailInfo']['user_name'];
-
-        dd('die');
 
         \Mail::send('emails.notifications.NewJobsPosted', ['first_name' => $user_name, 'jobData' => $resultsArray], function($message) use ($user_email, $user_name, $subject)
         {
