@@ -70,6 +70,9 @@ class SendNewEmailJobNotifications extends Command {
                         $resultsArray[] = $result['id'];
                     }
 
+                    //return only unique ids
+                    $resultsArray = array_unique($resultsArray);
+
                     //  \/ this can go
 //                    $resultsArray[$notification->term] = $searchResults;
                 }
@@ -109,7 +112,7 @@ class SendNewEmailJobNotifications extends Command {
     {
         //remove listings more than 1 days old from array
         $searchResults = array_filter($searchResults, function($result){
-            if($result['created_at'] > Carbon::today()->subDays(3))
+            if($result['created_at'] > Carbon::today()->subDays(1))
             {
                 return $result;
             }
