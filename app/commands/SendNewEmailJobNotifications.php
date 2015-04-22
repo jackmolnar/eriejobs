@@ -78,6 +78,7 @@ class SendNewEmailJobNotifications extends Command {
             //if results for any notification term, send mailer
             if(count($resultsArray))
             {
+
                 $emailInfo = [
                     'subject' => 'New Job Listings Posted',
                     'user_email' => $user->email,
@@ -108,7 +109,7 @@ class SendNewEmailJobNotifications extends Command {
     {
         //remove listings more than 1 days old from array
         $searchResults = array_filter($searchResults, function($result){
-            if($result['created_at'] > Carbon::today()->subDays(1))
+            if($result['created_at'] > Carbon::today()->subDays(3))
             {
                 return $result;
             }

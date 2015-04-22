@@ -23,19 +23,28 @@ class SendJobNotificationEmail {
 
     public function fire($job, $data)
     {
+        //create array
+        $resultsArray = [];
+
         foreach($data['jobIds'] as $id)
         {
             $resultsArray[] = $this->jobRepo->getJobById($id);
         }
 
+        dd(print_r($resultsArray));
+
         $subject = $data['emailInfo']['subject'];
         $user_email = $data['emailInfo']['user_email'];
         $user_name = $data['emailInfo']['user_name'];
 
-        \Mail::send('emails.notifications.NewJobsPosted', ['first_name' => $data['emailInfo']['user_name'], 'jobData' => $resultsArray], function($message) use ($user_email, $user_name, $subject)
+        dd('die');
+
+        \Mail::send('emails.notifications.NewJobsPosted', ['first_name' => $user_name, 'jobData' => $resultsArray], function($message) use ($user_email, $user_name, $subject)
         {
             $message->to($user_email, $user_name)->subject($subject);
         });
+
+        $job->delete();
     }
 
 
