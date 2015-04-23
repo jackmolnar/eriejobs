@@ -119,7 +119,10 @@ class JobsRepository {
             'size' => $limit,
             'query' => [
                 'match' => [
-                    '_all' => $term,
+                    '_all' =>  [
+                        'query' => $term,
+                        "minimum_should_match" => "75%"
+                    ]
                 ]
             ]
         ];
