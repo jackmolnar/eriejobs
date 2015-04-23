@@ -71,6 +71,9 @@ class SendNewEmailJobNotifications extends Command {
                 }
             }
 
+            dd($resultsArray);
+
+
             //if results for any notification term, send mailer
             if(count($resultsArray))
             {
