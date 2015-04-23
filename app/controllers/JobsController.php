@@ -61,7 +61,6 @@ class JobsController extends \BaseController {
         {
             return View::make('jobs.create', ['job' => Session::get('pending_job'), 'billing' => \Config::get('billing')]);
         }
-
 		return View::make('jobs.create', ['billing' => \Config::get('billing')]);
 	}
 
@@ -219,6 +218,4 @@ class JobsController extends \BaseController {
         $this->jobRepo->activateJob($id);
         return "Activated";
     }
-
-
 }
