@@ -55,7 +55,7 @@ class SendNewEmailJobNotifications extends Command {
             foreach($notifications as $notification)
             {
                 // search for jobs related to notification term
-                $searchResults = $this->jobsRepo->searchForJob($notification->term, 5);
+                $searchResults = $this->jobsRepo->searchForJob($notification->term);
                 $searchResults = $searchResults->toArray();
 
                 //remove listings more than 1 days old from array
@@ -66,13 +66,10 @@ class SendNewEmailJobNotifications extends Command {
                 {
                     foreach($searchResults as $result)
                     {
-                        $resultsArray[] = $result['id'];
+                        array_push($resultsArray, $result['id']);
                     }
                 }
             }
-
-            dd($resultsArray);
-
 
             //if results for any notification term, send mailer
             if(count($resultsArray))
