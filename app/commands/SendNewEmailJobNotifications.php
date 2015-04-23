@@ -66,12 +66,12 @@ class SendNewEmailJobNotifications extends Command {
                 {
                     foreach($searchResults as $result)
                     {
-                        $resultsArray[] = $result['id'];
+                        array_push($resultsArray, $result['id']);
                     }
-                    //  \/ this can go
-//                    $resultsArray[$notification->term] = $searchResults;
                 }
             }
+
+            dd($resultsArray);
 
             //if results for any notification term, send mailer
             if(count($resultsArray))
