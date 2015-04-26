@@ -133,6 +133,27 @@ class JobsRepository {
     }
 
     /**
+     * Get similar jobs
+     * @param $term
+     * @return \Fadion\Bouncy\ElasticCollection
+     */
+    public function searchMoreLikeThis($term)
+    {
+        $params = [
+            'query' => [
+                "more_like_this" => [
+                    "fields" => ["title", "description"],
+                    "like_text" => $term,
+                ]
+            ]
+        ];
+
+        $result = Job::search($params);
+
+        return $result;
+    }
+
+    /**
      * Get jobs by the category slug
      * @param string $category_slug
      * @return array $data

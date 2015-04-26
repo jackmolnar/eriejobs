@@ -68,7 +68,14 @@
 
     </div>
     <div class="col-md-3">
-
+        @if(count($similar_jobs))
+            <h2>More Job Openings Like This</h2>
+            @foreach($similar_jobs as $job)
+                <div>
+                    <h3>{{ link_to_action('JobsController@show', $job->title, $job->slug) }}</h3>
+                </div>
+            @endforeach
+        @endif
     </div>
 
 </div>

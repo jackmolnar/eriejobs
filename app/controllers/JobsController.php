@@ -138,13 +138,14 @@ class JobsController extends \BaseController {
 	{
         $job = $this->jobRepo->getJobById($id);
         $categories = $this->categoryRepo->getAllCategories();
+        $similar_jobs = $this->jobRepo->searchMoreLikeThis($job->title);
 
         if(empty($job) || !$job->active)
         {
             return View::make('jobs.not_found');
         }
 
-        return View::make('jobs.show', ['job' => $job, 'categories' => $categories]);
+        return View::make('jobs.show', ['job' => $job, 'categories' => $categories, 'similar_jobs' => $similar_jobs]);
 	}
 
 	/**
