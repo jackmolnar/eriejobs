@@ -138,7 +138,7 @@ class JobsController extends \BaseController {
 	{
         $job = $this->jobRepo->getJobById($id);
         $categories = $this->categoryRepo->getAllCategories();
-        $similar_jobs = $this->jobRepo->searchMoreLikeThis($job->title);
+        $similar_jobs = $this->jobRepo->searchMoreLikeThis($job->id);
 
         if(empty($job) || !$job->active)
         {

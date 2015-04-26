@@ -137,13 +137,19 @@ class JobsRepository {
      * @param $term
      * @return \Fadion\Bouncy\ElasticCollection
      */
-    public function searchMoreLikeThis($term)
+    public function searchMoreLikeThis($id)
     {
         $params = [
             'query' => [
                 "more_like_this" => [
                     "fields" => ["title", "description"],
-                    "like_text" => $term,
+                    "docs" => [
+                        [
+                            "_index" => "default",
+                            "_type" => "job",
+                            "_id" => $id
+                        ]
+                    ],
                 ]
             ]
         ];
