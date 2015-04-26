@@ -146,6 +146,7 @@ class JobsRepository {
                     'like_text' => $job->title,
                     'min_term_freq' => 1,
                     'max_query_terms' => 10,
+                    'include' => false
                 ]
             ]
         ];
