@@ -144,8 +144,8 @@ class JobsRepository {
             'query' => [
                 'more_like_this' => [
                     'like_text' => $job->title,
-                    'min_term_freq' => 1,
-                    'max_query_terms' => 10,
+                    'min_term_freq' => 2,
+                    'max_query_terms' => 15,
                 ]
             ]
         ];
