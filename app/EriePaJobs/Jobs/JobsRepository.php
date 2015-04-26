@@ -143,10 +143,9 @@ class JobsRepository {
         $params = [
             'query' => [
                 'more_like_this' => [
-                    'like_text' => $job->title.' '.$job->description,
+                    'like_text' => $job->title,
                     'min_term_freq' => 1,
                     'max_query_terms' => 10,
-                    'include' => true
                 ]
             ]
         ];
