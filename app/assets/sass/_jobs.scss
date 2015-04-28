@@ -70,6 +70,20 @@
     float: right;
   }
 
+  .right_column{
+    h3 {
+      font-size: 18px;
+    }
+
+    ul{
+      li{
+        list-style: none;
+        margin-bottom: 20px;
+        font-size: 18px;
+      }
+    }
+  }
+
 }
 
 .job_create {

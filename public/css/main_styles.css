@@ -217,6 +217,12 @@ ul {
     margin-right: 10px; }
   .jobs .edit_buttons, .jobs .job_create {
     float: right; }
+  .jobs .right_column h3, .jobs .right_column .job_create {
+    font-size: 18px; }
+  .jobs .right_column ul li, .jobs .right_column ul .job_create {
+    list-style: none;
+    margin-bottom: 20px;
+    font-size: 18px; }
 
 .job_create .col-md-6 .half_element {
   max-width: 95%; }

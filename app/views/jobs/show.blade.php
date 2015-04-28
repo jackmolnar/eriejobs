@@ -67,15 +67,15 @@
         @endif
 
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 right_column">
         @if(count($similar_jobs))
-            <h3>More Listings Like This</h3>
+            <h3>More Job Openings Like This</h3>
             <hr>
-            @foreach($similar_jobs as $similar_job)
-                <div>
-                    <h4>{{ link_to_action('JobsController@show', $similar_job->title, $similar_job->slug) }}</h4>
-                </div>
-            @endforeach
+            <ul>
+                @foreach($similar_jobs as $similar_job)
+                    <li><h4>{{ link_to_action('JobsController@show', $similar_job->title, $similar_job->slug) }}</h4></li>
+                @endforeach
+            </ul>
         @endif
     </div>
 
