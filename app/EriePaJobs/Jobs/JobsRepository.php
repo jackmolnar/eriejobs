@@ -139,13 +139,12 @@ class JobsRepository {
      */
     public function searchMoreLikeThis($job)
     {
-//        dd($job->description);
         $params = [
             'query' => [
                 'more_like_this' => [
-                    'like_text' => $job->title,
-                    'min_term_freq' => 1,
-                    'max_query_terms' => 10,
+                    'like_text' => $job->title.' '.$job->description.' '.$job->company_name,
+                    'min_term_freq' => 2,
+                    'max_query_terms' => 12,
                     'include' => false
                 ]
             ]

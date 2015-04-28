@@ -71,9 +71,9 @@
         @if(count($similar_jobs))
             <h3>More Listings Like This</h3>
             <hr>
-            @foreach($similar_jobs as $job)
+            @foreach($similar_jobs as $similar_job)
                 <div>
-                    <h4>{{ link_to_action('JobsController@show', $job->title, $job->slug) }}</h4>
+                    <h4>{{ link_to_action('JobsController@show', $similar_job->title, $similar_job->slug) }}</h4>
                 </div>
             @endforeach
         @endif
