@@ -163,6 +163,8 @@ class JobsRepository {
 
         $result = $this->searchForJob($job->title);
 
+        unset($result[0]);
+
         return $result;
     }
 
