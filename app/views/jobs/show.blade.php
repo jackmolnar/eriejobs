@@ -68,22 +68,22 @@
 
     </div>
     <div class="col-md-3 right_column">
-        @if(count($similar_jobs))
-            <h3>More Job Openings Like This</h3>
-            <hr>
-            <ul>
-                @foreach($similar_jobs as $similar_job)
-                    <li><h4>{{ link_to_action('JobsController@show', $similar_job->title, $similar_job->slug) }}</h4></li>
-                @endforeach
-            </ul>
-            <hr>
-        @endif
         @if(count($recruiter_jobs))
             <h3>More Job Openings From This Recruiter</h3>
             <hr>
             <ul>
                 @foreach($recruiter_jobs as $recruiter_job)
                     <li><h4>{{ link_to_action('JobsController@show', $recruiter_job->title, $recruiter_job->slug) }}</h4></li>
+                @endforeach
+            </ul>
+            <hr>
+        @endif
+        @if(count($similar_jobs))
+            <h3>More Job Openings Like This</h3>
+            <hr>
+            <ul>
+                @foreach($similar_jobs as $similar_job)
+                    <li><h4>{{ link_to_action('JobsController@show', $similar_job->title, $similar_job->slug) }}</h4></li>
                 @endforeach
             </ul>
             <hr>

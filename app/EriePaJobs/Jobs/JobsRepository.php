@@ -155,7 +155,7 @@ class JobsRepository {
     public function moreByCompany($job)
     {
         // get jobs by company
-        $recruiter_jobs = $job->byCompany($job->company_name)->get();
+        $recruiter_jobs = $job->byCompany($job->company_name)->limit(10)->get();
 
         // filter out original job
         $recruiter_jobs = $recruiter_jobs->filter(function($recruiter_job) use ($job)
