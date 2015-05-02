@@ -134,38 +134,22 @@ class JobsRepository {
 
     /**
      * Get similar jobs
-     * @param $term
+     * @param $job
      * @return \Fadion\Bouncy\ElasticCollection
+     * @internal param $term
      */
     public function searchMoreLikeThis($job)
     {
-
-//        $params = [
-//            'query' => [
-//                'more_like_this' => [
-//                    'like_text' => $job->title.' '.$job->description.' '.$job->company_name,
-//                    'min_term_freq' => 2,
-//                    'max_query_terms' => 17,
-//                    'include' => false,
-//                    'stop_words' => [
-//                        'and',
-//                        'for',
-//                        'of',
-//                        'has',
-//                        'an',
-//                        'in',
-//                        'be',
-//                        'a'
-//                    ]
-//                ]
-//            ]
-//        ];
-
         $result = $this->searchForJob($job->title, 10);
 
         unset($result[0]);
 
         return $result;
+    }
+
+    public function moreJobsFromCompany($job)
+    {
+        return $result = $this->searchForJob($job->company_name, 10);
     }
 
     /**
