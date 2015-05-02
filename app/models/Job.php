@@ -121,7 +121,13 @@ class Job extends \Eloquent implements SluggableInterface {
         return $query->where('active', '=', 1);
     }
 
-    public function scopeMoreByCompany($query, $company_name)
+    /**
+     * Get more jobs by same company
+     * @param $query
+     * @param $company_name
+     * @return mixed
+     */
+    public function scopeByCompany($query, $company_name)
     {
         return $query->where('company_name', '=', $company_name);
     }

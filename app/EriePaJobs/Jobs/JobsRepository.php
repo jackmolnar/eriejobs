@@ -148,6 +148,25 @@ class JobsRepository {
     }
 
     /**
+     * Get more jobs by company
+     * @param $job
+     * @return mixed
+     */
+    public function moreByCompany($job)
+    {
+        // get jobs by company
+        $recruiter_jobs = $job->byCompany($job->company_name)->get();
+
+        // filter out original job
+        $recruiter_jobs = $recruiter_jobs->filter(function($recruiter_job) use ($job)
+        {
+            if($recruiter_job->id != $job->id) return $recruiter_job;
+        });
+
+        return $recruiter_jobs;
+    }
+
+    /**
      * Get jobs by the category slug
      * @param string $category_slug
      * @return array $data
