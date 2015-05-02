@@ -139,28 +139,29 @@ class JobsRepository {
      */
     public function searchMoreLikeThis($job)
     {
-        $params = [
-            'query' => [
-                'more_like_this' => [
-                    'like_text' => $job->title.' '.$job->description.' '.$job->company_name,
-                    'min_term_freq' => 2,
-                    'max_query_terms' => 17,
-                    'include' => false,
-                    'stop_words' => [
-                        'and',
-                        'for',
-                        'of',
-                        'has',
-                        'an',
-                        'in',
-                        'be',
-                        'a'
-                    ]
-                ]
-            ]
-        ];
 
-        $result = Job::search($params);
+//        $params = [
+//            'query' => [
+//                'more_like_this' => [
+//                    'like_text' => $job->title.' '.$job->description.' '.$job->company_name,
+//                    'min_term_freq' => 2,
+//                    'max_query_terms' => 17,
+//                    'include' => false,
+//                    'stop_words' => [
+//                        'and',
+//                        'for',
+//                        'of',
+//                        'has',
+//                        'an',
+//                        'in',
+//                        'be',
+//                        'a'
+//                    ]
+//                ]
+//            ]
+//        ];
+
+        $result = $this->searchForJob($job->title);
 
         return $result;
     }
