@@ -12,7 +12,6 @@ use EriePaJobs\Categories\CategoryRepository;
 
 class JobsObserver {
 
-
     protected $jobsRepo;
     protected $categoryRepo;
 
@@ -58,6 +57,5 @@ class JobsObserver {
         $this->jobsRepo->updateAllJobsCache();
         $this->categoryRepo->updateCategoryJobCountCache();
     }
-
 
 }

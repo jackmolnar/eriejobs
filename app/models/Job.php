@@ -4,6 +4,7 @@ use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 use EriePaJobs\Jobs\JobsRepository;
 use Fadion\Bouncy\BouncyTrait;
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 class Job extends \Eloquent implements SluggableInterface {
 
@@ -15,6 +16,10 @@ class Job extends \Eloquent implements SluggableInterface {
      * trait to enable elastic search methods
      */
     use BouncyTrait;
+    /**
+     * trait to enable soft deleting jobs
+     */
+    use SoftDeletingTrait;
 
     protected $sluggable = array(
         'build_from' => 'title',
