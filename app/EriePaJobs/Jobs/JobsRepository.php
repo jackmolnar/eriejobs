@@ -161,7 +161,7 @@ class JobsRepository {
 //            ]
 //        ];
 
-        $result = $this->searchForJob($job->title);
+        $result = $this->searchForJob($job->title, 10);
 
         unset($result[0]);
 
