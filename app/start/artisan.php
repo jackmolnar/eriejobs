@@ -18,3 +18,4 @@ Artisan::add(new ReturnJobSearchIndex);
 Artisan::add(new RemapJobIndex);
 Artisan::add(new SendNewEmailJobNotifications);
 Artisan::add(new DeleteOldTempResumes);
+Artisan::add(new SendJobExpiringSoonNotifications);
