@@ -147,6 +147,11 @@ class JobsRepository {
         return $result;
     }
 
+    /**
+     * More jobs from recruiter
+     * @param $job
+     * @return \Elasticquent\ElasticquentResultCollection
+     */
     public function moreJobsFromCompany($job)
     {
         return $result = $this->searchForJob($job->company_name, 10);
