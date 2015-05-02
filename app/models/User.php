@@ -17,7 +17,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $table = 'users';
 
-
     protected $fillable = array('email', 'first_name', 'last_name', 'role', 'email_notifications', 'sms_notifications', 'phone_number');
 
 	/**
@@ -26,7 +25,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $hidden = array('password', 'remember_token');
-
 
     /**
      * Role Relationship
@@ -108,7 +106,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $query->where('role_id', '=', 1)->first();
     }
 
-
     /**
      * Declare dates to be returned as Carbon instance
      * @return array
@@ -117,5 +114,4 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     {
         return array('created_at', 'updated_at', 'last_login');
     }
-
 }

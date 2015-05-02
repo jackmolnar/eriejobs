@@ -32,7 +32,6 @@ class SendJobExpiringSoonNotifications extends Command {
 	public function __construct()
 	{
 		parent::__construct();
-
 		$this->jobsRepo = new JobsRepository;
 	}
 
@@ -43,7 +42,7 @@ class SendJobExpiringSoonNotifications extends Command {
 	 */
 	public function fire()
 	{
-		//get all jobs
+		// get all jobs
 		$allJobs = $this->jobsRepo->allJobs();
 
 		$triggerDate = Carbon::today()->addDays(3);

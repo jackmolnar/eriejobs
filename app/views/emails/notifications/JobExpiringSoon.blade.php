@@ -1,7 +1,6 @@
 @extends('layouts.email_template')
 
 @section('content')
-
     <h2>
         @if(isset($first_name))
             {{ $first_name }},
@@ -14,5 +13,4 @@
     <p>
         We hope that you continue to list job openings on EriePaJobs.com in the future. If you have feedback about your experience, we would love to hear it! {{ link_to_action('PagesController@getContact', 'Contact us here!') }}
     </p>
-
 @stop

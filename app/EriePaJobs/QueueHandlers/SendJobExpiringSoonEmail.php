@@ -25,6 +25,11 @@ class SendJobExpiringSoonEmail {
         $this->userRepo = $userRepo;
     }
 
+    /**
+     * Fire the queued job
+     * @param $job
+     * @param $data
+     */
     public function fire($job, $data)
     {
         $expiringJob = $this->jobsRepo->getJobById($data['jobid']);
@@ -41,6 +46,5 @@ class SendJobExpiringSoonEmail {
         });
 
         $job->delete();
-
     }
 }

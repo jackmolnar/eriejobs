@@ -111,7 +111,6 @@ class Job extends \Eloquent implements SluggableInterface {
         return $query->where('active', '=', 1);
     }
 
-
     /**
      * Build the payment dropdown array
      * @return array
@@ -138,7 +137,6 @@ class Job extends \Eloquent implements SluggableInterface {
         }
         return $dropDownArray;
     }
-
 
     /**
      * Mapping properties for elasticsearch
@@ -216,6 +214,5 @@ class Job extends \Eloquent implements SluggableInterface {
             'analyzer' => 'standard',
         ],
     ];
-
 
 }
