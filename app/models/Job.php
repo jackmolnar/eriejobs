@@ -111,9 +111,19 @@ class Job extends \Eloquent implements SluggableInterface {
         return array('created_at', 'updated_at', 'expire');
     }
 
+    /**
+     * Get only active jobs
+     * @param $query
+     * @return mixed
+     */
     public function scopeActive($query)
     {
         return $query->where('active', '=', 1);
+    }
+
+    public function scopeMoreByCompany($query, $company_name)
+    {
+        return $query->where('company_name', '=', $company_name);
     }
 
     /**

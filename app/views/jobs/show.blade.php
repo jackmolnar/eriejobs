@@ -78,16 +78,16 @@
             </ul>
             <hr>
         @endif
-        {{--@if(count($recruiter_jobs))--}}
-            {{--<h3>More Job Openings From This Recruiter</h3>--}}
-            {{--<hr>--}}
-            {{--<ul>--}}
-                {{--@foreach($recruiter_jobs as $recruiter_job)--}}
-                    {{--<li><h4>{{ link_to_action('JobsController@show', $recruiter_job->title, $recruiter_job->slug) }}</h4></li>--}}
-                {{--@endforeach--}}
-            {{--</ul>--}}
-            {{--<hr>--}}
-        {{--@endif--}}
+        @if(count($recruiter_jobs))
+            <h3>More Job Openings From This Recruiter</h3>
+            <hr>
+            <ul>
+                @foreach($recruiter_jobs as $recruiter_job)
+                    <li><h4>{{ link_to_action('JobsController@show', $recruiter_job->title, $recruiter_job->slug) }}</h4></li>
+                @endforeach
+            </ul>
+            <hr>
+        @endif
     </div>
 
 </div>
