@@ -58,7 +58,7 @@ class SendNewApplicationCommand extends BaseCommand{
 
         //set up email variables
         $subject = 'New Application From EriePa.Jobs';
-        $user_email = $adminUser->email;
+        $user_email = $this->job->email;
         $user_name = $adminUser->first_name.' '.$adminUser->last_name;
         $job_title = $this->job->title;
 

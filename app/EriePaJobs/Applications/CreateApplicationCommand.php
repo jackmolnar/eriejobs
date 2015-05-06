@@ -8,7 +8,6 @@
 
 namespace EriePaJobs\Applications;
 
-
 use EriePaJobs\BaseCommand;
 
 class CreateApplicationCommand extends BaseCommand{
