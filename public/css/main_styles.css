@@ -178,6 +178,8 @@ ul {
 
 .jobs, .job_create {
   min-height: 400px; }
+  .jobs p, .jobs .job_create {
+    margin-bottom: 10px; }
   .jobs .row, .jobs .job_create {
     padding-left: 15px;
     padding-right: 15px; }
