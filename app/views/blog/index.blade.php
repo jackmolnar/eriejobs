@@ -50,6 +50,7 @@
                         <li><h4>{{ link_to_action('JobsController@show', $recentJob->title, $recentJob->slug) }}</h4></li>
                     @endforeach
                 </ul>
+                {{ link_to_action('SearchController@index', 'View All Postings >') }}
                 <hr>
                 @if(!$user)
                     {{ link_to_action('AuthController@getSeekerSignup', 'Signup to Apply for these Openings', null, ['class' => 'btn btn-xs btn-primary']) }}

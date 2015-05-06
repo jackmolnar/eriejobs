@@ -109,7 +109,7 @@ class JobsRepository {
     public function getRecentJobs()
     {
         $allJobs = $this->allActiveJobs();
-        return $allJobs->take(10);
+        return $allJobs->sortByDesc('created_at')->take(10);
     }
 
     /**
