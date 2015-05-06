@@ -48,8 +48,6 @@ class ApplicationsController extends \BaseController {
 
         $job = $this->jobRepo->getJobById($job_id);
 
-//        dd($this->job->email);
-
 		return View::make('applications.create', ['job' => $job, 'user' => $user]);
 	}
 

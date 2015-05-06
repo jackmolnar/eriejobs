@@ -5,7 +5,7 @@
 <div class="jobs" itemscope itemtype="http://schema.org/JobPosting">
 
     <div class="well col-md-9 ">
-        @if(isset($user) && $user->role->title == 'Recruiter' && $user->id == $job->user_id)
+        @if(isset($user) && ($user->role->title == 'Recruiter' || $user->role->title == 'Administrator') && $user->id == $job->user_id)
             <div class="btn btn-group edit_buttons">
                 {{ link_to_action('JobsController@edit', 'Edit', [$job->id], ['class' => 'btn btn-warning btn-sm']) }}
                 <button class="btn btn-danger btn-sm delete_button" data-toggle="modal" data-target="#deleteModal" data-jobid="{{ $job->id }}">Delete</button>
