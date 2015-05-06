@@ -50,6 +50,7 @@
                         <li><h4>{{ link_to_action('JobsController@show', $recentJob->title, $recentJob->slug) }}</h4></li>
                     @endforeach
                 </ul>
+                <hr>
                 {{ link_to_action('SearchController@index', 'View All Postings >') }}
                 <hr>
                 @if(!$user)
