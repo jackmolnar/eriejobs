@@ -44,6 +44,20 @@
             </p>
     </div>
 </div>
+
+    <div class="container">
+        <div class="col-md-10">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- home page footer banner -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:970px;height:250px"
+                 data-ad-client="ca-pub-5103028415668122"
+                 data-ad-slot="4015207890"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
 @stop
 
 @section('_title')

@@ -2,7 +2,9 @@
 
 @section('content')
 
-    <div class="blog col-md-9">
+<div class="blog">
+
+    <div class=" col-md-9">
 
         <h1>All Blog Posts</h1>
 
@@ -35,6 +37,38 @@
         @endif
 
     </div>
+
+    <div class="col-md-3 right_column">
+
+        {{-- Get recent job listings --}}
+        @if(count($recentJobs))
+            <div class="recent_jobs well">
+                <h3>Recent Job Postings on EriePaJobs</h3>
+                <hr>
+                <ul>
+                    @foreach($recentJobs as $recentJob)
+                        <li><h4>{{ link_to_action('JobsController@show', $recentJob->title, $recentJob->slug) }}</h4></li>
+                    @endforeach
+                </ul>
+                <hr>
+                @if(!$user)
+                    {{ link_to_action('AuthController@getSeekerSignup', 'Signup to Apply for these Openings', null, ['class' => 'btn btn-xs btn-primary']) }}
+                @endif
+            </div>
+        @endif
+
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Test Ads -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:300px;height:600px"
+             data-ad-client="ca-pub-5103028415668122"
+             data-ad-slot="7829958692"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+</div>
 
 @stop
 

@@ -335,6 +335,21 @@ ul {
     margin-bottom: 20px; }
   .blog .blog_post_listing .description {
     font-size: 14px; }
+.blog .right_column .recent_jobs {
+  margin-bottom: 35px; }
+  .blog .right_column .recent_jobs h3 {
+    margin-top: 0px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    color: #589B94;
+    font-size: 18px; }
+  .blog .right_column .recent_jobs ul {
+    padding-left: 0px; }
+    .blog .right_column .recent_jobs ul li {
+      list-style: none;
+      margin-bottom: 16px; }
+      .blog .right_column .recent_jobs ul li a {
+        font-size: 16px; }
 
 .blog_post .admin_buttons {
   margin-bottom: 20px; }
@@ -2190,7 +2205,7 @@ ul {
 
 .section2 {
   margin-top: 60px;
-  margin-bottom: 80px; }
+  margin-bottom: 20px; }
   .section2 h2 {
     margin-bottom: 20px; }
   .section2 img {

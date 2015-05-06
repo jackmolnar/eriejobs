@@ -4,6 +4,7 @@ use EriePaJobs\Blog\BlogRepository;
 use EriePaJobs\Blog\EditBlogPostCommand;
 use EriePaJobs\Blog\StoreNewBlogPostCommand;
 use EriePaJobs\Blog\StoreNewBlogPostValidator;
+use EriePaJobs\Jobs\JobsRepository;
 use EriePaJobs\Users\UserRepository;
 
 class BlogController extends \BaseController {
@@ -16,13 +17,18 @@ class BlogController extends \BaseController {
 	 * @var UserRepository
 	 */
 	private $userRepo;
+	/**
+	 * @var JobsRepository
+	 */
+	private $jobRepo;
 
-	function __construct(BlogRepository $blogRepo, UserRepository $userRepo)
+	function __construct(BlogRepository $blogRepo, UserRepository $userRepo, JobsRepository $jobRepo)
 	{
 		$this->beforeFilter('administrator', ['only' => ['create', 'update', 'destroy']]);
 
 		$this->blogRepo = $blogRepo;
 		$this->userRepo = $userRepo;
+		$this->jobRepo = $jobRepo;
 		View::share('user', $this->userRepo->authedUser());
 	}
 
@@ -36,7 +42,8 @@ class BlogController extends \BaseController {
 	public function index()
 	{
 		$blogPosts = $this->blogRepo->allPosts()->sortByDesc('created_at');
-		return View::make('blog.index', ['posts' => $blogPosts]);
+		$recentJobs = $this->jobRepo->getRecentJobs();
+		return View::make('blog.index', ['posts' => $blogPosts, 'recentJobs' => $recentJobs]);
 	}
 
 	/**

@@ -46,7 +46,34 @@
     }
 
   }
+
+  .right_column{
+
+    .recent_jobs{
+      margin-bottom: 35px;
+
+      h3{
+        margin-top: 0px;
+        font-family: $nav_fonts;
+        font-weight: bold;
+        color: $middle_green;
+        font-size: 18px;
+      }
+      ul{
+        padding-left: 0px;
+        li{
+          list-style: none;
+          margin-bottom: 16px;
+          a{
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+
 }
+
 
 .blog_post{
 

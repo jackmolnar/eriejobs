@@ -103,6 +103,16 @@ class JobsRepository {
     }
 
     /**
+     * Get recent jobs (last 10 jobs)
+     * @return mixed
+     */
+    public function getRecentJobs()
+    {
+        $allJobs = $this->allActiveJobs();
+        return $allJobs->take(10);
+    }
+
+    /**
      * Search for a job, if no search term, pull all jobs, else return search results
      * @param string $term
      * @return \Elasticquent\ElasticquentResultCollection
