@@ -50,9 +50,10 @@
         <div class="row">
             @foreach($blogPosts as $post)
                 <div class="col-md-4">
-                    <h3>{{ link_to_action('BlogController@show', $post->title) }}</h3>
+                    <h3>{{ link_to_action('BlogController@show', $post->title, $post->slug) }}</h3>
                     <div class="blog_image" style="background-image: url( {{ asset('images/blog_images/'.$post->image) }} )"></div>
                     <p>{{ strip_tags(str_limit($post->body, 100, '...')) }}</p>
+                    <p>{{ link_to_action('BlogController@show', 'Read More >', $post->slug) }}</p>
                 </div>
             @endforeach
         </div>

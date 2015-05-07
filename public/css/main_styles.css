@@ -2235,6 +2235,8 @@ ul {
     background-size: cover;
     margin-bottom: 20px;
     border-bottom: thick #dc3522 solid; }
+  .section3 p {
+    margin-bottom: 14px; }
 
 .modal-backdrop {
   z-index: 0; }
