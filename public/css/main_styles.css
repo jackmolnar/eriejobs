@@ -2232,9 +2232,9 @@ ul {
   .section3 .blog_image {
     width: 375px;
     height: 225px;
-    background-size: cover; }
-  .section3 img {
-    margin-bottom: 20px; }
+    background-size: cover;
+    margin-bottom: 20px;
+    border-bottom: thick #dc3522 solid; }
 
 .modal-backdrop {
   z-index: 0; }

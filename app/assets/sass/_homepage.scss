@@ -141,9 +141,8 @@
     width: 375px;
     height: 225px;
     background-size: cover;
+    margin-bottom: 20px;
+    border-bottom: thick $orange solid;
   }
 
-  img{
-    margin-bottom: 20px;
-  }
 }
