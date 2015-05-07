@@ -43,6 +43,7 @@
         {{-- Get recent job listings --}}
         @include('includes.blog.recent_jobs')
 
+        {{-- google ads --}}
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <!-- Test Ads -->
         <ins class="adsbygoogle"
@@ -52,8 +53,8 @@
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
-    </div>
 
+    </div>
 </div>
 
 @stop
