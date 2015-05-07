@@ -2248,7 +2248,7 @@ ul {
     width: 375px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    min-height: 160px; }
+    min-height: 135px; }
 
 .modal-backdrop {
   z-index: 0; }
