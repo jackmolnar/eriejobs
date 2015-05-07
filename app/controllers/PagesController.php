@@ -1,19 +1,26 @@
 <?php
 
+use EriePaJobs\Blog\BlogRepository;
 use EriePaJobs\Notifications\CreateContactValidator;
 use EriePaJobs\Notifications\CreateContactCommand;
 
 class PagesController extends \BaseController {
 
+    /**
+     * @var BlogRepository
+     */
+    private $blogRepo;
 
-    function __construct()
+    function __construct( BlogRepository $blogRepo)
     {
         $this->beforeFilter('loggedin', ['only' => 'home']);
+        $this->blogRepo = $blogRepo;
     }
 
     public function home()
     {
-        return View::make('pages.home');
+        $blogPosts = $this->blogRepo->recentBlogPosts();
+        return View::make('pages.home', ['blogPosts' => $blogPosts]);
     }
 
     public function hiring()

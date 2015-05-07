@@ -2224,6 +2224,12 @@ ul {
     .section2 p .btn {
       display: block; }
 
+.section3 {
+  padding-top: 30px;
+  padding-bottom: 30px; }
+  .section3 img {
+    margin-bottom: 20px; }
+
 .modal-backdrop {
   z-index: 0; }
 

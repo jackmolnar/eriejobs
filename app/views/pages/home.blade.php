@@ -45,9 +45,18 @@
     </div>
 </div>
 
-    <div class="container">
-        <div class="col-md-10">
+    <div class="container section3">
+        <h2>Recent Blog Posts</h2>
+        <div class="row">
+            @foreach($blogPosts as $post)
+                <div class="col-md-4">
+                    <h3>{{ link_to_action('BlogController@show', $post->title) }}</h3>
+                    <img src="{{ asset('images/blog_images/thumb_'.$post->image) }}" />
+                    <p>{{ strip_tags(str_limit($post->body, 100, '...')) }}</p>
+                </div>
+            @endforeach
         </div>
+        <h4>{{ link_to_action('BlogController@index', 'Browse All Blog Posts >') }}</h4>
     </div>
 @stop
 

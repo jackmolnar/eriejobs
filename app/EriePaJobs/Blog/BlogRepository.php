@@ -22,6 +22,11 @@ class BlogRepository {
         return $allPosts = Post::all();
     }
 
+    public function recentBlogPosts($number = 3)
+    {
+        return $recentPosts = Post::orderBy('created_at', 'desc')->take($number)->get();
+    }
+
     /**
      * Get post by id or by slug
      * @param $id
