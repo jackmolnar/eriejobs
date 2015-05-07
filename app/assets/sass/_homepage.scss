@@ -150,12 +150,15 @@
     width: 375px;
     height: 225px;
     background-size: cover;
-    margin-bottom: 20px;
     border-bottom: thick $orange solid;
   }
 
   p{
     margin-bottom: 14px;
+    background-color: $light_green;
+    padding: 20px;
+    width: 375px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
-
 }

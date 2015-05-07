@@ -2240,10 +2240,14 @@ ul {
     width: 375px;
     height: 225px;
     background-size: cover;
-    margin-bottom: 20px;
     border-bottom: thick #dc3522 solid; }
   .section3 p {
-    margin-bottom: 14px; }
+    margin-bottom: 14px;
+    background-color: #d7dfd2;
+    padding: 20px;
+    width: 375px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px; }
 
 .modal-backdrop {
   z-index: 0; }
