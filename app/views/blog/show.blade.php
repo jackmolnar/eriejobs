@@ -32,7 +32,7 @@
         @endif
 
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 right_column">
         {{-- Get recent job listings --}}
         @include('includes.blog.recent_jobs')
     </div>
