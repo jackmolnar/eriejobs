@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-
+<div class="blog">
     <div class="blog_post col-md-9">
 
         <div class="col-md-9">
@@ -37,6 +37,7 @@
         @include('includes.blog.recent_jobs')
     </div>
 
+</div>
 
     <script type="text/javascript">var switchTo5x=true;</script>
     <script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
