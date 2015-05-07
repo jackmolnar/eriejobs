@@ -88,8 +88,9 @@ class BlogController extends \BaseController {
 	 */
 	public function show($id)
 	{
+		$recentJobs = $this->jobRepo->getRecentJobs();
 		$blogPost = $this->blogRepo->getPost($id);
-		return View::make('blog.show', ['post' => $blogPost]);
+		return View::make('blog.show', ['post' => $blogPost, 'recentJobs' => $recentJobs]);
 	}
 
 	/**

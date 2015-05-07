@@ -4,7 +4,7 @@
 
     <div class="blog_post col-md-9">
 
-        <div class="col-md-10">
+        <div class="col-md-9">
             <h1>{{ $post->title }}</h1>
             <p class="date"><i class="fa fa-calendar"></i> {{ $post->created_at->format('F jS Y') }}</p>
             <span class='st_facebook_vcount' displayText='Facebook'></span>
@@ -31,7 +31,10 @@
             @include('includes.blog.signup_prompt')
         @endif
 
-
+    </div>
+    <div class="col-md-3">
+        {{-- Get recent job listings --}}
+        @include('includes.blog.recent_jobs')
     </div>
 
 
