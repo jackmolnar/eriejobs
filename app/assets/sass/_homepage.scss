@@ -134,6 +134,11 @@
   padding-bottom: 30px;
   border-top: thin dashed $middle_green;
 
+  .row{
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
   a{
     transition: color .2s;
   }
@@ -147,7 +152,7 @@
   }
 
   .blog_image{
-    width: 375px;
+    width: 345px;
     height: 225px;
     background-size: cover;
     border-bottom: thick $orange solid;
@@ -157,7 +162,7 @@
     margin-bottom: 14px;
     background-color: $light_green;
     padding: 20px;
-    width: 375px;
+    width: 345px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     min-height: 135px;
