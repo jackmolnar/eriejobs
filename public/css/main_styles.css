@@ -2226,7 +2226,8 @@ ul {
 
 .section3 {
   padding-top: 30px;
-  padding-bottom: 30px; }
+  padding-bottom: 30px;
+  border-top: thin dashed #589B94; }
   .section3 h3 {
     min-height: 60px; }
   .section3 .blog_image {
