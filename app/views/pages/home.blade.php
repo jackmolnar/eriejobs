@@ -51,7 +51,7 @@
             @foreach($blogPosts as $post)
                 <div class="col-md-4">
                     <h3>{{ link_to_action('BlogController@show', $post->title) }}</h3>
-                    <img src="{{ asset('images/blog_images/thumb_'.$post->image) }}" />
+                    <div class="blog_image" style="background-image: url( {{ asset('images/blog_images/'.$post->image) }} )"></div>
                     <p>{{ strip_tags(str_limit($post->body, 100, '...')) }}</p>
                 </div>
             @endforeach
