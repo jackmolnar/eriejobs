@@ -134,6 +134,14 @@
   padding-bottom: 30px;
   border-top: thin dashed $middle_green;
 
+  a{
+    transition: color .2s;
+  }
+  a:hover{
+    color: $orange;
+    text-decoration: none;
+  }
+
   h3{
     min-height: 60px;
   }

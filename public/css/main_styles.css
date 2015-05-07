@@ -2228,6 +2228,12 @@ ul {
   padding-top: 30px;
   padding-bottom: 30px;
   border-top: thin dashed #589B94; }
+  .section3 a {
+    -webkit-transition: color 0.2s;
+            transition: color 0.2s; }
+  .section3 a:hover {
+    color: #dc3522;
+    text-decoration: none; }
   .section3 h3 {
     min-height: 60px; }
   .section3 .blog_image {
