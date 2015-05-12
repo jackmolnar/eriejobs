@@ -40,7 +40,7 @@ class StorePermanentResumeCommand extends BaseCommand{
         }
 
         //upload the resume
-        $path = $applicationRepo->uploadPermanentResume($this->input);
+        $path = $applicationRepo->uploadPermanentResume($this->input, $user->id);
 
         //save new resume record
         $applicationRepo->createResumeRecord($user->id, $path);

@@ -33,9 +33,10 @@ class ApplicationsRepository {
      * @param $resume
      * @return string
      */
-    public function uploadPermanentResume($resume)
+    public function uploadPermanentResume($resume, $user_id = 0)
     {
         $name = $resume->getClientOriginalName();
+        $name = $name.'_'.$user_id;
         $path = \Config::get('resumes.permanent_path');
         $resume->move($path, $name);
 
