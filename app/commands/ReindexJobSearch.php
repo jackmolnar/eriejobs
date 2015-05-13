@@ -38,8 +38,9 @@ class ReindexJobSearch extends Command {
 	public function fire()
 	{
 		$jobs = Job::where('active', '=', 1)->get();
-		$jobs->reindex();
-        $this->info('Job index reindexed.');
+		$jobs->removeIndex();
+		$jobs->index();
+        $this->info($jobs);
     }
 
 	/**
