@@ -59,11 +59,11 @@
             </script>
         @else
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- Test Ads -->
+            <!-- medium rectangle -->
             <ins class="adsbygoogle"
-                 style="display:inline-block;width:300px;height:600px"
+                 style="display:inline-block;width:300px;height:250px"
                  data-ad-client="ca-pub-5103028415668122"
-                 data-ad-slot="7829958692"></ins>
+                 data-ad-slot="1292937099"></ins>
             <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
@@ -79,6 +79,18 @@
                     <br/>{{ link_to_action('BlogController@show', 'Read More >', $post->slug) }}</p>
             @endforeach
         </div>
+
+        @if(Agent::isDesktop())
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- medium rectangle -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:300px;height:250px"
+                 data-ad-client="ca-pub-5103028415668122"
+                 data-ad-slot="1292937099"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        @endif
 
 
 

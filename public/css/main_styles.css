@@ -273,18 +273,22 @@ ul {
   color: #589B94; }
 .search .pagination_links ul {
   min-height: 40px; }
-.search .blog_posts h2 {
-  font-size: 24px; }
-.search .blog_posts h3 {
-  font-size: 18px;
-  margin-bottom: 15px;
+.search .blog_posts {
   margin-top: 15px; }
-.search .blog_posts p {
-  font-size: 12px; }
-.search .blog_posts .blog_image {
-  width: 215px;
-  height: 150px;
-  background-size: cover; }
+  .search .blog_posts h2 {
+    font-size: 24px; }
+  .search .blog_posts h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    margin-top: 15px; }
+  .search .blog_posts p {
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 10px; }
+  .search .blog_posts .blog_image {
+    width: 215px;
+    height: 150px;
+    background-size: cover; }
 
 .profile {
   min-height: 500px; }
