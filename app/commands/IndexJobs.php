@@ -4,21 +4,21 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class RemoveJobIndex extends Command {
+class IndexJobs extends Command {
 
 	/**
 	 * The console command name.
 	 *
 	 * @var string
 	 */
-	protected $name = 'jobs:removeIndex';
+	protected $name = 'jobs:index';
 
 	/**
 	 * The console command description.
 	 *
 	 * @var string
 	 */
-	protected $description = 'Remove the job index.';
+	protected $description = 'Index all active jobs.';
 
 	/**
 	 * Create a new command instance.
@@ -37,8 +37,8 @@ class RemoveJobIndex extends Command {
 	 */
 	public function fire()
 	{
-		Job::all()->removeIndex();
-		$this->info('job index removed.');
+		Job::where('active', '=', 1)->get()->index();
+		$this->info('Jobs have been indexed.');
 	}
 
 	/**
