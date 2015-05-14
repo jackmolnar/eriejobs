@@ -82,22 +82,15 @@
 
         @if(Agent::isDesktop())
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- medium rectangle -->
+            <!-- medium rectangle bottom -->
             <ins class="adsbygoogle"
                  style="display:inline-block;width:300px;height:250px"
                  data-ad-client="ca-pub-5103028415668122"
-                 data-ad-slot="1292937099"></ins>
+                 data-ad-slot="4246403490"></ins>
             <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
         @endif
-
-
-
-
-
-
-
 
     </div>
 
