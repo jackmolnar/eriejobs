@@ -68,6 +68,25 @@
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
         @endif
+
+        <div class="well blog_posts">
+            <h2>Recent Blog Posts</h2>
+            <hr/>
+            @foreach($posts as $post)
+                <h3>{{ link_to_action('BlogController@show', $post->title, $post->slug) }}</h3>
+                <div class="blog_image" style="background-image: url( {{ asset('images/blog_images/'.$post->image) }} )"></div>
+                <p>{{ strip_tags(str_limit($post->body, 100, '...')) }}
+                    <br/>{{ link_to_action('BlogController@show', 'Read More >', $post->slug) }}</p>
+            @endforeach
+        </div>
+
+
+
+
+
+
+
+
     </div>
 
 </div>
