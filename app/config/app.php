@@ -128,7 +128,8 @@ return array(
 		'Fadion\Bouncy\BouncyServiceProvider',
 		'Aloha\Twilio\TwilioServiceProvider',
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
-		'Intervention\Image\ImageServiceProvider'
+		'Intervention\Image\ImageServiceProvider',
+		'Jenssegers\Agent\AgentServiceProvider',
 	),
 
 	/*
@@ -197,7 +198,8 @@ return array(
 		'View'              => 'Illuminate\Support\Facades\View',
         'Social'            => 'Mmanos\Social\Facades\Social',
 		'Twilio' 			=> 'Aloha\Twilio\Facades\Twilio',
-		'Image' 			=> 'Intervention\Image\Facades\Image'
+		'Image' 			=> 'Intervention\Image\Facades\Image',
+		'Agent' 			=> 'Jenssegers\Agent\Facades\Agent',
 	),
 
 );

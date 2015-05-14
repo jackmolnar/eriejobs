@@ -5,12 +5,18 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Mmanos\Social\SocialTrait;
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait, SocialTrait;
 
-	/**
+    /**
+     * trait to enable soft deleting jobs
+     */
+    use SoftDeletingTrait;
+
+    /**
 	 * The database table used by the model.
 	 *
 	 * @var string
