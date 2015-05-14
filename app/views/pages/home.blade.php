@@ -45,20 +45,37 @@
     </div>
 </div>
 
-    <div class="container section3">
-        <h2>Recent Blog Posts</h2>
-        <div class="row">
-            @foreach($blogPosts as $post)
-                <div class="col-md-4">
-                    <h3>{{ link_to_action('BlogController@show', $post->title, $post->slug) }}</h3>
-                    <div class="blog_image" style="background-image: url( {{ asset('images/blog_images/'.$post->image) }} )"></div>
-                    <p>{{ strip_tags(str_limit($post->body, 100, '...')) }}
-                    <br/>{{ link_to_action('BlogController@show', 'Read More >', $post->slug) }}</p>
-                </div>
-            @endforeach
-        </div>
-        <h4>{{ link_to_action('BlogController@index', 'Browse All Blog Posts >') }}</h4>
+<div class="container section3">
+    <h2>Recent Blog Posts</h2>
+    <div class="row">
+        @foreach($blogPosts as $post)
+            <div class="col-md-4">
+                <h3>{{ link_to_action('BlogController@show', $post->title, $post->slug) }}</h3>
+                <div class="blog_image" style="background-image: url( {{ asset('images/blog_images/'.$post->image) }} )"></div>
+                <p>{{ strip_tags(str_limit($post->body, 100, '...')) }}
+                <br/>{{ link_to_action('BlogController@show', 'Read More >', $post->slug) }}</p>
+            </div>
+        @endforeach
     </div>
+    <h4>{{ link_to_action('BlogController@index', 'Browse All Blog Posts >') }}</h4>
+</div>
+
+@if(Agent::isDesktop())
+    <div class="container section4">
+        <div class="col-md-10 col-md-offset-2">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- leaderboard -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-5103028415668122"
+                 data-ad-slot="6141939094"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+@endif
+
 @stop
 
 @section('_title')
