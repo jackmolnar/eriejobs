@@ -4,21 +4,21 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class ReindexJobSearch extends Command {
+class RemoveJobIndex extends Command {
 
 	/**
 	 * The console command name.
 	 *
 	 * @var string
 	 */
-	protected $name = 'jobs:reindex';
+	protected $name = 'jobs:removeIndex';
 
 	/**
 	 * The console command description.
 	 *
 	 * @var string
 	 */
-	protected $description = 'Reindex the job index for search.';
+	protected $description = 'Remove the job index.';
 
 	/**
 	 * Create a new command instance.
@@ -37,11 +37,8 @@ class ReindexJobSearch extends Command {
 	 */
 	public function fire()
 	{
-		Job::all()->removeIndex();
 		Job::where('active', '=', 1)->get()->reindex();
-
-        $this->info('Jobs reindexed.');
-    }
+	}
 
 	/**
 	 * Get the console command arguments.
@@ -51,6 +48,7 @@ class ReindexJobSearch extends Command {
 	protected function getArguments()
 	{
 		return array(
+//			array('example', InputArgument::REQUIRED, 'An example argument.'),
 		);
 	}
 
@@ -62,6 +60,7 @@ class ReindexJobSearch extends Command {
 	protected function getOptions()
 	{
 		return array(
+//			array('example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null),
 		);
 	}
 
