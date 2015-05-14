@@ -32,6 +32,18 @@
 
     @include('includes.jobs.pagination')
 
+        @if(Agent::isDesktop())
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- leaderboard -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-5103028415668122"
+                 data-ad-slot="6141939094"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        @endif
+
     </div>
 
     <div class="col-md-3">

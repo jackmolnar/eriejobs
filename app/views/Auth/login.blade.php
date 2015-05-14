@@ -30,7 +30,7 @@
         <div class="pass_reset">Forgot your password? {{ link_to_action('RemindersController@getRemind', 'Reset it here.') }}</div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-4 col-md-offset-2">
         @if(Agent::isMobile())
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- mobile banner -->
