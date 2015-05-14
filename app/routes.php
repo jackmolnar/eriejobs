@@ -70,7 +70,10 @@ Route::resource('blog', 'BlogController');
 
 //test email route
 Route::get('test-email', function(){
-    return View::make('emails/auth/welcome_seeker');
+    $jobs = Job::where('active', '=', 1)->get();
+
+    $jobs->reindex();
+
 });
 
 
