@@ -21,6 +21,9 @@ Route::post('jobs/create/payment', 'JobsController@payment');
 Route::get('jobs/create/thankyou', 'JobsController@thankyou');
     //destroy
 Route::get('jobs/destroy_confirm/{jobid}', 'JobsController@destroy_confirm');
+    // trashed
+Route::get('jobs/deleted/{jobid}', 'JobsController@showTrashed');
+Route::get('jobs/repost/{jobid}', 'JobsController@repost');
     //browse
 Route::resource('browse', 'BrowseController');
     //search

@@ -32,6 +32,8 @@ class ProfilesController extends \BaseController {
 	public function index()
 	{
         $user = $this->userRepo->authedUser();
+
+//        dd($user->jobs()->onlyTrashed()->first());
         if(isset($user->resume->path) && $user->resume->path != '')
         {
             $user->filename = $this->userRepo->getResumeFileName();

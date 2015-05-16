@@ -17,7 +17,7 @@
 
         <hr/>
 
-        {{ Form::open(['action' => ['ApplicationsController@store', $job->id], 'files' => 'true']) }}
+        {{ Form::open(['action' => ['ApplicationsController@store', $job->slug], 'files' => 'true']) }}
 
             <p>Include your cover letter below or a short introduction.</p>
             {{ Form::textarea('cover_letter', null, ['class' => 'form-control', 'placeholder' => 'Cover Letter']) }}
@@ -48,7 +48,7 @@
 
             <div class="apply_buttons">
                 {{ Form::submit('Submit Application', ['class' => 'btn btn-primary']) }}
-                {{ link_to_action('JobsController@show', 'Cancel', $job->id, ['class' => 'btn btn-default']) }}
+                {{ link_to_action('JobsController@show', 'Cancel', $job->slug, ['class' => 'btn btn-default']) }}
             </div>
 
             <div class="loader"></div>

@@ -64,6 +64,17 @@ class JobsController extends \BaseController {
 		return View::make('jobs.create', ['billing' => \Config::get('billing')]);
 	}
 
+    /**
+     * Repost Trashed Job
+     * @param $job_id
+     * @return \Illuminate\View\View
+     */
+    public function repost($job_id)
+    {
+        Session::put('pending_job', $this->jobRepo->getTrashedJobById($job_id));
+        return View::make('jobs.create', ['job' => Session::get('pending_job'), 'billing' => \Config::get('billing')]);
+    }
+
 	/**
 	 * Validate the job listing, begin the job listing process
 	 * POST /jobs
@@ -152,6 +163,28 @@ class JobsController extends \BaseController {
             'categories' => $categories,
             'similar_jobs' => $similar_jobs,
             'recruiter_jobs' => $recruiter_jobs
+        ]);
+	}
+
+    /**
+     * Display trashed job
+     * @param $id
+     * @return \Illuminate\View\View
+     */
+    public function showTrashed($id)
+	{
+        $job = $this->jobRepo->getTrashedJobById($id);
+
+        if(empty($job))
+        {
+            return View::make('jobs.not_found');
+        }
+
+        $categories = $this->categoryRepo->getAllCategories();
+
+        return View::make('jobs.show', [
+            'job' => $job,
+            'categories' => $categories,
         ]);
 	}
 

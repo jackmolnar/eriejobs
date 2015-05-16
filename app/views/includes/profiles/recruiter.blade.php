@@ -32,15 +32,47 @@
                 </tr>
             @endforeach
         </table>
-    </div>
 @else
-    <div class="well col-md-10">
         <h3><i class="fa fa-pencil"></i> My Active Job Listings</h3>
         <hr/>
         <p>You don't currently have any active job listings.</p>
         <p>{{ link_to_action('JobsController@create', 'Post One Now!', null, ['class' => 'btn btn-primary']) }}</p>
+@endif
+
+
+@if(count($user->jobs()->onlyTrashed()->get()))
+
+    <hr/>
+
+        <h3><i class="fa fa-pencil"></i> Recently Expired / Deleted Job Listings</h3>
+
+        <table class="table">
+            <tr>
+                <th>Job Listing</th>
+                <th>Expired</th>
+                <th></th>
+                <th></th>
+            </tr>
+            @foreach($user->jobs()->onlyTrashed()->get() as $job)
+                <tr>
+                    <td>{{ link_to_action('JobsController@showTrashed', $job->title, $job->slug, ['class' => 'title-'.$job->id]) }}</td>
+                    <td>{{ $job->expire->diffForHumans() }}</td>
+                    <td>
+                    </td>
+                    <td>
+                        <div class="btn-group btn-group-xs" role="group" style="float: right"  >
+                            {{ link_to_action('JobsController@repost', 'Repost Job', $job->slug, ['class' => 'btn btn-success btn-xs']) }}
+                        </div>
+                    </td>
+                </tr>
+            @endforeach
+        </table>
+
     </div>
 @endif
+
+
+
 
 <div class="well col-md-10">
 
