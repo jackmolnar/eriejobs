@@ -1,5 +1,6 @@
 <?php
 
+use EriePaJobs\Administrator\AdministratorRepository;
 use EriePaJobs\JobSeekers\UpdateSeekerInfoCommand;
 use EriePaJobs\JobSeekers\UpdateSeekerInfoValidator;
 use EriePaJobs\JobSeekers\UpdateSeekerNotificationsCommand;
@@ -14,12 +15,19 @@ class ProfilesController extends \BaseController {
      * @var UserRepository
      */
     protected $userRepo;
+    /**
+     * @var AdministratorRepository
+     */
+    private $adminRepo;
 
-    function __construct(UserRepository $userRepo)
+    function __construct(UserRepository $userRepo, AdministratorRepository $adminRepo)
     {
         $this->userRepo = $userRepo;
+        $this->adminRepo = $adminRepo;
         View::share('user', $this->userRepo->authedUser());
+
         $this->beforeFilter('auth');
+        $this->beforeFilter('administratorLogin');
     }
 
 
@@ -32,10 +40,12 @@ class ProfilesController extends \BaseController {
 	public function index()
 	{
         $user = $this->userRepo->authedUser();
+
         if(isset($user->resume->path) && $user->resume->path != '')
         {
             $user->filename = $this->userRepo->getResumeFileName();
         }
+
 		return View::make('profile.index', ['user' => $user]);
 	}
 

@@ -78,7 +78,7 @@ Route::filter('jobAuthor', function()
 });
 
 /**
- * Check to see if authed user is the author of referenced job
+ * If not administrator, prevent access
  */
 Route::filter('administrator', function()
 {
@@ -86,6 +86,18 @@ Route::filter('administrator', function()
 	if($user->role->title != 'Administrator')
 	{
 		return Redirect::action('ProfilesController@index');
+	}
+});
+
+/**
+ * If logged as administrator, redirect to admin controller
+ */
+Route::filter('administratorLogin', function()
+{
+    $user = Auth::user();
+	if($user->role->title == 'Administrator')
+	{
+		return Redirect::action('AdministratorController@index');
 	}
 });
 

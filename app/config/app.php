@@ -130,6 +130,7 @@ return array(
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
 		'Jenssegers\Agent\AgentServiceProvider',
+		'yajra\Datatables\DatatablesServiceProvider',
 	),
 
 	/*
@@ -200,6 +201,7 @@ return array(
 		'Twilio' 			=> 'Aloha\Twilio\Facades\Twilio',
 		'Image' 			=> 'Intervention\Image\Facades\Image',
 		'Agent' 			=> 'Jenssegers\Agent\Facades\Agent',
+		'Datatables'      	=> 'yajra\Datatables\Facade\Datatables',
 	),
 
 );

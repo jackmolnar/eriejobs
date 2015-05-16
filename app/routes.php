@@ -58,6 +58,12 @@ Route::put('edit-notification-settings/{id}', 'ProfilesController@update_notific
 Route::get('destroy-resume', 'ProfilesController@destroy_resume');
 
 /*
+ * Administrator Routes
+ */
+Route::resource('administrator', 'AdministratorController');
+Route::get('api/job-data', 'AdministratorController@getJobData');
+
+/*
  * Pages Routes
  */
 
