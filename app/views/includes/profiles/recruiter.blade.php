@@ -1,7 +1,6 @@
-@if(count($user->jobs) > 0)
+<div class="well col-md-10">
 
-    <div class="well col-md-10">
-
+    @if(count($user->jobs) > 0)
         <h3><i class="fa fa-pencil"></i> My Active Job Listings</h3>
 
         <table class="table">
@@ -32,18 +31,16 @@
                 </tr>
             @endforeach
         </table>
-@else
+    @else
         <h3><i class="fa fa-pencil"></i> My Active Job Listings</h3>
         <hr/>
         <p>You don't currently have any active job listings.</p>
         <p>{{ link_to_action('JobsController@create', 'Post One Now!', null, ['class' => 'btn btn-primary']) }}</p>
-@endif
+    @endif
 
 
-@if(count($user->jobs()->onlyTrashed()->get()))
-
-    <hr/>
-
+    @if(count($user->jobs()->onlyTrashed()->get()))
+        <hr/>
         <h3 style="margin-top: 40px"><i class="fa fa-pencil"></i> Recently Expired / Deleted Job Listings</h3>
 
         <table class="table">
@@ -67,9 +64,8 @@
                 </tr>
             @endforeach
         </table>
-
-    </div>
-@endif
+    @endif
+</div>
 
 
 
