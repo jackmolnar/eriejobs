@@ -44,7 +44,7 @@
 
     <hr/>
 
-        <h3><i class="fa fa-pencil"></i> Recently Expired / Deleted Job Listings</h3>
+        <h3 style="margin-top: 40px"><i class="fa fa-pencil"></i> Recently Expired / Deleted Job Listings</h3>
 
         <table class="table">
             <tr>
@@ -53,7 +53,7 @@
                 <th></th>
                 <th></th>
             </tr>
-            @foreach($user->jobs()->onlyTrashed()->get() as $job)
+            @foreach($user->jobs()->onlyTrashed()->orderBy('deleted_at', 'desc')->take(5)->get() as $job)
                 <tr>
                     <td>{{ link_to_action('JobsController@showTrashed', $job->title, $job->slug, ['class' => 'title-'.$job->id]) }}</td>
                     <td>{{ $job->expire->diffForHumans() }}</td>

@@ -33,7 +33,7 @@ class ProfilesController extends \BaseController {
 	{
         $user = $this->userRepo->authedUser();
 
-//        dd($user->jobs()->onlyTrashed()->first());
+//        dd($user->jobs()->onlyTrashed()->orderBy('deleted_at', 'desc')->take(5));
         if(isset($user->resume->path) && $user->resume->path != '')
         {
             $user->filename = $this->userRepo->getResumeFileName();
