@@ -102,6 +102,11 @@ class JobsRepository {
         return $job;
     }
 
+    public function getTrashedJobById($job_id)
+    {
+        return $job = Job::withTrashed()->where('slug', '=', $job_id)->first();
+    }
+
     /**
      * Get recent jobs (last 10 jobs)
      * @return mixed

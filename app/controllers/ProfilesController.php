@@ -32,6 +32,7 @@ class ProfilesController extends \BaseController {
 	public function index()
 	{
         $user = $this->userRepo->authedUser();
+
         if(isset($user->resume->path) && $user->resume->path != '')
         {
             $user->filename = $this->userRepo->getResumeFileName();

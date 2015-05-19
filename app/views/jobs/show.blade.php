@@ -65,10 +65,9 @@
                 </div>
             </div>
         @endif
-
     </div>
     <div class="col-md-3 right_column">
-        @if(count($recruiter_jobs))
+        @if(isset($recruiter_jobs) && count($recruiter_jobs))
             <h3>More Job Openings From This Recruiter</h3>
             <hr>
             <ul>
@@ -78,7 +77,7 @@
             </ul>
             <hr>
         @endif
-        @if(count($similar_jobs))
+        @if(isset($similar_jobs) && count($similar_jobs))
             <h3>More Job Openings Like This</h3>
             <hr>
             <ul>

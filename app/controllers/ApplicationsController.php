@@ -70,7 +70,7 @@ class ApplicationsController extends \BaseController {
             $sendNewApplicationCommand = new SendNewApplicationCommand(Input::all(), $job);
             $sendNewApplicationCommand->execute();
 
-            // save the application
+            // save the application record
             $newApplicationCommand = new CreateApplicationCommand($this->userRepo->authedUser(), $job);
             $newApplicationCommand->execute();
 
