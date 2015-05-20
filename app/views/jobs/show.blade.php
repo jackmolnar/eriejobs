@@ -4,8 +4,6 @@
 
 <div class="jobs" itemscope itemtype="http://schema.org/JobPosting">
 
-
-
     <div class="well col-md-9 ">
 
         @if((isset($user) && $user->role->title == 'Administrator') || (isset($user) && $user->role->title == 'Recruiter' && $user->id == $job->user_id) )
@@ -94,7 +92,7 @@
 
 </div>
 
-@if(isset($user) && $user->role->title == 'Recruiter' && $user->id == $job->user_id)
+@if((isset($user) && $user->role->title == 'Administrator') || (isset($user) && $user->role->title == 'Recruiter' && $user->id == $job->user_id) )
     @include('includes/modals/delete_modal')
 @endif
 

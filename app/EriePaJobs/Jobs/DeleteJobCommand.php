@@ -47,7 +47,7 @@ class DeleteJobCommand extends BaseCommand{
     public function execute()
     {
         $job = $this->jobsRepo->getJobById($this->id);
-        if($job->user_id != $this->user->id)
+        if($job->user_id != $this->user->id && $this->user->role->title != 'Administrator')
         {
             $result['status'] = false;
             $result['message'] = "You are not authorized to delete this listing";
