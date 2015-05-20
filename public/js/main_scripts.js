@@ -234,6 +234,11 @@ $(function () {
         placement: 'bottom'
     };
     $('#confidential').tooltip(confidentialOptions);
+    var emailOptions = {
+        title: "Important - If sending applications to an email address, make sure your spam filter allows the email address admin@eriepajobs.com to ensure they aren't put into junk folders.",
+        placement: 'top'
+    };
+    $('#email_contact').tooltip(emailOptions);
 });
 
 
