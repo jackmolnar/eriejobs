@@ -164,9 +164,6 @@ linkButton.change(function(){
 });
 
 
-
-
-
 /*
  Default / New resume radio buttons on application create form
  */
@@ -182,6 +179,17 @@ defaultResume.change(function(){
 newResume.change(function(){
     newResumeUploadBox.html('<p>Browse for your resume. Files must be PDF or Word files and smaller than 6mb in size.</p><input name="resume" type="file">');
 });
+
+
+/*
+    Track website apply button in Google Analytics
+ */
+$("#apply_click").on('click', function(e){
+    var jobSlug = $(this).attr('data-job');
+    console.log(jobSlug);
+    ga('send', 'event', 'apply', 'external', jobSlug);
+});
+
 
 /*
     Replace apply buttons with loader on click
