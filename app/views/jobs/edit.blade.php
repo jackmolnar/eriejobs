@@ -9,7 +9,7 @@
     <hr/>
 
 
-{{ Form::model($job, ['action' => ['JobsController@update', $job->id], 'method' => 'put']) }}
+{{ Form::model($job, ['action' => ['JobsController@update', $job->slug], 'method' => 'put']) }}
 
     @include('includes.jobs.edit_form')
 

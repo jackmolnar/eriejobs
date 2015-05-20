@@ -12,7 +12,7 @@
             </tr>
             @foreach($user->jobs as $job)
                 <tr>
-                    <td>{{ link_to_action('JobsController@show', $job->title, $job->id, ['class' => 'title-'.$job->id]) }}</td>
+                    <td>{{ link_to_action('JobsController@show', $job->title, $job->slug, ['class' => 'title-'.$job->id]) }}</td>
                     <td>{{ $job->expire->diffForHumans() }}</td>
                     <td>
                         @if($job->active)
@@ -23,7 +23,7 @@
                     </td>
                     <td>
                         <div class="btn-group btn-group-xs" role="group" style="float: right"  >
-                            {{ link_to_action('JobsController@edit', 'Edit', $job->id, ['class' => 'btn btn-warning btn-xs']) }}
+                            {{ link_to_action('JobsController@edit', 'Edit', $job->slug, ['class' => 'btn btn-warning btn-xs']) }}
                             {{--{{ link_to_action('JobsController@destroy_confirm', 'Delete', $job->id, ['class' => 'btn btn-danger btn-xs', 'data-toggle' => 'modal', 'data-target' => '#deleteModal']) }}--}}
                             <button class="btn btn-danger btn-xs delete_button" data-toggle="modal" data-target="#deleteModal" data-jobid="{{ $job->id }}">Delete</button>
                         </div>
@@ -46,14 +46,14 @@
         <table class="table">
             <tr>
                 <th>Job Listing</th>
-                <th>Expired</th>
+                <th>Deleted / Expired</th>
                 <th></th>
                 <th></th>
             </tr>
             @foreach($user->jobs()->onlyTrashed()->orderBy('deleted_at', 'desc')->take(10)->get() as $job)
                 <tr>
                     <td>{{ link_to_action('JobsController@showTrashed', $job->title, $job->slug, ['class' => 'title-'.$job->id]) }}</td>
-                    <td>{{ $job->expire->diffForHumans() }}</td>
+                    <td>{{ $job->deleted_at->diffForHumans() }}</td>
                     <td>
                     </td>
                     <td>

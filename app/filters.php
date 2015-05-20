@@ -71,7 +71,7 @@ Route::filter('loggedin', function()
 Route::filter('jobAuthor', function()
 {
     $user = Auth::user();
-    $job = Job::find(Route::input('jobs'));
+    $job = Job::findBySlug(Route::input('jobs'));
     if($user->id != $job->user_id){
         return Redirect::action('ProfilesController@index');
     }

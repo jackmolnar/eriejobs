@@ -109,7 +109,7 @@ class Job extends \Eloquent implements SluggableInterface {
      */
     public function getDates()
     {
-        return array('created_at', 'updated_at', 'expire');
+        return array('created_at', 'updated_at', 'expire', 'deleted_at');
     }
 
     /**
