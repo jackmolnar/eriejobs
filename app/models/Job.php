@@ -24,6 +24,7 @@ class Job extends \Eloquent implements SluggableInterface {
     protected $sluggable = array(
         'build_from' => 'title',
         'save_to'    => 'slug',
+        'include_trashed' => true,
     );
 
     /**

@@ -73,10 +73,7 @@ Route::resource('blog', 'BlogController');
 
 //test email route
 Route::get('test-email', function(){
-    $jobs = Job::where('active', '=', 1)->get();
-
-    $jobs->reindex();
-
+    dd(Config::get('mail.administrator'));
 });
 
 

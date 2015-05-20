@@ -50,7 +50,7 @@
                 <th></th>
                 <th></th>
             </tr>
-            @foreach($user->jobs()->onlyTrashed()->orderBy('deleted_at', 'desc')->take(5)->get() as $job)
+            @foreach($user->jobs()->onlyTrashed()->orderBy('deleted_at', 'desc')->take(10)->get() as $job)
                 <tr>
                     <td>{{ link_to_action('JobsController@showTrashed', $job->title, $job->slug, ['class' => 'title-'.$job->id]) }}</td>
                     <td>{{ $job->expire->diffForHumans() }}</td>
