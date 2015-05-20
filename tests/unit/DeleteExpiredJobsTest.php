@@ -36,7 +36,8 @@ class DeleteExpiredJobsTest extends \Codeception\TestCase\Test
 
         $deleteExpiredJobsCommand->fire();
 
-        $this->tester->dontSeeRecord('jobs', ['id' => $expiredJob->id]);
+        $expiredJob = $this->tester->grabRecord('jobs', ['id' => $expiredJob->id ]);
+        $this->tester->assertTrue($expiredJob->deleted_at != null);
 
         $this->tester->seeRecord('jobs', ['id' => $activeJob->id]);
 

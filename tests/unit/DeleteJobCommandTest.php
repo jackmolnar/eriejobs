@@ -38,10 +38,10 @@ class DeleteJobCommandTest extends \Codeception\TestCase\Test
 
         $result = $deleteJobCommand->execute();
 
-        $this->tester->dontSeeRecord('jobs', ['title' => 'test delete job']);
-        $this->tester->assertTrue($result['status']);
+        $job = $this->tester->grabRecord('jobs', ['id' => $job->id ]);
+        $this->tester->assertTrue($job->deleted_at != null);
 
-        $job->removeIndex();
+        $this->tester->assertTrue($result['status']);
     }
 
     /**

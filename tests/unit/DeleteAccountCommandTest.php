@@ -34,7 +34,9 @@ class DeleteAccountCommandTest extends \Codeception\TestCase\Test
 
         $deleteAccountCommandTest->execute();
 
-        $this->tester->dontSeeRecord('users', ['id' => $user->id]);
+        $user = $this->tester->grabRecord('users', ['id' => $user->id ]);
+
+        $this->tester->assertTrue($user->deleted_at != null);
 
         $this->tester->dontSeeRecord('notifications', ['user_id' => $user->id]);
     }

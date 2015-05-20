@@ -37,7 +37,7 @@ class JobsController extends \BaseController {
         View::share($share_array);
 
         $this->beforeFilter('auth', ['except' => ['index', 'show']]);
-        $this->beforeFilter('jobAuthor', ['only' => ['edit', 'update']]);
+        $this->beforeFilter('jobAuthor', ['only' => ['edit', 'update', 'repost']]);
 
         $this->jobRepo = $jobRepo;
         $this->paymentRepo = $paymentRepo;

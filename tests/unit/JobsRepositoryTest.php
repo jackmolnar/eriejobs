@@ -218,9 +218,8 @@ class JobsRepositoryTest extends \Codeception\TestCase\Test
         // delete job and removes from index
         $this->jobRepo->deleteJob($job->id);
 
-        $this->tester->dontSeeRecord('jobs', [
-            'title' => $job->title
-        ]);
+        $job = $this->tester->grabRecord('jobs', ['id' => $job->id]);
+        $this->tester->assertTrue($job->deleted_at != null);
 
     }
 
