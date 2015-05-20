@@ -72,7 +72,7 @@ Route::filter('jobAuthor', function()
 {
     $user = Auth::user();
     $job = Job::findBySlug(Route::input('jobs'));
-    if($user->id != $job->user_id){
+    if($user->id != $job->user_id && $user->role->title != 'Administrator'){
         return Redirect::action('ProfilesController@index');
     }
 });

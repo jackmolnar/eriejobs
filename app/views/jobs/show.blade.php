@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="jobs" itemscope itemtype="http://schema.org/JobPosting">
-    
+
     <div class="well col-md-9 ">
         {{--@if(isset($user) && ($user->role->title == 'Recruiter' && $user->id == $job->user_id) || $user->role->title == 'Administrator' )--}}
             <div class="btn btn-group edit_buttons">
