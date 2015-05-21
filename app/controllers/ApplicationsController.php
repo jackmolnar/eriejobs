@@ -68,10 +68,10 @@ class ApplicationsController extends \BaseController {
 
             // send the application to the jobs author
             $sendNewApplicationCommand = new SendNewApplicationCommand(Input::all(), $job);
-            $sendNewApplicationCommand->execute();
+            $appData = $sendNewApplicationCommand->execute();
 
             // save the application record
-            $newApplicationCommand = new CreateApplicationCommand($this->userRepo->authedUser(), $job);
+            $newApplicationCommand = new CreateApplicationCommand($this->userRepo->authedUser(), $job, $appData);
             $newApplicationCommand->execute();
 
             return Redirect::action('ApplicationsController@applicationSent', [$job_id]);

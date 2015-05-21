@@ -7,7 +7,6 @@
  */
 
 namespace EriePaJobs\Applications;
-
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ApplicationsRepository {
@@ -62,12 +61,14 @@ class ApplicationsRepository {
      * @param $job_id
      * @return static
      */
-    public function createApplicationRecord($user_id, $job_id)
+    public function createApplicationRecord($user_id, $job_id, $resume_path, $cover_letter)
     {
         $application = new \Application;
         return $application->create([
             'user_id' => $user_id,
-            'job_id' => $job_id
+            'job_id' => $job_id,
+            'cover_letter' => $cover_letter,
+            'resume_path' => $resume_path
         ]);
     }
 } 

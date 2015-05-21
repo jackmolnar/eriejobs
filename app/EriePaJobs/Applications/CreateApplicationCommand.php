@@ -20,16 +20,23 @@ class CreateApplicationCommand extends BaseCommand{
      * @var
      */
     private $job;
+    /**
+     * @var
+     */
+    private $appData;
 
-    function __construct($user, $job)
+    function __construct($user, $job, $appData)
     {
         $this->appRepo = new ApplicationsRepository;
         $this->user = $user;
         $this->job = $job;
+        $this->appData = $appData;
     }
 
     public function execute()
     {
-        $this->appRepo->createApplicationRecord($this->user->id, $this->job->id);
+        // get the app resume path
+        // get cover letter text
+        $this->appRepo->createApplicationRecord($this->user->id, $this->job->id, $this->appData['resume_path'], $this->appData['cover_letter']);
     }
 }

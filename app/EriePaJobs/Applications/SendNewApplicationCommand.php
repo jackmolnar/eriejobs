@@ -67,7 +67,7 @@ class SendNewApplicationCommand extends BaseCommand{
         {
             $message->to($user_email, $user_name)->subject($subject);
 
-            $message->bcc('jonmolnar@eriepajobs.com');
+//            $message->bcc(Config::get('mail.administrator'));
 
             if($path != ''){
                 $message->attach($path);
@@ -75,5 +75,11 @@ class SendNewApplicationCommand extends BaseCommand{
         });
 
         \Event::fire('application.send', ['user' => $this->applyingUser, 'job' => $this->job, 'resume_path' => $path]);
+
+        // return the path to the resume and cover letter text
+        return [
+            'resume_path' => $path,
+            'cover_letter' => $this->input['cover_letter']
+        ];
     }
 } 
