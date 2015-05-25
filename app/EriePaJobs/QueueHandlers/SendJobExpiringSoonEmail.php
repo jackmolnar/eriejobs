@@ -36,7 +36,7 @@ class SendJobExpiringSoonEmail {
 
         $author = $this->userRepo->userById($expiringJob->user_id);
 
-        $subject = 'You Job Listing For '.$expiringJob->title.' is Expiring Soon';
+        $subject = 'Your Job Listing For '.$expiringJob->title.' is Expiring Soon';
         $user_email = $author->email;
         $user_name = $author->first_name.' '.$author->last_name;
 
