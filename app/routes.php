@@ -20,10 +20,10 @@ Route::get('jobs/create/review', 'JobsController@review');
 Route::post('jobs/create/payment', 'JobsController@payment');
 Route::get('jobs/create/thankyou', 'JobsController@thankyou');
     //destroy
-Route::get('jobs/destroy_confirm/{jobid}', 'JobsController@destroy_confirm');
+Route::get('jobs/destroy_confirm/{jobs}', 'JobsController@destroy_confirm');
     // trashed
-Route::get('jobs/deleted/{jobid}', 'JobsController@showTrashed');
-Route::get('jobs/repost/{jobid}', 'JobsController@repost');
+Route::get('jobs/deleted/{jobs}', 'JobsController@showTrashed');
+Route::get('jobs/repost/{jobs}', 'JobsController@repost');
     //browse
 Route::resource('browse', 'BrowseController');
     //search
