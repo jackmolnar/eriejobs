@@ -67,8 +67,6 @@ class SendNewApplicationCommand extends BaseCommand{
         {
             $message->to($user_email, $user_name)->subject($subject);
 
-            $message->bcc('jonmolnar@eriepajobs.com');
-
             if($path != ''){
                 $message->attach($path);
             }

@@ -1,6 +1,8 @@
 <?php 
 $I = new FunctionalTester($scenario);
 
+$I->resetEmails();
+
 $I->am('a guest');
 $I->wantTo('subscribe as a recruiter');
 
@@ -20,7 +22,6 @@ $I->seeRecord('users', [
     'role_id'       => 3
 ]);
 
-$I->seeInLastEmail('Test');
-$I->seeInLastEmail('EriePa.Jobs is committed to helping you tap into the talent pool in Northwestern Pennsylvania.');
+$I->seeInLastEmail('Welcome to EriePaJobs!');
 
 

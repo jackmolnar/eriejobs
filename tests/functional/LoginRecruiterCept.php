@@ -14,4 +14,4 @@ $I->click(['id' => 'login']);
 
 $I->seeAuthentication();
 
-
+$I->amOnPage('/profile');

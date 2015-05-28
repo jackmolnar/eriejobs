@@ -28,7 +28,7 @@
         <div class="col-md-6">
         <div class="radio">
             <label>
-                {{ Form::radio('contact', 'email', false, ['id' => 'email_contact']) }}
+                {{ Form::radio('contact', 'email', true, ['id' => 'email_contact']) }}
                 Send applications to an email address.
             </label>
         </div>
@@ -40,7 +40,9 @@
         </div>
         </div>
         <div class="col-md-6">
-            <span class="apply"></span>
+            <span class="apply">
+                <label for="email">Email Address</label><input class="form-control half_element" placeholder="Email" name="email" type="text" id="email">
+            </span>
         </div>
     </div>
     <hr/>

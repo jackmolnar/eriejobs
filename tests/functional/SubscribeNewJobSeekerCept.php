@@ -1,6 +1,8 @@
 <?php 
 $I = new FunctionalTester($scenario);
 
+$I->resetEmails();
+
 $I->am('a guest');
 $I->wantTo('subscribe as a job seeker');
 
@@ -20,7 +22,6 @@ $I->seeRecord('users', [
     'role_id'       => 2
 ]);
 
-$I->seeInLastEmail('Test');
-$I->seeInLastEmail('Welcome to EriePa.Jobs!');
+$I->seeInLastEmail('Welcome to EriePaJobs');
 
 

@@ -35,8 +35,9 @@ class FunctionalHelper extends \Codeception\Module
      */
     public function getExpireDate($created_at, $timeframe)
     {
-        $expire_date = Carbon::createFromTimestamp(strtotime($created_at))->addDays($timeframe);
-        return $expire_date;
+        $expire_date = new Carbon($created_at);
+
+        return $expire_date->addDays($timeframe);
     }
 
     /**
