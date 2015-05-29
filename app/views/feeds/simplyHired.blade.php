@@ -3,7 +3,7 @@
 <jobs>
     @foreach($jobs as $job)
     <job>
-        <title>{{ $job->title }}</title>
+        <title><![CDATA[{{ $job->title }}]]></title>
         <job-board-name>EriePaJobs</job-board-name>
         <job-board-url>https://eriepajobs.com</job-board-url>
         <job-code>{{$job->id}}</job-code>
