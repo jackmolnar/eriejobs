@@ -15,7 +15,7 @@
                 {{ $job->link }}
             @endif
         </apply-url>
-        <job-category>{{ $job->categories->first()->title }}</job-category>
+        <job-category><![CDATA[{{ $job->categories->first()->title }}]]</job-category>
         <description>
             <summary>
                 <![CDATA[
@@ -33,7 +33,7 @@
             @endif
         </description>
         <compensation>
-            <salary-range>{{ $job->salary }}</salary-range>
+            <salary-range><![CDATA[{{ $job->salary }}]]</salary-range>
         </compensation>
         <posted-date>{{ $job->created_at->format('Y/m/d') }}</posted-date>
         <close-date>{{ $job->expire->format('Y/m/d') }}</close-date>
@@ -46,9 +46,9 @@
             @if($job->confidential)
                 <name>Confidential</name>
             @else
-                <name>{{ $job->company_name }}</name>
+                <name><![CDATA[{{ $job->company_name }}]]</name>
             @endif
-            <industry>{{ $job->categories->first()->title }}</industry>
+            <industry><![CDATA[{{ $job->categories->first()->title }}]]</industry>
         </company>
     </job>
     @endforeach
