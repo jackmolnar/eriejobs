@@ -8,8 +8,12 @@
             <date><![CDATA[ {{ $job->created_at->format('D, d M Y H:i:s e') }}]]></date>
             <referencenumber><![CDATA[ {{$job->id}} ]]></referencenumber>
             <url><![CDATA[ {{ action('JobsController@show', $job->slug)  }}]]></url>
-            <company><![CDATA[ {{ $job->company_name }} ]]></company>
-            <city><![CDATA[ {{ $job->city }} ]]></city>
+            @if($job->confidential)
+                <company><![CDATA[Confidential]]></company>
+            @else
+                <company><![CDATA[ {{ $job->company_name }} ]]></company>
+            @endif
+            <city><![CDATA[ {{ $job->company_city }} ]]></city>
             <state><![CDATA[ {{ $job->state->title }} ]]></state>
             <country><![CDATA[US]]></country>
             <description><![CDATA[ {{ $job->description }} ]]></description>
