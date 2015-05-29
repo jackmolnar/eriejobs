@@ -71,6 +71,13 @@ Route::post('contact', 'PagesController@postContact');
 Route::get('terms-of-use', 'PagesController@getTermsOfUse');
 Route::resource('blog', 'BlogController');
 
+/*
+ * XML Routes
+ */
+Route::resource('feed', 'FeedController');
+
+
+
 //test email route
 Route::get('test-email', function(){
     dd(Config::get('mail.administrator'));
