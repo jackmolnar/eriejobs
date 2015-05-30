@@ -18,7 +18,6 @@
             <country><![CDATA[US]]></country>
             <description><![CDATA[ {{ $job->description }} ]]></description>
             <salary><![CDATA[ {{ $job->salary }} ]]></salary>
-            <jobtype><![CDATA[ {{ $job->type->type }} ]]></jobtype>
             <category><![CDATA[ {{ $job->categories->first()->category }}]]></category>
         </job>
     @endforeach
