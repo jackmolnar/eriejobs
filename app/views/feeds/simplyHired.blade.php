@@ -15,7 +15,7 @@
                 {{ $job->link }}
             @endif
         </apply-url>
-        <job-category> <![CDATA[{{ $job->categories->first()->title }} ]]></job-category>
+        <job-category> <![CDATA[{{ $job->categories->first()->category }} ]]></job-category>
         <description>
             <summary>
                 <![CDATA[
@@ -48,7 +48,7 @@
             @else
                 <name><![CDATA[{{ $job->company_name }}]]></name>
             @endif
-            <industry><![CDATA[{{ $job->categories->first()->title }}]]></industry>
+            <industry><![CDATA[{{ $job->categories->first()->category }}]]></industry>
         </company>
     </job>
     @endforeach
