@@ -80,7 +80,7 @@ Route::resource('feed', 'FeedController');
 
 //test email route
 Route::get('test-email', function(){
-    dd(Config::get('mail.administrator'));
+    return View::make('emails.jobs.NewJobPosted');
 });
 
 

@@ -25,6 +25,6 @@ has been posted.
 </p>
 <hr/>
 <p>
-You can visit your <a href="{{ secure_url('profile') }}">profile dashboard</a> to update the listing, deactivate the listing, and delete the listing.
+You can visit your {{ link_to_action('ProfilesController@index', 'profile dashboard', ['utm_source' => 'Email', 'utm_medium' => 'Internal Email', 'utm_campaign' => 'New Job Posted']) }} to update the listing, deactivate the listing, and delete the listing.
 </p>
 @stop
