@@ -13,7 +13,7 @@ EriePaJobs is committed to helping you tap into the talent pool in Northwestern 
 </p>
 <p>
 Now for a limited time, to celebrate our launch and to prove our value to you, <b>job listings on EriePaJobs are absolutely free, no strings attached.</b>
-Even after our free trial period, we're committed to providing our services at competitive rates, in fact below other employment websites such as Indeed and Monster!
+Even after our free trial period, we're committed to providing our services at competitive rates, in fact below other employment websites such as LinkedIn and Monster!
 </p>
 <hr/>
 <p>In addition at EriePaJobs:</p>
@@ -24,8 +24,8 @@ Even after our free trial period, we're committed to providing our services at c
 </ul>
 <hr/>
 <p>
-Our goal is to continually improve the website, so if you have feedback or suggestions on how we can improve, please <a href="https://eriepajobs.com/contact">drop us a line.</a>
+Our goal is to continually improve the website, so if you have feedback or suggestions on how we can improve, please {{ link_to_action('PagesController@getContact', 'drop us a line.', ['utm_source' => 'Email', 'utm_medium' => 'Internal Email', 'utm_campaign' => 'Recruiter Signup']) }}
 </p>
-<h3>Now go and <a href="https://eriepajobs.com/jobs/create">list your job opportunities!</a> </h3>
+<h3>Now go and {{ link_to_action('JobsController@create', 'list your available job opportunities!', ['utm_source' => 'Email', 'utm_medium' => 'Internal Email', 'utm_campaign' => 'Recruiter Signup']) }}</h3>
 
 @stop
