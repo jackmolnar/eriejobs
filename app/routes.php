@@ -80,7 +80,13 @@ Route::resource('feed', 'FeedController');
 
 //test email route
 Route::get('test-email', function(){
-    return View::make('emails.jobs.NewJobPosted');
+
+    $googleAnalytics = new \EriePaJobs\ClientLibraries\GoogleAnalytics(new \EriePaJobs\Jobs\JobsRepository);
+
+    $googleAnalytics->getViewsBySlug('marketing-manager-1');
+
+
+//    return View::make('emails.jobs.NewJobPosted');
 });
 
 
