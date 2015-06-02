@@ -8,6 +8,7 @@
 
 namespace EriePaJobs\ClientLibraries;
 use EriePaJobs\Jobs\JobsRepository;
+
 use Google_Client;
 use Google_Service_Analytics;
 use Google_Auth_AssertionCredentials;
@@ -25,9 +26,6 @@ class GoogleAnalytics {
     public function setUp()
     {
         // Creates and returns the Analytics service object.
-
-        // Load the Google API PHP Client Library.
-        require_once 'google-api-php-client/src/Google/autoload.php';
 
         // Use the developers console and replace the values with your
         // service account email, and relative location of your key file.
@@ -64,22 +62,16 @@ class GoogleAnalytics {
 
         // Calls the Core Reporting API and queries for the number of sessions
         // for the last seven days.
-        $result = $analytics->data_ga->get(
+         $result = $analytics->data_ga->get(
             'ga:' . $this->profileId,
             $job->created_at->toDateString(),
             'today',
             'ga:pageviews',
             $params
-
         );
 
-        dd($result);
-    }
-
-
-
-    public function setUpCredentials()
-    {
+        return $result->getRows()[0][0];
 
     }
+
 }

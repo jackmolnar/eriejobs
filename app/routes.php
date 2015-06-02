@@ -83,7 +83,7 @@ Route::get('test-email', function(){
 
     $googleAnalytics = new \EriePaJobs\ClientLibraries\GoogleAnalytics(new \EriePaJobs\Jobs\JobsRepository);
 
-    $googleAnalytics->getViewsBySlug('marketing-manager-1');
+    return $googleAnalytics->getViewsBySlug('merchandiser');
 
 
 //    return View::make('emails.jobs.NewJobPosted');

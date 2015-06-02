@@ -45,8 +45,9 @@ class GetPageViews extends Command {
 		foreach ($allJobs as $job)
 		{
 			$pageviews = $googleAnalytics->getViewsBySlug($job->slug);
+			$job->pageviews = $pageviews;
+			$job->save();
 		}
-
 	}
 
 	/**
