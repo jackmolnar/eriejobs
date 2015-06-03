@@ -47,9 +47,12 @@ class BlogRepository {
      * @param $image
      * @return mixed
      */
-    public function processImage($image)
+    public function processImage( $image, $resize = true )
     {
         $image = \Image::make($image);
+
+        // if not resize, return image
+        if($resize == false) return $image;
 
         if($image->height() > $image->width())
         {

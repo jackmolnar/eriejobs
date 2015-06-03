@@ -24,6 +24,13 @@
         {{ Form::label('image', 'Main Image') }}
         {{ Form::file('image') }}
 
+        <div class="checkbox" >
+            <label>
+                {{ Form::checkbox('big_image', 1, false) }}
+                Post image as actual size?
+            </label>
+        </div>
+
         <hr/>
 
         {{ Form::submit('Create Post', ['class' => 'btn btn-primary']) }}

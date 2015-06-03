@@ -26,11 +26,22 @@ class StoreNewBlogPostCommand extends BaseCommand {
 
     public function execute()
     {
-        $image = $this->blogRepo->processImage($this->input['image']);
-        $thumb_image = $this->blogRepo->processThumbImage($this->input['image']);
+        $path = '';
 
-        $path = $this->blogRepo->saveImage($image);
-        $this->blogRepo->saveThumbImage($thumb_image);
+        if(isset($this->input['image']))
+        {
+            if(isset($this->input['big_image']) && $this->input['big_image'])
+            {
+                $image = $this->blogRepo->processImage($this->input['image'], false);
+            } else {
+                $image = $this->blogRepo->processImage($this->input['image']);
+            }
+
+            $thumb_image = $this->blogRepo->processThumbImage($this->input['image']);
+
+            $path = $this->blogRepo->saveImage($image);
+            $this->blogRepo->saveThumbImage($thumb_image);
+        }
 
         $blogPost = Post::create([
             'title' => $this->input['title'],

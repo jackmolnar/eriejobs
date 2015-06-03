@@ -6,8 +6,6 @@
 </div>
 
 
-
-
 <div class="well col-md-10">
 
     <h3 class="info_header"><i class="fa fa-user"></i> General Information</h3>
