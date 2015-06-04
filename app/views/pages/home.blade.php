@@ -5,14 +5,14 @@
 <div class="main_back">
     <div class="container home_page">
         <div class="main_home">
-             <h1>Erie's and Northwestern Pennsylvania's Exclusive Employment Website</h1>
+             <h1>Find Jobs in Erie and Northwest PA From the Regions Best Employers</h1>
              <div class="home_buttons">
                  {{ link_to_action('AuthController@getSeekerSignup', 'Signup', null, ['class' => 'btn btn-primary btn-lg']) }}
                  <span>OR</span>
                  {{ link_to_action('AuthController@getLogin', 'Login', null, ['class' => 'btn btn-default btn-lg']) }}
              </div>
              <div class="hiring_buttons">
-                Hiring? {{ link_to_action('PagesController@hiring', 'Signup for a Recruiter account') }} and post Free for the first 90 days.
+                Hiring? {{ link_to_action('PagesController@hiring', 'Signup for a Recruiter account') }} and post Free Help Wanted Ads - Offer Ends in {{ 30 - \Carbon\Carbon::today()->day  }} Days.
              </div>
         </div>
     </div>
