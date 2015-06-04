@@ -82,5 +82,5 @@
 Jobs in Erie, Pa - EriePaJobs.com
 @stop
 @section('_description')
-Erie Pa Jobs is an exclusive help wanted and employment website for Erie and Northwestern PA.
+Find jobs in Erie and Northwest Pennsylvania. The regions only exclusive help wanted website..
 @stop
