@@ -135,7 +135,7 @@ return array(
             $user->password = Hash::make(Str::random());
             $user->first_name = array_get($data, 'first_name');
             $user->last_name = array_get($data, 'last_name');
-            $user->notifications = 1;
+            $user->email_notifications = 1;
             $user->role_id = 2;
             $user->save();
             return $user->id;
