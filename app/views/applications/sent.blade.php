@@ -23,3 +23,23 @@
 @section('_title')
     Application for {{ $job->title }} Sent - EriePaJobs
 @stop
+
+@section('scripts')
+    <!-- Begin INDEED conversion code -->
+
+    <script type="text/javascript">
+        /* <![CDATA[ */
+
+        var indeed_conversion_id = '9061630478569686';
+        var indeed_conversion_label = '';
+
+        /* ]]> */
+    </script>
+
+    <script type="text/javascript" src="//conv.indeed.com/pagead/conversion.js"></script>
+    <noscript>
+        <img height=1 width=1 border=0 src="//conv.indeed.com/pagead/conv/9061630478569686/?script=0">
+    </noscript>
+
+    <!-- End INDEED conversion code -->
+    @stop
