@@ -13,6 +13,10 @@
                 <li>EriePaJobs advertises throughout the region to make sure your listings get the visibility you require</li>
                 <li>All listings posted on the site are shared on our Facebook, Twitter, and LinkedIn pages</li>
                 <li>Listings are emailed weekly and text messaged instantly to users who have requested to be notified when new jobs are posted that fit their interests</li>
+                <li>
+                    Help wanted ads are also posted on Indeed.com for more exposure<br/>
+                    <img src="{{ url('images/indeed.png') }}" alt="Indeed Erie Pa" style="margin-top: 20px;   display: block; margin-left: auto; margin-right: auto;"/>
+                </li>
             </ul>
 
             <hr/>
