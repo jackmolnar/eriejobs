@@ -68,7 +68,7 @@ $I->seeRecord('jobs', [
     'expire' => $expire_date,
     'confidential' => 0,
     'slug' => 'web-designer',
-    'deleted_at' => null
+//    'deleted_at' => ''
 ]);
 
 

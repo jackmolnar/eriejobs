@@ -55,6 +55,7 @@ Route::filter('auth.basic', function()
 });
 
 /**
+ *
  * Check if user logged in, if so redirect to profile page
  */
 Route::filter('loggedin', function()
@@ -66,6 +67,7 @@ Route::filter('loggedin', function()
 });
 
 /**
+ *
  * Check to see if authed user is the author of referenced job
  */
 Route::filter('jobAuthor', function()
@@ -81,7 +83,8 @@ Route::filter('jobAuthor', function()
 });
 
 /**
- * Check to see if authed user is the author of referenced job
+ *
+ * Check to see if authed user is an administrator
  */
 Route::filter('administrator', function()
 {
@@ -89,6 +92,24 @@ Route::filter('administrator', function()
 	if($user->role->title != 'Administrator')
 	{
 		return Redirect::action('ProfilesController@index');
+	}
+});
+
+/**
+ *
+ *
+ * Check to see if authed user is an administrator
+ */
+Route::filter('deletedUser', function()
+{
+	$userRepo = new \EriePaJobs\Users\UserRepository;
+	$user = $userRepo->userByEmail(Input::get('email'), true);
+
+	if($user == null) return null;
+
+	if($user->trashed())
+	{
+		return Redirect::action('AuthController@getRestoreUser', ['email' => Input::get('email')]);
 	}
 });
 

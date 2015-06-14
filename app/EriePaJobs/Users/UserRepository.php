@@ -16,12 +16,25 @@ class UserRepository {
     /**
      * Get user by their id
      * @param $id Integer
+     * @param bool $trashed
      * @return \Illuminate\Support\Collection|static
      */
-    public function userById($id)
+    public function userById($id, $trashed = false)
     {
-        $user = User::find($id);
-        return $user;
+        if($trashed == true) return $user = User::withTrashed()->whereId($id)->first();
+        return $user = User::find($id);
+    }
+
+    /**
+     * Get user by email address
+     * @param $email
+     * @param bool $trashed
+     * @return mixed
+     */
+    public function userByEmail($email, $trashed = false)
+    {
+        if($trashed == true) return $user = User::withTrashed()->whereEmail($email)->first();
+        return $user = User::whereEmail($email)->first();
     }
 
     /**
@@ -30,8 +43,7 @@ class UserRepository {
      */
     public function authedUser()
     {
-        $user = Auth::user();
-        return $user;
+        return $user = Auth::user();
     }
 
     /**
@@ -56,8 +68,7 @@ class UserRepository {
      */
     public function getResumeByUserId($user_id)
     {
-        $resume = \Resume::where('user_id', '=', $user_id)->first();
-        return $resume;
+        return $resume = \Resume::where('user_id', '=', $user_id)->first();
     }
 
     /**

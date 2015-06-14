@@ -1,5 +1,7 @@
 <?php
 
+use EriePaJobs\Auth\restoreUserAccountCommand;
+use EriePaJobs\Auth\SendRestoreUserAccountEmailCommand;
 use EriePaJobs\JobSeekers\SubscribeNewJobSeekerCommand;
 use EriePaJobs\JobSeekers\SubscribeNewJobSeekerValidator;
 use EriePaJobs\Auth\LoginUserCommand;
@@ -13,6 +15,7 @@ class AuthController extends \BaseController {
     public function __construct( )
     {
         $this->beforeFilter('loggedin',['except' => 'logout']);
+        $this->beforeFilter('deletedUser', ['only' => ['postSeekerSignup', 'postRecruiterSignup']]);
     }
 
     /**
@@ -118,10 +121,49 @@ class AuthController extends \BaseController {
         return Redirect::back()->withInput()->withErrors($valid['errors']);
     }
 
+    /**
+     * Logout the user
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function logout()
     {
         Auth::logout();
         return Redirect::to('/');
+    }
+
+    /**
+     * Get the restore user view
+     * @return \Illuminate\View\View
+     */
+    public function getRestoreUser()
+    {
+        return View::make('Auth.restore_user', ['email' => Input::get('email')]);
+    }
+
+    /**
+     * Send restore user confirmation email
+     * @return \Illuminate\View\View
+     */
+    public function sendRestoreUser()
+    {
+        $restoreUserAccountEmail = new SendRestoreUserAccountEmailCommand(Input::get('email'));
+        $result = $restoreUserAccountEmail->execute();
+
+        $result = $result ? 'We have sent you a confirmation email to restore your account. Click the link in the email to confirm you want to restore your account.' : 'An error occurred. There is no deleted user with that email to restore.';
+
+        return View::make('Auth.restore_user_sent', ['result' => $result]);
+    }
+
+    /**
+     * User account restore confirmed from email
+     * @return \Illuminate\View\View
+     */
+    public function restoreUserConfirmed()
+    {
+        $restoreUserAccountCommand = new RestoreUserAccountCommand(Input::get('user_id'));
+        $result = $restoreUserAccountCommand->execute();
+        $result = $result ? 'Your account has been restored, and you are logged in.' : 'An error occurred. There is no deleted user with that email to restore.';
+        return View::make('Auth.restore_user_sent', ['result' => $result]);
     }
 
 

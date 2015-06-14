@@ -10,6 +10,10 @@ include('routes/SeekerAuthRoutes.php');
 include('routes/RecruiterAuthRoutes.php');
 Route::controller('password', 'RemindersController');
 Route::get('/logout', 'AuthController@logout');
+    //restore user accounts
+Route::get('/restore-user', 'AuthController@getRestoreUser');
+Route::get('/restore-user-confirmed', 'AuthController@restoreUserConfirmed');
+Route::get('/send-restore-user', 'AuthController@sendRestoreUser');
 
 /*
  * Jobs Routes
