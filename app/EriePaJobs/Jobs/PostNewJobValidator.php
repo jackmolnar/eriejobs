@@ -13,7 +13,7 @@ use EriePaJobs\BaseValidator;
 class PostNewJobValidator extends BaseValidator {
 
     public static $post_validation_rules = [
-        'title' => 'required',
+        'title' => 'required|min:5|max:50',
         'description' => 'required',
         'company_name' => 'required',
         'company_city' => 'required',

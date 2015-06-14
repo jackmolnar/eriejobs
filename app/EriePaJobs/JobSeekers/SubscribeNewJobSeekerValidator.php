@@ -14,8 +14,8 @@ class SubscribeNewJobSeekerValidator extends BaseValidator {
 
     public static $subscribe_validation_rules = [
         'email' => 'required|email|unique:users',
-        'first_name' => 'required',
-        'last_name' => 'required',
+        'first_name' => 'required|min:3',
+        'last_name' => 'required|min:3',
         'password' => 'required|confirmed'
 
     ];
