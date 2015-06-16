@@ -17,7 +17,6 @@ class SubscribeNewJobSeekerValidator extends BaseValidator {
         'first_name' => 'required|min:3',
         'last_name' => 'required|min:3',
         'password' => 'required|confirmed'
-
     ];
 
     protected $input;
@@ -42,6 +41,5 @@ class SubscribeNewJobSeekerValidator extends BaseValidator {
         $result = parent::validate($this->input, static::$subscribe_validation_rules);
         return $result;
     }
-
 
 }

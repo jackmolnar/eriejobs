@@ -13,18 +13,15 @@ use Illuminate\Support\Facades\Validator;
 abstract class BaseValidator implements JBValidatorInterface {
 
     /**
-     * @var array
+     * Base validate function
+     *
+     * @param $input
+     * @param $rules
+     * @param array $messages
+     * @return array
      */
-    private $input;
-    /**
-     * @var array
-     */
-    private $rules;
-
-
-
-    public function validate($input, $rules, $messages = []){
-
+    public function validate($input, $rules, $messages = [])
+    {
         $validator = Validator::make($input, $rules, $messages);
 
         $response = array();
@@ -37,7 +34,5 @@ abstract class BaseValidator implements JBValidatorInterface {
             $response['status'] = true;
             return $response;
         }
-
     }
-
 }

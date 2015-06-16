@@ -52,12 +52,20 @@ class PostNewJobValidator extends BaseValidator {
         }
     }
 
+    /**
+     * Validation for create rules
+     * @return array
+     */
     public function create()
     {
         $result = parent::validate($this->input, static::$post_validation_rules);
         return $result;
     }
 
+    /**
+     * Confirm validation rules
+     * @return array
+     */
     public function confirm()
     {
         $result = parent::validate($this->input, static::$post_validation_rules);

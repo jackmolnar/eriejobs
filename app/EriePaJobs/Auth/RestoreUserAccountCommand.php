@@ -29,8 +29,6 @@ class RestoreUserAccountCommand extends BaseCommand{
         // get the user
         $user = $this->userRepo->userById($this->user_id, true);
 
-//        dd($this->userRepo->userById($this->user_id, true));
-
         // if trashed user exists
         if($user != null)
         {

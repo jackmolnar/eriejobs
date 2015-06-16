@@ -17,7 +17,6 @@ class SubscribeNewRecruiterValidator extends BaseValidator {
         'first_name' => 'required|min:3',
         'last_name' => 'required|min:3',
         'password' => 'required|confirmed'
-
     ];
 
     protected $input;
