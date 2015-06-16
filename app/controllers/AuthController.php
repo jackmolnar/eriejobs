@@ -1,6 +1,6 @@
 <?php
 
-use EriePaJobs\Auth\restoreUserAccountCommand;
+use EriePaJobs\Auth\RestoreUserAccountCommand;
 use EriePaJobs\Auth\SendRestoreUserAccountEmailCommand;
 use EriePaJobs\JobSeekers\SubscribeNewJobSeekerCommand;
 use EriePaJobs\JobSeekers\SubscribeNewJobSeekerValidator;
