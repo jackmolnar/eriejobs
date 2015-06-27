@@ -72,18 +72,19 @@
         <hr/>
         <div class="row">
             {{ Form::open(['action' => 'JobsController@payment', 'method' => 'post']) }}
-            {{ link_to_action('JobsController@create', 'Edit', null, ['class' => 'btn btn-warning']) }}
+            {{ link_to_action('JobsController@create', 'Edit Listing', ['edit' => 'true', 'listing' => Session::get('pending_job')], ['class' => 'btn btn-warning']) }}
 
             @if(!Config::get('billing.free'))
-                <script
-                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="{{ getenv('STRIPE_PUBLISHABLE_KEY') }}"
-                    data-image=""
-                    data-name="EriePa Jobs"
-                    data-description="{{ $length }}"
-                    data-amount="{{ $cost }}">
-                </script>
-                {{ Form::hidden('cost', $cost) }}
+                {{ link_to_action('JobsController@cart', 'Add Job Listing to Cart', null, ['class' => 'btn btn-primary']) }}
+                {{--<script--}}
+                    {{--src="https://checkout.stripe.com/checkout.js" class="stripe-button"--}}
+                    {{--data-key="{{ getenv('STRIPE_PUBLISHABLE_KEY') }}"--}}
+                    {{--data-image=""--}}
+                    {{--data-name="EriePa Jobs"--}}
+                    {{--data-description="{{ $length }}"--}}
+                    {{--data-amount="{{ $cost }}">--}}
+                {{--</script>--}}
+                {{--{{ Form::hidden('cost', $cost) }}--}}
             @else
                 {{ Form::submit('Post Listing', ['class' => 'btn btn-primary']) }}
             @endif
@@ -96,7 +97,7 @@
     <div class="col-md-3">
         <div class="well well-primary">
             <ul>
-                <li>Remember, jobs listing are currently free to post and will be for the first 90 days of our launch</li>
+                <li>Our payment processing is secure! We use 256 bit encryption and process all payments through one of the most secure payment gateways in the world, {{ link_to('https://stripe.com/', 'Stripe', ['target' => '_blank']) }}</li>
                 <li>If you have questions or problems, feel free to {{ link_to_action('PagesController@getContact', 'contact us') }}</li>
             </ul>
         </div>

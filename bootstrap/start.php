@@ -71,6 +71,9 @@ require $framework.'/Illuminate/Foundation/start.php';
 |
 */
 
+User::setStripeKey(getenv('STRIPE_SECRET_KEY'));
+
+
 return $app;
 
 

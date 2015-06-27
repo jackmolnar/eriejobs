@@ -57,9 +57,13 @@ class JobsController extends \BaseController {
 	 */
 	public function create()
 	{
-        if(Session::has('pending_job'))
+//        if(Session::has('pending_job'))
+//        {
+//            return View::make('jobs.create', ['job' => Session::get('pending_job'), 'billing' => \Config::get('billing')]);
+//        }
+        if(Input::get('edit'))
         {
-            return View::make('jobs.create', ['job' => Session::get('pending_job'), 'billing' => \Config::get('billing')]);
+            return View::make('jobs.create', ['job' => 'THE JOB', 'billing' => \Config::get('billing')]);
         }
 		return View::make('jobs.create', ['billing' => \Config::get('billing')]);
 	}
@@ -107,6 +111,17 @@ class JobsController extends \BaseController {
         $length = $this->jobRepo->getLengthFromExpireDate($pending_job->expire)." Day Job Listing";
 
         return View::make('jobs.review', ['pending_job' => $pending_job, 'cost' => $cost, 'length' => $length]);
+    }
+
+    public function cart()
+    {
+        if(Session::has('pending_job'))
+        {
+            $pending_job = Session::pull('pending_job');
+            $this->jobRepo->putJobInCart($pending_job);
+        }
+
+        return View::make('jobs.cart', ['cart' => Session::get('cart')]);
     }
 
     /**

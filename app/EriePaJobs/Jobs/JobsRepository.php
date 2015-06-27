@@ -11,6 +11,7 @@ use Cache;
 use Job;
 use Carbon\Carbon;
 use Config;
+use Session;
 
 class JobsRepository {
 
@@ -236,5 +237,10 @@ class JobsRepository {
         $job = $this->getJobById($id);
         $job->delete();
         return true;
+    }
+
+    public function putJobInCart($job)
+    {
+        Session::push('cart', $job);
     }
 }

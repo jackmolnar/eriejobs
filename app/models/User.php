@@ -6,15 +6,12 @@ use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Mmanos\Social\SocialTrait;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
+use Laravel\Cashier\BillableTrait;
+use Laravel\Cashier\BillableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends Eloquent implements UserInterface, RemindableInterface, BillableInterface {
 
-	use UserTrait, RemindableTrait, SocialTrait;
-
-    /**
-     * trait to enable soft deleting jobs
-     */
-    use SoftDeletingTrait;
+	use UserTrait, RemindableTrait, SocialTrait, BillableTrait, SoftDeletingTrait;
 
     /**
 	 * The database table used by the model.
@@ -23,7 +20,17 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $table = 'users';
 
+    /**
+     * Fillable fields
+     */
     protected $fillable = array('email', 'first_name', 'last_name', 'role', 'email_notifications', 'sms_notifications', 'phone_number');
+
+    /**
+     * Billable date declarations
+     *
+     * @var array
+     */
+    protected $dates = ['trial_ends_at', 'subscription_ends_at'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
