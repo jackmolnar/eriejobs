@@ -24,7 +24,6 @@ class PaymentRepository {
 
         // Set your secret key: remember to change this to your live secret key in production
         // See your keys here https://dashboard.stripe.com/account
-        dd(\Config::get('services.stripe.secret'));
         Stripe::setApiKey(\Config::get('services.stripe.secret'));
 
         // Get the credit card details submitted by the form
