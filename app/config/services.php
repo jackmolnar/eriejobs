@@ -25,7 +25,7 @@ return array(
 
 	'stripe' => array(
 		'model'  => 'User',
-		'secret' => env("STRIPE_SECRET_KEY"),
+		'secret' => getenv("STRIPE_SECRET_KEY"),
 	),
 
 
