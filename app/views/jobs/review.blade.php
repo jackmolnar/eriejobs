@@ -72,7 +72,7 @@
         <hr/>
         <div class="row">
             {{ Form::open(['action' => 'JobsController@payment', 'method' => 'post']) }}
-            {{ link_to_action('JobsController@create', 'Edit Listing', ['edit' => 'true', 'listing' => Session::get('pending_job')], ['class' => 'btn btn-warning']) }}
+            {{ link_to_action('JobsController@create', 'Edit Listing', null, ['class' => 'btn btn-warning']) }}
 
             @if(!Config::get('billing.free'))
                 {{ link_to_action('JobsController@cart', 'Add Job Listing to Cart', null, ['class' => 'btn btn-primary']) }}

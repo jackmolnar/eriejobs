@@ -11,7 +11,6 @@ use Stripe;
 use Stripe_Charge;
 use Stripe_CardError;
 
-
 class PaymentRepository {
 
     /**

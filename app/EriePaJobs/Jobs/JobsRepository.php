@@ -239,8 +239,65 @@ class JobsRepository {
         return true;
     }
 
+    /**
+     * Put job in cart
+     * @param $job
+     */
     public function putJobInCart($job)
     {
-        Session::push('cart', $job);
+        if(Session::has('cart'))
+        {
+            $cart = Session::get('cart');
+            array_push($cart, $job);
+        } else {
+            $cart = array();
+            array_push($cart, $job);
+        }
+        Session::put('cart', $cart);
+    }
+
+    /**
+     * Remove job from cart
+     * @param $jobId
+     */
+    public function removeFromCart($jobId)
+    {
+        $cart = Session::get('cart');
+        foreach($cart as $id => $job)
+        {
+            if($id == $jobId) unset($cart[$id]);
+        }
+        Session::put('cart', $cart);
+    }
+
+    /**
+     * Retrieve job from cart
+     * @param $jobId
+     * @return null
+     */
+    public function getJobFromCart($jobId)
+    {
+        $cart = Session::get('cart');
+        foreach($cart as $id => $job)
+        {
+            $job = ($id == $jobId) ? $job : null;
+        }
+        return $job;
+    }
+
+    /**
+     * Calculate total cost of whats in cart
+     * @param $cart
+     * @return int|string
+     */
+    public function calculateCost($cart)
+    {
+        $totalCost = 0;
+        foreach($cart as $job)
+        {
+            $cost = $this->getCostFromExpireDate($job->expire);
+            $totalCost += $cost;
+        }
+        return $totalCost;
     }
 }

@@ -57,14 +57,20 @@ class JobsController extends \BaseController {
 	 */
 	public function create()
 	{
-//        if(Session::has('pending_job'))
-//        {
-//            return View::make('jobs.create', ['job' => Session::get('pending_job'), 'billing' => \Config::get('billing')]);
-//        }
-        if(Input::get('edit'))
+        // if there is a listing pending or edit from cart, pipe into the view
+        if(Input::has('id') && Session::has('cart'))
         {
-            return View::make('jobs.create', ['job' => 'THE JOB', 'billing' => \Config::get('billing')]);
+            $job = $this->jobRepo->getJobFromCart(Input::get('id'));
+            Session::put('pending_job', $job);
+
+            // keeps clearing cart
+            $this->jobRepo->removeFromCart(Input::get('id'));
         }
+
+//        dd(count(Session::get('cart')));
+
+        if(Session::has('pending_job')) return View::make('jobs.create', ['job' => Session::get('pending_job'), 'billing' => \Config::get('billing')]);
+
 		return View::make('jobs.create', ['billing' => \Config::get('billing')]);
 	}
 
@@ -113,6 +119,10 @@ class JobsController extends \BaseController {
         return View::make('jobs.review', ['pending_job' => $pending_job, 'cost' => $cost, 'length' => $length]);
     }
 
+    /**
+     * Display cart
+     * @return \Illuminate\View\View
+     */
     public function cart()
     {
         if(Session::has('pending_job'))
@@ -121,7 +131,30 @@ class JobsController extends \BaseController {
             $this->jobRepo->putJobInCart($pending_job);
         }
 
-        return View::make('jobs.cart', ['cart' => Session::get('cart')]);
+        $cost = $this->jobRepo->calculateCost(Session::get('cart'));
+
+        return View::make('jobs.cart', ['cart' => Session::get('cart'), 'cost' => $cost]);
+    }
+
+    /**
+     * Delete job from cart
+     * @return \Illuminate\View\View
+     */
+    public function deleteCart()
+    {
+        $jobId = Input::get('id');
+        $this->jobRepo->removeFromCart($jobId);
+
+        // if cart empty return to create route
+        if(! count(Session::get('cart')))
+        {
+            return Redirect::action('JobsController@create');
+        }
+
+        // recalculate cost
+        $cost = $this->jobRepo->calculateCost(Session::get('cart'));
+
+        return Redirect::action('JobsController@cart', ['cart' => Session::get('cart'), 'cost' => $cost])->with('success', 'Listing removed from cart.');
     }
 
     /**

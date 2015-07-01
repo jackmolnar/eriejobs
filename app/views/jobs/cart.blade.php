@@ -1,7 +1,110 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: jackmolnar1982
- * Date: 6/26/15
- * Time: 9:10 PM
- */
+@extends('layouts.default')
+
+@section('content')
+
+    <div class="jobs">
+
+        <h1 style="display: block">Cart</h1>
+
+        <div class="well col-md-9 ">
+            <table class="table">
+                <tr>
+                    <th>Listing</th>
+                    <th>Expire Date</th>
+                    <th>Cost</th>
+                    <th>Edit Job</th>
+                    <th>Remove from Cart</th>
+                </tr>
+                @foreach($cart as $index => $job)
+                    <tr>
+                        <td>{{{ $job->title }}}</td>
+                        <td>{{{ $job->expire->format( 'm-d-Y') }}}</td>
+                        {{--<td>{{{ \Config::get('billing.listing')[$job->expire->subDays(\Carbon\Carbon::today())]  }}}</td>--}}
+                        <td>${{{ \Config::get('billing')['listings'][\Carbon\Carbon::today()->diffInDays($job->expire)] * .01 }}}</td>
+                        <td>{{ link_to_action('JobsController@create', 'Edit', ['id' => $index], ['class' => 'btn btn-xs btn-warning']) }}</td>
+                        <td>{{ link_to_action('JobsController@deleteCart', 'Delete', ['id' => $index], ['class' => 'btn btn-xs btn-danger']) }}</td>
+                    </tr>
+                @endforeach
+                <tr>
+                    <td colspan="4">Total Cost: ${{ $cost*.01 }}.00</td>
+                </tr>
+            </table>
+
+            <hr/>
+            <div class="row">
+                {{ Form::open(['action' => 'JobsController@payment', 'method' => 'post']) }}
+
+                @if(!Config::get('billing.free'))
+                    <script
+                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="{{ getenv('STRIPE_PUBLISHABLE_KEY') }}"
+                    data-image=""
+                    data-name="EriePa Jobs"
+                    data-description="{{ count($cart) }} Listing(s)"
+                    data-amount="{{ $cost }}">
+                    </script>
+                    {{ Form::hidden('cost', $cost) }}
+                    {{ link_to_action('JobsController@create', 'Add Another Job', null, ['class' => 'btn btn-default']) }}
+                @else
+                    {{ Form::submit('Post Listing', ['class' => 'btn btn-primary']) }}
+                @endif
+                {{ Form::close() }}
+
+                {{--<a id="payment_button" class="btn btn-primary">Confirm and Pay</a>--}}
+                {{--{{ link_to_action('JobsController@payment', 'Continue', null, ['class' => 'btn btn-primary']) }}--}}
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="well well-primary">
+                <ul>
+                    <li>Our payment processing is secure! We use 256 bit encryption and process all payments through one of the most secure payment gateways in the world, {{ link_to('https://stripe.com/', 'Stripe', ['target' => '_blank']) }}</li>
+                    <li>If you have questions or problems, feel free to {{ link_to_action('PagesController@getContact', 'contact us') }}</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+@stop
+
+@section('scripts')
+    <script>
+        /*
+         Checkout Button
+         */
+
+        var handler = StripeCheckout.configure({
+            key: 'pk_test_G59xaf43g03xVDXtwrZQ2ByW',
+            token: function(token) {
+                // Use the token to create the charge with a server-side script.
+                // You can access the token ID with `token.id`
+                $.post('payment', { stripeToken: token })
+                        .done(function( data ){
+                            alert(data)
+                        });
+            }
+        });
+
+        $('#payment_button').on('click', function(e) {
+            // Open Checkout with further options
+            console.log('payment clicked');
+            handler.open({
+                name: 'EriePa Jobs',
+                description: 'Job Listing',
+                amount: 2000
+            });
+            e.preventDefault();
+        });
+
+        // Close Checkout on page navigation
+        $(window).on('popstate', function() {
+            handler.close();
+        });
+
+
+    </script>
+@stop
+
+@section('_title')
+    Review Your New Job Listing - EriePaJobs
+@stop

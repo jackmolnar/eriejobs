@@ -23,6 +23,7 @@ Route::resource('jobs', 'JobsController');
 Route::get('jobs/create/review', 'JobsController@review');
 Route::post('jobs/create/payment', 'JobsController@payment');
 Route::get('jobs/create/cart', 'JobsController@cart');
+Route::get('jobs/create/cart-delete', 'JobsController@deleteCart');
 Route::get('jobs/create/thankyou', 'JobsController@thankyou');
     //destroy
 Route::get('jobs/destroy_confirm/{jobs}', 'JobsController@destroy_confirm');
