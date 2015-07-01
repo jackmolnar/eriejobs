@@ -4,12 +4,13 @@
     <div class="container hiring">
 
         <div class="col-md-6 left_column">
-            <h1 class="hiring_headline"><span class="accent">Job Listings Are <span class="free">Free</span><br> For The First 90 Days Of Our Launch!</span></h1>
+            <h1 class="hiring_headline"><span class="accent">The most affordable recruitment website in Northwest Pennsylvania.</span></h1>
             <hr/>
             <p>
                 EriePaJobs is the only employment website exclusive to the Northwestern Pennsylvania region. We are dedicated to helping employers find the candidates they need to fill their open job opportunities.
             </p>
             <ul>
+                <li>Help wanted ads start at just $119 - 40% lower than Monster or LinkedIn</li>
                 <li>EriePaJobs advertises throughout the region to make sure your listings get the visibility you require</li>
                 <li>All listings posted on the site are shared on our Facebook, Twitter, and LinkedIn pages</li>
                 <li>Listings are emailed weekly and text messaged instantly to users who have requested to be notified when new jobs are posted that fit their interests</li>

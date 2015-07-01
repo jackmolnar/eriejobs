@@ -12,7 +12,7 @@
                  {{ link_to_action('AuthController@getLogin', 'Login', null, ['class' => 'btn btn-default btn-lg']) }}
              </div>
              <div class="hiring_buttons">
-                Hiring? {{ link_to_action('PagesController@hiring', 'Signup for a Recruiter account') }} and post Free Help Wanted Ads - Offer Ends in {{ 30 - \Carbon\Carbon::today()->day  }} Days.
+                Hiring? {{ link_to_action('PagesController@hiring', 'Signup for a Recruiter account') }} and post Help Wanted Ads.
              </div>
         </div>
     </div>
@@ -36,9 +36,9 @@
         </p>
     </div>
     <div class="col-md-4">
-        <h2>Hiring? Post job listings free for 3 months.</h2>
+        <h2>Hiring? Post affordable help wanted ads.</h2>
         <img src="../images/home_image_3.jpg" class="img-responsive" alt="Post job listings in Erie Pa.">
-        <p>To kick off EriePaJobs, we're letting Erie area employers post job listings FREE for the first 90 days after our launch. Let us prove our value to you.
+        <p>EriePaJobs is committed to offering low cost help wanted ads to employers - in fact 40% lower than Monster or LinkedIn. Get your openings in front of area job seekers.
             <br/><br/>
            {{ link_to_action('PagesController@hiring', 'Sign Up and Find Your Next Employee', null, ['class' => 'btn btn-primary']) }}
             </p>
