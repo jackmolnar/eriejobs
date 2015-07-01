@@ -77,7 +77,7 @@
             @if(!Config::get('billing.free'))
                 <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="pk_test_G59xaf43g03xVDXtwrZQ2ByW"
+                    data-key="pk_live_bC1rCBEvM2ieoXWrFNUyGjWk"
                     data-image=""
                     data-name="EriePa Jobs"
                     data-description="{{ $length }}"
