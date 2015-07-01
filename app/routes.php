@@ -43,6 +43,11 @@ Route::get('jobs/{jobs}/application-sent', array('uses' => 'ApplicationsControll
 Route::post('jobs/active', ['uses' => 'JobsController@active', 'as' => 'jobs.active']);
 
 /*
+ * Subscription handling routes
+ */
+Route::resource('subscription', 'SubscriptionController');
+
+/*
  * Notification routes
  */
 Route::post('notifications/create', ['uses' => 'NotificationsController@create', 'as' => 'notifications.create']);

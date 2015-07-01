@@ -26,7 +26,7 @@
                     </tr>
                 @endforeach
                 <tr>
-                    <td colspan="4">Total Cost: ${{ $cost*.01 }}.00</td>
+                    <td colspan="5">Total Cost: ${{ $cost*.01 }}.00</td>
                 </tr>
             </table>
 
@@ -34,24 +34,35 @@
             <div class="row">
                 {{ Form::open(['action' => 'JobsController@payment', 'method' => 'post']) }}
 
+                {{-- if billing set to charge--}}
                 @if(!Config::get('billing.free'))
+                    <span class="checkout_button" style="float: right">
                     <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="{{ getenv('STRIPE_PUBLISHABLE_KEY') }}"
                     data-image=""
-                    data-name="EriePa Jobs"
+                    data-name="EriePaJobs.com"
                     data-description="{{ count($cart) }} Listing(s)"
-                    data-amount="{{ $cost }}">
+                    data-amount="{{ $cost }}"
+                    data-email="{{ $user->email }}"
+                    data-label="Pay For Listings"
+                    data-allow-remember-me="false"
+                            >
                     </script>
+                    </span>
                     {{ Form::hidden('cost', $cost) }}
                     {{ link_to_action('JobsController@create', 'Add Another Job', null, ['class' => 'btn btn-default']) }}
                 @else
+                    {{-- if billing set to free--}}
                     {{ Form::submit('Post Listing', ['class' => 'btn btn-primary']) }}
                 @endif
                 {{ Form::close() }}
 
-                {{--<a id="payment_button" class="btn btn-primary">Confirm and Pay</a>--}}
-                {{--{{ link_to_action('JobsController@payment', 'Continue', null, ['class' => 'btn btn-primary']) }}--}}
+                <hr/>
+                <h3>Interested in subscription pricing?</h3>
+                <p>Pay by an automatic monthly subscription and post several jobs at a time. Both convenient and cheaper than individual listings!</p>
+                {{ link_to_action('SubscriptionController@create', 'Subscribe', null, ['class' => 'btn btn-warning']) }}
+
             </div>
         </div>
         <div class="col-md-3">

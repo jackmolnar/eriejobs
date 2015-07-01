@@ -242,6 +242,19 @@ ul {
   margin-top: 0px;
   margin-bottom: 15px; }
 
+.subscription .list-group {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  max-width: 550px; }
+  .subscription .list-group .list-group-item {
+    float: left;
+    margin-right: 40px;
+    padding: 30px;
+    text-align: center; }
+    .subscription .list-group .list-group-item b {
+      color: #37636f; }
+
 .search .col-md-9 h1 {
   font-size: 30px;
   padding-bottom: 15px;
