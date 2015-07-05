@@ -1,5 +1,6 @@
 <?php
 
+use EriePaJobs\Subscriptions\CreateNewSubscriptionCommand;
 use EriePaJobs\Users\UserRepository;
 
 class SubscriptionController extends \BaseController {
@@ -41,7 +42,14 @@ class SubscriptionController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// create subscription
+		$newSubscriptionCommand = new CreateNewSubscriptionCommand(Input::all());
+		$result = $newSubscriptionCommand->execute();
+
+		// if jobs in cart redirect
+		if(Session::has('cart') && count(Session::get('cart'))) return Redirect::action('JobsController@cart')->with('success', $result['message']);
+
+		return Redirect::action('ProfilesController@index')->with('success', $result['message']);
 	}
 
 	/**
@@ -89,7 +97,39 @@ class SubscriptionController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		if($this->userRepo->authedUser()->subscribed())
+		{
+//			$this->userRepo->authedUser()->subscription()->cancel();
+//			$endDate = $this->userRepo->authedUser()->getSubscriptionEndDate()->format('m/d/Y');
+//			return Redirect::action('ProfilesController@index')->with('success', 'Your subscription has been canceled and ends on '.$endDate.'.');
+		}
+
+		return Redirect::action('ProfilesController@index')->with('errors', 'You were not subscribed.');
 	}
 
+	/**
+	 * Build the button based on subscription selected
+	 * @return string
+     */
+	public function button()
+	{
+		$data = Input::all();
+
+		$result = '
+			<script
+					id="checkout_script"
+					src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+					data-key="'. getenv('STRIPE_PUBLISHABLE_KEY') .'"
+					data-image=""
+					data-name="EriePaJobs.com"
+					data-description="'.$data['plan'].' Plan"
+					data-amount="'.$data['cost'].'"
+					data-email="'.$this->userRepo->authedUser()->email.'"
+					data-label="Pay For Subscription"
+					data-allow-remember-me="false"
+						>
+			</script>';
+
+		return $result;
+	}
 }

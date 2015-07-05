@@ -47,7 +47,8 @@ class Job extends \Eloquent implements SluggableInterface {
         'expire',
         'confidential',
         'slug',
-        'pageviews'
+        'pageviews',
+        'subscription'
     ];
 
     /**

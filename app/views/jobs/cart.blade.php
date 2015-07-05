@@ -4,9 +4,13 @@
 
     <div class="jobs">
 
-        <h1 style="display: block">Cart</h1>
+        <h1 style="display: block"><i class="fa fa-shopping-cart"></i> Cart</h1>
 
         <div class="well col-md-9 ">
+            @if($user->subscribed())
+                <h3 style="margin-bottom: 30px">Available Subscription Listings: {{ $listingsLeft }}</h3>
+            @endif
+
             <table class="table">
                 <tr>
                     <th>Listing</th>
@@ -19,11 +23,16 @@
                     <tr>
                         <td>{{{ $job->title }}}</td>
                         <td>{{{ $job->expire->format( 'm-d-Y') }}}</td>
-                        {{--<td>{{{ \Config::get('billing.listing')[$job->expire->subDays(\Carbon\Carbon::today())]  }}}</td>--}}
-                        <td>${{{ \Config::get('billing')['listings'][\Carbon\Carbon::today()->diffInDays($job->expire)] * .01 }}}</td>
+                        @if($listingsLeft > 0)
+                            <td>${{{ 0 * .01 }}}</td>
+                        @else
+                            <td>${{{ \Config::get('billing')['listings'][\Carbon\Carbon::today()->diffInDays($job->expire)] * .01 }}}</td>
+                        @endif
                         <td>{{ link_to_action('JobsController@create', 'Edit', ['id' => $index], ['class' => 'btn btn-xs btn-warning']) }}</td>
                         <td>{{ link_to_action('JobsController@deleteCart', 'Delete', ['id' => $index], ['class' => 'btn btn-xs btn-danger']) }}</td>
                     </tr>
+                    {{-- Iterate listings left--}}
+                    <?php $listingsLeft-- ?>
                 @endforeach
                 <tr>
                     <td colspan="5">Total Cost: ${{ $cost*.01 }}.00</td>
@@ -35,7 +44,7 @@
                 {{ Form::open(['action' => 'JobsController@payment', 'method' => 'post']) }}
 
                 {{-- if billing set to charge--}}
-                @if(!Config::get('billing.free'))
+                @if(!Config::get('billing.free') && $cost > 0)
                     <span class="checkout_button" style="float: right">
                     <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -54,7 +63,9 @@
                     {{ link_to_action('JobsController@create', 'Add Another Job', null, ['class' => 'btn btn-default']) }}
                 @else
                     {{-- if billing set to free--}}
-                    {{ Form::submit('Post Listing', ['class' => 'btn btn-primary']) }}
+                    {{ link_to_action('JobsController@create', 'Add Another Job', null, ['class' => 'btn btn-default']) }}
+
+                    {{ Form::submit('Post Listings', ['class' => 'btn btn-primary']) }}
                 @endif
                 {{ Form::close() }}
 

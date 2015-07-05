@@ -92,6 +92,8 @@ class PostNewJobCommand extends BaseCommand{
     {
         $result['status'] = true;
 
+        dd($this->input);
+
         // if not free, bill
         if(!Config::get('billing.free')) {
             $result = $this->paymentRepo->bill($this->input);

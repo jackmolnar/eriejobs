@@ -46,6 +46,7 @@ Route::post('jobs/active', ['uses' => 'JobsController@active', 'as' => 'jobs.act
  * Subscription handling routes
  */
 Route::resource('subscription', 'SubscriptionController');
+Route::post('subscription/button', 'SubscriptionController@button');
 
 /*
  * Notification routes

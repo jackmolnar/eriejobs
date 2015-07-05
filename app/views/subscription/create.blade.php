@@ -33,23 +33,11 @@
 
                 {{-- if billing set to charge--}}
                 @if(!Config::get('billing.free'))
-                    <span class="checkout_button" id="checkout_button" style="float: right">
-                        <script
-                                id="checkout_script"
-                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                data-key="{{ getenv('STRIPE_PUBLISHABLE_KEY') }}"
-                                data-image=""
-                                data-name="EriePaJobs.com"
-                                data-description=""
-                                data-amount=""
-                                data-email="{{ $user->email }}"
-                                data-label="Pay For Subscription"
-                                data-allow-remember-me="false"
-                                >
-                        </script>
-                        </span>
+                    {{-- Button container --}}
+                    <span class="checkout_button" id="checkout_button" style="float: right"></span>
                     {{-- Hidden input to contain cost --}}
                     <input type="hidden" value="" id="cost" name="cost" />
+                    <input type="hidden" value="" id="plan" name="plan" />
                 @endif
 
             {{ Form::close() }}
@@ -68,17 +56,22 @@
     <script>
 
         var costInput = $('#cost'),
-                checkoutScript = $('#checkout_script');
+            checkoutScript = $('#checkout_script'),
+            checkoutButton = $('.checkout_button');
 
         $('input:radio').change(function(){
-            console.log($(this).attr('data-cost'));
 
+            // set the radio's data
             var cost = $(this).attr('data-cost'),
                 plan = $(this).attr('data-plan');
 
-            costInput.val($(this).attr('data-cost'));
-            checkoutScript.attr('data-amount', cost);
-            checkoutScript.attr('data-description', plan+" Plan");
+            $.post( "button", { cost: cost, plan: plan }, function( data ) {
+                checkoutButton.html( data );
+            });
+
+            $('#cost').val(cost);
+            $('#plan').val(plan);
+
         });
 
     </script>

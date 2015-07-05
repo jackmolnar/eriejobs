@@ -22,8 +22,7 @@ class JobsRepository {
      */
     public function createExpireDate($length)
     {
-        $expire_date = Carbon::now()->addDays($length);
-        return $expire_date;
+        return $expire_date = Carbon::now()->addDays($length);
     }
 
     /**
@@ -33,8 +32,7 @@ class JobsRepository {
      */
     public function getLengthFromExpireDate($date)
     {
-        $length = Carbon::today()->diffInDays($date);
-        return $length;
+        return $length = Carbon::today()->diffInDays($date);
     }
 
     /**
@@ -143,9 +141,7 @@ class JobsRepository {
             ]
         ];
 
-        $result = Job::search($params);
-
-        return $result;
+        return $result = Job::search($params);
     }
 
     /**
@@ -158,6 +154,7 @@ class JobsRepository {
     {
         $result = $this->searchForJob($job->title, 10);
 
+        // remove original job from results
         unset($result[0]);
 
         return $result;
@@ -286,17 +283,41 @@ class JobsRepository {
     }
 
     /**
+     * Mark jobs in cart as part of subscription or not
+     * @param $listingsLeft
+     * @return mixed
+     */
+    public function markSubscribedJobs($listingsLeft)
+    {
+        $cart = Session::get('cart');
+        foreach($cart as $index => $job)
+        {
+            $job->subscription = 0;
+
+            if($listingsLeft > 0) $job->subscription = 1;
+
+            $listingsLeft--;
+        }
+        return $cart;
+    }
+
+    /**
      * Calculate total cost of whats in cart
      * @param $cart
      * @return int|string
      */
-    public function calculateCost($cart)
+    public function calculateCost($cart, $listingsLeft = 0)
     {
         $totalCost = 0;
         foreach($cart as $job)
         {
-            $cost = $this->getCostFromExpireDate($job->expire);
-            $totalCost += $cost;
+            if($listingsLeft <= 0)
+            {
+                $cost = $this->getCostFromExpireDate($job->expire);
+                $totalCost += $cost;
+            }
+            $totalCost += 0;
+            $listingsLeft--;
         }
         return $totalCost;
     }

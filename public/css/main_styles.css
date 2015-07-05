@@ -329,6 +329,9 @@ ul {
   .profile .delete_account_button {
     float: right;
     margin-right: 15px; }
+  .profile .unsubscribe_button {
+    float: right;
+    margin-top: 25px; }
   .profile .file-row p {
     margin-bottom: 0px; }
   .profile #user_verified_phone_number {

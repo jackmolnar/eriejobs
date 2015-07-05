@@ -37,6 +37,12 @@ class ProfilesController extends \BaseController {
         {
             $user->filename = $this->userRepo->getResumeFileName();
         }
+
+        if($user->subscribed())
+        {
+            $user->listingsLeft = $this->userRepo->remainingSubscribedJobs();
+        }
+
 		return View::make('profile.index', ['user' => $user]);
 	}
 

@@ -5,7 +5,7 @@
 <div class="job_create">
 
     <div class="col-md-9">
-    <h1>Post a new Job</h1>
+    <h1>Post a new Job Listing</h1>
     <hr/>
 
 {{ Form::open(['action' => 'JobsController@store']) }}
@@ -14,24 +14,20 @@
 
         @include('includes.jobs.edit_form')
 
-        {{ Form::label('length', 'Length of Posting') }}
-        {{ Form::select('length', $payment, null, ['class' => 'form-control']) }}
-        <hr/>
-
-        {{ Form::submit('Continue', ['class' => 'btn btn-primary', 'id' => 'continue_button']) }}
-        {{ link_to_action('ProfilesController@index', 'Cancel', null, ['class' => 'btn btn-default']) }}
-
     @else
 
         @include('includes.jobs.create_form')
 
-        {{ Form::label('length', 'Length of Posting') }}
-        {{ Form::select('length', $payment, null, ['class' => 'form-control']) }}
-        <hr/>
-
-        {{ Form::submit('Continue', ['class' => 'btn btn-primary', 'id' => 'continue_button']) }}
-        {{ link_to_action('ProfilesController@index', 'Cancel', null, ['class' => 'btn btn-default']) }}
     @endif
+
+        {{-- figure out how to display pricing --}}
+
+    {{ Form::label('length', 'Length of Posting - If you have subscribed, you might pay nothing. Find out after added to the cart.') }}
+    {{ Form::select('length', $payment, null, ['class' => 'form-control']) }}
+    <hr/>
+
+    {{ Form::submit('Continue', ['class' => 'btn btn-primary', 'id' => 'continue_button']) }}
+    {{ link_to_action('ProfilesController@index', 'Cancel', null, ['class' => 'btn btn-default']) }}
 
 {{ Form::close() }}
 
