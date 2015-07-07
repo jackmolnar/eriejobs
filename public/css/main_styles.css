@@ -242,6 +242,15 @@ ul {
   margin-top: 0px;
   margin-bottom: 15px; }
 
+.job_info .well {
+  width: 255px; }
+.job_info ul {
+  list-style: none;
+  padding-left: 0px; }
+  .job_info ul li {
+    font-size: 14px;
+    margin-bottom: 20px; }
+
 .search .col-md-9 h1 {
   font-size: 30px;
   padding-bottom: 15px;
@@ -2069,8 +2078,7 @@ ul {
 .hiring_main_row {
   background-image: url('../images/hiring_header.jpg');
   min-height: 300px;
-  background-size: 100% auto;
-  margin-bottom: 25px; }
+  background-size: 100% auto; }
   .hiring_main_row .container {
     bottom: 10%; }
     .hiring_main_row .container h1 {
@@ -2103,34 +2111,99 @@ ul {
           width: auto;
           margin-top: 13%; } }
 
-.hiring {
-  margin-top: 25px; }
-  .hiring .left_column {
+.hiring .row {
+  margin-left: 0px;
+  margin-right: 0px; }
+.hiring .guarantee {
+  background-color: #d7dfd2;
+  padding-top: 30px;
+  padding-bottom: 30px; }
+  @media screen and (min-width: 992px) {
+    .hiring .guarantee {
+      padding-top: 60px;
+      padding-bottom: 60px; } }
+  .hiring .guarantee img {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 20px;
+    max-width: 320px; }
+    @media screen and (min-width: 992px) {
+      .hiring .guarantee img {
+        margin-bottom: 0px;
+        max-width: 500px; } }
+  .hiring .guarantee p {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: dashed #dc3522 thin; }
+.hiring .pricing {
+  padding-top: 40px;
+  padding-bottom: 60px;
+  background-color: #2a2c2b;
+  text-align: center; }
+  .hiring .pricing h2 {
+    margin-bottom: 30px;
+    font-size: 40px;
+    color: #ffffff; }
+  .hiring .pricing h3 {
+    font-weight: bold;
+    border-bottom: dashed #dc3522 thin;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    margin-top: 5px; }
+  .hiring .pricing .price_box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px; }
+    @media screen and (min-width: 992px) {
+      .hiring .pricing .price_box {
+        margin-bottom: 0px; } }
+    .hiring .pricing .price_box ul {
+      list-style: none; }
+.hiring .signup {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: #FFFEF9; }
+  @media screen and (min-width: 992px) {
+    .hiring .signup {
+      padding-top: 30px;
+      padding-bottom: 30px; } }
+  .hiring .signup .left_column {
     padding-left: 0px;
     padding-right: 25px; }
-  .hiring .hiring_headline {
-    color: #589B94; }
-    .hiring .hiring_headline .accent {
-      font-size: 34px; }
-    .hiring .hiring_headline .free {
-      color: #dc3522; }
-  .hiring p {
-    font-family: 'Roboto Condensed', sans-serif;
-    font-size: 18px;
-    line-height: 30px;
-    margin-bottom: 30px; }
-  .hiring ul {
-    font-family: 'Roboto Condensed', sans-serif;
-    font-size: 16px; }
-    .hiring ul li {
-      margin-bottom: 10px; }
-  .hiring .well {
-    margin-top: 30px; }
-    @media screen and (min-width: 992px) {
-      .hiring .well {
-        margin-top: 0px; } }
-  .hiring .required {
+.hiring .signup_form {
+  padding-top: 30px;
+  background-color: #FFFEF9; }
+  @media screen and (min-width: 992px) {
+    .hiring .signup_form {
+      padding-top: 30px; } }
+.hiring .hiring_headline {
+  color: #589B94; }
+  .hiring .hiring_headline .accent {
+    font-size: 34px; }
+  .hiring .hiring_headline .free {
     color: #dc3522; }
+.hiring p {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 18px;
+  line-height: 30px;
+  margin-bottom: 30px; }
+.hiring ul {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 16px; }
+  .hiring ul li {
+    margin-bottom: 10px; }
+.hiring .well {
+  margin-top: 30px; }
+  @media screen and (min-width: 992px) {
+    .hiring .well {
+      margin-top: 0px; } }
+.hiring .required {
+  color: #dc3522; }
 
 .main_back {
   background: url("/images/main_background_3.jpg") no-repeat top center;

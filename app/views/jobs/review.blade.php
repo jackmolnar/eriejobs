@@ -93,10 +93,19 @@
             {{--{{ link_to_action('JobsController@payment', 'Continue', null, ['class' => 'btn btn-primary']) }}--}}
         </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 job_info">
         <div class="well well-primary">
             <ul>
-                <li>EriePaJobs is secure! We use 256 bit encryption and one of the safest payment gateways in the world.</li>
+                @if($pending_job->email != '')
+                    <li id="guarantee"><img src="{{ url('images/guarantee.png') }}" alt="5 Application Guarantee" style="max-width: 200px"/><br/><br/>
+                        We guarantee our listings! If you don't receive 3 applications when your listing expires, we'll refund you!
+                        View the {{ link_to_action('PagesController@getTermsOfGuarantee', 'full terms here.', null, ['target' => '_blank']) }}
+                    </li>
+                @endif
+
+                <li><img src="{{ URL::asset('images/RapidSSL_SEAL-90x50.gif') }}" /><br/><br/>
+                    EriePaJobs is secure! We use 256 bit encryption and one of the safest payment gateways in the world.</li>
+                <li>Be sure that the email address or web link that you wish to direct applicants to are valid, or you may not receive applications!</li>
                 <li>If you have questions or problems, feel free to {{ link_to_action('PagesController@getContact', 'contact us') }}</li>
             </ul>
         </div>

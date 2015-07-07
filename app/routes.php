@@ -73,6 +73,7 @@ Route::get('hiring', 'PagesController@hiring');
 Route::get('contact', 'PagesController@getContact');
 Route::post('contact', 'PagesController@postContact');
 Route::get('terms-of-use', 'PagesController@getTermsOfUse');
+Route::get('terms-of-guarantee', 'PagesController@getTermsOfGuarantee');
 Route::resource('blog', 'BlogController');
 
 /*

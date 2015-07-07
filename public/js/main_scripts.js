@@ -153,14 +153,17 @@ function validateVerificationCode(verificationCode){
 
 var emailButton = $('#email_contact'),
     linkButton = $('#link_contact'),
-    applyBox = $('.apply');
+    applyBox = $('.apply'),
+    guaranteeBox = $('#guarantee');
 
 emailButton.change(function(){
     applyBox.html('<label for="email">Email Address</label><input class="form-control half_element" placeholder="Email" name="email" type="text" id="email">');
+    guaranteeBox.show();
 });
 
 linkButton.change(function(){
     applyBox.html('<label for="link">Link</label><input class="form-control half_element" placeholder="Link" name="link" type="text" id="link">');
+    guaranteeBox.hide();
 });
 
 

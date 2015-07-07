@@ -36,6 +36,10 @@ class PagesController extends \BaseController {
     {
         return View::make('pages.terms_of_use');
     }
+    public function getTermsOfGuarantee()
+    {
+        return View::make('pages.terms_of_guarantee');
+    }
 
     public function postContact()
     {

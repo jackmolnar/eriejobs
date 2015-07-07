@@ -2,7 +2,6 @@
   background-image: url('../images/hiring_header.jpg');
   min-height: 300px;
   background-size:100% auto;
-  margin-bottom: 25px;
 
   .container{
 
@@ -47,12 +46,107 @@
 }
 
 .hiring{
-  margin-top: 25px;
 
-  .left_column{
-    padding-left: 0px;
-    padding-right: 25px;
+  .row{
+    margin-left: 0px;
+    margin-right: 0px;
   }
+
+  .guarantee{
+    background-color: $light_green;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    @media screen and (min-width: $middle) {
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+
+    img{
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+      margin-bottom: 20px;
+      max-width: 320px;
+
+      @media screen and (min-width: $middle) {
+        margin-bottom: 0px;
+        max-width: 500px;
+      }
+    }
+
+    p{
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: dashed $orange thin;
+    }
+  }
+
+  .pricing {
+    padding-top: 40px;
+    padding-bottom: 60px;
+    background-color: $dark_blue;
+    text-align: center;
+
+    h2{
+      margin-bottom: 30px;
+      font-size: 40px;
+      color: #ffffff;
+    }
+
+    h3{
+      font-weight: bold;
+      border-bottom: dashed $orange thin;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+      margin-top: 5px;
+    }
+
+    .price_box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 450px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 15px;
+
+      @media screen and (min-width: $middle) {
+        margin-bottom: 0px;
+      }
+
+
+      ul{
+        list-style: none;
+      }
+    }
+  }
+
+  .signup{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: $light_yellow;
+
+    @media screen and (min-width: $middle) {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+
+    .left_column{
+      padding-left: 0px;
+      padding-right: 25px;
+    }
+  }
+
+  .signup_form{
+    padding-top: 30px;
+    background-color: $light_yellow;
+
+    @media screen and (min-width: $middle) {
+      padding-top: 30px;
+    }
+  }
+
 
   .hiring_headline{
     color: $middle_green;
