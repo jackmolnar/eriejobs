@@ -75,6 +75,7 @@
                 <div class="col-md-6">
                     <h2>We don't deliver - You don't pay<br/>It's that simple.</h2>
                     <p>Let's face it. Your here to get applications for your job openings. Period. That's why we guarantee <b>three applications with all standard listings</b>. If you don't receive at least three applications, you get refunded in full - no questions asked.</p>
+                    <p>View the {{ link_to_action('PagesController@getTermsOfGuarantee', 'full terms', null, ['target' => '_blank']) }} of the guarantee here.</p>
                 </div>
             </div>
         </div>
