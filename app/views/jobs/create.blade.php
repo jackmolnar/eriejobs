@@ -22,7 +22,11 @@
 
         {{-- figure out how to display pricing --}}
 
-    {{ Form::label('length', 'Length of Posting - If you have subscribed, you might pay nothing. Find out after added to the cart.') }}
+        @if($user->subscribed())
+            {{ Form::label('length', 'Length of Posting - '.$listingsLeft.' Listings Remaining in Subscription') }}
+        @else
+            {{ Form::label('length', 'Length of Posting') }}
+        @endif
     {{ Form::select('length', $payment, null, ['class' => 'form-control']) }}
     <hr/>
 

@@ -125,6 +125,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface, Billa
      */
     public function getDates()
     {
-        return array('created_at', 'updated_at', 'last_login');
+        return array('created_at', 'updated_at', 'last_login', 'subscription_ends_at', 'trial_ends_at');
     }
 }

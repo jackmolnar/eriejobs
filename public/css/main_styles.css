@@ -320,6 +320,12 @@ ul {
     margin-bottom: 30px; }
   .profile .info_header, .profile .notification_header {
     display: inline-block; }
+  .profile .subscription_header {
+    float: left; }
+  .profile .subscription_alert {
+    margin-left: 30px;
+    float: right;
+    padding: 10px; }
   .profile .edit_button {
     float: right; }
   .profile .cancel_button {

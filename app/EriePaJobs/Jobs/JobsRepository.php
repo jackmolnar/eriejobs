@@ -232,8 +232,37 @@ class JobsRepository {
     public function deleteJob($id)
     {
         $job = $this->getJobById($id);
+        $job->subscription = 0;
+        $job->save();
         $job->delete();
         return true;
+    }
+
+    /**
+     * Create payment dropdown array
+     * @param int $listingsLeft
+     * @return array
+     */
+    public function paymentDropDownArray($listingsLeft = 0)
+    {
+        $dropDownArray = array();
+        $listing_array = Config::get('billing.listings');
+
+        if(Config::get('billing.free') || $listingsLeft)
+        {
+            foreach($listing_array as $length => $cost)
+            {
+                $dropDownArray[$length] = $length.' Days';
+            }
+            return $dropDownArray;
+        }
+
+        foreach($listing_array as $length => $cost)
+        {
+            $formatted_cost = number_format(($cost/100), 2);
+            $dropDownArray[$length] = $length.' Days ($'.$formatted_cost.')';
+        }
+        return $dropDownArray;
     }
 
     /**

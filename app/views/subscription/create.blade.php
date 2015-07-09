@@ -29,7 +29,8 @@
                 @endforeach
             </ul>
 
-            {{ Form::open(['action' => 'SubscriptionController@store', 'method' => 'post', 'id' => 'subscribe']) }}
+            <div class="subscription_buton">
+                {{ Form::open(['action' => 'SubscriptionController@store', 'method' => 'post', 'id' => 'subscribe']) }}
 
                 {{-- if billing set to charge--}}
                 @if(!Config::get('billing.free'))
@@ -40,8 +41,8 @@
                     <input type="hidden" value="" id="plan" name="plan" />
                 @endif
 
-            {{ Form::close() }}
-
+                {{ Form::close() }}
+            </div>
         </div>
     </div>
 @stop

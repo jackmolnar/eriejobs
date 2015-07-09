@@ -92,10 +92,10 @@ class PostNewJobCommand extends BaseCommand{
     {
         $result['status'] = true;
 
-        dd($this->input);
+        $listingsLeft = $this->userRepo->remainingSubscribedJobs();
 
         // if not free, bill
-        if(!Config::get('billing.free')) {
+        if(!Config::get('billing.free') && !$listingsLeft) {
             $result = $this->paymentRepo->bill($this->input);
         }
 

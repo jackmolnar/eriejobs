@@ -35,23 +35,38 @@ class JobsController extends \BaseController {
         CategoryRepository $categoryRepo,
         UserRepository $userRepo)
     {
+        $this->jobRepo = $jobRepo;
+        $this->paymentRepo = $paymentRepo;
+        $this->categoryRepo = $categoryRepo;
+        $this->userRepo = $userRepo;
+
+        // get number of remaining listings for subscribed user
+        $listingsLeft = $this->userRepo->remainingSubscribedJobs();
+
+        // get proper payment dropdown array
+        $payment = $this->jobRepo->paymentDropDownArray($listingsLeft);
+
+        // get logged user
+        $user = $this->userRepo->authedUser();
+
+        // free or not
+        $billing = \Config::get('billing');
+
         $share_array = [
             'states'        => State::dropdownarray(),
             'types'         => Type::dropdownarray(),
             'career_levels' => CareerLevel::dropdownarray(),
             'categories'    => Category::dropdownarray(),
-            'user'          => Auth::user(),
-            'payment'       => Job::paymentDropDownArray()
+            'user'          => $user,
+            'payment'       => $payment,
+            'listingsLeft'  => $listingsLeft,
+            'billing'       => $billing
         ];
         View::share($share_array);
 
         $this->beforeFilter('auth', ['except' => ['index', 'show']]);
         $this->beforeFilter('jobAuthor', ['only' => ['edit', 'update', 'repost']]);
 
-        $this->jobRepo = $jobRepo;
-        $this->paymentRepo = $paymentRepo;
-        $this->categoryRepo = $categoryRepo;
-        $this->userRepo = $userRepo;
     }
 
     public function index()
@@ -77,16 +92,16 @@ class JobsController extends \BaseController {
             $this->jobRepo->removeFromCart(Input::get('id'));
         }
 
-        // if user subscribe get remaining listings
-        $listingsLeft = $this->userRepo->remainingSubscribedJobs();
 
-        if(Session::has('pending_job')) return View::make('jobs.create', [
+        if(Session::has('pending_job'))
+        {
+            return View::make('jobs.create', [
                 'job' => Session::get('pending_job'),
-                'billing' => \Config::get('billing'),
-                'listingsLeft' => $listingsLeft
             ]);
+        }
 
-		return View::make('jobs.create', ['billing' => \Config::get('billing'), 'listingsLeft' => $listingsLeft]);
+		return View::make('jobs.create', [
+        ]);
 	}
 
     /**
@@ -96,8 +111,13 @@ class JobsController extends \BaseController {
      */
     public function repost($job_id)
     {
+        // if user subscribe get remaining listings
+        $listingsLeft = $this->userRepo->remainingSubscribedJobs();
+
         Session::put('pending_job', $this->jobRepo->getTrashedJobById($job_id));
-        return View::make('jobs.create', ['job' => Session::get('pending_job'), 'billing' => \Config::get('billing')]);
+        return View::make('jobs.create', [
+            'job' => Session::get('pending_job'),
+        ]);
     }
 
 	/**
@@ -174,9 +194,6 @@ class JobsController extends \BaseController {
             return Redirect::action('JobsController@create');
         }
 
-        // recalculate cost
-        $cost = $this->jobRepo->calculateCost(Session::get('cart'));
-
         return Redirect::action('JobsController@cart', ['cart' => Session::get('cart')])->with('success', 'Listing removed from cart.');
     }
 
@@ -186,7 +203,7 @@ class JobsController extends \BaseController {
      */
     public function payment()
     {
-        $newJobCommand = new PostNewJobCommand(Input::all());
+        $newJobCommand = new PostNewJobCommand(Session::get('cart'));
         $result = $newJobCommand->execute('bill');
 
         if(!$result['status'])

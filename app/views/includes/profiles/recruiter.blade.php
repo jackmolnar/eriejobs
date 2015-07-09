@@ -5,14 +5,8 @@
 
 </div>
 
-
-<div class="well col-md-10">
-
-    @include('includes.profiles.recruiter_sections.general_info')
-    <hr/>
-    @include('includes.profiles.recruiter_sections.subscription_info')
-
-</div>
+@include('includes.profiles.recruiter_sections.subscription_info')
+@include('includes.profiles.recruiter_sections.general_info')
 
 @if(count($user->jobs) > 0)
     @include('includes/modals/delete_modal')
