@@ -203,6 +203,7 @@ class JobsController extends \BaseController {
      */
     public function payment()
     {
+    	dd(Input::all());
         $newJobCommand = new PostNewJobCommand(Session::get('cart'));
         $result = $newJobCommand->execute('bill');
 
