@@ -93,7 +93,7 @@
                 @endif
 
                 <li><img src="{{ URL::asset('images/RapidSSL_SEAL-90x50.gif') }}" /><br/><br/>
-                    Our payment processing is secure! We use 256 bit encryption and process all payments through one of the most secure payment gateways in the world {{ link_to('https://stripe.com/', 'Stripe', ['target' => '_blank']) }}</li>
+                    Our payment processing is secure! We use 256 bit encryption and process all payments through one of the most secure payment gateways in the world, {{ link_to('https://stripe.com/', 'Stripe', ['target' => '_blank']) }}</li>
                 <li>Be sure that the email address or web link that you wish to direct applicants to are valid, or you may not receive applications!</li>
                 <li>If you have questions or problems, feel free to {{ link_to_action('PagesController@getContact', 'contact us') }}</li>
             </ul>
