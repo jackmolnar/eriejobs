@@ -119,9 +119,10 @@ class SubscriptionController extends \BaseController {
 			<script
 					id="checkout_script"
 					src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-					data-key="'. getenv('STRIPE_PUBLISHABLE_KEY') .'"
+					data-key="pk_live_bC1rCBEvM2ieoXWrFNUyGjWk"
 					data-image=""
 					data-name="EriePaJobs.com"
+					data-address="true"
 					data-description="'.$data['plan'].' Plan"
 					data-amount="'.$data['cost'].'"
 					data-email="'.$this->userRepo->authedUser()->email.'"
