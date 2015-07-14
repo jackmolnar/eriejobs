@@ -10,7 +10,7 @@ return array(
     ],
 
     'subscriptions' => [
-        'Base'     => [ 'listings' => '5', 'cost' => 39900 ],
-        'Premium'   => [ 'listings' => '10', 'cost' => 69900 ]
+        'Base'     => [ 'listings' => '5', 'cost' => 29900 ],
+        'Premium'   => [ 'listings' => '10', 'cost' => 59900 ]
     ]
 );

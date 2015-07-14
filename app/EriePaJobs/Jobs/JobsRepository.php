@@ -101,6 +101,12 @@ class JobsRepository {
         return $job;
     }
 
+    /**
+     * Get deleted job
+     *
+     * @param $job_id
+     * @return \Illuminate\Database\Eloquent\Model|null|static
+     */
     public function getTrashedJobById($job_id)
     {
         return $job = Job::withTrashed()->where('slug', '=', $job_id)->first();

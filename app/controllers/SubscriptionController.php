@@ -99,9 +99,9 @@ class SubscriptionController extends \BaseController {
 	{
 		if($this->userRepo->authedUser()->subscribed())
 		{
-//			$this->userRepo->authedUser()->subscription()->cancel();
-//			$endDate = $this->userRepo->authedUser()->getSubscriptionEndDate()->format('m/d/Y');
-//			return Redirect::action('ProfilesController@index')->with('success', 'Your subscription has been canceled and ends on '.$endDate.'.');
+			$this->userRepo->authedUser()->subscription()->cancel();
+			$endDate = $this->userRepo->authedUser()->getSubscriptionEndDate()->format('m/d/Y');
+			return Redirect::action('ProfilesController@index')->with('success', 'Your subscription has been canceled and ends on '.$endDate.'.');
 		}
 
 		return Redirect::action('ProfilesController@index')->with('errors', 'You were not subscribed.');

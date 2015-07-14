@@ -10,6 +10,7 @@ namespace EriePaJobs\Jobs;
 
 use EriePaJobs\BaseCommand;
 use Auth;
+use EriePaJobs\Users\UserRepository;
 use Event;
 
 class DeleteJobCommand extends BaseCommand{
@@ -36,9 +37,11 @@ class DeleteJobCommand extends BaseCommand{
      */
     public function __construct($id)
     {
-        $this->id = $id;
-        $this->user = Auth::user();
+        $this->userRepo = new UserRepository;
         $this->jobsRepo = new JobsRepository;
+
+        $this->id = $id;
+        $this->user = $this->userRepo->authedUser();
     }
 
     /**

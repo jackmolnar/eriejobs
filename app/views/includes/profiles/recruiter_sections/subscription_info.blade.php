@@ -33,11 +33,11 @@
                 <p>You aren't currently subscribed to a plan.</p>
                 <ul>
                     <li>Subscribe and post as many listings as you want up to your limit</li>
-                    <li>Convent for teams, staffing agencies, and larger companies</li>
-                    <li>Only enter billing in formation once and get charged monthly</li>
+                    <li>Convenient for teams, staffing agencies, and larger companies</li>
+                    <li>Only enter billing information once and get charged monthly</li>
                     <li>Cancel at any time - no questions asked</li>
                 </ul>
-                {{ link_to_action('SubscriptionController@create', 'Subscribe', null, ['class' => 'btn btn-primary']) }}
+                {{ link_to_action('SubscriptionController@create', 'Subscribe', null, ['class' => 'btn btn-primary', 'style' => 'float:right']) }}
             </div>
         </div>
     @endif

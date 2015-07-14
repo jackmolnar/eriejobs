@@ -7,7 +7,7 @@
                 <h4 class="modal-title" id="myModalLabel">Cancel Subscription</h4>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want to cancel your subscription? This action cannot be undone.</p>
+                <p>Are you sure you want to cancel your subscription? This action cannot be undone. You're subscription will remain active until the end of your billing cycle.</p>
                 <p>You can still post individual listings for the standard rate after canceling.</p>
             </div>
             <div class="modal-footer">

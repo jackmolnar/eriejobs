@@ -93,11 +93,14 @@ class UserRepository {
      * Get users subscribed jobs
      * @return mixed
      */
-    public function subscribedJobs()
+    public function subscribedJobs($user = null)
     {
-        $user = $this->authedUser();
+        if($user == null)
+        {
+            $user = $this->authedUser();
+        }
 
-        if($user->subscribed())
+        if($user->subscribed() || $user->cancelled())
         {
             return $jobs = $user->jobs()->where('active', '=', 1)->where('subscription', '=', 1)->get();
         }
