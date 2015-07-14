@@ -48,7 +48,7 @@
                     <span class="checkout_button" style="float: right">
                     <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="{{ getenv('STRIPE_PUBLISHABLE_KEY') }}"
+                    data-key="pk_live_bC1rCBEvM2ieoXWrFNUyGjWk"
                     data-image=""
                     data-name="EriePaJobs.com"
                     data-description="{{ count($cart) }} Listing(s)"
