@@ -71,14 +71,6 @@
             </div>
         </div>
 
-        @if(!$user->subscribed())
-            <div class="well col-md-9">
-                <h3>Interested in subscription pricing?</h3>
-                <p>Pay by an automatic monthly subscription and post several jobs at a time. Both convenient and cheaper than individual listings!</p>
-                {{ link_to_action('SubscriptionController@create', 'Subscribe', null, ['class' => 'btn btn-warning']) }}
-            </div>
-        @endif
-
         <div class="col-md-3">
             <div class="well well-primary">
                 <ul>
@@ -87,6 +79,15 @@
                 </ul>
             </div>
         </div>
+
+    @if(!$user->subscribed())
+            <div class="well col-md-9">
+                <h3>Interested in subscription pricing?</h3>
+                <p>Pay by an automatic monthly subscription and post several jobs at a time. Both convenient and cheaper than individual listings!</p>
+                {{ link_to_action('SubscriptionController@create', 'Subscribe', null, ['class' => 'btn btn-warning']) }}
+            </div>
+        @endif
+
 
     </div>
 
