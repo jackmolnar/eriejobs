@@ -4,7 +4,7 @@
 
 <div class="jobs">
 
-    <h1 style="display: block">Review Your Listin</h1>
+    <h1 style="display: block">Review Your Listing</h1>
 
     <div class="well col-md-9 ">
         <div class="row">
