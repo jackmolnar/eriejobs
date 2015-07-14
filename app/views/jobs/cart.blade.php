@@ -54,6 +54,7 @@
                     data-description="{{ count($cart) }} Listing(s)"
                     data-amount="{{ $cost }}"
                     data-email="{{ $user->email }}"
+                    data-address="true"
                     data-label="Pay For Listings"
                     data-allow-remember-me="false"
                             >
