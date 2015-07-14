@@ -22,6 +22,8 @@ Route::resource('jobs', 'JobsController');
     //create
 Route::get('jobs/create/review', 'JobsController@review');
 Route::post('jobs/create/payment', 'JobsController@payment');
+Route::get('jobs/create/cart', 'JobsController@cart');
+Route::get('jobs/create/cart-delete', 'JobsController@deleteCart');
 Route::get('jobs/create/thankyou', 'JobsController@thankyou');
     //destroy
 Route::get('jobs/destroy_confirm/{jobs}', 'JobsController@destroy_confirm');
@@ -39,6 +41,12 @@ Route::post('store-permanent-application', 'ApplicationsController@storePermanen
 Route::get('jobs/{jobs}/application-sent', array('uses' => 'ApplicationsController@applicationSent', 'as' => 'jobs.applications.sent'));
     //activate - deactivate job
 Route::post('jobs/active', ['uses' => 'JobsController@active', 'as' => 'jobs.active']);
+
+/*
+ * Subscription handling routes
+ */
+Route::resource('subscription', 'SubscriptionController');
+Route::post('subscription/button', 'SubscriptionController@button');
 
 /*
  * Notification routes

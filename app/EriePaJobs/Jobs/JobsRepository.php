@@ -11,6 +11,7 @@ use Cache;
 use Job;
 use Carbon\Carbon;
 use Config;
+use Session;
 
 class JobsRepository {
 
@@ -21,8 +22,7 @@ class JobsRepository {
      */
     public function createExpireDate($length)
     {
-        $expire_date = Carbon::now()->addDays($length);
-        return $expire_date;
+        return $expire_date = Carbon::now()->addDays($length);
     }
 
     /**
@@ -32,8 +32,7 @@ class JobsRepository {
      */
     public function getLengthFromExpireDate($date)
     {
-        $length = Carbon::today()->diffInDays($date);
-        return $length;
+        return $length = Carbon::today()->diffInDays($date);
     }
 
     /**
@@ -102,6 +101,12 @@ class JobsRepository {
         return $job;
     }
 
+    /**
+     * Get deleted job
+     *
+     * @param $job_id
+     * @return \Illuminate\Database\Eloquent\Model|null|static
+     */
     public function getTrashedJobById($job_id)
     {
         return $job = Job::withTrashed()->where('slug', '=', $job_id)->first();
@@ -142,9 +147,7 @@ class JobsRepository {
             ]
         ];
 
-        $result = Job::search($params);
-
-        return $result;
+        return $result = Job::search($params);
     }
 
     /**
@@ -157,6 +160,7 @@ class JobsRepository {
     {
         $result = $this->searchForJob($job->title, 10);
 
+        // remove original job from results
         unset($result[0]);
 
         return $result;
@@ -234,7 +238,122 @@ class JobsRepository {
     public function deleteJob($id)
     {
         $job = $this->getJobById($id);
+        $job->subscription = 0;
+        $job->save();
         $job->delete();
         return true;
+    }
+
+    /**
+     * Create payment dropdown array
+     * @param int $listingsLeft
+     * @return array
+     */
+    public function paymentDropDownArray($listingsLeft = 0)
+    {
+        $dropDownArray = array();
+        $listing_array = Config::get('billing.listings');
+
+        if(Config::get('billing.free') || $listingsLeft)
+        {
+            foreach($listing_array as $length => $cost)
+            {
+                $dropDownArray[$length] = $length.' Days';
+            }
+            return $dropDownArray;
+        }
+
+        foreach($listing_array as $length => $cost)
+        {
+            $formatted_cost = number_format(($cost/100), 2);
+            $dropDownArray[$length] = $length.' Days ($'.$formatted_cost.')';
+        }
+        return $dropDownArray;
+    }
+
+    /**
+     * Put job in cart
+     * @param $job
+     */
+    public function putJobInCart($job)
+    {
+        if(Session::has('cart'))
+        {
+            $cart = Session::get('cart');
+            array_push($cart, $job);
+        } else {
+            $cart = array();
+            array_push($cart, $job);
+        }
+        Session::put('cart', $cart);
+    }
+
+    /**
+     * Remove job from cart
+     * @param $jobId
+     */
+    public function removeFromCart($jobId)
+    {
+        $cart = Session::get('cart');
+        foreach($cart as $id => $job)
+        {
+            if($id == $jobId) unset($cart[$id]);
+        }
+        Session::put('cart', $cart);
+    }
+
+    /**
+     * Retrieve job from cart
+     * @param $jobId
+     * @return null
+     */
+    public function getJobFromCart($jobId)
+    {
+        $cart = Session::get('cart');
+        foreach($cart as $id => $job)
+        {
+            $job = ($id == $jobId) ? $job : null;
+        }
+        return $job;
+    }
+
+    /**
+     * Mark jobs in cart as part of subscription or not
+     * @param $listingsLeft
+     * @return mixed
+     */
+    public function markSubscribedJobs($listingsLeft)
+    {
+        $cart = Session::get('cart');
+        foreach($cart as $index => $job)
+        {
+            $job->subscription = 0;
+
+            if($listingsLeft > 0) $job->subscription = 1;
+
+            $listingsLeft--;
+        }
+        return $cart;
+    }
+
+    /**
+     * Calculate total cost of whats in cart
+     * @param $cart
+     * @return int|string
+     */
+    public function calculateCost($cart, $listingsLeft = 0)
+    {
+        $totalCost = 0;
+        foreach($cart as $job)
+        {
+            if($listingsLeft <= 0)
+            {
+                $cost = $this->getCostFromExpireDate($job->expire);
+                $totalCost += $cost;
+            }
+            $totalCost += 0;
+            $listingsLeft--;
+        }
+        return $totalCost;
     }
 }

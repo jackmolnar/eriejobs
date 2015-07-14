@@ -36,7 +36,9 @@ class PostNewJobCommand extends BaseCommand{
      */
     public function __construct($input)
     {
+        // this->input is the cart
         $this->input = $input;
+
         $this->userRepo = new UserRepository;
         $this->user = $this->userRepo->authedUser();
         $this->jobsRepo = new JobsRepository;
@@ -88,31 +90,38 @@ class PostNewJobCommand extends BaseCommand{
      */
     public function bill()
     {
-        if(!Config::get('billing.free')) {
+        $result['status'] = true;
+
+        $listingsLeft = $this->userRepo->remainingSubscribedJobs();
+
+        // if not free, bill
+        if(!Config::get('billing.free') && !$listingsLeft) {
             $result = $this->paymentRepo->bill($this->input);
-        } else {
-            $result['status'] = true;
         }
 
+        // if billing successful, save jobs
         if($result['status'])
         {
-            // get the job from session
-            $job = Session::pull('pending_job');
+            // get the cart or the pending job from session
+            $cart = Session::has('cart') ? Session::pull('cart') : Session::pull('pending_job');
 
-            // set the category id and remove the attribute from the job object
-            // so that the job object can be saved (category id is not a field)
-            $category_id = $job->category_id;
-            unset($job->category_id);
+            // save each job in the cart
+            foreach($cart as $job)
+            {
+                // set the category id and remove the attribute from the job object
+                // so that the job object can be saved (category id is not a field)
+                $category_id = $job->category_id;
+                unset($job->category_id);
 
-            //save the job
-            $job->save();
+                //save the job
+                $job->save();
 
-            //sync the categories
-            $job->categories()->sync([$category_id]);
+                //sync the categories
+                $job->categories()->sync([$category_id]);
 
-            //fire the create event
-            Event::fire('job.create', array($job, $this->user));
-
+                //fire the create event
+                Event::fire('job.create', array($job, $this->user));
+            }
         }
 
         return $result;

@@ -27,6 +27,16 @@
     display: inline-block;
   }
 
+  .subscription_header {
+    float: left;
+  }
+
+  .subscription_alert{
+    margin-left: 30px;
+    float: right;
+    padding: 10px;
+  }
+
   .edit_button{
     float: right;
   }
@@ -42,6 +52,11 @@
   .delete_account_button{
     float: right;
     margin-right: 15px;
+  }
+
+  .unsubscribe_button{
+    float: right;
+    margin-top: 25px;
   }
 
   .file-row{

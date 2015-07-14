@@ -72,25 +72,14 @@
         <hr/>
         <div class="row">
             {{ Form::open(['action' => 'JobsController@payment', 'method' => 'post']) }}
-            {{ link_to_action('JobsController@create', 'Edit', null, ['class' => 'btn btn-warning']) }}
+            {{ link_to_action('JobsController@create', 'Edit Listing', null, ['class' => 'btn btn-warning']) }}
 
             @if(!Config::get('billing.free'))
-                <script
-                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="pk_live_bC1rCBEvM2ieoXWrFNUyGjWk"
-                    data-image=""
-                    data-name="EriePa Jobs"
-                    data-description="{{ $length }}"
-                    data-amount="{{ $cost }}">
-                </script>
-                {{ Form::hidden('cost', $cost) }}
+                {{ link_to_action('JobsController@cart', 'Add Job Listing to Cart', null, ['class' => 'btn btn-primary']) }}
             @else
                 {{ Form::submit('Post Listing', ['class' => 'btn btn-primary']) }}
             @endif
             {{ Form::close() }}
-
-            {{--<a id="payment_button" class="btn btn-primary">Confirm and Pay</a>--}}
-            {{--{{ link_to_action('JobsController@payment', 'Continue', null, ['class' => 'btn btn-primary']) }}--}}
         </div>
     </div>
     <div class="col-md-3 job_info">
@@ -104,13 +93,12 @@
                 @endif
 
                 <li><img src="{{ URL::asset('images/RapidSSL_SEAL-90x50.gif') }}" /><br/><br/>
-                    EriePaJobs is secure! We use 256 bit encryption and one of the safest payment gateways in the world.</li>
+                    Our payment processing is secure! We use 256 bit encryption and process all payments through one of the most secure payment gateways in the world, {{ link_to('https://stripe.com/', 'Stripe', ['target' => '_blank']) }}</li>
                 <li>Be sure that the email address or web link that you wish to direct applicants to are valid, or you may not receive applications!</li>
                 <li>If you have questions or problems, feel free to {{ link_to_action('PagesController@getContact', 'contact us') }}</li>
             </ul>
         </div>
     </div>
-
 </div>
 
 @stop

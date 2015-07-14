@@ -88,4 +88,45 @@ class UserRepository {
 
         return $filename;
     }
+
+    /**
+     * Get users subscribed jobs
+     * @return mixed
+     */
+    public function subscribedJobs($user = null)
+    {
+        if($user == null)
+        {
+            $user = $this->authedUser();
+        }
+
+        if($user->subscribed() || $user->cancelled())
+        {
+            return $jobs = $user->jobs()->where('active', '=', 1)->where('subscription', '=', 1)->get();
+        }
+
+        return 0;
+    }
+
+    /**
+     * Get number of listings user has left
+     * @return mixed|null
+     */
+    public function remainingSubscribedJobs()
+    {
+        $user = $this->authedUser();
+        if($user->subscribed())
+        {
+            $usedJobs = count($this->subscribedJobs());
+
+            $plan = $user->getStripePlan();
+
+            $plan = ucfirst(str_replace('plan', '', $plan));
+
+            $allowedJobs = \Config::get('billing.subscriptions.'.$plan.'.listings');
+
+            return $listingsLeft = $allowedJobs - $usedJobs;
+        }
+        return 0;
+    }
 } 

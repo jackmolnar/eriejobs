@@ -251,6 +251,19 @@ ul {
     font-size: 14px;
     margin-bottom: 20px; }
 
+.subscription .list-group {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  max-width: 550px; }
+  .subscription .list-group .list-group-item {
+    float: left;
+    margin-right: 40px;
+    padding: 30px;
+    text-align: center; }
+    .subscription .list-group .list-group-item b {
+      color: #37636f; }
+
 .search .col-md-9 h1 {
   font-size: 30px;
   padding-bottom: 15px;
@@ -316,6 +329,12 @@ ul {
     margin-bottom: 30px; }
   .profile .info_header, .profile .notification_header {
     display: inline-block; }
+  .profile .subscription_header {
+    float: left; }
+  .profile .subscription_alert {
+    margin-left: 30px;
+    float: right;
+    padding: 10px; }
   .profile .edit_button {
     float: right; }
   .profile .cancel_button {
@@ -325,6 +344,9 @@ ul {
   .profile .delete_account_button {
     float: right;
     margin-right: 15px; }
+  .profile .unsubscribe_button {
+    float: right;
+    margin-top: 25px; }
   .profile .file-row p {
     margin-bottom: 0px; }
   .profile #user_verified_phone_number {
