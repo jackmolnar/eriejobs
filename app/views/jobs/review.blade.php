@@ -109,33 +109,33 @@
     Checkout Button
  */
 
-var handler = StripeCheckout.configure({
-    key: 'pk_test_G59xaf43g03xVDXtwrZQ2ByW',
-    token: function(token) {
-        // Use the token to create the charge with a server-side script.
-        // You can access the token ID with `token.id`
-        $.post('payment', { stripeToken: token })
-            .done(function( data ){
-                alert(data)
-            });
-    }
-});
-
-$('#payment_button').on('click', function(e) {
-    // Open Checkout with further options
-    console.log('payment clicked');
-    handler.open({
-        name: 'EriePa Jobs',
-        description: 'Job Listing',
-        amount: 2000
-    });
-    e.preventDefault();
-    });
-
-// Close Checkout on page navigation
-$(window).on('popstate', function() {
-    handler.close();
-    });
+//var handler = StripeCheckout.configure({
+//    key: 'pk_test_G59xaf43g03xVDXtwrZQ2ByW',
+//    token: function(token) {
+//        // Use the token to create the charge with a server-side script.
+//        // You can access the token ID with `token.id`
+//        $.post('payment', { stripeToken: token })
+//            .done(function( data ){
+//                alert(data)
+//            });
+//    }
+//});
+//
+//$('#payment_button').on('click', function(e) {
+//    // Open Checkout with further options
+//    console.log('payment clicked');
+//    handler.open({
+//        name: 'EriePa Jobs',
+//        description: 'Job Listing',
+//        amount: 2000
+//    });
+//    e.preventDefault();
+//    });
+//
+//// Close Checkout on page navigation
+//$(window).on('popstate', function() {
+//    handler.close();
+//    });
 
 
 </script>
