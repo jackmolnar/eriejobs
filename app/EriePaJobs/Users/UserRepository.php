@@ -115,7 +115,7 @@ class UserRepository {
     public function remainingSubscribedJobs()
     {
         $user = $this->authedUser();
-        if($user->subscribed())
+        if($user != null && $user->subscribed())
         {
             $usedJobs = count($this->subscribedJobs());
 

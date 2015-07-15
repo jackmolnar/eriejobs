@@ -246,7 +246,6 @@ class JobsController extends \BaseController {
         $similar_jobs = $this->jobRepo->searchMoreLikeThis($job);
         $recruiter_jobs = $this->jobRepo->moreByCompany($job);
 
-        dd('hit');
 
         return View::make('jobs.show', [
             'job' => $job,
