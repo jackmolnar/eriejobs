@@ -14,7 +14,7 @@ use Stripe_CardError;
 
 class PaymentRepository {
 
-    protected $userRepo
+    protected $userRepo;
 
     function __construct(UserRepository $userRepo)
     {
