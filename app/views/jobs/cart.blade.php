@@ -26,7 +26,7 @@
                         @if($listingsLeft > 0)
                             <td>${{{ 0 * .01 }}}</td>
                         @else
-                            <td>${{{ \Config::get('billing')['listings'][\Carbon\Carbon::today()->diffInDays($job->expire)] * .01 }}}</td>
+                            <td>${{{ Config::get('billing')['listings'][\Carbon\Carbon::today()->diffInDays($job->expire)] * .01 }}}</td>
                         @endif
                         <td>{{ link_to_action('JobsController@create', 'Edit', ['id' => $index], ['class' => 'btn btn-xs btn-warning']) }}</td>
                         <td>{{ link_to_action('JobsController@deleteCart', 'Delete', ['id' => $index], ['class' => 'btn btn-xs btn-danger']) }}</td>
@@ -48,7 +48,7 @@
                     <span class="checkout_button" style="float: right">
                     <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="pk_live_bC1rCBEvM2ieoXWrFNUyGjWk"
+                    data-key="{{ Config::get('services.stripe.publishable') }}"
                     data-image=""
                     data-name="EriePaJobs.com"
                     data-description="{{ count($cart) }} Listing(s)"
