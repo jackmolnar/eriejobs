@@ -8,8 +8,6 @@
     <h1>Post a new Job Listing</h1>
     <hr/>
 
-        {{ $hit }}
-
 {{ Form::open(['action' => 'JobsController@store']) }}
 
     @if(isset($job))
