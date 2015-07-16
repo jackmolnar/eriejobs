@@ -16,9 +16,9 @@ class PaymentRepository {
 
     protected $userRepo;
 
-    function __construct(UserRepository $userRepo)
+    function __construct()
     {
-        $this->userRepo = $userRepo;
+        $this->userRepo = new UserRepository;
         $this->user = $this->userRepo->authedUser();
     }
 
