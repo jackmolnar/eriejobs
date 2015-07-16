@@ -44,7 +44,7 @@
                 {{ Form::open(['action' => 'JobsController@payment', 'method' => 'post']) }}
 
                 {{-- if billing set to charge--}}
-                @if(!Config::get('billing.free') && $cost > 0)
+                @if(!Config::get('billing.free') && $cost > 0 && $user->role->title != 'Administrator')
                     <span class="checkout_button" style="float: right">
                     <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
