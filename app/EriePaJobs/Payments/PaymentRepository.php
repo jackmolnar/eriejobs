@@ -7,11 +7,21 @@
  */
 
 namespace EriePaJobs\Payments;
+use EriePaJobs\Users\UserRepository;
 use Stripe;
 use Stripe_Charge;
 use Stripe_CardError;
 
 class PaymentRepository {
+
+    protected $userRepo
+
+    function __construct(UserRepository $userRepo)
+    {
+        $this->userRepo = $userRepo;
+        $this->user = $this->userRepo->authedUser();
+    }
+
 
     /**
      * Attempt to bill the user for a job listing
@@ -35,7 +45,7 @@ class PaymentRepository {
                     "amount" => \Input::get('cost'), // amount in cents, again
                     "currency" => "usd",
                     "card" => $token,
-                    "description" => "payinguser@example.com")
+                    "description" => $this->user->email)
             );
 
             $data = [
