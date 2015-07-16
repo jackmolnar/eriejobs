@@ -9,9 +9,7 @@
     <hr/>
 
 {{ Form::open(['action' => 'JobsController@store']) }}
-
-        {{ $hit }}
-
+        
     @if(isset($job))
 
         @include('includes.jobs.edit_form')
