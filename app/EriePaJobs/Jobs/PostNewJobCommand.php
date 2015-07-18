@@ -94,7 +94,7 @@ class PostNewJobCommand extends BaseCommand{
 
         $listingsLeft = $this->userRepo->remainingSubscribedJobs();
 
-        // if not free, bill
+        // if not free and not admin, bill
         if(!Config::get('billing.free') && !$listingsLeft && $this->user->role->title != 'Administrator') {
             $result = $this->paymentRepo->bill($this->input);
         }
