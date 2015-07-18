@@ -72,13 +72,23 @@
         <hr/>
         <div class="row">
             {{ Form::open(['action' => 'JobsController@payment', 'method' => 'post']) }}
-            {{ link_to_action('JobsController@create', 'Edit Listing', null, ['class' => 'btn btn-warning']) }}
 
-            @if(!Config::get('billing.free'))
-                {{ link_to_action('JobsController@cart', 'Add Job Listing to Cart', null, ['class' => 'btn btn-primary']) }}
-            @else
-                {{ Form::submit('Post Listing', ['class' => 'btn btn-primary']) }}
-            @endif
+                {{ link_to_action('JobsController@create', 'Edit Listing', null, ['class' => 'btn btn-warning']) }}
+
+                @if(!Config::get('billing.free'))
+
+                    @if(Session::get('pending_job.setup') == 1)
+                        {{-- go to cart --}}
+                        {{ link_to_action('JobsController@cart', 'Add Job Listing to Cart', null, ['class' => 'btn btn-primary']) }}
+                    @elseif(Session::get('pending_job.setup') == 3)
+                        {{-- go to erie reader create--}}
+                        {{ link_to_action('JobsController@readerCreate', 'Continue', null, ['class' => 'btn btn-primary']) }}
+                    @endif
+
+                @else
+                    {{ Form::submit('Post Listing', ['class' => 'btn btn-primary']) }}
+                @endif
+
             {{ Form::close() }}
         </div>
     </div>
@@ -104,43 +114,8 @@
 @stop
 
 @section('scripts')
-<script>
-/*
-    Checkout Button
- */
-
-//var handler = StripeCheckout.configure({
-//    key: 'pk_test_G59xaf43g03xVDXtwrZQ2ByW',
-//    token: function(token) {
-//        // Use the token to create the charge with a server-side script.
-//        // You can access the token ID with `token.id`
-//        $.post('payment', { stripeToken: token })
-//            .done(function( data ){
-//                alert(data)
-//            });
-//    }
-//});
-//
-//$('#payment_button').on('click', function(e) {
-//    // Open Checkout with further options
-//    console.log('payment clicked');
-//    handler.open({
-//        name: 'EriePa Jobs',
-//        description: 'Job Listing',
-//        amount: 2000
-//    });
-//    e.preventDefault();
-//    });
-//
-//// Close Checkout on page navigation
-//$(window).on('popstate', function() {
-//    handler.close();
-//    });
-
-
-</script>
 @stop
 
 @section('_title')
-    Review Your New Job Listing - EriePaJobs
+Review Your New Job Listing - EriePaJobs
 @stop

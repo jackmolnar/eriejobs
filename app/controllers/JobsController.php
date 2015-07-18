@@ -29,6 +29,15 @@ class JobsController extends \BaseController {
      */
     private $userRepo;
 
+    /**
+     * Define constants
+     */
+    const EPJ = 1;
+
+    const ER = 2;
+
+    const EPJ_ER = 3;
+
     function __construct(
         JobsRepository $jobRepo,
         PaymentRepository $paymentRepo,
@@ -69,9 +78,45 @@ class JobsController extends \BaseController {
 
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function index()
     {
         return Redirect::action('SearchController@index');
+    }
+
+    /**
+     * Return setup view
+     * @return \Illuminate\View\View
+     */
+    public function setup()
+    {
+        return View::make('jobs.setup');
+    }
+
+    /**
+     * Store what job instances need to be created
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function storeSetup()
+    {
+        Session::forget('pending_job.setup');
+        switch (Input::get('setup'))
+        {
+            case 1:
+                Session::put('pending_job.setup', Input::get('setup'));
+                return Redirect::action('JobsController@create');
+            break;
+            case 2:
+                Session::put('pending_job.setup', Input::get('setup'));
+                return Redirect::action('JobsController@readerCreate');
+            break;
+            case 3:
+                Session::put('pending_job.setup', Input::get('setup'));
+                return Redirect::action('JobsController@create');
+            break;
+        }
     }
 
 	/**
@@ -86,23 +131,35 @@ class JobsController extends \BaseController {
         if(Input::has('id') && Session::has('cart'))
         {
             $job = $this->jobRepo->getJobFromCart(Input::get('id'));
-            Session::put('pending_job', $job);
+            Session::put('pending_job.epj_job', $job);
 
             // keeps clearing cart
             $this->jobRepo->removeFromCart(Input::get('id'));
         }
 
-
-        if(Session::has('pending_job'))
+        if(Session::has('pending_job.epj_job'))
         {
-            return View::make('jobs.create', [
-                'job' => Session::get('pending_job'),
-            ]);
+            return View::make('jobs.create', ['job' => Session::get('pending_job.epj_job') ]);
         }
 
-		return View::make('jobs.create', [
-        ]);
+		return View::make('jobs.create');
 	}
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function readerCreate()
+    {
+        if(Session::has('pending_job.epj_job'))
+        {
+            $pendingJob = Session::has('pending_job.epj_job');
+            return View::make('jobs.create_reader', ['pending_job' => $pendingJob]);
+        }
+
+        $readerPubDates = ReaderDate::dropdownarray();
+
+        return View::make('jobs.create_reader', ['readerPubDates' => $readerPubDates]);
+    }
 
     /**
      * Repost Trashed Job
@@ -137,6 +194,7 @@ class JobsController extends \BaseController {
             $newJobCommand->execute('create');
             return Redirect::action('JobsController@review');
         }
+
         return Redirect::back()->withInput()->withErrors($valid['errors']);
 	}
 
@@ -147,7 +205,7 @@ class JobsController extends \BaseController {
      */
     public function review()
     {
-        $pending_job = Session::get('pending_job');
+        $pending_job = Session::get('pending_job.epj_job');
         $cost = $this->jobRepo->getCostFromExpireDate($pending_job->expire);
         $length = $this->jobRepo->getLengthFromExpireDate($pending_job->expire)." Day Job Listing";
 

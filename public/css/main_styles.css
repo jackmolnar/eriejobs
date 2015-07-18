@@ -251,6 +251,28 @@ ul {
     font-size: 14px;
     margin-bottom: 20px; }
 
+.job_setup h2 {
+  font-size: 20px;
+  color: #37636f; }
+.job_setup .option_table {
+  margin-top: 30px; }
+  .job_setup .option_table img {
+    max-width: 150px; }
+  .job_setup .option_table .checkmark {
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url("/images/check.png");
+    width: 25px;
+    height: 23px;
+    display: block; }
+  .job_setup .option_table .heading {
+    text-align: center;
+    width: 25%; }
+  .job_setup .option_table .radio {
+    margin-left: auto;
+    margin-right: auto;
+    width: 0px; }
+
 .subscription .list-group {
   margin-left: auto;
   margin-right: auto;

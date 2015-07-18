@@ -80,7 +80,7 @@ class PostNewJobCommand extends BaseCommand{
         $job->category_id       = $this->input['category'];
         $job->active            = 1;
 
-        Session::put('pending_job', $job);
+        Session::put('pending_job.epj_job', $job);
 
         return $job;
     }

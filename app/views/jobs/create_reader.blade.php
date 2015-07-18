@@ -5,33 +5,31 @@
 <div class="job_create">
 
     <div class="col-md-9">
-    <h1>Create EriePaJobs Listing</h1>
+    <h1>Create ErieReader Listing</h1>
     <hr/>
 
 {{ Form::open(['action' => 'JobsController@store']) }}
 
-    @if(isset($job))
+    @if(isset($pendingJob))
 
-        @include('includes.jobs.edit_form')
+        {{ Form::label('Title') }}
+        {{ Form::text('title', $pendingJob->title, ['class' => 'form-control', 'placeholder' => 'Title']) }}
+
+        {{ Form::label('Description') }}
+        {{ Form::textarea('description', $pendingJob->description, ['class' => 'form-control', 'placeholder' => 'Description']) }}
 
     @else
 
-        @include('includes.jobs.create_form')
+        {{ Form::label('Title') }}
+        {{ Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Title']) }}
+
+        {{ Form::label('Description') }}
+        {{ Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Description']) }}
 
     @endif
 
-        {{-- figure out how to display pricing --}}
-
-        @if($user->subscribed())
-            {{ Form::label('length', 'Length of Posting - '.$listingsLeft.' Listings Remaining in Subscription') }}
-        @else
-            {{ Form::label('length', 'Length of Posting') }}
-        @endif
-    {{ Form::select('length', $payment, null, ['class' => 'form-control']) }}
-    <hr/>
-
-    {{ Form::submit('Continue', ['class' => 'btn btn-primary', 'id' => 'continue_button']) }}
-    {{ link_to_action('ProfilesController@index', 'Cancel', null, ['class' => 'btn btn-default']) }}
+        {{ Form::label('Available Publish Dates') }}
+        {{ Form::select('pubDate', $readerPubDates, null, ['class' => 'form-control']) }}
 
 {{ Form::close() }}
 
@@ -62,11 +60,6 @@
 @stop
 
 @section('scripts')
-<script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
-
-<script>
-    tinymce.init({selector:'textarea'});
-</script>
 @stop
 
 @section('_title')

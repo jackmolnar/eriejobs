@@ -132,3 +132,40 @@
     }
   }
 }
+
+.job_setup{
+  h2{
+    font-size: 20px;
+    color: $blue_green;
+  }
+
+  .option_table{
+    margin-top: 30px;
+
+    img{
+      max-width: 150px;
+    }
+
+    .checkmark{
+      margin-left: auto;
+      margin-right: auto;
+      background-image: url("/images/check.png");
+      width: 25px;
+      height: 23px;
+      display: block;
+    }
+    .heading{
+      text-align: center;
+      width: 25%;
+    }
+    .radio{
+      margin-left: auto;
+      margin-right: auto;
+      width: 0px;
+    }
+    .highlight{
+//      background-color: $light_green;
+    }
+  }
+
+}
