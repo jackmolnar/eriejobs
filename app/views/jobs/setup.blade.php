@@ -7,6 +7,9 @@
         <div class="col-md-12">
             <h1>Setup Your Listing</h1>
             <hr>
+            <p>
+                Here you can decide to post only online at EriePaJobs, only list in the ErieReader, or the best option that will give your listing the most exposure, <b>list on both EriePaJobs and in the ErieReader.</b>
+            </p>
         </div>
 
         <div class="col-md-12 option_table">

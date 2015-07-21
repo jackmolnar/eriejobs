@@ -15,16 +15,26 @@
         {{ Form::label('Title') }}
         {{ Form::text('title', $pendingJob->title, ['class' => 'form-control', 'placeholder' => 'Title']) }}
 
+
         {{ Form::label('Description') }}
-        {{ Form::textarea('description', $pendingJob->description, ['class' => 'form-control', 'placeholder' => 'Description']) }}
+        {{ Form::textarea('description', $pendingJob->description, [
+            'class' => 'form-control job_description',
+            'placeholder' => 'Description',
+            'v-on' => 'keyup: recalculate',
+            'v-model' => 'description'
+            ]) }}
 
     @else
 
         {{ Form::label('Title') }}
         {{ Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Title']) }}
 
-        {{ Form::label('Description') }}
-        {{ Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Description']) }}
+            {{ Form::textarea('description', null, [
+                'class' => 'form-control job_description',
+                'placeholder' => 'Description',
+                'v-on' => 'keyup: recalculate',
+                'v-model' => 'description'
+                ]) }}
 
     @endif
 
@@ -38,6 +48,13 @@
     <div class="col-md-3 job_info">
 
         <div class="well well-primary" data-spy="affix" data-offset-top="10" data-offset-bottom="300">
+            <div id="calculate">
+                <h2>Total Cost: @{{ totalCost | currency }}</h2> @{{ minimum = true }}
+                <hr/>
+                <h4>Character Count: @{{ characterCount }}</h4>
+                <h4>Cost Per Character: $.<span id="costPerCharacter">{{ Config::get('billing.reader.cost.'.Session::get('pending_job.setup')) }}</span></h4>
+                <hr/>
+            </div>
             <ul>
                 {{-- Only return guarantee if setup is 1 --}}
                 @if(Session::get('pending_job.setup') == 1)
@@ -60,6 +77,13 @@
 @stop
 
 @section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.7/vue.min.js"></script>
+
+    <script src="/js/app.js"></script>
+
+
+
+
 @stop
 
 @section('_title')

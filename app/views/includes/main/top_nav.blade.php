@@ -18,7 +18,7 @@
                       <li><a href="{{ URL::action('BrowseController@index') }}"><i class="fa fa-eye"></i> Browse</a></li>
                   @elseif(Auth::user()->role->title == 'Recruiter')
                         <li><a href="{{ URL::action('ProfilesController@index') }}"><i class="fa fa-list"></i> Dashboard</a></li>
-                        <li><a href="{{ URL::action('JobsController@create') }}"><i class="fa fa-pencil"></i> Post Job</a></li>
+                        <li><a href="{{ URL::action('JobsController@setup') }}"><i class="fa fa-pencil"></i> Post Job</a></li>
                   @elseif(Auth::user()->role->title == 'Administrator')
                         <li><a href="{{ URL::action('ProfilesController@index') }}"><i class="fa fa-list"></i> Dashboard</a></li>
                         <li><a href="{{ URL::action('SearchController@index') }}"><i class="fa fa-search"></i> Search</a></li>
