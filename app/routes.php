@@ -20,8 +20,8 @@ Route::get('/send-restore-user', 'AuthController@sendRestoreUser');
  */
 Route::resource('jobs', 'JobsController');
     //create
-Route::get('jobs/create/setup', 'JobsController@setup');
-Route::post('jobs/create/setup', 'JobsController@storeSetup');
+//Route::get('jobs/create/setup', 'JobsController@setup');
+//Route::post('jobs/create/setup', 'JobsController@storeSetup');
 Route::get('jobs/create/review', 'JobsController@review');
 Route::post('jobs/create/payment', 'JobsController@payment');
 Route::get('jobs/create/cart', 'JobsController@cart');

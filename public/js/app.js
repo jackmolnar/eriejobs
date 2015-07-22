@@ -10,9 +10,13 @@ new Vue({
     el: '.job_create',
 
     data: {
-        totalCost: 100,
+        baseCost: 250,
+        totalCost: 0,
+        additionalCost: 0,
         characterCount: 0,
-        description: description
+        freeCharacters: 500,
+        description: description,
+        costPerCharacter: .20
     },
 
     methods: {
@@ -22,9 +26,26 @@ new Vue({
             withoutSpace = this.description.replace(/ /g,"");
             this.characterCount = withoutSpace.length;
 
-            cost = this.characterCount*costPerCharacter;
+            if(this.characterCount > this.freeCharacters)
+            {
+                additionalCharacters = this.characterCount - this.freeCharacters;
+                this.additionalCost = additionalCharacters*this.costPerCharacter;
+                this.totalCost = this.baseCost + this.additionalCost;
+            } else {
+                this.additionalCost = 0;
+                this.totalCost = this.baseCost;
+            }
 
-            this.totalCost = cost > 100 ? this.characterCount*costPerCharacter : 100;
+            //cost = this.characterCount*this.costPerCharacter;
+            //
+            //if( cost > this.baseCost)
+            //{
+            //    this.additionalCost = cost - this.baseCost;
+            //    this.totalCost = this.characterCount*this.costPerCharacter;
+            //} else {
+            //    this.totalCost = this.baseCost;
+            //    this.additionalCost = 0;
+            //}
         }
     },
 

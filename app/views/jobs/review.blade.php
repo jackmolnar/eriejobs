@@ -77,13 +77,13 @@
 
                 @if(!Config::get('billing.free'))
 
-                    @if(Session::get('pending_job.setup') == 1)
+                    {{--@if(Session::get('pending_job.setup') == 1)--}}
                         {{-- go to cart --}}
-                        {{ link_to_action('JobsController@cart', 'Add Job Listing to Cart', null, ['class' => 'btn btn-primary']) }}
-                    @elseif(Session::get('pending_job.setup') == 3)
+                        {{--{{ link_to_action('JobsController@cart', 'Add Job Listing to Cart', null, ['class' => 'btn btn-primary']) }}--}}
+                    {{--@elseif(Session::get('pending_job.setup') == 3)--}}
                         {{-- go to erie reader create--}}
                         {{ link_to_action('JobsController@readerCreate', 'Continue', null, ['class' => 'btn btn-primary']) }}
-                    @endif
+                    {{--@endif--}}
 
                 @else
                     {{ Form::submit('Post Listing', ['class' => 'btn btn-primary']) }}
@@ -95,12 +95,12 @@
     <div class="col-md-3 job_info">
         <div class="well well-primary">
             <ul>
-                @if($pending_job->email != '')
-                    <li id="guarantee"><img src="{{ url('images/guarantee.png') }}" alt="5 Application Guarantee" style="max-width: 200px"/><br/><br/>
-                        We guarantee our listings! If you don't receive 3 applications when your listing expires, we'll refund you!
-                        View the {{ link_to_action('PagesController@getTermsOfGuarantee', 'full terms here.', null, ['target' => '_blank']) }}
-                    </li>
-                @endif
+                {{--@if($pending_job->email != '')--}}
+                    {{--<li id="guarantee"><img src="{{ url('images/guarantee.png') }}" alt="5 Application Guarantee" style="max-width: 200px"/><br/><br/>--}}
+                        {{--We guarantee our listings! If you don't receive 3 applications when your listing expires, we'll refund you!--}}
+                        {{--View the {{ link_to_action('PagesController@getTermsOfGuarantee', 'full terms here.', null, ['target' => '_blank']) }}--}}
+                    {{--</li>--}}
+                {{--@endif--}}
 
                 <li><img src="{{ URL::asset('images/RapidSSL_SEAL-90x50.gif') }}" /><br/><br/>
                     Our payment processing is secure! We use 256 bit encryption and process all payments through one of the most secure payment gateways in the world, {{ link_to('https://stripe.com/', 'Stripe', ['target' => '_blank']) }}</li>

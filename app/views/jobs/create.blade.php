@@ -22,12 +22,14 @@
 
         {{-- figure out how to display pricing --}}
 
-        @if($user->subscribed())
-            {{ Form::label('length', 'Length of Posting - '.$listingsLeft.' Listings Remaining in Subscription') }}
-        @else
-            {{ Form::label('length', 'Length of Posting') }}
-        @endif
-    {{ Form::select('length', $payment, null, ['class' => 'form-control']) }}
+        {{--@if($user->subscribed())--}}
+            {{--{{ Form::label('length', 'Length of Posting - '.$listingsLeft.' Listings Remaining in Subscription') }}--}}
+        {{--@else--}}
+            {{--{{ Form::label('length', 'Length of Posting') }}--}}
+        {{--@endif--}}
+    {{--{{ Form::select('length', $payment, null, ['class' => 'form-control']) }}--}}
+
+        {{ Form::hidden('length', 30) }}
     <hr/>
 
     {{ Form::submit('Continue', ['class' => 'btn btn-primary', 'id' => 'continue_button']) }}
@@ -42,12 +44,12 @@
         <div class="well well-primary" data-spy="affix" data-offset-top="10" data-offset-bottom="300">
             <ul>
                 {{-- Only return guarantee if setup is 1 --}}
-                @if(Session::get('pending_job.setup') == 1)
-                    <li id="guarantee"><img src="{{ url('images/guarantee.png') }}" alt="5 Application Guarantee" style="max-width: 200px"/><br/><br/>
-                        We guarantee our listings! If you don't receive 3 applications when your listing expires, we'll refund you!
-                        View the {{ link_to_action('PagesController@getTermsOfGuarantee', 'full terms here.', null, ['target' => '_blank']) }}
-                    </li>
-                @endif
+                {{--@if(Session::get('pending_job.setup') == 1)--}}
+                    {{--<li id="guarantee"><img src="{{ url('images/guarantee.png') }}" alt="5 Application Guarantee" style="max-width: 200px"/><br/><br/>--}}
+                        {{--We guarantee our listings! If you don't receive 3 applications when your listing expires, we'll refund you!--}}
+                        {{--View the {{ link_to_action('PagesController@getTermsOfGuarantee', 'full terms here.', null, ['target' => '_blank']) }}--}}
+                    {{--</li>--}}
+                {{--@endif--}}
                 <li><img src="{{ URL::asset('images/RapidSSL_SEAL-90x50.gif') }}" /><br/><br/>
                     EriePaJobs is secure! We use 256 bit encryption and process all payments through one of the most secure payment gateways in the world, {{ link_to('https://stripe.com/', 'Stripe', ['target' => '_blank']) }}</li>
 

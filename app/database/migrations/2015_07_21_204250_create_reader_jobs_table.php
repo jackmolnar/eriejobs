@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateReaderHeadingsTable extends Migration {
+class CreateReaderJobsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,13 @@ class CreateReaderHeadingsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('reader_headings', function(Blueprint $table)
+		Schema::create('reader_jobs', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('heading', 150);
+			$table->string('title', 100);
+			$table->text('description');
+			$table->integer('reader_date_id');
+			$table->integer('reader_heading_id');
 			$table->timestamps();
 		});
 	}
@@ -28,7 +31,7 @@ class CreateReaderHeadingsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('reader_headings');
+		Schema::drop('reader_jobs');
 	}
 
 }

@@ -8,7 +8,7 @@
     <h1>Create ErieReader Listing</h1>
     <hr/>
 
-{{ Form::open(['action' => 'JobsController@store']) }}
+{{ Form::open(['action' => 'JobsController@readerStore']) }}
 
     @if(isset($pendingJob))
 
@@ -17,7 +17,7 @@
 
 
         {{ Form::label('Description') }}
-        {{ Form::textarea('description', $pendingJob->description, [
+        {{ Form::textarea('description', strip_tags($pendingJob->description), [
             'class' => 'form-control job_description',
             'placeholder' => 'Description',
             'v-on' => 'keyup: recalculate',
@@ -48,11 +48,14 @@
     <div class="col-md-3 job_info">
 
         <div class="well well-primary" data-spy="affix" data-offset-top="10" data-offset-bottom="300">
-            <div id="calculate">
-                <h2>Total Cost: @{{ totalCost | currency }}</h2> @{{ minimum = true }}
+            <div>
+                You get up to 500 characters included in your ad. Additional characters are an additional @{{ costPerCharacter | currency }} per character.
+                {{--<h2>Total Cost: @{{ totalCost | currency }}</h2>--}}
                 <hr/>
                 <h4>Character Count: @{{ characterCount }}</h4>
-                <h4>Cost Per Character: $.<span id="costPerCharacter">{{ Config::get('billing.reader.cost.'.Session::get('pending_job.setup')) }}</span></h4>
+                {{--<h4>Cost Per Character: $.<span id="costPerCharacter">{{ Config::get('billing.reader.cost.'.Session::get('pending_job.setup')) }}</span></h4>--}}
+                <h4>Additional Cost: @{{ additionalCost | currency }}</h4>
+                <h4>Total Cost: @{{ totalCost | currency }}</h4>
                 <hr/>
             </div>
             <ul>

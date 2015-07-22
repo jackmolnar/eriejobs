@@ -3,6 +3,7 @@
 use EriePaJobs\Categories\CategoryRepository;
 use EriePaJobs\Jobs\DeleteJobCommand;
 use EriePaJobs\Jobs\JobsRepository;
+use EriePaJobs\Jobs\PostNewReaderJobValidator;
 use EriePaJobs\Payments\PaymentRepository;
 use EriePaJobs\Jobs\PostNewJobValidator;
 use EriePaJobs\Jobs\PostNewJobCommand;
@@ -86,38 +87,38 @@ class JobsController extends \BaseController {
         return Redirect::action('SearchController@index');
     }
 
-    /**
-     * Return setup view
-     * @return \Illuminate\View\View
-     */
-    public function setup()
-    {
-        return View::make('jobs.setup');
-    }
-
-    /**
-     * Store what job instances need to be created
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function storeSetup()
-    {
-        Session::forget('pending_job.setup');
-        switch (Input::get('setup'))
-        {
-            case 1:
-                Session::put('pending_job.setup', Input::get('setup'));
-                return Redirect::action('JobsController@create');
-            break;
-            case 2:
-                Session::put('pending_job.setup', Input::get('setup'));
-                return Redirect::action('JobsController@readerCreate');
-            break;
-            case 3:
-                Session::put('pending_job.setup', Input::get('setup'));
-                return Redirect::action('JobsController@create');
-            break;
-        }
-    }
+//    /**
+//     * Return setup view
+//     * @return \Illuminate\View\View
+//     */
+//    public function setup()
+//    {
+//        return View::make('jobs.setup');
+//    }
+//
+//    /**
+//     * Store what job instances need to be created
+//     * @return \Illuminate\Http\RedirectResponse
+//     */
+//    public function storeSetup()
+//    {
+//        Session::forget('pending_job.setup');
+//        switch (Input::get('setup'))
+//        {
+//            case 1:
+//                Session::put('pending_job.setup', Input::get('setup'));
+//                return Redirect::action('JobsController@create');
+//            break;
+//            case 2:
+//                Session::put('pending_job.setup', Input::get('setup'));
+//                return Redirect::action('JobsController@readerCreate');
+//            break;
+//            case 3:
+//                Session::put('pending_job.setup', Input::get('setup'));
+//                return Redirect::action('JobsController@create');
+//            break;
+//        }
+//    }
 
 	/**
 	 * Show the form for creating a new resource.
@@ -150,16 +151,12 @@ class JobsController extends \BaseController {
      */
     public function readerCreate()
     {
-        if(Session::has('pending_job.epj_job'))
-        {
-            $pendingJob = Session::has('pending_job.epj_job');
-            return View::make('jobs.create_reader', ['pending_job' => $pendingJob]);
-        }
-
         $readerPubDates = ReaderDate::dropdownarray();
 
-        return View::make('jobs.create_reader', ['readerPubDates' => $readerPubDates]);
+        $pendingJob = Session::get('pending_job.epj_job');
+        return View::make('jobs.create_reader', ['pendingJob' => $pendingJob, 'readerPubDates' => $readerPubDates]);
     }
+
 
     /**
      * Repost Trashed Job
@@ -197,6 +194,19 @@ class JobsController extends \BaseController {
 
         return Redirect::back()->withInput()->withErrors($valid['errors']);
 	}
+
+    public function readerStore()
+    {
+        $newReaderJobValidator = new PostNewReaderJobValidator(Input::all());
+        $valid = $newReaderJobValidator->execute();
+
+        if($valid['status'])
+        {
+            $newReaderJobCommand = new PostNewReaderJobCommand(Input::all());
+
+        }
+    }
+
 
     /**
      * Review job listing

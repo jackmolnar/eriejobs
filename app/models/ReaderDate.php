@@ -24,12 +24,6 @@ class ReaderDate extends \Eloquent {
 	 */
 	public static function dropdownarray ()
 	{
-//		if (Cache::has('job.states'))
-//		{
-//			$state_array = Cache::get('job.states');
-//			return $state_array;
-//		}
-
 		$all = ReaderDate::futureDates()->get();
 
 		$date_array =  array();
@@ -38,8 +32,6 @@ class ReaderDate extends \Eloquent {
 		{
 			$date_array[$date->id] = $date->pub_date->toFormattedDateString();
 		}
-
-//		Cache::add('job.type', $state_array, 60);
 
 		return $date_array;
 	}
