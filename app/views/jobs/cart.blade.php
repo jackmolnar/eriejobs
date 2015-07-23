@@ -14,19 +14,17 @@
             <table class="table">
                 <tr>
                     <th>Listing</th>
-                    <th>Expire Date</th>
                     <th>Cost</th>
                     <th>Edit Job</th>
                     <th>Remove from Cart</th>
                 </tr>
-                @foreach($cart as $index => $job)
+                @foreach($cart as $index => $package)
                     <tr>
-                        <td>{{{ $job->title }}}</td>
-                        <td>{{{ $job->expire->format( 'm-d-Y') }}}</td>
+                        <td>Recruitment Package - Online and Print</td>
                         @if($listingsLeft > 0)
                             <td>${{{ 0 * .01 }}}</td>
                         @else
-                            <td>${{{ Config::get('billing')['listings'][\Carbon\Carbon::today()->diffInDays($job->expire)] * .01 }}}</td>
+                            <td>${{{ $package['cost']*.01 }}}</td>
                         @endif
                         <td>{{ link_to_action('JobsController@create', 'Edit', ['id' => $index], ['class' => 'btn btn-xs btn-warning']) }}</td>
                         <td>{{ link_to_action('JobsController@deleteCart', 'Delete', ['id' => $index], ['class' => 'btn btn-xs btn-danger']) }}</td>

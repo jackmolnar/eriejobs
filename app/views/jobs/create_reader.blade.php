@@ -19,7 +19,7 @@
         {{ Form::label('Description') }}
         {{ Form::textarea('description', strip_tags($pendingJob->description), [
             'class' => 'form-control job_description',
-            'placeholder' => 'Description',
+            'placeholder' => 'Content',
             'v-on' => 'keyup: recalculate',
             'v-model' => 'description'
             ]) }}
@@ -29,17 +29,25 @@
         {{ Form::label('Title') }}
         {{ Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Title']) }}
 
-            {{ Form::textarea('description', null, [
-                'class' => 'form-control job_description',
-                'placeholder' => 'Description',
-                'v-on' => 'keyup: recalculate',
-                'v-model' => 'description'
-                ]) }}
+        {{ Form::label('Description') }}
+        {{ Form::textarea('description', null, [
+            'class' => 'form-control job_description',
+            'placeholder' => 'Content',
+            'v-on' => 'keyup: recalculate',
+            'v-model' => 'description'
+            ]) }}
 
     @endif
 
         {{ Form::label('Available Publish Dates') }}
         {{ Form::select('pubDate', $readerPubDates, null, ['class' => 'form-control']) }}
+
+        {{ Form::label('Select Heading') }}
+        {{ Form::select('heading', $readerHeadings, null, ['class' => 'form-control']) }}
+
+        <hr/>
+
+        {{ Form::submit('Continue', ['class' => 'btn btn-primary']) }}
 
 {{ Form::close() }}
 
@@ -50,12 +58,13 @@
         <div class="well well-primary" data-spy="affix" data-offset-top="10" data-offset-bottom="300">
             <div>
                 You get up to 500 characters included in your ad. Additional characters are an additional @{{ costPerCharacter | currency }} per character.
-                {{--<h2>Total Cost: @{{ totalCost | currency }}</h2>--}}
                 <hr/>
                 <h4>Character Count: @{{ characterCount }}</h4>
-                {{--<h4>Cost Per Character: $.<span id="costPerCharacter">{{ Config::get('billing.reader.cost.'.Session::get('pending_job.setup')) }}</span></h4>--}}
                 <h4>Additional Cost: @{{ additionalCost | currency }}</h4>
                 <h4>Total Cost: @{{ totalCost | currency }}</h4>
+                <input type="hidden" value="{{ Config::get('billing.reader.costPerCharacter') }}" v-model="costPerCharacter"/>
+                <input type="hidden" value="{{ Config::get('billing.reader.baseCost') }}" v-model="costPerCharacter"/>
+                <input type="hidden" value="{{ Config::get('billing.reader.freeCharacters') }}" v-model="costPerCharacter"/>
                 <hr/>
             </div>
             <ul>

@@ -10,13 +10,13 @@ new Vue({
     el: '.job_create',
 
     data: {
-        baseCost: 250,
+        baseCost: 0,
         totalCost: 0,
         additionalCost: 0,
         characterCount: 0,
-        freeCharacters: 500,
+        freeCharacters: 0,
         description: description,
-        costPerCharacter: .20
+        costPerCharacter: 0
     },
 
     methods: {

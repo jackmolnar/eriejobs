@@ -9,7 +9,6 @@
 namespace EriePaJobs\Jobs;
 
 use EriePaJobs\BaseCommand;
-use Auth;
 use EriePaJobs\Payments\PaymentRepository;
 use EriePaJobs\Users\UserRepository;
 use Event;
@@ -80,7 +79,7 @@ class PostNewJobCommand extends BaseCommand{
         $job->category_id       = $this->input['category'];
         $job->active            = 1;
 
-        Session::put('pending_job.epj_job', $job);
+        $this->jobsRepo->storeEpjJob($job);
 
         return $job;
     }

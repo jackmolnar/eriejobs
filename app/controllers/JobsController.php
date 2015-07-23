@@ -3,6 +3,7 @@
 use EriePaJobs\Categories\CategoryRepository;
 use EriePaJobs\Jobs\DeleteJobCommand;
 use EriePaJobs\Jobs\JobsRepository;
+use EriePaJobs\Jobs\PostNewReaderJobCommand;
 use EriePaJobs\Jobs\PostNewReaderJobValidator;
 use EriePaJobs\Payments\PaymentRepository;
 use EriePaJobs\Jobs\PostNewJobValidator;
@@ -131,16 +132,18 @@ class JobsController extends \BaseController {
         // if there is a listing pending or edit from cart, pipe into the view
         if(Input::has('id') && Session::has('cart'))
         {
-            $job = $this->jobRepo->getJobFromCart(Input::get('id'));
-            Session::put('pending_job.epj_job', $job);
+            $package = $this->jobRepo->getPackageFromCart(Input::get('id'));
+
+            $this->jobRepo->storeEpjJob($package['epj']);
+            $this->jobRepo->storeReaderJob($package['reader']);
 
             // keeps clearing cart
-            $this->jobRepo->removeFromCart(Input::get('id'));
+            $this->jobRepo->removePackageFromCart(Input::get('id'));
         }
 
-        if(Session::has('pending_job.epj_job'))
+        if(Session::has('pending_epj'))
         {
-            return View::make('jobs.create', ['job' => Session::get('pending_job.epj_job') ]);
+            return View::make('jobs.create', ['job' => $this->jobRepo->getPendingEpjJob() ]);
         }
 
 		return View::make('jobs.create');
@@ -153,8 +156,15 @@ class JobsController extends \BaseController {
     {
         $readerPubDates = ReaderDate::dropdownarray();
 
-        $pendingJob = Session::get('pending_job.epj_job');
-        return View::make('jobs.create_reader', ['pendingJob' => $pendingJob, 'readerPubDates' => $readerPubDates]);
+        $readerHeadings = Reader_Heading::dropdownarray();
+
+        $pendingJob = $this->jobRepo->getPendingEpjJob();
+
+        return View::make('jobs.create_reader', [
+            'pendingJob' => $pendingJob,
+            'readerPubDates' => $readerPubDates,
+            'readerHeadings' => $readerHeadings
+        ]);
     }
 
 
@@ -195,6 +205,11 @@ class JobsController extends \BaseController {
         return Redirect::back()->withInput()->withErrors($valid['errors']);
 	}
 
+    /**
+     * Store the reader ad in the session
+     *
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     public function readerStore()
     {
         $newReaderJobValidator = new PostNewReaderJobValidator(Input::all());
@@ -203,8 +218,11 @@ class JobsController extends \BaseController {
         if($valid['status'])
         {
             $newReaderJobCommand = new PostNewReaderJobCommand(Input::all());
-
+            $newReaderJobCommand->execute();
+            return Redirect::action('JobsController@readerReview');
         }
+
+        return Redirect::back()->withInput()->withErrors($valid['errors']);
     }
 
 
@@ -215,11 +233,25 @@ class JobsController extends \BaseController {
      */
     public function review()
     {
-        $pending_job = Session::get('pending_job.epj_job');
+        $pending_job = $this->jobRepo->getPendingEpjJob();
         $cost = $this->jobRepo->getCostFromExpireDate($pending_job->expire);
         $length = $this->jobRepo->getLengthFromExpireDate($pending_job->expire)." Day Job Listing";
 
         return View::make('jobs.review', ['pending_job' => $pending_job, 'cost' => $cost, 'length' => $length]);
+    }
+
+    /**
+     * Review reader job listing
+     *
+     * @return \Illuminate\View\View
+     */
+    public function readerReview()
+    {
+        $pending_reader_job = $this->jobRepo->getPendingReaderJob();
+        $pubDate = $pending_reader_job->pubDate->pub_date->toFormattedDateString();
+        $heading = $pending_reader_job->heading->heading;
+
+        return View::make('jobs.review_reader', ['pending_reader_job' => $pending_reader_job, 'pubDate' => $pubDate, 'heading' => $heading]);
     }
 
     /**
@@ -228,18 +260,22 @@ class JobsController extends \BaseController {
      */
     public function cart()
     {
-        // put pending job in cart
-        if(Session::has('pending_job'))
+        // package pending jobs with cost, put in cart
+        if(Session::has('pending_epj') && Session::has('pending_reader'))
         {
-            $pending_job = Session::pull('pending_job');
-            $this->jobRepo->putJobInCart($pending_job);
+            $package = [
+                'cost' => $this->jobRepo->getCostFromDescriptionLength(Session::get('pending_reader')->description),
+                'epj' => Session::pull('pending_epj'),
+                'reader' => Session::pull('pending_reader'),
+            ];
+            $this->jobRepo->putJobInCart($package);
         }
 
         // if user subscribe get remaining listings
         $listingsLeft = $this->userRepo->remainingSubscribedJobs();
 
         // mark jobs in cart as subscribed if available
-        $this->jobRepo->markSubscribedJobs($listingsLeft);
+//        $this->jobRepo->markSubscribedJobs($listingsLeft);
 
         // calculate total cost
         $cost = $this->jobRepo->calculateCost(Session::get('cart'), $listingsLeft);

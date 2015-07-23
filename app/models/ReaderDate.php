@@ -5,20 +5,37 @@ class ReaderDate extends \Eloquent {
 
 	protected $table = 'reader_dates';
 
+	/**
+	 * Declare carbon dates
+	 * @return array
+     */
 	public function getDates()
 	{
 		return array('created_at', 'updated_at', 'pub_date');
 	}
 
+	/**
+	 * Get future possible publish dates
+	 * @param $query
+	 * @return mixed
+     */
 	public function scopeFutureDates($query)
 	{
 		$cutDay = \Carbon\Carbon::today()->addDays(5);
 		return $query->where('pub_date', '>', $cutDay);
 	}
 
+	/**
+	 * Jobs relationship
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+	public function jobs()
+	{
+		return $this->hasMany('ReaderJob');
+	}
 
 	/**
-	 * Get states in array suitable for select box
+	 * Get dates in array suitable for select box
 	 *
 	 * @return array
 	 */

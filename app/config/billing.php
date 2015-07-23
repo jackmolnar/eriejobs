@@ -14,13 +14,9 @@ return array(
         'Premium'   => [ 'listings' => '10', 'cost' => 59900 ]
     ],
 
-//    'reader' => [
-//        'cost' => [
-//            '25', '30', '35'
-//        ]
-//    ]
-
     'reader' => [
-        'cost' => 30
+        'costPerCharacter' => .20,
+        'baseCost' => 250,
+        'freeCharacters' => 500
     ]
 );
