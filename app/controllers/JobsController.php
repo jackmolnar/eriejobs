@@ -30,16 +30,7 @@ class JobsController extends \BaseController {
      * @var UserRepository
      */
     private $userRepo;
-
-    /**
-     * Define constants
-     */
-    const EPJ = 1;
-
-    const ER = 2;
-
-    const EPJ_ER = 3;
-
+    
     function __construct(
         JobsRepository $jobRepo,
         PaymentRepository $paymentRepo,
@@ -87,39 +78,6 @@ class JobsController extends \BaseController {
     {
         return Redirect::action('SearchController@index');
     }
-
-//    /**
-//     * Return setup view
-//     * @return \Illuminate\View\View
-//     */
-//    public function setup()
-//    {
-//        return View::make('jobs.setup');
-//    }
-//
-//    /**
-//     * Store what job instances need to be created
-//     * @return \Illuminate\Http\RedirectResponse
-//     */
-//    public function storeSetup()
-//    {
-//        Session::forget('pending_job.setup');
-//        switch (Input::get('setup'))
-//        {
-//            case 1:
-//                Session::put('pending_job.setup', Input::get('setup'));
-//                return Redirect::action('JobsController@create');
-//            break;
-//            case 2:
-//                Session::put('pending_job.setup', Input::get('setup'));
-//                return Redirect::action('JobsController@readerCreate');
-//            break;
-//            case 3:
-//                Session::put('pending_job.setup', Input::get('setup'));
-//                return Redirect::action('JobsController@create');
-//            break;
-//        }
-//    }
 
 	/**
 	 * Show the form for creating a new resource.
@@ -268,19 +226,18 @@ class JobsController extends \BaseController {
                 'epj' => Session::pull('pending_epj'),
                 'reader' => Session::pull('pending_reader'),
             ];
+
             $this->jobRepo->putJobInCart($package);
         }
 
-        // if user subscribe get remaining listings
-        $listingsLeft = $this->userRepo->remainingSubscribedJobs();
-
-        // mark jobs in cart as subscribed if available
-//        $this->jobRepo->markSubscribedJobs($listingsLeft);
-
+        try {
+            $cost = $this->jobRepo->calculateCost(Session::get('cart'));
+        } catch (Exception $e) {
+            return Redirect::action('ProfilesController@index')->withErrors($e->getMessage());
+        }
         // calculate total cost
-        $cost = $this->jobRepo->calculateCost(Session::get('cart'), $listingsLeft);
 
-        return View::make('jobs.cart', ['cart' => Session::get('cart'), 'cost' => $cost, 'listingsLeft' => $listingsLeft]);
+        return View::make('jobs.cart', ['cart' => Session::get('cart'), 'cost' => $cost]);
     }
 
     /**

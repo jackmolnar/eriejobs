@@ -74,3 +74,7 @@
 @section('_title')
     Create New Job Listing - EriePaJobs
 @stop
+
+@section('main_row')
+    @include('includes.jobs.job_nav')
+@stop

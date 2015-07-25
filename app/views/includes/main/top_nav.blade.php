@@ -17,6 +17,9 @@
                       <li><a href="{{ URL::action('SearchController@index') }}"><i class="fa fa-search"></i> Search</a></li>
                       <li><a href="{{ URL::action('BrowseController@index') }}"><i class="fa fa-eye"></i> Browse</a></li>
                   @elseif(Auth::user()->role->title == 'Recruiter')
+                      @if(Session::has('cart') && count(Session::get('cart')) > 0)
+                            <li><a href="{{ URL::action('JobsController@cart') }}"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">{{ count(Session::get('cart')) }}</span></a></li>
+                      @endif
                         <li><a href="{{ URL::action('ProfilesController@index') }}"><i class="fa fa-list"></i> Dashboard</a></li>
                         <li><a href="{{ URL::action('JobsController@create') }}"><i class="fa fa-pencil"></i> Post Job</a></li>
                   @elseif(Auth::user()->role->title == 'Administrator')

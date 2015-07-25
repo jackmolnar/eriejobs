@@ -7,10 +7,6 @@
         <h1 style="display: block"><i class="fa fa-shopping-cart"></i> Cart</h1>
 
         <div class="well col-md-9 ">
-            @if($user->subscribed())
-                <h3 style="margin-bottom: 30px">Available Subscription Listings: {{ $listingsLeft }}</h3>
-            @endif
-
             <table class="table">
                 <tr>
                     <th>Listing</th>
@@ -21,11 +17,7 @@
                 @foreach($cart as $index => $package)
                     <tr>
                         <td>Recruitment Package - Online and Print</td>
-                        @if($listingsLeft > 0)
-                            <td>${{{ 0 * .01 }}}</td>
-                        @else
-                            <td>${{{ $package['cost']*.01 }}}</td>
-                        @endif
+                        <td>${{{ number_format($package['cost']*.01,1) }}}0</td>
                         <td>{{ link_to_action('JobsController@create', 'Edit', ['id' => $index], ['class' => 'btn btn-xs btn-warning']) }}</td>
                         <td>{{ link_to_action('JobsController@deleteCart', 'Delete', ['id' => $index], ['class' => 'btn btn-xs btn-danger']) }}</td>
                     </tr>
@@ -33,7 +25,7 @@
                     <?php $listingsLeft-- ?>
                 @endforeach
                 <tr>
-                    <td colspan="5">Total Cost: ${{ $cost*.01 }}.00</td>
+                    <td colspan="5">Total Cost: ${{ number_format($cost*.01,2)  }}</td>
                 </tr>
             </table>
 
@@ -79,15 +71,6 @@
             </div>
         </div>
 
-    @if(!$user->subscribed())
-            <div class="well col-md-9">
-                <h3>Interested in subscription pricing?</h3>
-                <p>Pay by an automatic monthly subscription and post several jobs at a time. Both convenient and cheaper than individual listings!</p>
-                {{ link_to_action('SubscriptionController@create', 'Subscribe', null, ['class' => 'btn btn-warning']) }}
-            </div>
-        @endif
-
-
     </div>
 
 @stop
@@ -132,4 +115,8 @@
 
 @section('_title')
     Review Your New Job Listing - EriePaJobs
+@stop
+
+@section('main_row')
+    @include('includes.jobs.job_nav')
 @stop

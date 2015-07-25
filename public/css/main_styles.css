@@ -273,6 +273,25 @@ ul {
     margin-right: auto;
     width: 0px; }
 
+.process {
+  height: 100px;
+  width: 100%;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-bottom: 20px; }
+  .process .container {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    border-bottom: dashed thin #26322C; }
+    .process .container ul {
+      list-style: none; }
+      .process .container ul li {
+        color: #d9cb9e;
+        float: left;
+        margin-right: 40px; }
+      .process .container ul .active {
+        color: #26322C; }
+
 .subscription .list-group {
   margin-left: auto;
   margin-right: auto;

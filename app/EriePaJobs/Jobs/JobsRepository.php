@@ -57,13 +57,19 @@ class JobsRepository {
     public function getCostFromDescriptionLength($description)
     {
         $noSpaces = str_replace(' ', '', $description);
+        $reformattedCostPerCharacter = Config::get('billing.reader.costPerCharacter')*100;
+        $reformattedBaseCost = Config::get('billing.reader.baseCost')*100;
 
-        if(strlen($noSpaces) > Config::get('billing.reader.freeCharacters'))
+        $additionalCharacters = strlen($noSpaces) - Config::get('billing.reader.freeCharacters');
+
+        if($additionalCharacters && $additionalCharacters > 0)
         {
-            return $cost = (strlen($noSpaces)*Config::get('billing.reader.costPerCharacter'))*100;
+            $additionalCost = $additionalCharacters * $reformattedCostPerCharacter;
+
+            return $cost = $additionalCost + $reformattedBaseCost;
         }
 
-        return Config::get('billing.reader.baseCost')*100;
+        return $reformattedBaseCost;
     }
 
     /**
@@ -435,8 +441,9 @@ class JobsRepository {
         $totalCost = 0;
         foreach($cart as $package)
         {
-            $cost = $this->getCostFromDescriptionLength($package['reader']->description);
-            $totalCost += $cost;
+//            $cost = $this->getCostFromDescriptionLength($package['reader']->description);
+
+            $totalCost += $package['cost'];
         }
         return $totalCost;
     }

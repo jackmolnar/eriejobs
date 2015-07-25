@@ -4,7 +4,7 @@
 
 <div class="jobs">
 
-    <h1 style="display: block">Review Your Listing</h1>
+    <h1 style="display: block">Review Your EriePaJobs Listing</h1>
 
     <div class="well col-md-9 ">
         <div class="row">
@@ -118,4 +118,8 @@
 
 @section('_title')
 Review Your New Job Listing - EriePaJobs
+@stop
+
+@section('main_row')
+    @include('includes.jobs.job_nav')
 @stop

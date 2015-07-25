@@ -63,8 +63,8 @@
                 <h4>Additional Cost: @{{ additionalCost | currency }}</h4>
                 <h4>Total Cost: @{{ totalCost | currency }}</h4>
                 <input type="hidden" value="{{ Config::get('billing.reader.costPerCharacter') }}" v-model="costPerCharacter"/>
-                <input type="hidden" value="{{ Config::get('billing.reader.baseCost') }}" v-model="costPerCharacter"/>
-                <input type="hidden" value="{{ Config::get('billing.reader.freeCharacters') }}" v-model="costPerCharacter"/>
+                <input type="hidden" value="{{ Config::get('billing.reader.baseCost') }}" v-model="baseCost"/>
+                <input type="hidden" value="{{ Config::get('billing.reader.freeCharacters') }}" v-model="freeCharacters"/>
                 <hr/>
             </div>
             <ul>
@@ -90,14 +90,13 @@
 
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.7/vue.min.js"></script>
-
     <script src="/js/app.js"></script>
-
-
-
-
 @stop
 
 @section('_title')
     Create New Job Listing - EriePaJobs
+@stop
+
+@section('main_row')
+    @include('includes.jobs.job_nav')
 @stop

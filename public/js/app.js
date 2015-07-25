@@ -26,11 +26,14 @@ new Vue({
             withoutSpace = this.description.replace(/ /g,"");
             this.characterCount = withoutSpace.length;
 
+
             if(this.characterCount > this.freeCharacters)
             {
-                additionalCharacters = this.characterCount - this.freeCharacters;
+                var additionalCharacters = this.characterCount - this.freeCharacters;
+
                 this.additionalCost = additionalCharacters*this.costPerCharacter;
-                this.totalCost = this.baseCost + this.additionalCost;
+
+                this.totalCost = parseInt(this.baseCost) + this.additionalCost;
             } else {
                 this.additionalCost = 0;
                 this.totalCost = this.baseCost;

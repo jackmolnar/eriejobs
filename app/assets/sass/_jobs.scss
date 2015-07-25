@@ -163,9 +163,32 @@
       margin-right: auto;
       width: 0px;
     }
-    .highlight{
-//      background-color: $light_green;
+  }
+}
+
+.process {
+
+  height: 100px;
+  width: 100%;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-bottom: 20px;
+
+  .container{
+    padding-top: 40px;
+    padding-bottom: 20px;
+    border-bottom: dashed thin $epj_green;
+
+    ul{
+      list-style: none;
+      li{
+        color: $pale_yellow;
+        float: left;
+        margin-right: 40px;
+      }
+      .active{
+        color: $epj_green;
+      }
     }
   }
-
 }
