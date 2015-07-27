@@ -26,7 +26,7 @@ class PostNewReaderJobCommand extends BaseCommand {
         $job->title             = $this->input['title'];
         $job->description       = $this->input['description'];
         $job->reader_date_id    = $this->input['pubDate'];
-        $job->reader_heading_id = $this->input['heading'];
+//        $job->reader_heading_id = $this->input['heading'];
 
         $this->jobRepo->storeReaderJob($job);
         return $job;

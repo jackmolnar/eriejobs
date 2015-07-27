@@ -30,7 +30,7 @@ class JobsController extends \BaseController {
      * @var UserRepository
      */
     private $userRepo;
-    
+
     function __construct(
         JobsRepository $jobRepo,
         PaymentRepository $paymentRepo,
@@ -116,7 +116,12 @@ class JobsController extends \BaseController {
 
         $readerHeadings = Reader_Heading::dropdownarray();
 
-        $pendingJob = $this->jobRepo->getPendingEpjJob();
+        if(Session::has('pending_reader'))
+        {
+            $pendingJob = $this->jobRepo->getPendingReaderJob();
+        } else {
+            $pendingJob = $this->jobRepo->getPendingEpjJob();
+        }
 
         return View::make('jobs.create_reader', [
             'pendingJob' => $pendingJob,
@@ -207,9 +212,8 @@ class JobsController extends \BaseController {
     {
         $pending_reader_job = $this->jobRepo->getPendingReaderJob();
         $pubDate = $pending_reader_job->pubDate->pub_date->toFormattedDateString();
-        $heading = $pending_reader_job->heading->heading;
 
-        return View::make('jobs.review_reader', ['pending_reader_job' => $pending_reader_job, 'pubDate' => $pubDate, 'heading' => $heading]);
+        return View::make('jobs.review_reader', ['pending_reader_job' => $pending_reader_job, 'pubDate' => $pubDate]);
     }
 
     /**
@@ -269,7 +273,7 @@ class JobsController extends \BaseController {
 
         if(!$result['status'])
         {
-            return Redirect::back()->with('error', $result['message']);
+            return Redirect::back()->withErrors($result['message']);
         }
         return Redirect::action('JobsController@thankyou');
     }

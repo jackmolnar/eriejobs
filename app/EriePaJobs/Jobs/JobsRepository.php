@@ -441,8 +441,6 @@ class JobsRepository {
         $totalCost = 0;
         foreach($cart as $package)
         {
-//            $cost = $this->getCostFromDescriptionLength($package['reader']->description);
-
             $totalCost += $package['cost'];
         }
         return $totalCost;

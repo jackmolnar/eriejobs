@@ -62,10 +62,12 @@
             </div>
         </div>
 
-        <div class="col-md-3">
-            <div class="well well-primary">
+        <div class="col-md-3 job_info">
+            <div class="well well-primary" data-spy="affix" data-offset-top="10" data-offset-bottom="300">
                 <ul>
-                    <li>Our payment processing is secure! We use 256 bit encryption and process all payments through one of the most secure payment gateways in the world, {{ link_to('https://stripe.com/', 'Stripe', ['target' => '_blank']) }}</li>
+                    <li><img src="{{ URL::asset('images/RapidSSL_SEAL-90x50.gif') }}" /><br/><br/>
+                        <img src="{{ URL::asset('images/stripe.png') }}" /><br/><br/>
+                        EriePaJobs is secure! We use 256 bit encryption and process all payments through one of the most secure payment gateways in the world, {{ link_to('https://stripe.com/', 'Stripe', ['target' => '_blank']) }}</li>
                     <li>If you have questions or problems, feel free to {{ link_to_action('PagesController@getContact', 'contact us') }}</li>
                 </ul>
             </div>

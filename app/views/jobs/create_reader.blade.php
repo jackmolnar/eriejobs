@@ -5,7 +5,7 @@
 <div class="job_create">
 
     <div class="col-md-9">
-    <h1>Create ErieReader Listing</h1>
+    <h1>Create Erie Reader Ad</h1>
     <hr/>
 
 {{ Form::open(['action' => 'JobsController@readerStore']) }}
@@ -42,12 +42,12 @@
         {{ Form::label('Available Publish Dates') }}
         {{ Form::select('pubDate', $readerPubDates, null, ['class' => 'form-control']) }}
 
-        {{ Form::label('Select Heading') }}
-        {{ Form::select('heading', $readerHeadings, null, ['class' => 'form-control']) }}
+        {{--{{ Form::label('Select Heading') }}--}}
+        {{--{{ Form::select('heading', $readerHeadings, null, ['class' => 'form-control']) }}--}}
 
         <hr/>
-
-        {{ Form::submit('Continue', ['class' => 'btn btn-primary']) }}
+        {{ link_to_action('JobsController@review', '< Review EriePaJobs Listing', null, ['class' => 'btn btn-default']) }}
+        {{ Form::submit('Review Erie Reader Ad >', ['class' => 'btn btn-primary', 'style' => 'float:right']) }}
 
 {{ Form::close() }}
 
@@ -55,9 +55,11 @@
 
     <div class="col-md-3 job_info">
 
-        <div class="well well-primary" data-spy="affix" data-offset-top="10" data-offset-bottom="300">
+        <div class="well well-primary">
             <div>
-                You get up to 500 characters included in your ad. Additional characters are an additional @{{ costPerCharacter | currency }} per character.
+                All ads are in column ads. If you would like a display ad that you designed or if you would like us to design one, please {{ link_to_action('PagesController@getContact', 'contact us') }}. We can accommodate custom requests.
+                <hr/>
+                You get up to 500 characters included in your ad. Additional characters are @{{ costPerCharacter | currency }} per character.
                 <hr/>
                 <h4>Character Count: @{{ characterCount }}</h4>
                 <h4>Additional Cost: @{{ additionalCost | currency }}</h4>
@@ -68,17 +70,10 @@
                 <hr/>
             </div>
             <ul>
-                {{-- Only return guarantee if setup is 1 --}}
-                @if(Session::get('pending_job.setup') == 1)
-                    <li id="guarantee"><img src="{{ url('images/guarantee.png') }}" alt="5 Application Guarantee" style="max-width: 200px"/><br/><br/>
-                        We guarantee our listings! If you don't receive 3 applications when your listing expires, we'll refund you!
-                        View the {{ link_to_action('PagesController@getTermsOfGuarantee', 'full terms here.', null, ['target' => '_blank']) }}
-                    </li>
-                @endif
-                <li><img src="{{ URL::asset('images/RapidSSL_SEAL-90x50.gif') }}" /><br/><br/>
-                    EriePaJobs is secure! We use 256 bit encryption and process all payments through one of the most secure payment gateways in the world, {{ link_to('https://stripe.com/', 'Stripe', ['target' => '_blank']) }}</li>
-
-                <li>Be sure that the email address or web link that you wish to direct applicants to are valid, or you may not receive applications!</li>
+                <li>
+                    <img src="{{ URL::asset('images/RapidSSL_SEAL-90x50.gif') }}" /><br/><br/>
+                    <img src="{{ URL::asset('images/stripe.png') }}" /><br/><br/>
+                </li>
                 <li>If you have questions or problems, feel free to {{ link_to_action('PagesController@getContact', 'contact us') }}</li>
             </ul>
         </div>
