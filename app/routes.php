@@ -20,11 +20,17 @@ Route::get('/send-restore-user', 'AuthController@sendRestoreUser');
  */
 Route::resource('jobs', 'JobsController');
     //create
+//Route::get('jobs/create/setup', 'JobsController@setup');
+//Route::post('jobs/create/setup', 'JobsController@storeSetup');
 Route::get('jobs/create/review', 'JobsController@review');
 Route::post('jobs/create/payment', 'JobsController@payment');
 Route::get('jobs/create/cart', 'JobsController@cart');
 Route::get('jobs/create/cart-delete', 'JobsController@deleteCart');
 Route::get('jobs/create/thankyou', 'JobsController@thankyou');
+    //reader routes
+Route::get('jobs/create/reader', 'JobsController@readerCreate');
+Route::post('jobs/create/reader', 'JobsController@readerStore');
+Route::get('jobs/create/reader/review', 'JobsController@readerReview');
     //destroy
 Route::get('jobs/destroy_confirm/{jobs}', 'JobsController@destroy_confirm');
     // trashed

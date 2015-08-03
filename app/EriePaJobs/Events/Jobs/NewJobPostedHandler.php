@@ -16,9 +16,10 @@ class NewJobPostedHandler {
      * @param Model $job
      * @param \User $user
      */
-    public function handle(Model $job, \User $user)
+    public function handle($package, \User $user)
     {
-        $job_title = $job->title;
+        // set up confirmation info
+        $job_title = $package['epj']->title;
         $subject = 'Job Listing Confirmation';
         $user_email = $user->email;
         $user_name = $user->first_name.' '.$user->last_name;
@@ -29,7 +30,23 @@ class NewJobPostedHandler {
             $message->to($user_email, $user_name)->subject($subject);
         });
 
+        // set up reader notification to admin
+        $data = [
+            'job_title' => $package['reader']->title,
+            'job_description' => $package['reader']->description,
+            'publish_date' => $package['reader']->pubDate->pub_date->toFormattedDateString()
+        ];
+
+        $subject = 'New Erie Reader Ad';
+        $user_email = \Config::get('mail.administrator.email');
+
+        // send reader ad to admin
+        \Mail::queue('emails.notifications.ErieReaderAd', $data, function($message) use ($user_email, $user_name, $subject)
+        {
+            $message->to($user_email, $user_name)->subject($subject);
+        });
+
         // send sms notifications
-        \Queue::push('EriePaJobs\QueueHandlers\SendNewSMSJobNotifications', ['job_id' => $job->id]);
+        \Queue::push('EriePaJobs\QueueHandlers\SendNewSMSJobNotifications', ['job_id' => $package['epj']->id]);
     }
 }

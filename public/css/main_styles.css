@@ -251,6 +251,47 @@ ul {
     font-size: 14px;
     margin-bottom: 20px; }
 
+.job_setup h2 {
+  font-size: 20px;
+  color: #37636f; }
+.job_setup .option_table {
+  margin-top: 30px; }
+  .job_setup .option_table img {
+    max-width: 150px; }
+  .job_setup .option_table .checkmark {
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url("/images/check.png");
+    width: 25px;
+    height: 23px;
+    display: block; }
+  .job_setup .option_table .heading {
+    text-align: center;
+    width: 25%; }
+  .job_setup .option_table .radio {
+    margin-left: auto;
+    margin-right: auto;
+    width: 0px; }
+
+.process {
+  height: 100px;
+  width: 100%;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-bottom: 20px; }
+  .process .container {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    border-bottom: dashed thin #26322C; }
+    .process .container ul {
+      list-style: none; }
+      .process .container ul li {
+        color: #d9cb9e;
+        float: left;
+        margin-right: 40px; }
+      .process .container ul .active {
+        color: #26322C; }
+
 .subscription .list-group {
   margin-left: auto;
   margin-right: auto;

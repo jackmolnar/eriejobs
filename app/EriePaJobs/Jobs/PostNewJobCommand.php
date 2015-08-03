@@ -9,7 +9,6 @@
 namespace EriePaJobs\Jobs;
 
 use EriePaJobs\BaseCommand;
-use Auth;
 use EriePaJobs\Payments\PaymentRepository;
 use EriePaJobs\Users\UserRepository;
 use Event;
@@ -80,7 +79,7 @@ class PostNewJobCommand extends BaseCommand{
         $job->category_id       = $this->input['category'];
         $job->active            = 1;
 
-        Session::put('pending_job', $job);
+        $this->jobsRepo->storeEpjJob($job);
 
         return $job;
     }
@@ -92,10 +91,8 @@ class PostNewJobCommand extends BaseCommand{
     {
         $result['status'] = true;
 
-        $listingsLeft = $this->userRepo->remainingSubscribedJobs();
-
         // if not free and not admin, bill
-        if(!Config::get('billing.free') && !$listingsLeft && $this->user->role->title != 'Administrator') {
+        if(!Config::get('billing.free') && $this->user->role->title != 'Administrator') {
             $result = $this->paymentRepo->bill($this->input);
         }
 
@@ -106,21 +103,24 @@ class PostNewJobCommand extends BaseCommand{
             $cart = Session::has('cart') ? Session::pull('cart') : Session::pull('pending_job');
 
             // save each job in the cart
-            foreach($cart as $job)
+            foreach($cart as $package)
             {
                 // set the category id and remove the attribute from the job object
                 // so that the job object can be saved (category id is not a field)
-                $category_id = $job->category_id;
-                unset($job->category_id);
+                $category_id = $package['epj']->category_id;
+                unset($package['epj']->category_id);
 
-                //save the job
-                $job->save();
+                //save the epj job
+                $package['epj']->save();
+
+                //save the reader job
+                $package['reader']->save();
 
                 //sync the categories
-                $job->categories()->sync([$category_id]);
+                $package['epj']->categories()->sync([$category_id]);
 
-                //fire the create event
-                Event::fire('job.create', array($job, $this->user));
+                //fire the job create event
+                Event::fire('job.create', array($package, $this->user));
             }
         }
 

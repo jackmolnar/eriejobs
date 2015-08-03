@@ -132,3 +132,63 @@
     }
   }
 }
+
+.job_setup{
+  h2{
+    font-size: 20px;
+    color: $blue_green;
+  }
+
+  .option_table{
+    margin-top: 30px;
+
+    img{
+      max-width: 150px;
+    }
+
+    .checkmark{
+      margin-left: auto;
+      margin-right: auto;
+      background-image: url("/images/check.png");
+      width: 25px;
+      height: 23px;
+      display: block;
+    }
+    .heading{
+      text-align: center;
+      width: 25%;
+    }
+    .radio{
+      margin-left: auto;
+      margin-right: auto;
+      width: 0px;
+    }
+  }
+}
+
+.process {
+
+  height: 100px;
+  width: 100%;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-bottom: 20px;
+
+  .container{
+    padding-top: 40px;
+    padding-bottom: 20px;
+    border-bottom: dashed thin $epj_green;
+
+    ul{
+      list-style: none;
+      li{
+        color: $pale_yellow;
+        float: left;
+        margin-right: 40px;
+      }
+      .active{
+        color: $epj_green;
+      }
+    }
+  }
+}

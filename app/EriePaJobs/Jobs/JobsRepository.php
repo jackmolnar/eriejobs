@@ -50,6 +50,29 @@ class JobsRepository {
     }
 
     /**
+     * Get cost based on job description of reader job
+     * @param $description
+     * @return int|mixed
+     */
+    public function getCostFromDescriptionLength($description)
+    {
+        $noSpaces = str_replace(' ', '', $description);
+        $reformattedCostPerCharacter = Config::get('billing.reader.costPerCharacter')*100;
+        $reformattedBaseCost = Config::get('billing.reader.baseCost')*100;
+
+        $additionalCharacters = strlen($noSpaces) - Config::get('billing.reader.freeCharacters');
+
+        if($additionalCharacters && $additionalCharacters > 0)
+        {
+            $additionalCost = $additionalCharacters * $reformattedCostPerCharacter;
+
+            return $cost = $additionalCost + $reformattedBaseCost;
+        }
+
+        return $reformattedBaseCost;
+    }
+
+    /**
      * Get all Jobs
      * If stored in cache, return all jobs from there. Else fetch them
      * @return \ElastiquentCollection
@@ -272,18 +295,66 @@ class JobsRepository {
     }
 
     /**
+     * Get pending EPJ job from session
+     * @return null
+     */
+    public function getPendingEpjJob()
+    {
+        if(Session::has('pending_epj'))
+        {
+            $pending_job = Session::get('pending_epj');
+            return $pending_job;
+        }
+
+        return null;
+    }
+
+    /**
+     * Get pending reader job from the session
+     * @return mixed|null
+     */
+    public function getPendingReaderJob()
+    {
+        if(Session::has('pending_reader'))
+        {
+            $pending_job = Session::get('pending_reader');
+            return $pending_job;
+        }
+
+        return null;
+    }
+
+    /**
+     * Store EPJ Job in the session
+     * @param $job
+     */
+    public function storeEpjJob($job)
+    {
+        Session::put('pending_epj', $job);
+    }
+
+    /**
+     * Store Reader job in the session
+     * @param $job
+     */
+    public function storeReaderJob($job)
+    {
+        Session::put('pending_reader', $job);
+    }
+
+    /**
      * Put job in cart
      * @param $job
      */
-    public function putJobInCart($job)
+    public function putJobInCart($package)
     {
         if(Session::has('cart'))
         {
             $cart = Session::get('cart');
-            array_push($cart, $job);
+            array_push($cart, $package);
         } else {
             $cart = array();
-            array_push($cart, $job);
+            array_push($cart, $package);
         }
         Session::put('cart', $cart);
     }
@@ -303,6 +374,20 @@ class JobsRepository {
     }
 
     /**
+     * Remove package from cart
+     * @param $packageId
+     */
+    public function removePackageFromCart($packageId)
+    {
+        $cart = Session::get('cart');
+        foreach($cart as $id => $package)
+        {
+            if($id == $packageId) unset($cart[$id]);
+        }
+        Session::put('cart', $cart);
+    }
+
+    /**
      * Retrieve job from cart
      * @param $jobId
      * @return null
@@ -315,6 +400,16 @@ class JobsRepository {
             $job = ($id == $jobId) ? $job : null;
         }
         return $job;
+    }
+
+    public function getPackageFromCart($packageId)
+    {
+        $cart = Session::get('cart');
+        foreach($cart as $id => $package)
+        {
+            $package = ($id == $packageId) ? $package : null;
+        }
+        return $package;
     }
 
     /**
@@ -344,15 +439,9 @@ class JobsRepository {
     public function calculateCost($cart, $listingsLeft = 0)
     {
         $totalCost = 0;
-        foreach($cart as $job)
+        foreach($cart as $package)
         {
-            if($listingsLeft <= 0)
-            {
-                $cost = $this->getCostFromExpireDate($job->expire);
-                $totalCost += $cost;
-            }
-            $totalCost += 0;
-            $listingsLeft--;
+            $totalCost += $package['cost'];
         }
         return $totalCost;
     }

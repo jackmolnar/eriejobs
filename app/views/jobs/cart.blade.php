@@ -7,27 +7,17 @@
         <h1 style="display: block"><i class="fa fa-shopping-cart"></i> Cart</h1>
 
         <div class="well col-md-9 ">
-            @if($user->subscribed())
-                <h3 style="margin-bottom: 30px">Available Subscription Listings: {{ $listingsLeft }}</h3>
-            @endif
-
             <table class="table">
                 <tr>
                     <th>Listing</th>
-                    <th>Expire Date</th>
                     <th>Cost</th>
                     <th>Edit Job</th>
                     <th>Remove from Cart</th>
                 </tr>
-                @foreach($cart as $index => $job)
+                @foreach($cart as $index => $package)
                     <tr>
-                        <td>{{{ $job->title }}}</td>
-                        <td>{{{ $job->expire->format( 'm-d-Y') }}}</td>
-                        @if($listingsLeft > 0)
-                            <td>${{{ 0 * .01 }}}</td>
-                        @else
-                            <td>${{{ Config::get('billing')['listings'][\Carbon\Carbon::today()->diffInDays($job->expire)] * .01 }}}</td>
-                        @endif
+                        <td>Recruitment Package - Online and Print</td>
+                        <td>${{{ number_format($package['cost']*.01,1) }}}0</td>
                         <td>{{ link_to_action('JobsController@create', 'Edit', ['id' => $index], ['class' => 'btn btn-xs btn-warning']) }}</td>
                         <td>{{ link_to_action('JobsController@deleteCart', 'Delete', ['id' => $index], ['class' => 'btn btn-xs btn-danger']) }}</td>
                     </tr>
@@ -35,7 +25,7 @@
                     <?php $listingsLeft-- ?>
                 @endforeach
                 <tr>
-                    <td colspan="5">Total Cost: ${{ $cost*.01 }}.00</td>
+                    <td colspan="5">Total Cost: ${{ number_format($cost*.01,2)  }}</td>
                 </tr>
             </table>
 
@@ -72,23 +62,16 @@
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-3 job_info">
             <div class="well well-primary">
                 <ul>
-                    <li>Our payment processing is secure! We use 256 bit encryption and process all payments through one of the most secure payment gateways in the world, {{ link_to('https://stripe.com/', 'Stripe', ['target' => '_blank']) }}</li>
+                    <li><img src="{{ URL::asset('images/RapidSSL_SEAL-90x50.gif') }}" /><br/><br/>
+                        <img src="{{ URL::asset('images/stripe.png') }}" /><br/><br/>
+                        EriePaJobs is secure! We use 256 bit encryption and process all payments through one of the most secure payment gateways in the world, {{ link_to('https://stripe.com/', 'Stripe', ['target' => '_blank']) }}</li>
                     <li>If you have questions or problems, feel free to {{ link_to_action('PagesController@getContact', 'contact us') }}</li>
                 </ul>
             </div>
         </div>
-
-    @if(!$user->subscribed())
-            <div class="well col-md-9">
-                <h3>Interested in subscription pricing?</h3>
-                <p>Pay by an automatic monthly subscription and post several jobs at a time. Both convenient and cheaper than individual listings!</p>
-                {{ link_to_action('SubscriptionController@create', 'Subscribe', null, ['class' => 'btn btn-warning']) }}
-            </div>
-        @endif
-
 
     </div>
 
@@ -134,4 +117,8 @@
 
 @section('_title')
     Review Your New Job Listing - EriePaJobs
+@stop
+
+@section('main_row')
+    @include('includes.jobs.job_nav')
 @stop

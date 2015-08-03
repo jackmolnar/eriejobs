@@ -3,6 +3,8 @@
 use EriePaJobs\Categories\CategoryRepository;
 use EriePaJobs\Jobs\DeleteJobCommand;
 use EriePaJobs\Jobs\JobsRepository;
+use EriePaJobs\Jobs\PostNewReaderJobCommand;
+use EriePaJobs\Jobs\PostNewReaderJobValidator;
 use EriePaJobs\Payments\PaymentRepository;
 use EriePaJobs\Jobs\PostNewJobValidator;
 use EriePaJobs\Jobs\PostNewJobCommand;
@@ -69,6 +71,9 @@ class JobsController extends \BaseController {
 
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function index()
     {
         return Redirect::action('SearchController@index');
@@ -85,24 +90,46 @@ class JobsController extends \BaseController {
         // if there is a listing pending or edit from cart, pipe into the view
         if(Input::has('id') && Session::has('cart'))
         {
-            $job = $this->jobRepo->getJobFromCart(Input::get('id'));
-            Session::put('pending_job', $job);
+            $package = $this->jobRepo->getPackageFromCart(Input::get('id'));
+
+            $this->jobRepo->storeEpjJob($package['epj']);
+            $this->jobRepo->storeReaderJob($package['reader']);
 
             // keeps clearing cart
-            $this->jobRepo->removeFromCart(Input::get('id'));
+            $this->jobRepo->removePackageFromCart(Input::get('id'));
         }
 
-
-        if(Session::has('pending_job'))
+        if(Session::has('pending_epj'))
         {
-            return View::make('jobs.create', [
-                'job' => Session::get('pending_job'),
-            ]);
+            return View::make('jobs.create', ['job' => $this->jobRepo->getPendingEpjJob() ]);
         }
 
-		return View::make('jobs.create', [
-        ]);
+		return View::make('jobs.create');
 	}
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function readerCreate()
+    {
+        $readerPubDates = ReaderDate::dropdownarray();
+
+        $readerHeadings = Reader_Heading::dropdownarray();
+
+        if(Session::has('pending_reader'))
+        {
+            $pendingJob = $this->jobRepo->getPendingReaderJob();
+        } else {
+            $pendingJob = $this->jobRepo->getPendingEpjJob();
+        }
+
+        return View::make('jobs.create_reader', [
+            'pendingJob' => $pendingJob,
+            'readerPubDates' => $readerPubDates,
+            'readerHeadings' => $readerHeadings
+        ]);
+    }
+
 
     /**
      * Repost Trashed Job
@@ -137,8 +164,30 @@ class JobsController extends \BaseController {
             $newJobCommand->execute('create');
             return Redirect::action('JobsController@review');
         }
+
         return Redirect::back()->withInput()->withErrors($valid['errors']);
 	}
+
+    /**
+     * Store the reader ad in the session
+     *
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
+    public function readerStore()
+    {
+        $newReaderJobValidator = new PostNewReaderJobValidator(Input::all());
+        $valid = $newReaderJobValidator->execute();
+
+        if($valid['status'])
+        {
+            $newReaderJobCommand = new PostNewReaderJobCommand(Input::all());
+            $newReaderJobCommand->execute();
+            return Redirect::action('JobsController@readerReview');
+        }
+
+        return Redirect::back()->withInput()->withErrors($valid['errors']);
+    }
+
 
     /**
      * Review job listing
@@ -147,11 +196,24 @@ class JobsController extends \BaseController {
      */
     public function review()
     {
-        $pending_job = Session::get('pending_job');
+        $pending_job = $this->jobRepo->getPendingEpjJob();
         $cost = $this->jobRepo->getCostFromExpireDate($pending_job->expire);
         $length = $this->jobRepo->getLengthFromExpireDate($pending_job->expire)." Day Job Listing";
 
         return View::make('jobs.review', ['pending_job' => $pending_job, 'cost' => $cost, 'length' => $length]);
+    }
+
+    /**
+     * Review reader job listing
+     *
+     * @return \Illuminate\View\View
+     */
+    public function readerReview()
+    {
+        $pending_reader_job = $this->jobRepo->getPendingReaderJob();
+        $pubDate = $pending_reader_job->pubDate->pub_date->toFormattedDateString();
+
+        return View::make('jobs.review_reader', ['pending_reader_job' => $pending_reader_job, 'pubDate' => $pubDate]);
     }
 
     /**
@@ -160,23 +222,26 @@ class JobsController extends \BaseController {
      */
     public function cart()
     {
-        // put pending job in cart
-        if(Session::has('pending_job'))
+        // package pending jobs with cost, put in cart
+        if(Session::has('pending_epj') && Session::has('pending_reader'))
         {
-            $pending_job = Session::pull('pending_job');
-            $this->jobRepo->putJobInCart($pending_job);
+            $package = [
+                'cost' => $this->jobRepo->getCostFromDescriptionLength(Session::get('pending_reader')->description),
+                'epj' => Session::pull('pending_epj'),
+                'reader' => Session::pull('pending_reader'),
+            ];
+
+            $this->jobRepo->putJobInCart($package);
         }
 
-        // if user subscribe get remaining listings
-        $listingsLeft = $this->userRepo->remainingSubscribedJobs();
-
-        // mark jobs in cart as subscribed if available
-        $this->jobRepo->markSubscribedJobs($listingsLeft);
-
+        try {
+            $cost = $this->jobRepo->calculateCost(Session::get('cart'));
+        } catch (Exception $e) {
+            return Redirect::action('ProfilesController@index')->withErrors($e->getMessage());
+        }
         // calculate total cost
-        $cost = $this->jobRepo->calculateCost(Session::get('cart'), $listingsLeft);
 
-        return View::make('jobs.cart', ['cart' => Session::get('cart'), 'cost' => $cost, 'listingsLeft' => $listingsLeft]);
+        return View::make('jobs.cart', ['cart' => Session::get('cart'), 'cost' => $cost]);
     }
 
     /**
@@ -208,7 +273,7 @@ class JobsController extends \BaseController {
 
         if(!$result['status'])
         {
-            return Redirect::back()->with('error', $result['message']);
+            return Redirect::back()->withErrors($result['message']);
         }
         return Redirect::action('JobsController@thankyou');
     }
