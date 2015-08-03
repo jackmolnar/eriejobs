@@ -120,7 +120,7 @@ class PostNewJobCommand extends BaseCommand{
                 $package['epj']->categories()->sync([$category_id]);
 
                 //fire the job create event
-                Event::fire('job.create', array($package['epj'], $this->user));
+                Event::fire('job.create', array($package, $this->user));
             }
         }
 

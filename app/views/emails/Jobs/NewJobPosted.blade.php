@@ -21,7 +21,10 @@ Your new job listing for
     </h4>
 </p>
 <p>
-has been posted.
+has been posted. You Erie Reader ad will be published in the issue that you chose.
+</p>
+<p>
+    If you have questions or problems, don't hesitate to {{ link_to_action('PagesController@getContact', 'contact us.') }}.
 </p>
 <hr/>
 <p>

@@ -63,7 +63,7 @@
         </div>
 
         <div class="col-md-3 job_info">
-            <div class="well well-primary" data-spy="affix" data-offset-top="10" data-offset-bottom="300">
+            <div class="well well-primary">
                 <ul>
                     <li><img src="{{ URL::asset('images/RapidSSL_SEAL-90x50.gif') }}" /><br/><br/>
                         <img src="{{ URL::asset('images/stripe.png') }}" /><br/><br/>

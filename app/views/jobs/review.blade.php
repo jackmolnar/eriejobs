@@ -73,7 +73,7 @@
         <div class="row">
             {{ Form::open(['action' => 'JobsController@payment', 'method' => 'post']) }}
 
-                {{ link_to_action('JobsController@create', '< Edit Listing', null, ['class' => 'btn btn-warning']) }}
+                {{ link_to_action('JobsController@create', '< Edit EriePaJobs Listing', null, ['class' => 'btn btn-warning']) }}
 
                 @if(!Config::get('billing.free'))
                         {{ link_to_action('JobsController@readerCreate', 'Create Your Erie Reader Ad > ', null, ['class' => 'btn btn-primary']) }}

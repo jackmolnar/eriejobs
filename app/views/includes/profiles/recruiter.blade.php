@@ -5,7 +5,7 @@
 
 </div>
 
-@include('includes.profiles.recruiter_sections.subscription_info')
+{{--@include('includes.profiles.recruiter_sections.subscription_info')--}}
 @include('includes.profiles.recruiter_sections.general_info')
 
 @if(count($user->jobs) > 0)

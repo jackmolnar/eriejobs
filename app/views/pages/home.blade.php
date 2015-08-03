@@ -38,7 +38,7 @@
     <div class="col-md-4">
         <h2>Hiring? Post affordable help wanted ads.</h2>
         <img src="../images/home_image_3.jpg" class="img-responsive" alt="Post job listings in Erie Pa.">
-        <p>EriePaJobs is committed to offering low cost help wanted ads to employers - in fact 40% lower than Monster or LinkedIn. Get your openings in front of area job seekers.
+        <p>EriePaJobs is committed to offering low cost help wanted ads to employers. Recruiting packages include a 30 day online listing and a help wanted ad in the Erie Reader.
             <br/><br/>
            {{ link_to_action('PagesController@hiring', 'Sign Up and Find Your Next Employee', null, ['class' => 'btn btn-primary']) }}
             </p>

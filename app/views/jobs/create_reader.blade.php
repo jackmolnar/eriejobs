@@ -57,7 +57,7 @@
 
         <div class="well well-primary">
             <div>
-                All ads are in column ads. If you would like a display ad that you designed or if you would like us to design one, please {{ link_to_action('PagesController@getContact', 'contact us') }}. We can accommodate custom requests.
+                All ads are in column ads. If you would like to use a display ad that you designed or if you would like us to design one, please {{ link_to_action('PagesController@getContact', 'contact us') }}. We can accommodate custom requests.
                 <hr/>
                 You get up to 500 characters included in your ad. Additional characters are @{{ costPerCharacter | currency }} per character.
                 <hr/>

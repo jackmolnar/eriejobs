@@ -33,7 +33,7 @@
             <div class="row">
                 {{ Form::open(['action' => 'JobsController@payment', 'method' => 'post']) }}
 
-                {{ link_to_action('JobsController@readerCreate', '< Edit Erie Reader Job', null, ['class' => 'btn btn-warning']) }}
+                {{ link_to_action('JobsController@readerCreate', '< Edit Erie Reader Listing', null, ['class' => 'btn btn-warning']) }}
 
                 @if(!Config::get('billing.free'))
                     {{ link_to_action('JobsController@cart', 'Continue to Cart >', null, ['class' => 'btn btn-primary']) }}
