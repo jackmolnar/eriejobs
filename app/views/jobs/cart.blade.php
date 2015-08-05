@@ -116,7 +116,7 @@
 @stop
 
 @section('_title')
-    Review Your New Job Listing - EriePaJobs
+    Checkout - EriePaJobs
 @stop
 
 @section('main_row')

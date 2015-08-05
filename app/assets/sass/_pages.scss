@@ -48,18 +48,18 @@
 .hiring{
 
   .row{
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-
-  .guarantee{
-    background-color: $light_green;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
 
     @media screen and (min-width: $middle) {
-      padding-top: 60px;
-      padding-bottom: 60px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+
+    .accent{
+      color: $orange;
     }
 
     img{
@@ -80,6 +80,23 @@
       padding-top: 20px;
       border-top: dashed $orange thin;
     }
+
+    h3{
+      line-height: 36px;
+      font-weight: bold;
+    }
+  }
+
+
+  .general, .indeed, .social{
+    background-color: $light_green;
+  }
+
+  .signup .row{
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .pricing {

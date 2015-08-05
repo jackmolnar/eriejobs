@@ -5,39 +5,106 @@
     {{-- Main row --}}
     <div class="hiring_main_row">
         <div class="container">
-            <h2>Looking for the right employee?</h2>
-            <h1>You've come to the right place.</h1>
+            <h2>The most affordable recruitment package</h2>
+            <h1>in Erie and Northwest Pennsylvania.</h1>
         </div>
     </div>
 
     <div class="hiring">
 
-        {{-- Signup row --}}
-        <div class="signup ">
+        <div class="row general">
             <div class="container">
-                <div class="col-md-6 left_column">
-                    <h1 class="hiring_headline"><span class="accent">The most affordable recruitment package in Northwest Pennsylvania.</span></h1>
-                    <hr/>
+                <div class="col-md-6">
+                    <h3>Now you can recruit in Erie <span class="accent">more affordably than ever before.</span>
+                        Save money using EriePaJobs and the Erie Reader to find your next rockstar employee.</h3>
                     <p>
-                        EriePaJobs is the only employment website exclusive to the Erie and Northwestern Pennsylvania region. We are dedicated to helping employers find the candidates they need to fill their open job opportunities.
+                         Our recruitment packages start at just $250 - and include a 30 day online listing on EriePaJobs and a help wanted ad published in the Erie Reader. This truly is the greatest value for your recruitment dollar!
                     </p>
-                    <ul>
-                        <li>
-                            All recruiting packages include a 30 day online listing on EriePaJobs and a help wanted ad in the Erie Reader.
-                            <img src="http://www.eriereader.com/uploads/layout/erie-reader-logo-2014.png" alt="Erie Reader" style="max-width: 300px; margin-top: 15px; margin-bottom: 15px; display: block; margin-left: auto; margin-right: auto;" />
-                            Your Erie Reader ad will appear in all 12,000 copies that are distributed in over 275 high traffic locations throughout Erie
-                        </li>
-                        <li>EriePaJobs advertises throughout the region to make sure your listings get the visibility you require</li>
-                        <li>All listings posted on the site are shared on our Facebook, Twitter, and LinkedIn pages several times</li>
-                        <li>Listings are emailed and text messaged to nearly 1500 subscribed job seekers in Erie</li>
-                        <li>Your Erie Reader ad will appear in all 12,000 copies that are distributed in over 275 high traffic locations throughout Erie.</li>
-                        <li>
-                            Help wanted ads are also promoted on Indeed.com for more exposure<br/>
-                            <img src="{{ url('images/indeed.png') }}" alt="Indeed Erie Pa" style="margin-top: 15px;   display: block; margin-left: auto; margin-right: auto;"/>
-                        </li>
-                    </ul>
+                    <p>
+                        <a href="#signup" class="btn btn-primary btn-lg">Signup Now</a>
+                    </p>
                 </div>
                 <div class="col-md-6">
+                    <img src="{{ asset('images/general_icon.png') }}" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row reader">
+            <div class="container">
+                <div class="col-md-6">
+                    <img src="{{ asset('images/reader_icon.png') }}" />
+                </div>
+                <div class="col-md-6">
+                    <h3>Place help wanted ads in the <span class="accent">Erie Reader</span>  - exclusively through EriePaJobs.</h3>
+                    <p>
+                        All recruitment packages include a print ad to run in the Erie Reader, on a publish date of your choosing. The Erie Reader publishes every other Wednesday, and distributes 12,000 copies to 275 high traffic locations in Erie, Girard, Northeast, and Edinboro.
+                    </p>
+                    <img src="{{ asset('images/eriereader_logo.png') }}">
+                </div>
+            </div>
+        </div>
+
+        <div class="row indeed">
+            <div class="container">
+                <div class="col-md-6">
+                    <h3>Get your online listing not just posted - but <span class="accent">promoted on national employment website Indeed</span> - completely free.</h3>
+                    <p>
+                        All EriePaJobs listing are promoted on Indeed. What does that mean? We invest our own money to ensure your listings get premium placement within Indeed search results, driving more applicants to your listing.
+                    </p>
+                    <img src="{{ asset('images/indeed.png') }}">
+                </div>
+                <div class="col-md-6">
+                    <img src="{{ asset('images/indeed_promoted_listing_icon.png') }}" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row email">
+            <div class="container">
+                <div class="col-md-6">
+                    <img src="{{ asset('images/email_icon.png') }}" />
+                </div>
+                <div class="col-md-6">
+                    <h3>Your listings get <span class="accent">emailed directly to job seekers</span> in Northwest Pa.</h3>
+                    <p>
+                        All EriePaJobs listings are emailed directly to nearly 1500 job seekers who have registered with our website. Your listings get delivered directly to the audience who most want to see your help wanted ads.
+                    </p>
+                    <p>
+                        <a href="#signup" class="btn btn-primary btn-lg">Signup Now</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row social">
+            <div class="container">
+                <div class="col-md-6">
+                    <h3>Listings get shared on our social accounts and <span class="accent">made into ads for more visibility.</span></h3>
+                    <p>
+                        Your EriePaJobs listing is shared multiple times on all our social accounts. Often shared listings get reshared with job seekers, further pushing your available opportunities in social networks.
+                    </p>
+                    <p>
+                        In addition most listing are made into Facebook ads. We invest our own money in making sure your ads get seen and clicked on in Facebook.
+                    </p>
+                    <p>
+                        <a href="#signup" class="btn btn-primary btn-lg">Signup Now</a>
+                    </p>
+                </div>
+
+                <div class="col-md-6">
+                    <img src="{{ asset('images/social_icon.png') }}" />
+                </div>
+                {{-- offset to compensate for sticky nav --}}
+                <a name="signup"></a>
+
+            </div>
+        </div>
+
+        {{-- Signup row --}}
+        <div class="row signup">
+            <div class="container">
+                <div class="col-md-6 col-md-offset-3">
                     <div class="well">
                         <h2>Signup and Start Recruiting</h2>
                         <hr/>
@@ -71,40 +138,6 @@
                 </div>
             </div>
         </div>
-
-        {{-- erie reader row --}}
-
-        {{--<div class="row pricing">--}}
-            {{--<div class="container">--}}
-                {{--<div class="col-md-12"><h2>Pricing</h2></div>--}}
-                {{--<div class="col-md-6">--}}
-                    {{--<div class="price_box">--}}
-                        {{--<h3>30 Day Listing<br/>--}}
-                            {{--Just $119--}}
-                        {{--</h3>--}}
-                        {{--<ul>--}}
-                            {{--<li>Cheaper Than Monster and LinkedIn</li>--}}
-                            {{--<li>Listings Also Promoted on Indeed.com</li>--}}
-                            {{--<li>Emailed and Text Messaged to Subscribers</li>--}}
-                            {{--<li>3 Application Guarantee</li>--}}
-                        {{--</ul>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-md-6">--}}
-                    {{--<div class="price_box">--}}
-                        {{--<h3>60 Day Listing<br/>--}}
-                            {{--Just $149</h3>--}}
-                        {{--<ul>--}}
-                            {{--<li>Cheaper Than Monster and LinkedIn</li>--}}
-                            {{--<li>Listings Also Promoted on Indeed.com</li>--}}
-                            {{--<li>Emailed and Text Messaged to Subscribers</li>--}}
-                            {{--<li>3 Application Guarantee</li>--}}
-                        {{--</ul>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-
     </div>
 
 @stop

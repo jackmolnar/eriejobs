@@ -2175,30 +2175,40 @@ ul {
           margin-top: 13%; } }
 
 .hiring .row {
-  margin-left: 0px;
-  margin-right: 0px; }
-.hiring .guarantee {
-  background-color: #d7dfd2;
-  padding-top: 30px;
-  padding-bottom: 30px; }
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 20px;
+  padding-bottom: 20px; }
   @media screen and (min-width: 992px) {
-    .hiring .guarantee {
-      padding-top: 60px;
-      padding-bottom: 60px; } }
-  .hiring .guarantee img {
+    .hiring .row {
+      padding-top: 50px;
+      padding-bottom: 50px; } }
+  .hiring .row .accent {
+    color: #dc3522; }
+  .hiring .row img {
     display: block;
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 20px;
     max-width: 320px; }
     @media screen and (min-width: 992px) {
-      .hiring .guarantee img {
+      .hiring .row img {
         margin-bottom: 0px;
         max-width: 500px; } }
-  .hiring .guarantee p {
+  .hiring .row p {
     margin-top: 20px;
     padding-top: 20px;
     border-top: dashed #dc3522 thin; }
+  .hiring .row h3 {
+    line-height: 36px;
+    font-weight: bold; }
+.hiring .general, .hiring .indeed, .hiring .social {
+  background-color: #d7dfd2; }
+.hiring .signup .row {
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 0;
+  padding-bottom: 0; }
 .hiring .pricing {
   padding-top: 40px;
   padding-bottom: 60px;
