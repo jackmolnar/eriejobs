@@ -39,6 +39,8 @@
                     <h3>Place help wanted ads in the <span class="accent">Erie Reader</span>  - exclusively through EriePaJobs.</h3>
                     <p>
                         All recruitment packages include a print ad to run in the Erie Reader, on a publish date of your choosing. The Erie Reader publishes every other Wednesday, and distributes 12,000 copies to 275 high traffic locations in Erie, Girard, Northeast, and Edinboro.
+                        <br/><br/>
+                        {{ link_to_action('PagesController@getReaderDates', 'View Upcoming Publish Dates') }}
                     </p>
                     <img src="{{ asset('images/eriereader_logo.png') }}">
                 </div>
@@ -97,7 +99,6 @@
                 </div>
                 {{-- offset to compensate for sticky nav --}}
                 <a name="signup"></a>
-
             </div>
         </div>
 

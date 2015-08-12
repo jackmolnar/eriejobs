@@ -112,7 +112,7 @@ class JobsController extends \BaseController {
      */
     public function readerCreate()
     {
-        $readerPubDates = ReaderDate::dropdownarray();
+        $readerPubDates = ReaderDate::dropdownarray(5);
 
         $readerHeadings = Reader_Heading::dropdownarray();
 

@@ -39,9 +39,16 @@ class ReaderDate extends \Eloquent {
 	 *
 	 * @return array
 	 */
-	public static function dropdownarray ()
+	public static function dropdownarray($length = null)
 	{
+		// get all
 		$all = ReaderDate::futureDates()->get();
+
+		// get dates if length is set
+		if($length != null)
+		{
+			$all = ReaderDate::futureDates()->take($length)->get();
+		}
 
 		$date_array =  array();
 

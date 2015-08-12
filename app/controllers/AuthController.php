@@ -165,6 +165,4 @@ class AuthController extends \BaseController {
         $result = $result ? 'Your account has been restored, and you are logged in.' : 'An error occurred. There is no deleted user with that email to restore.';
         return View::make('Auth.restore_user_sent', ['result' => $result]);
     }
-
-
 }

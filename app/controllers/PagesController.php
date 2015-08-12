@@ -17,30 +17,66 @@ class PagesController extends \BaseController {
         $this->blogRepo = $blogRepo;
     }
 
+    /**
+     * Get home page
+     * @return \Illuminate\View\View
+     */
     public function home()
     {
         $blogPosts = $this->blogRepo->recentBlogPosts();
         return View::make('pages.home', ['blogPosts' => $blogPosts]);
     }
 
+    /**
+     * Get hiring page
+     * @return \Illuminate\View\View
+     */
     public function hiring()
     {
         return View::make('pages.hiring');
     }
 
+    /**
+     * Get contact page
+     * @return \Illuminate\View\View
+     */
     public function getContact()
     {
         return View::make('pages.contact');
     }
+
+    /**
+     * Get terms of use page
+     * @return \Illuminate\View\View
+     */
     public function getTermsOfUse()
     {
         return View::make('pages.terms_of_use');
     }
+
+    /**
+     * Get terms of guarantee page
+     * @return \Illuminate\View\View
+     */
     public function getTermsOfGuarantee()
     {
         return View::make('pages.terms_of_guarantee');
     }
 
+    /**
+     * Reader Dates
+     * @return \Illuminate\View\View
+     */
+    public function getReaderDates()
+    {
+        $readerDates = ReaderDate::futureDates()->get();
+        return View::make('pages.reader_dates', ['readerDates' => $readerDates]);
+    }
+
+    /**
+     * Handle contact form submission
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     public function postContact()
     {
         $createContactValidator = new CreateContactValidator(Input::all());
@@ -54,6 +90,4 @@ class PagesController extends \BaseController {
         }
         return Redirect::back()->withInput()->withErrors($valid['errors']);
     }
-
-
 }

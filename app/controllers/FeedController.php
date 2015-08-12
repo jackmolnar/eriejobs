@@ -14,20 +14,6 @@ class FeedController extends \BaseController {
 		$this->jobRepo = $jobRepo;
 	}
 
-
-	/**
-	 * Display a listing of the resource.
-	 * GET /feed
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
-
-
-
 	/**
 	 * Display the specified resource.
 	 * GET /feed/{id}
@@ -48,8 +34,6 @@ class FeedController extends \BaseController {
 		}
 
 		return Response::view('feeds.'.$id, ['jobs' => $result])->header('Content-Type', 'application/xml');
-
-//		return View::make('feeds.feed', ['jobs' => $result]);
 	}
 
 	public function remapCategoriesZiprecruiter($job)
@@ -150,18 +134,5 @@ class FeedController extends \BaseController {
 
 		return $job;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
